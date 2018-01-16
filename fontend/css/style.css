@@ -10,21 +10,24 @@ header{
 }
 .headerLogo img{
 	width: 200px;
-	margin-left: 50px;
+	margin: 0 30px;
 }
 .headerSearch{
-	margin: 30px 0;
+	padding: 30px 0;
 }
 .headerUser{
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 40px 0;
+	padding:30px 0;
 }
 .headerUser a{
 	color: #fff;
 	text-decoration: none;
-	padding: 10px;
+	padding: 10px;	
+}
+.headerLogin{
+	text-align: right;
+}
+.headerRegister{
+	text-align: left;
 }
 
 /*end header*/
@@ -32,8 +35,11 @@ header{
 /*start nav*/
 nav{
 	background: #d0d;
-	height: 40px;
-
+	
+	margin-bottom: 10px;
+}
+nav ul{
+	margin: 0;
 }
 .navItem{
 	text-align: center;
@@ -66,13 +72,39 @@ nav{
 .navItem>ul{
 	position: absolute;
 	width: 100%;
+	z-index: 99;
 }
 .navItem ul li:hover{
 	background:#f0f;
 }
+.main{
+	padding: 0;
+}
 /*end nav*/
 
+/*start main*/
+.mainItem{
+	padding: 0;
+}
+.mainItem img{
+	width: 100%;
+}
+.mainItem:hover .mainItemContent{
+	display: block;
+} 
+.mainItemContent{
+	position: absolute;
+	background: #999;
+	opacity: 0.7;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	display: none;
+	color: #fff;
+	padding: 20px;
+}
 
+/*end main*/
 
 
 

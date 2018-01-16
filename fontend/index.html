@@ -18,17 +18,20 @@
 			<div class="headerLogo col-md-4 col-sm-12 col-xs-12">
 				<img src="imgs/festival_0.png">
 			</div>
-			<div class="headerSearch input-group col-md-4 col-sm-12 col-xs-12">
-				<input type="text" class="valueSearch form-control">
-				<span class="input-group-btn">
-		        	<a href="" class="btn btn-default" ng-click="btnSearch()">
-		        		<i class="fa fa-search" aria-hidden="true"></i>
-		        	</a>
-		    	</span>
+			<div class="headerSearch col-md-4 col-sm-12 col-xs-12">
+				<div class="input-group">
+					<input type="text" class="valueSearch form-control">
+					<span class="input-group-btn">
+			        	<a href="" class="btn btn-default" ng-click="btnSearch()">
+			        		<i class="fa fa-search" aria-hidden="true"></i>
+			        	</a>
+			    	</span>
+				</div>
+				
 			</div>
-			<div class="headerUser col-md-3 col-sm-12 col-xs-12">
-				<a href="#">Đăng Nhập</a>
-				<a href="#">Đăng Kí</a>
+			<div class="headerUser col-md-4 col-sm-12 col-xs-12">
+				<a href="#" class="headerLogin col-md-6 col-sm-6 col-xs-6">Đăng Nhập</a>
+				<a href="#" class="headerRegister col-md-6 col-sm-6 col-xs-6">Đăng Kí</a>
 			</div>
 		</div>
 	</header>
@@ -70,7 +73,7 @@
 
 
 	<main class="" >
-		<div class="container-fluid video">
+		<div class="container-fluid main">
 			<div class="row" ng-view>
 				
 			</div>
