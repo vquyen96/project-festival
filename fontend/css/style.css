@@ -16,7 +16,7 @@ header{
 	padding: 30px 0;
 }
 .headerUser{
-	padding:30px 0;
+	margin:30px 0 20px;
 }
 .headerUser a{
 	color: #fff;
@@ -26,8 +26,14 @@ header{
 .headerLogin{
 	text-align: right;
 }
+.headerLogin:hover{
+	font-size: 18px;
+}
 .headerRegister{
 	text-align: left;
+}
+.headerRegister:hover{
+	font-size: 18px;
 }
 
 /*end header*/
@@ -97,14 +103,22 @@ nav ul{
 } 
 .mainItemContent{
 	position: absolute;
-	background: #999;
-	opacity: 0.7;
-	top: 0;
-	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	bottom: 0;
+	height: 30%;
 	width: 100%;
 	display: none;
 	color: #fff;
 	padding: 20px;
+}
+.mainFollow:hover{
+	font-size: 20px;
+	color: #f00;
+}
+.mainCome:hover{
+	font-size: 20px;
+	color: #0f0;
 }
 
 /*end main*/
