@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Lễ Hội</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+
+
+</head>
+<body>
+	<header class="container-fluid" ng-controller="ctrlHead">
+		<div class="row">
+			<div class="headerLogo col-md-4 col-sm-12 col-xs-12">
+				<img src="imgs/festival_0.png">
+			</div>
+			<div class="headerSearch input-group col-md-4 col-sm-12 col-xs-12">
+				<input type="text" class="valueSearch form-control">
+				<span class="input-group-btn">
+		        	<a href="" class="btn btn-default" ng-click="btnSearch()">
+		        		<i class="fa fa-search" aria-hidden="true"></i>
+		        	</a>
+		    	</span>
+			</div>
+			<div class="headerUser col-md-3 col-sm-12 col-xs-12">
+				<a href="#">Đăng Nhập</a>
+				<a href="#">Đăng Kí</a>
+			</div>
+		</div>
+	</header>
+
+	<nav class="container-fluid">
+		<ul class="row">
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Trang chủ</a>
+			</li>
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Việt Nam</a>
+			</li>
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Châu Lục</a>
+				<ul class="navDrop">
+				    <li><a href="#">Châu Á</a></li>
+				    <li><a href="#">Châu Mỹ</a></li>
+				    <li><a href="#">Châu Phi</a></li>
+				    <li><a href="#">Châu Úc</a></li>
+				 </ul>
+			</li>
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Tôn Giáo</a>
+				<ul class="navDrop">
+				    <li><a href="#">Đạo Phật</a></li>
+				    <li><a href="#">Đạo Hồi</a></li>
+				    <li><a href="#">Đạo Thiên Chúa</a></li>
+				    <li><a href="#">Đạo Hindu</a></li>
+				 </ul>
+			</li>
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Giới Thiệu</a>
+			</li>
+			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+				<a href="">Liên Hệ</a>
+			</li>
+		</ul>
+	</nav>
+
+
+	<main class="" >
+		<div class="container-fluid video">
+			<div class="row" ng-view>
+				
+			</div>
+		</div>
+
+	</main>
+
+	<footer>
+		......
+	</footer>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
