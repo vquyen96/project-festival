@@ -45,6 +45,23 @@ app.controller('ctrlHead', function($scope, $http){
 
 
 });
+
+app.controller('ctrlDetail', function($scope, $http){
+
+    function initMap() {
+      var uluru = {lat: 21.028843, lng: 105.782392};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+    initMap();
+});
+
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {

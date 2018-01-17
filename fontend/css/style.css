@@ -164,6 +164,12 @@ nav ul{
 	display: none;
 }
 /*end main*/
+/*start detail*/
+#map {
+    height: 400px;
+    width: 100%;
+}
+/*end detail*/
 
 /*start media*/
 .mediaItem img{
