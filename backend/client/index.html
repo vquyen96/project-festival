@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Lễ Hội</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="menu col-md-2 col-sm-2 col-xs-12" ng-controller="ctrlMenu">
+				<div class="menuLogo">
+					<a href=""><img src="imgs/festival_0.png"></a>
+				</div>
+				<div class="menuAva">
+					<a href=""><img src="imgs/ava.jpg"></a>
+				</div>
+				
+				<a href="#/!" class="menuItem">Tài Khoản</a>
+				<a href="#!listLeHoi" class="menuItem">Việt Nam</a>
+				<a href="#!listChauLuc" class="menuItem">Châu Lục</a>
+				<a href="#!listTonGiao" class="menuItem">Tôn Giáo</a>
+				<a href="#!listLeHoi" class="menuItem">Lễ Hội</a>
+			</div>
+			<div class="main col-md-10 col-sm-10 col-xs-12" ng-view>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

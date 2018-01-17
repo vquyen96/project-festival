@@ -2,7 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-
+body{
+	background: #000;
+}
 /*start header*/
 header{
 	background: #002;
@@ -11,9 +13,13 @@ header{
 .headerLogo img{
 	width: 200px;
 	margin: 0 30px;
+	transition: .5s;
+}
+.headerLogo img:hover{
+	transform: scale(1.5);
 }
 .headerSearch{
-	padding: 30px 0;
+	padding: 30px 10px;
 }
 .headerUser{
 	margin:30px 0 20px;
@@ -98,7 +104,7 @@ nav ul{
 /*start main*/
 .mainItem{
 	padding: 0;
-	border: 2px solid #fff; 
+	border: 5px solid #000; 
 
 }
 .mainItem img{
@@ -112,7 +118,7 @@ nav ul{
 	position: absolute;
 	background: #000;
 	opacity: 0.8;
-	bottom: 0;
+	bottom: -1px;
 	height: 30%;
 	width: 100%;
 	display: none;
