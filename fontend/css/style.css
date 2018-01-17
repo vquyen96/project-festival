@@ -5,7 +5,7 @@
 
 /*start header*/
 header{
-	background: #f0f;
+	background: #002;
 	
 }
 .headerLogo img{
@@ -19,7 +19,8 @@ header{
 	margin:30px 0 20px;
 }
 .headerUser a{
-	color: #fff;
+	color: #ccf;
+	font-size: 18px;
 	text-decoration: none;
 	padding: 10px;	
 }
@@ -27,22 +28,22 @@ header{
 	text-align: right;
 }
 .headerLogin:hover{
-	font-size: 18px;
+	color: #fff;
 }
 .headerRegister{
 	text-align: left;
 }
 .headerRegister:hover{
-	font-size: 18px;
+	color: #fff;
 }
 
 /*end header*/
 
 /*start nav*/
 nav{
-	background: #d0d;
+	background: #002;
 	
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 }
 nav ul{
 	margin: 0;
@@ -54,7 +55,7 @@ nav ul{
 	padding: 0;
 }
 .navItem a{
-	color: #fff;
+	color: #ccf;
 	text-decoration: none;
 	display: inline-block;
 	width: 100%;
@@ -65,14 +66,17 @@ nav ul{
 	display: none;
 }
 .navItem:hover{
-	background:#f0f; 
+	background:#113; 
 }
 .navItem:hover ul li{
 	display: block;
 }
+.navItem:hover a{
+	color: #fff;
+}
 .navItem ul li{
-	background:#d0d;
-	border-top: 2px solid #f3f;
+	background:#002;
+	border-top: 2px solid #113;
 	
 }
 .navItem>ul{
@@ -81,7 +85,7 @@ nav ul{
 	z-index: 99;
 }
 .navItem ul li:hover{
-	background:#f0f;
+	background:#113;
 }
 .main{
 	padding: 0;
@@ -94,9 +98,12 @@ nav ul{
 /*start main*/
 .mainItem{
 	padding: 0;
+	border: 2px solid #fff; 
+
 }
 .mainItem img{
 	width: 100%;
+	border-radius: 5px;
 }
 .mainItem:hover .mainItemContent{
 	display: block;
@@ -120,10 +127,56 @@ nav ul{
 	font-size: 20px;
 	color: #0f0;
 }
-
+.mainSlide2{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide3{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide5{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide6{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide8{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
+.mainSlide9{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	display: none;
+}
 /*end main*/
+/*start detail*/
+#map {
+    height: 400px;
+    width: 100%;
+}
+/*end detail*/
 
+/*start media*/
+.mediaItem img{
+	width: 100%;
+}
 
+/*end media*/
 
 /*start footer*/
 footer{

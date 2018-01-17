@@ -63,12 +63,12 @@
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#/media">Thư Viện</a>
+				<a href="#!media">Thư Viện</a>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#/about">Giới Thiệu</a>
+				<a href="#!about">Giới Thiệu</a>
 				<ul class="navDrop">
-				    <li><a href="#/contact">Liên Hệ</a></li>
+				    <li><a href="#!contact">Liên Hệ</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -76,10 +76,8 @@
 
 
 	<main class="" >
-		<div class="container-fluid main">
-			<div class="mainRow row" ng-view>
-				
-			</div>
+		<div class="container-fluid main" ng-view>
+			
 		</div>
 
 	</main>
@@ -87,6 +85,7 @@
 	<footer>
 		......
 	</footer>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script>
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
