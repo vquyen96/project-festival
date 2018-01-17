@@ -1,0 +1,160 @@
+/*start index*/
+
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background: url('../imgs/bg.jpg');
+}
+.menu{
+	background: rgba(10, 10, 10, 0.9);
+	padding: 0;
+}
+.menuLogo a img{
+	width: 100%;
+	transition: .5s;
+}
+.menuLogo a img:hover{
+	transform: scale(1.3);
+}
+.menuAva{
+	padding: 20px;
+	
+}
+.menuAva:hover {
+	background: #f9a232;
+	
+}
+.menuAva img{
+	width: 70%;
+	border-radius: 50%;
+	display: block;
+	margin: auto;
+	transition: transform 2s;
+}
+.menuAva img:hover {
+	transform: rotate(360deg);
+}
+.menu a{
+	text-decoration: none;
+}
+.menuItem{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	color: #ddf;
+	display: block;
+	text-align: center;
+}
+.menuItem:hover {
+	background: #f9a232;
+}
+
+/*end index*/
+
+/*start list User*/
+.listUserHeader{
+	padding: 20px 50px;
+}
+.listUserTable{
+	width: 100%;
+	background: rgba(200, 200, 200, 0.7);
+	border-radius: 10px 10px 0 0;
+}
+.listUserTable tr{
+	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.listUserTable tr:first-of-type{
+	background: #f9a232;
+}
+.listUserTable tr:hover{
+	background: rgba(200, 200, 200, 1);
+}
+.listUserTable tr td {
+	text-align: center;
+	padding: 5px ;
+}
+/*end list User*/
+
+/*start listChauLuc*/
+.listChauLucHeader{
+	padding: 20px 50px;
+}
+.listChauLucTable{
+	width: 100%;
+	background: rgba(200, 200, 200, 0.7);
+	border-radius: 10px 10px 0 0;
+}
+.listChauLucTable tr{
+	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.listChauLucTable tr:first-of-type{
+	background: #f9a232;
+}
+.listChauLucTable tr:hover{
+	background: rgba(200, 200, 200, 1);
+}
+.listChauLucTable tr td {
+	text-align: center;
+	padding: 5px ;
+}
+/*end listChauLuc*/
+
+/*start listLeHoi*/
+.listLeHoiHeader{
+	padding: 20px 50px;
+}
+.listLeHoiTable{
+	width: 100%;
+	background: rgba(200, 200, 200, 0.7);
+	border-radius: 10px 10px 0 0;
+}
+.listLeHoiTable tr{
+	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.listLeHoiTable tr:first-of-type{
+	background: #f9a232;
+}
+.listLeHoiTable tr:hover{
+	background: rgba(200, 200, 200, 1);
+}
+.listLeHoiTable tr td {
+	text-align: center;
+	padding: 5px ;
+}
+/*end listLeHoi*/
+
+
+/*start listTonGiao*/
+.listTonGiaoHeader{
+	padding: 20px 50px;
+}
+.listTonGiaoTable{
+	width: 100%;
+	background: rgba(200, 200, 200, 0.7);
+	border-radius: 10px 10px 0 0;
+}
+.listTonGiaoTable tr{
+	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.listTonGiaoTable tr:first-of-type{
+	background: #f9a232;
+}
+.listTonGiaoTable tr:hover{
+	background: rgba(200, 200, 200, 1);
+}
+.listTonGiaoTable tr td {
+	text-align: center;
+	padding: 5px ;
+}
+/*end listTonGiao*/
+
+.addUserForm{
+	background: rgba(200, 200, 200, 0.7);
+	width: 50%;
+	display: block;
+	padding: 30px;
+	margin: 20px 10px;
+	border-radius: 20px;
+}
