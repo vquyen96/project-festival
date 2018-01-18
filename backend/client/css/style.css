@@ -75,6 +75,10 @@ body{
 	text-align: center;
 	padding: 5px ;
 }
+.listUserTable img{
+	height: 50px;
+	border-radius: 50%;
+}
 /*end list User*/
 
 /*start listChauLuc*/

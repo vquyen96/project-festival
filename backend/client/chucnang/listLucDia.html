@@ -1,0 +1,20 @@
+<div class="row" ng-controller="ctrlListLucDia">
+	<div class="listChauLucHeader">
+		<input type="button" name="" class="btn btn-warning" value="Thêm Lục Địa" ng-click="btnAdd()">
+	</div>
+	<div>
+		<table class="listChauLucTable">
+			<tr>
+				<td>Tên</td>
+				<td>Sửa</td>
+				<td>Xóa</td>
+			</tr>
+			<tr  ng-repeat="data in listData">
+				<td>{{data.nameLucDia}}</td>
+				<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+				<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameLucDia)">Xóa</a></td>
+			</tr>
+			
+		</table>
+	</div>
+</div>

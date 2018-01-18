@@ -45,7 +45,16 @@ app.controller('ctrlHead', function($scope, $http){
 
 
 });
-
+app.controller('ctrlNav', function($scope, $http){
+    $scope.menuSearchLucDia = function(name){
+        $('#headSearch').attr('value', name);
+        $('#headSearch').attr('name','lucdia');
+    }
+    $scope.menuSearchTonGiao = function(name){
+        $('#headSearch').val(name);
+        $('#headSearch').attr('name','tongiao');
+    }
+});
 app.controller('ctrlDetail', function($scope, $http){
 
     function initMap() {

@@ -1,6 +1,6 @@
 <div class="row" ng-controller="ctrlListTonGiao">
 	<div class="listTonGiaoHeader">
-		<input type="button" name="" class="btn btn-warning" value="Thêm Thành Viên">
+		<input type="button" name="" class="btn btn-warning" value="Thêm Thành Viên" ng-click="btnAdd()">
 	</div>
 	<div>
 		<table class="listTonGiaoTable">
@@ -9,26 +9,12 @@
 				<td>Sửa</td>
 				<td>Xóa</td>
 			</tr>
-			<tr>
-				<td>Đạo Phật</td>
-				<td><a href="#!addUser" class="btn btn-primary">Sửa</a></td>
-				<td><a href="#!/" class="btn btn-danger">Xóa</a></td>
-			</tr
-			<tr>
-				<td>Đạo Thiên Chúa</td>
-				<td><a href="#!addUser" class="btn btn-primary">Sửa</a></td>
-				<td><a href="#!/" class="btn btn-danger">Xóa</a></td>
+			<tr ng-repeat="data in listData">
+				<td>{{data.nameTonGiao}}</td>
+				<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+				<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameTonGiao)">Xóa</a></td>
 			</tr>
-			<tr>
-				<td>Đạo Hồi</td>
-				<td><a href="#!addUser" class="btn btn-primary">Sửa</a></td>
-				<td><a href="#!/" class="btn btn-danger">Xóa</a></td>
-			</tr>
-			<tr>
-				<td>Đạo Hindu</td>
-				<td><a href="#!addUser" class="btn btn-primary">Sửa</a></td>
-				<td><a href="#!/" class="btn btn-danger">Xóa</a></td>
-			</tr>
+			
 		</table>
 	</div>
 </div>
