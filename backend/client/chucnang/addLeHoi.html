@@ -1,0 +1,96 @@
+<div class="container" ng-controller="ctrlAddLeHoi">
+	<div class="row addUserForm" >
+		<div class="alert alert-success" role="alert" style="display: none;"></div>
+		<div class="alert alert-danger" role="alert" style="display: none;"></div>
+		<form method="post">
+			<div class="form-group">
+				<label>Tên Lễ Hội</label>
+				<input type="text" name="nameLeHoi" id="nameLeHoi" class="form-control" ng-model="festival.festivalname">
+			</div>
+			<div class="form-group">
+				<label>Bắt đầu</label>
+				<input type="text" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
+			</div>
+			<div class="form-group">
+				<label>Kết thúc</label>
+				<input type="text" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+			</div>
+			<div class="form-group">
+				<label>Địa điểm</label>
+				<input type="text" name="diadiem" id="diadiem" class="form-control" ng-model="festival.diadiem">
+				
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Kinh độ</label>
+					<input type="text" name="kingdo" id="kingdo" class="form-control" ng-model="festival.kingdo">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Vĩ độ</label>
+					<input type="text" name="vido" id="vido" class="form-control" ng-model="festival.vido">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Lục Địa</label>
+					<select class="form-control" ng-model="festival.lucdia" id="lucdia">
+						<option selected="selected" value="Việt Nam">Việt Nam</option>
+						<option value="Châu Á">Châu Á</option>
+						<option value="Châu Âu">Châu Âu</option>
+						<option value="Châu Phi">Châu Phi</option>
+						<option value="Châu Úc">Châu Úc</option>
+						<option value="Châu Mỹ">Châu Mỹ</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Tôn Giáo</label>
+					<select class="form-control" ng-model="festival.tongiao" id="tongiao">
+						<option selected="selected" value="Không">Không</option>
+						<option value="Đạo Phật">Đạo Phật</option>
+						<option value="Đạo Hồi">Đạo Hồi</option>
+						<option value="Đạo Thiên Chúa">Đạo Thiên Chúa</option>
+						<option value="Đạo Hindu">Đạo Hindu</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Chi tiết</label>
+				<input type="text" name="chitiet" id="chitiet" class="form-control" ng-model="festival.chitiet">
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 1</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 2</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 3</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 4</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 5</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Ảnh 6</label>
+					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+				</div>
+			</div>
+			<div>
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()">
+			</div>
+		</form>
+	</div>
+</div>

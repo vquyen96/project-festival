@@ -125,12 +125,18 @@ nav ul{
 	color: #fff;
 	padding: 20px;
 }
+.mainFollow{
+	transition: .5s;
+}
 .mainFollow:hover{
-	font-size: 20px;
+	transform: scale(1.5);
 	color: #f00;
 }
+.mainCome{
+	transition: .5s;
+}
 .mainCome:hover{
-	font-size: 20px;
+	transform: scale(1.5);
 	color: #0f0;
 }
 .mainSlide2{
@@ -186,6 +192,10 @@ nav ul{
 
 /*start footer*/
 footer{
-	background: #666;
+	background: #001;
+	padding: 20px;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
 }
 /*end footer*/
