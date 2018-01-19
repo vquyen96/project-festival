@@ -125,6 +125,7 @@ nav ul{
 	color: #fff;
 	padding: 20px;
 }
+
 .mainFollow{
 	transition: .5s;
 }
@@ -175,7 +176,39 @@ nav ul{
 	top: 0;
 	display: none;
 }
+
 /*end main*/
+
+/*start log in*/
+
+/** {
+	font-family: "Tahoma";
+}
+.form-group {
+	margin: 10px 5px;
+}
+.form-group label {
+	width: 15%;
+	float: left;
+}
+.form-group form-control {
+	float: left;
+	border-radius: 5px;
+}
+.form-group::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+.long-input {
+	width: 40%;
+}
+.normal-input {
+	width: 20%;
+}
+
+*/
+/*end login*/
 /*start detail*/
 #map {
     height: 400px;
