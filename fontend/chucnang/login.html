@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title>Đăng nhập</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
+
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/angular-route.js"></script>
 </head>
-<body>
+<body ng-controller="ctrlLogin">
 	<div class="loginPage">
 		<div class="container">
 			<div class="row main">
@@ -17,16 +20,16 @@
 					<form method="post">
 						<div class="form-group">
 							<label>Tài khoản</label>
-							<input type="text" name="userName" class="form-control">
+							<input type="text" name="userName" class="form-control" ng-model="data.username">
 						</div>
 						<div class="form-group">
 							<label>Mật khẩu</label>
-							<input type="text" name="userPass" class="form-control">
+							<input type="text" name="userPass" class="form-control" ng-model="data.password">
 						</div>
 						<div class="form-group">
 							<label></label>
-							<input type="submit" name="sbm" value="Đăng nhập" class="btn btn-primary">
-							<input type="submit" name="sbm" value="Đăng ký" class="btn">
+							<input type="submit" name="sbm" value="Đăng nhập" class="btn btn-primary" ng-click="btnSbm()">
+							<input type="submit" name="sbm" value="Đăng ký" class="btn" ng-click="btnRegister()">
 						</div>
 					</form>
 				</div>
@@ -36,6 +39,6 @@
 	
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="js/script.js"></script> -->
+	<script type="text/javascript" src="../js/login.js"></script>
 </body>
 </html>
