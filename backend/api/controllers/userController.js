@@ -1,5 +1,6 @@
 var User = require('../models/user');
 require('mongoose-pagination');
+var crypto = require('crypto');
 
 exports.getList = function(req, resp){
 	// if (authenticationController.checkToken(req.headers.authorization)){
@@ -34,11 +35,26 @@ exports.getDetail = function(req, resp){
 }
 
 exports.add = function(req, resp){		
-	var user = new User(req.body);	
-	user.save(function(err){				
-		resp.send(user);
-	});
+	var obj = new User(req.body);
+	var salt = Math.random().toString(36).substring(7);
+	obj.salt = salt;
+	obj.password = sha512(obj.password, obj.salt);
+	obj.save(function(err){
+		if(err){
+			resp.send(err);
+			return;
+		}
+		resp.send(obj);
+	});	
 }
+
+var sha512 = function(password, salt){
+    var hash = crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
+    hash.update(password);
+    return hash.digest('hex');    
+};
+
+exports.sha512 = sha512;
 
 exports.update = function(req, resp){
 	User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {

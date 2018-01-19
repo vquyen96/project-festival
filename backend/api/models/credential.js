@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('credentials', {	
 	tokenKey: String,
-	ownerId: String,	
+	ownerId: String,
+	level: Number,	
 	createdAt: {
 		type: Date,
 		default: Date.now

@@ -14,11 +14,13 @@ exports.checkLogin = function(req, resp){
 			return;
 		}
 		if(result){
+			console.log(result);
 			var digestedPassword = userController.sha512(password, result.salt);
 			if(digestedPassword === result.password){
 				var credential = new Credential({
 					tokenKey: crypto.randomBytes(20).toString('hex'),
-					ownerId: result._id					
+					ownerId: result._id	,
+					level: result.level			
 				});
 				credential.save(function(err){
 					if(err){
