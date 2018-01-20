@@ -73,6 +73,12 @@ nav ul{
 	list-style: none;
 	display: none;
 }
+.navItem-icon{
+	transition: .3s;
+}
+.navItem:hover .navItem-icon{
+	transform: rotate(90deg);
+}
 .navItem:hover{
 	background:#113; 
 }
