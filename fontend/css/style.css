@@ -278,14 +278,44 @@ nav ul{
 /*start footer*/
 footer{
 	margin-top: 5px;
-	background: #001;
-	padding: 20px;
+	background: url('../imgs/We-Own-The-Nite-NYC_Sunset-Music-Festival-161.jpg');
+	background-size: 100%;
 	color: #fff;
 }
+.footerBg{
+	background: #111;
+	opacity: 0.8;
+	padding: 20px;
+}
 footer a{
-	display: block;
+	display: inline-block;
 	text-align: left;
 	color: #fff;
+}
+.footerItemList li{
+	list-style: none;
+}
+.footerItem ul li a{
+	text-decoration: none;
+	color: #FFF;
+	/*border-bottom: 1px solid #6B6B6B;*/
+	padding: 0 20px 6px 0;
+	position: relative;
+}
+.footerBorderBot{
+	position: absolute;
+	background: #DC5454;
+	height: 4px;
+	bottom: 0;
+	left: 0;
+	width: 0px;
+	transition: width .5s;
+}
+.footerItem ul li a:hover{
+	color: #DC5454;
+}
+.footerItem ul li a:hover .footerBorderBot{
+	width: 100%;
 }
 /*end footer*/
 
