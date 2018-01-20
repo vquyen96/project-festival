@@ -54,6 +54,12 @@ app.controller('ctrlNav', function($scope, $http){
         $('#headSearch').val(name);
         $('#headSearch').attr('name','tongiao');
     }
+    $scope.navItemDrop1 = function(){
+        $('.navDrop1').slideToggle("slow");
+    }
+    $scope.navItemDrop2 = function(){
+        $('.navDrop2').slideToggle("slow");
+    }
 });
 app.controller('ctrlDetail', function($scope, $http){
 
