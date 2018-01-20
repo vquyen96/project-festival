@@ -85,9 +85,20 @@ app.controller('ctrlAbout', function($scope, $http){
     }
     initMap();
 });
+
+app.controller('ctrlMedia', function($scope, $http){
+    var videoFrame = document.getElementById("video-frame");
+    
+    $scope.showVideo = function(videoId){
+        videoFrame.src = videoId;
+        setTimeout(function(){ 
+            $('#modal-video').modal();
+        }, 300);
+    }
+});
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/main", {
+    .when("/", {
         templateUrl : "chucnang/main.html"
     })
     .when("/detail", {
@@ -107,5 +118,8 @@ app.config(function($routeProvider) {
     })
     .when("/register", {
         templateUrl : "chucnang/register.html"
+    })
+    .when("/vietnam", {
+        templateUrl : "chucnang/search.html"
     })
 });
