@@ -32,8 +32,14 @@
 				
 			</div>
 			<div class="headerUser col-md-4 col-sm-12 col-xs-12">
-				<a href="chucnang/login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6">Đăng Nhập</a>
-				<a href="chucnang/register.html" class="headerRegister col-md-6 col-sm-6 col-xs-6">Đăng Kí</a>
+				<a href="chucnang/login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6">
+					<i class="fa fa-sign-in" aria-hidden="true"></i>
+					Đăng Nhập
+				</a>
+				<a href="chucnang/register.html" class="headerRegister col-md-6 col-sm-6 col-xs-6">
+				<i class="fa fa-user-plus" aria-hidden="true"></i>
+				Đăng Kí
+				</a>
 			</div>
 		</div>
 	</header>
@@ -41,13 +47,28 @@
 	<nav class="container-fluid" ng-controller="ctrlNav">
 		<ul class="row">
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#!/">Trang chủ</a>
+  				<span>
+  					<a href="#!/">
+  						<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+  						Trang Chủ 
+  					</a>
+  					</span>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#!vietnam" ng-click="menuSearchLucDia('Việt Nam')">Việt Nam</a>
+				<span>
+					<a href="#!vietnam" ng-click="menuSearchLucDia('Việt Nam')">
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						Việt Nam
+					</a>
+				</span>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="">Châu Lục</a>
+				<span>
+					<a href="">
+						<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+						Châu Lục
+					</a>
+				</span>				
 				<ul class="navDrop">
 				    <li><a href="#" ng-click="menuSearchLucDia('Châu Âu')">Châu Á</a></li>
 				    <li><a href="#" ng-click="menuSearchLucDia('Châu Mỹ')">Châu Mỹ</a></li>
@@ -56,7 +77,12 @@
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="">Tôn Giáo</a>
+				<span>
+					<a href="">
+						<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+						Tôn Giáo
+					</a>					
+				</span>
 				<ul class="navDrop">
 				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Phật')">Đạo Phật</a></li>
 				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Hồi')">Đạo Hồi</a></li>
@@ -65,10 +91,20 @@
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#!media">Thư Viện</a>
+				<span>
+					<a href="#!vietnam" ng-click="menuSearchLucDia('Việt Nam')">
+						<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+						Thư Viện
+					</a>
+				</span>				
 			</li>
 			<li class="navItem col-md-2 col-sm-4 col-xs-12">
-				<a href="#!about">Giới Thiệu</a>
+				<span>
+					<a href="#!about">
+						<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
+						Giới Thiệu
+					</a>					
+				</span>				
 				<ul class="navDrop">
 				    <li><a href="#!contact">Liên Hệ</a></li>
 				</ul>
