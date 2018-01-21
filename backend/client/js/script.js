@@ -3,19 +3,76 @@ app.controller('ctrlMenu', function($scope, $http){
     
 });
 app.controller('ctrlListUser', function($scope, $http){
-    function getList(){
+    var countName = 1;
+    var countEmail = 1;
+    var countLevel = 1;
+    function getList(value, rev){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listUser = response.data;
-            
+            if (value == 'none') {
+                $scope.listUser = response.data;
+            }
+            else{
+                var dataObj = response.data.slice(0);
+                dataObj.sort(function(a,b) {
+                    if (value == 'username') {
+                        var x = a.username.toLowerCase();
+                        var y = b.username.toLowerCase();
+                        return x < y ? -1 : x > y ? 1 : 0;
+                    }
+                    if (value == 'email') {
+                        var x = a.email.toLowerCase();
+                        var y = b.email.toLowerCase(); 
+                        return x < y ? -1 : x > y ? 1 : 0; 
+                    }
+                    if (value == 'level') {
+                        return a.level - b.level;
+                    }
+                });
+
+                console.log('by name:');
+                console.log(dataObj);
+                if (rev == 'y') {
+                    $scope.listUser = dataObj.reverse();
+                }else{
+                    $scope.listUser = dataObj;
+                }
+            }
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
-    getList();
+    $scope.btnSortName = function(){
+        if(countName % 2){
+            getList('username', 'n');
+        }
+        else{
+            getList('username', 'y');
+        }
+        countName++;
+    }
+    $scope.btnSortEmail = function(){
+        if(countEmail % 2){
+            getList('email', 'n');
+        }
+        else{
+            getList('email', 'y');
+        }
+        countEmail++;
+    }
+    $scope.btnSortLevel = function(){
+        if(countLevel % 2){
+            getList('level', 'n');
+        }
+        else{
+            getList('level', 'y');
+        }
+        countLevel++;
+    }
+    getList('none', 'n');
     $scope.btnAddUser = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addUser";
@@ -55,7 +112,6 @@ app.controller('ctrlAddUser', function($scope, $http){
             }).then(function mySuccess(response) {
                 console.log(response);
                 $('#username').val(response.data.username);
-                $('#password').val(response.data.password);
                 $('#email').val(response.data.email);
                 $('#birthday').val(response.data.birthday);
                 $('#level').val(response.data.level);
@@ -66,16 +122,15 @@ app.controller('ctrlAddUser', function($scope, $http){
             });
         }
         getDetail();
+        $('#password').attr('style','display:none;');
+        $('#btnPass').attr('style','display:block;');
+        $scope.btnPass = function(){
+            $('#btnPass').attr('style','display:none;');
+            $('#password').attr('style','display:block;');
+        }
         //Khi click nút sửa
         $scope.btnAdd = function() {
-            $scope.user = {
-                "username": $('#username').val(),
-                "password": $('#password').val(),
-                "email": $('#email').val(),
-                "birthday": $('#birthday').val(),
-                "level": $('#level').val(),
-                "avaUrl": $('#avaUrl').val()
-            };
+            
             console.log($scope.user);
             $http({
                 method : "PUT",
@@ -106,14 +161,6 @@ app.controller('ctrlAddUser', function($scope, $http){
     }
     else{
         $scope.btnAdd = function() {
-            $scope.user = {
-                "username": $('#username').val(),
-                "password": $('#password').val(),
-                "email": $('#email').val(),
-                "birthday": $('#birthday').val(),
-                "level": $('#level').val(),
-                "avaUrl": $('#avaUrl').val()
-            };
             console.log($scope.user);
             $http({
                 method : "POST",
@@ -134,7 +181,7 @@ app.controller('ctrlAddUser', function($scope, $http){
                 $scope.user.email = "";
                 $scope.user.birthday = "";
                 $scope.user.level = "1";
-                $scope.user.avaUrl = "1";
+                $scope.user.avaUrl = "";
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
@@ -524,6 +571,7 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
                 url : "http://localhost:3000/api/festivals",
                 data : $scope.festival
             }).then(function mySuccess(response) {
+                console.log(response);
                 //Thông báo khi thành công
                 $('.alert-success').text('Thành Công');
                 $('.alert-success').attr('style','display : inline-block');

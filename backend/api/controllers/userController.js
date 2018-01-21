@@ -1,6 +1,7 @@
 var User = require('../models/user');
 require('mongoose-pagination');
 var crypto = require('crypto');
+var arraySort = require('array-sort');
 
 exports.getList = function(req, resp){
 	// if (authenticationController.checkToken(req.headers.authorization)){
@@ -21,9 +22,11 @@ exports.getList = function(req, resp){
  //    	};
  //    	resp.send(responseData);
  //  	});
+
 	User.find({'status': 1 }, function(err, task) {
 	    if (err)
 	      	resp.send(err);
+	    // var taskSort = arraySort(task, 'email');
 	    resp.json(task);
 	});
 }
