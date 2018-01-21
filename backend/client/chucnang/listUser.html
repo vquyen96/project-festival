@@ -5,17 +5,17 @@
 	<div>
 		<table class="listUserTable">
 			<tr>
-				<td>Tên</td>
-				<td>Ava</td>
-				<td>Email</td>
-				<td>Ngày Sinh</td>
-				<td>Phân Quyền</td>
-				<td>Sửa</td>
-				<td>Xóa</td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortName()">Tên Người Dùng<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning">Ảnh đại diện<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortEmail()">Email<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortBirthDay()">Ngày Sinh<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortLevel()">Quyền truy cập<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning">Sửa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning">Xóa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
 			</tr>
 			<tr ng-repeat="user in listUser">
 				<td>{{user.username}}</td>
-				<td><img ng-src="{{user.avaUrl}}"></td>
+				<td><img ng-src="{{user.avaUrl}}"></img></td>
 				<td>{{user.email}}</td>
 				<td>{{user.birthday}}</td>
 				<td>{{user.level}}</td>

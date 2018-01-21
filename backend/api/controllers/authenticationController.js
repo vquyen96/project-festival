@@ -14,7 +14,6 @@ exports.checkLogin = function(req, resp){
 			return;
 		}
 		if(result){
-			console.log(result);
 			var digestedPassword = userController.sha512(password, result.salt);
 			if(digestedPassword === result.password){
 				var credential = new Credential({

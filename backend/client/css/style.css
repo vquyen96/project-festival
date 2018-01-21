@@ -66,14 +66,14 @@ body{
 	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 }
 .listUserTable tr:first-of-type{
-	background: #f9a232;
+	background: #f0ad4e;
 }
 .listUserTable tr:hover{
 	background: rgba(200, 200, 200, 1);
 }
 .listUserTable tr td {
 	text-align: center;
-	padding: 5px ;
+	padding: 5px 10px ;
 }
 .listUserTable img{
 	height: 50px;

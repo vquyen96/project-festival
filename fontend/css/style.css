@@ -34,15 +34,19 @@ header{
 }
 .headerLogin{
 	text-align: right;
+	transition: .5s;
 }
 .headerLogin:hover{
 	color: #fff;
+	transform: scale(1.15);
 }
 .headerRegister{
 	text-align: left;
+	transition: .5s;
 }
 .headerRegister:hover{
 	color: #fff;
+	transform: scale(1.15);
 }
 
 /*end header*/
@@ -68,6 +72,7 @@ nav ul{
 	display: inline-block;
 	width: 100%;
 	padding: 7px 0 ;
+	transition: .5s;
 }
 .navDrop li{
 	list-style: none;
@@ -76,6 +81,9 @@ nav ul{
 .navItem:hover{
 	background:#113; 
 	box-shadow:0 0 20px -2px rgba(0,0,0,0);
+}
+.navItem:hover a{
+	transform: scale(1.1);
 }
 .navItem:hover ul li{
 	display: block;

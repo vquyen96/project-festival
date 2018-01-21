@@ -9,6 +9,7 @@
 			</div>
 			<div class="form-group">
 				<label>Mật khẩu</label>
+				<input type="button" name="btnPass" id="btnPass" class="btn btn-primary" value="Sửa Mật Khẩu" ng-click="btnPass()" style="display: none;">
 				<input type="text" name="password" id="password" class="form-control" ng-model="user.password">
 			</div>
 			<div class="form-group">
@@ -27,10 +28,10 @@
 					<option selected="selected" value="1">Người dùng</option>
 				</select>
 			</div>
-			<!-- <div class="form-group">
+			<div class="form-group">
 				<label>Ảnh Đại Diện</label>
 				<input type="text" name="userFile" id="avaUrl" ng-model="user.avaUrl" class="form-control">
-			</div> -->
+			</div>
 			<div>
 				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()">
 			</div>
