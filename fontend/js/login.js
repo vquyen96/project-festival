@@ -8,6 +8,9 @@ app.controller('ctrlLogin', function($scope, $http){
             data: $scope.data
         }).then(function mySuccess(response) {
             console.log(response);
+            var ownerId = localStorage.setItem("ownerId", response.data.ownerId);
+            var tokenKey = localStorage.setItem("tokenKey", response.data.tokenKey);
+            var level = localStorage.setItem("level", response.data.level);
             if(response.data.level == 1){
             	window.location.href = "../index.html";
             }
