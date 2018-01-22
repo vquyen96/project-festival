@@ -5,14 +5,15 @@
 	<div>
 		<table class="listLeHoiTable">
 			<tr>
-				<td>Tên</td>
-				<td>Thời Gian Bắt Đầu</td>
-				<td>Thời Gian Kết Thúc</td>
-				<td>Địa Điểm</td>
-				<td>Châu Lục</td>
-				<td>Tôn Giáo</td>
-				<td>Sửa</td>
-				<td>Xóa</td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortName()">Tên Lễ Hội<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortTimeStart()">Thời Gian Bắt Đầu<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortTimeEnd()">THời Gian Kết Thúc<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortPlace()">Địa Điểm<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortLucDia()">Châu Lục<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortTonGiao()">Tôn Giáo<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortName()">Sửa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				<td><a href="" class="btn btn-warning" ng-click="btnSortName()">Xóa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+				
 			</tr>
 			<tr ng-repeat="data in listUser">
 				<td>{{data.nameLeHoi}}</td>

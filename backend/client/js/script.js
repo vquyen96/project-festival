@@ -1,17 +1,47 @@
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlMenu', function($scope, $http){
-    
+    var ownerId = localStorage.getItem("ownerId");
+    var tokenKey = localStorage.getItem("tokenKey");
+    var level = localStorage.getItem("level");
+    if(ownerId != null && tokenKey != null && level != 1){
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/users/"+ownerId,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            if (response != null) {
+                alert('OK');
+            }
+            else{
+                alert('not OK');
+            }
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+    if(level == 1){
+        
+    }
+    else{
+
+    }
+    $scope.logOut = function(){
+        localStorage.removeItem("ownerId");
+        localStorage.removeItem("tokenKey");
+        localStorage.removeItem("level");
+    }
 });
 app.controller('ctrlListUser', function($scope, $http){
     var countName = 1;
     var countEmail = 1;
     var countLevel = 1;
+    var countBirthDay = 1;
     function getList(value, rev){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users",
         }).then(function mySuccess(response) {
-            console.log(response);
+            
             if (value == 'none') {
                 $scope.listUser = response.data;
             }
@@ -30,6 +60,9 @@ app.controller('ctrlListUser', function($scope, $http){
                     }
                     if (value == 'level') {
                         return a.level - b.level;
+                    }
+                    if (value == 'birthday') {
+                        return a.birthday - b.birthday;
                     }
                 });
 
@@ -71,6 +104,15 @@ app.controller('ctrlListUser', function($scope, $http){
             getList('level', 'y');
         }
         countLevel++;
+    }
+    $scope.btnSortBirthDay = function(){
+        if(countBirthDay % 2){
+            getList('birthday', 'n');
+        }
+        else{
+            getList('birthday', 'y');
+        }
+        countBirthDay++;
     }
     getList('none', 'n');
     $scope.btnAddUser = function(){
@@ -450,19 +492,97 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
     }
 });
 app.controller('ctrlListLeHoi', function($scope, $http){
-    function getList(){
+    var countName = 1;
+    var countPlace = 1;
+    var countLucDia = 1;
+    var countTonGiao = 1;
+    function getList(value, rev){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/festivals",
         }).then(function mySuccess(response) {
-            
-            $scope.listUser = response.data;
-            
+            if (value == 'none') {
+                $scope.listUser = response.data;
+            }
+            else{
+                var dataObj = response.data.slice(0);
+                dataObj.sort(function(a,b) {
+                    switch(value){
+                        case 'name': {
+                            var x = a.nameLeHoi.toLowerCase();
+                            var y = b.nameLeHoi.toLowerCase();
+                            return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                        break;
+                        case 'place': {
+                            var x = a.diadiem.toLowerCase();
+                            var y = b.diadiem.toLowerCase();
+                            return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                        break;
+                        case 'lucdia': {
+                            var x = a.lucdia.toLowerCase();
+                            var y = b.lucdia.toLowerCase();
+                            return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                        break;
+                        case 'tongiao': {
+                            var x = a.tongiao.toLowerCase();
+                            var y = b.tongiao.toLowerCase();
+                            return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                        break;
+                    }
+                });
+                console.log('by name:');
+                console.log(dataObj);
+                if (rev == 'y') {
+                    $scope.listUser = dataObj.reverse();
+                }else{
+                    $scope.listUser = dataObj;
+                }
+            }
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
-    getList();
+    $scope.btnSortName = function(){
+        if (countName % 2) {
+            getList('name','n');
+        }
+        else{
+            getList('name','y');
+        } 
+        countName++;   
+    }
+    $scope.btnSortPlace = function(){
+        if (countPlace % 2) {
+            getList('place','n');
+        }
+        else{
+            getList('place','y');
+        }  
+        countPlace++;
+    }
+    $scope.btnSortLucDia = function(){
+        if (countLucDia % 2) {
+            getList('lucdia','n');
+        }
+        else{
+            getList('lucdia','y');
+        }  
+        countLucDia++;  
+    }
+    $scope.btnSortTonGiao = function(){
+        if (countTonGiao % 2) {
+            getList('tongiao','n');
+        }
+        else{
+            getList('tongiao','y');
+        }
+        countTonGiao++;    
+    }
+    getList('none','n');
     $scope.btnAddUser = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addLeHoi";
