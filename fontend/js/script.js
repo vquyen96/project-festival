@@ -1,8 +1,52 @@
 var app = angular.module("myApp", ["ngRoute"]);
+
 app.controller('ctrlHead', function($scope, $http){
-    
+    var ownerId = localStorage.getItem("ownerId");
+    var tokenKey = localStorage.getItem("tokenKey");
+    if (tokenKey != null && ownerId != null) {
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/users/" + ownerId,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.avaUrl = response.data.avaUrl;
+            $scope.loggedInUsername = response.data.username;
+            $scope.isLoggedIn = true;
+        }, function myError(response) {
+            $scope.isLoggedIn = false;
+            console.log(response.statusText);
+        });
+
+    }
+    $scope.btnLogOut = function(){
+        localStorage.removeItem("ownerId");
+        localStorage.removeItem("tokenKey");
+        localStorage.removeItem("level");
+        window.location.href = "index.html";
+    }
+   
+
 });
-app.controller('ctrlHead', function($scope, $http){
+app.controller('ctrlNav', function($scope, $http){
+    $scope.menuSearchLucDia = function(name){
+        $('#headSearch').attr('value', name);
+        $('#headSearch').attr('name','lucdia');
+    }
+    $scope.menuSearchTonGiao = function(name){
+        $('#headSearch').val(name);
+        $('#headSearch').attr('name','tongiao');
+    }
+    $scope.navItemDrop1 = function(){
+        $('.navDrop1').slideToggle("slow");
+    }
+    $scope.navItemDrop2 = function(){
+        $('.navDrop2').slideToggle("slow");
+    }
+});
+app.controller('ctrlFooter', function($scope, $http){
+
+});
+app.controller('ctrlMain', function($scope, $http){
 
     setInterval(function() { 
         $('.mainSlide2').fadeIn(1000);
@@ -43,23 +87,6 @@ app.controller('ctrlHead', function($scope, $http){
         }, 10000);
     },  15000);
 
-
-});
-app.controller('ctrlNav', function($scope, $http){
-    $scope.menuSearchLucDia = function(name){
-        $('#headSearch').attr('value', name);
-        $('#headSearch').attr('name','lucdia');
-    }
-    $scope.menuSearchTonGiao = function(name){
-        $('#headSearch').val(name);
-        $('#headSearch').attr('name','tongiao');
-    }
-    $scope.navItemDrop1 = function(){
-        $('.navDrop1').slideToggle("slow");
-    }
-    $scope.navItemDrop2 = function(){
-        $('.navDrop2').slideToggle("slow");
-    }
 });
 app.controller('ctrlDetail', function($scope, $http){
 

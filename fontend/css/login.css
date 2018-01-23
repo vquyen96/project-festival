@@ -11,3 +11,9 @@
 	background: #eee;
 	padding: 20px;
 }
+.alert{
+	position: absolute;
+	display: none;
+	margin: auto;
+	top : 0;
+}

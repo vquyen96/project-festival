@@ -33,13 +33,23 @@
 				
 			</div>
 			<div class="headerUser col-md-4 col-sm-12 col-xs-12">
-				<a href="chucnang/login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6">
+
+				<a href="../login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6" ng-hide="isLoggedIn">
 					<i class="fa fa-sign-in" aria-hidden="true"></i>
 					Đăng Nhập
 				</a>
-				<a href="chucnang/register.html" class="headerRegister col-md-6 col-sm-6 col-xs-6">
-				<i class="fa fa-user-plus" aria-hidden="true"></i>
-				Đăng Kí
+				<a href="../register.html" class="headerRegister col-md-6 col-sm-6 col-xs-6" ng-hide="isLoggedIn">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
+					Đăng Kí
+				</a>
+				<a href="" class="headerLogin col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn" ng-click="btnLogOut()">
+					<i class="fa fa-sign-out" aria-hidden="true"></i>
+	    			Log Out
+				</a>
+				<a href="" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn">
+					<img src="{{avaUrl}}" class="headerAva">
+					
+	    			{{loggedInUsername}}
 				</a>
 			</div>
 		</div>
@@ -101,15 +111,15 @@
 		</ul>
 	</nav>
 
-
-	<main class="" >
-		<div class="container-fluid main" ng-view>
-			
+	<main class="container-fluid" >
+		<div class="main">
+			<div ng-view>
+				
+			</div>
 		</div>
-
 	</main>
 
-	<footer>
+	<footer ng-controller="ctrlFooter">
 		<div class="footerBg">
 			<div class="container">
 				<div class="footerItem col-md-3 col-md-6 col-xs-12">
@@ -155,7 +165,7 @@
 		</div>
 			
 	</footer>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script> 
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
