@@ -8,6 +8,9 @@ body{
 .row{
 	margin:0 ;
 }
+.container-fluid{
+	padding: 0;
+}
 /*start header*/
 header{
 	background: #002;
@@ -38,7 +41,7 @@ header{
 }
 .headerLogin:hover{
 	color: #fff;
-	transform: scale(1.15);
+	transform: scale(1.1);
 }
 .headerRegister{
 	text-align: left;
@@ -46,7 +49,22 @@ header{
 }
 .headerRegister:hover{
 	color: #fff;
-	transform: scale(1.15);
+	transform: scale(1.1);
+}
+.headerUserAva{
+	text-align: center;
+	transition: .5s;
+}
+.headerUserAva:hover{
+	color: #fff;
+	transform: scale(1.1);
+}
+.headerAva{
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 /*end header*/

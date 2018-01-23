@@ -10,25 +10,24 @@ app.controller('ctrlMenu', function($scope, $http){
         }).then(function mySuccess(response) {
             console.log(response);
             if (response != null) {
-                alert('OK');
+                $scope.avaUrl = response.data.avaUrl;
             }
             else{
-                alert('not OK');
+                window.location.href = "../../fontend/index.html";
             }
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
-    if(level == 1){
-        
-    }
     else{
-
+        alert('Bạn không có quyền vào đây');
+        window.location.href = "../../fontend/index.html";
     }
     $scope.logOut = function(){
         localStorage.removeItem("ownerId");
         localStorage.removeItem("tokenKey");
         localStorage.removeItem("level");
+        window.location.href = "../../fontend/index.html";
     }
 });
 app.controller('ctrlListUser', function($scope, $http){
@@ -36,10 +35,14 @@ app.controller('ctrlListUser', function($scope, $http){
     var countEmail = 1;
     var countLevel = 1;
     var countBirthDay = 1;
+    var tokenKey = localStorage.getItem("tokenKey");
     function getList(value, rev){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users",
+            // headers: {
+            //     "Authorization": tokenKey
+            // }
         }).then(function mySuccess(response) {
             
             if (value == 'none') {

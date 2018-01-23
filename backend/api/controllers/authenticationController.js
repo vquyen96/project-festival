@@ -31,11 +31,12 @@ exports.checkLogin = function(req, resp){
 				});					
 				return;
 			}else{
-				resp.send('Password is not match.');
-				return;	
+				return resp.status(400).send('Mật khẩu không đúng');
+				// resp.send('Password is not match.');
+				// return;	
 			}
 		}else{
-			resp.send('Not okie.');
+			return resp.status(400).send('Tài khoản không tồn tại');;
 		}
 	});	
 }

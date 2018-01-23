@@ -32,6 +32,7 @@ exports.getList = function(req, resp){
 }
 
 exports.getDetail = function(req, resp){	
+	// console.log(req.headers);
 	User.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
 		resp.send(result);
 	});
