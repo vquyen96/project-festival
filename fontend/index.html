@@ -17,9 +17,14 @@
 <body>
 	<header class="container-fluid" ng-controller="ctrlHead">
 		<div class="row">
-			<div class="headerLogo col-md-4 col-sm-12 col-xs-12">
+			<button type="button" class="btn btnHeaderBar" ng-click="btnHeaderBar()">
+	            <span class=" glyphicon glyphicon-menu-hamburger"></span>
+	            
+	        </button>
+			<div class="headerLogo col-md-4 col-sm-6 col-xs-4">
 				<a href="#/!"><img src="imgs/festival_0.png"></a>
 			</div>
+
 			<div class="headerSearch col-md-4 col-sm-12 col-xs-12">
 				<div class="input-group">
 					<input type="hidden" name="" id="headSearch">
@@ -32,7 +37,7 @@
 				</div>
 				
 			</div>
-			<div class="headerUser col-md-4 col-sm-12 col-xs-12">
+			<div class="headerUser col-md-4 col-sm-6 col-xs-8">
 
 				<a href="../login.html" class="headerLogin col-md-6 col-sm-6 col-xs-6" ng-hide="isLoggedIn">
 					<i class="fa fa-sign-in" aria-hidden="true"></i>
@@ -57,19 +62,19 @@
 
 	<nav class="container-fluid" ng-controller="ctrlNav">
 		<ul class="row">
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="#!/">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					Trang Chủ 
 				</a>
 			</li>
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="#!vietnam" ng-click="menuSearchLucDia('Việt Nam')">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					Việt Nam
 				</a>
 			</li>
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="">
 					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
 					Châu Lục
@@ -81,7 +86,7 @@
 				    <li><a href="#" ng-click="menuSearchLucDia('Châu Úc')">Châu Úc</a></li>
 				 </ul>
 			</li>
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="">
 					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
 					Tôn Giáo
@@ -93,13 +98,13 @@
 				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Hindu')">Đạo Hindu</a></li>
 				 </ul>
 			</li>
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="#!media">
 					<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 					Thư Viện
 				</a>			
 			</li>
-			<li class="navItem col-md-2 col-sm-4 col-xs-12">
+			<li class="navItem col-md-2 col-sm-2 col-xs-12">
 				<a href="#!about">
 					<span class="glyphicon glyphicon-triangle-right navItem-icon" aria-hidden="true"></span>
 					Giới Thiệu
@@ -122,17 +127,16 @@
 	<footer ng-controller="ctrlFooter">
 		<div class="footerBg">
 			<div class="container">
-				<div class="footerItem col-md-3 col-md-6 col-xs-12">
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
 					<h4>Về chúng tôi</h4>
 					<ul class="footerItemList">
 						<li><a href="">Trang chủ<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Tìm kiếm<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Thư viện<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Giới thiệu<div class="footerBorderBot"></div></a></li>
-						<li><a href="">Bản đồ<div class="footerBorderBot"></div></a></li>
 					</ul>
 				</div>
-				<div class="footerItem col-md-3 col-md-6 col-xs-12">
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
 					<h4>Chính sách</h4>
 					<ul class="footerItemList">
 						<li><a href="">Chính sách vận chuyển<div class="footerBorderBot"></div></a></li>
@@ -142,17 +146,16 @@
 					</ul>
 					
 				</div>
-				<div class="footerItem col-md-3 col-md-6 col-xs-12">
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
 					<h4>Hướng dẫn</h4>
 					<ul class="footerItemList">
 						<li><a href="">Hướng dẫn mua vé<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Hướng dẫn thanh toán<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Hướng dẫn đổi trả<div class="footerBorderBot"></div></a></li>
-						<li><a href="">Hướng dẫn bảo hành<div class="footerBorderBot"></div></a></li>
 						<li><a href="">Đăng ký thành viên<div class="footerBorderBot"></div></a></li>
 					</ul>
 				</div>
-				<div class="footerItem col-md-3 col-md-6 col-xs-12">
+				<div class="footerItem col-md-3 col-md-3 col-xs-6">
 					<h4>Thành viên sáng lập</h4>
 					<ul class="footerItemList">
 						<li><a href="">Đỗ Văn Quyến<div class="footerBorderBot"></div></a></li>
