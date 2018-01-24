@@ -7,6 +7,9 @@ app.controller('ctrlHead', function($scope, $http){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users/" + ownerId,
+            headers: {
+                "Authorization": tokenKey
+            }
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.avaUrl = response.data.avaUrl;
@@ -14,7 +17,8 @@ app.controller('ctrlHead', function($scope, $http){
             $scope.isLoggedIn = true;
         }, function myError(response) {
             $scope.isLoggedIn = false;
-            console.log(response.statusText);
+            console.log(response);
+            alert(response.data);
         });
 
     }

@@ -1,7 +1,7 @@
 var User = require('../models/user');
+var Credential = require('../models/credential');
 require('mongoose-pagination');
 var crypto = require('crypto');
-var arraySort = require('array-sort');
 
 exports.getList = function(req, resp){
 	// if (authenticationController.checkToken(req.headers.authorization)){
@@ -10,12 +10,15 @@ exports.getList = function(req, resp){
 	// 	console.log('Not  okie');
 	// }
 
-	// // Lấy tham số và parse ra number.	
+	// Lấy tham số và parse ra number.	
 	// var page = Number(req.query.page);
 	// var limit = Number(req.query.limit);
-
-	// User.find({'status': 1})
-	// .paginate(page, limit, function(err, result, total) {    	
+	// console.log(req.query.page); 
+	// console.log(req.query.limit); 
+	// User.find({})
+	// .paginate(page, limit, function(err, result, total) { 
+	// 	// console.log(result); 	
+	// 	// console.log(total);
  //    	var responseData = {
  //    		'listUser': result,
  //    		'totalPage': Math.ceil(total/limit)
@@ -32,10 +35,32 @@ exports.getList = function(req, resp){
 }
 
 exports.getDetail = function(req, resp){	
-	// console.log(req.headers);
-	User.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
-		resp.send(result);
-	});
+	var tokenKey = req.headers.authorization;
+	if(tokenKey != undefined){
+		Credential.findOne({ tokenKey: tokenKey },function(err, result){
+			if(err){
+				console.log(err);
+				resp.send('Not okie.');
+				return;
+			}
+			if(result){
+				var someday = result.createdAt.getTime() + 172800000;
+				var today = new Date();
+				if(someday > today.getTime()){
+					User.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+						resp.send(result);
+					});
+				}
+				else{
+					return resp.status(400).send('Tài khoản hết hạn');
+				}
+			}
+		});
+	}
+	else{
+		return resp.status(400).send('Bạn không có quyền vào đây');
+	}
+	
 }
 
 exports.add = function(req, resp){		
