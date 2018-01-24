@@ -7,6 +7,9 @@ app.controller('ctrlMenu', function($scope, $http){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users/"+ownerId,
+            headers: {
+                "Authorization": tokenKey
+            }
         }).then(function mySuccess(response) {
             console.log(response);
             if (response != null) {
@@ -16,7 +19,9 @@ app.controller('ctrlMenu', function($scope, $http){
                 window.location.href = "../../fontend/index.html";
             }
         }, function myError(response) {
-            console.log(response.statusText);
+            console.log(response);
+            alert(response.data);
+            window.location.href = "../../fontend/index.html";
         });
     }
     else{
@@ -156,11 +161,12 @@ app.controller('ctrlAddUser', function($scope, $http){
                 url : "http://localhost:3000/api/users/"+editID,
             }).then(function mySuccess(response) {
                 console.log(response);
-                $('#username').val(response.data.username);
-                $('#email').val(response.data.email);
-                $('#birthday').val(response.data.birthday);
+                $scope.user = response.data;
+                // $('#username').val(response.data.username);
+                // $('#email').val(response.data.email);
+                // $('#birthday').val(response.data.birthday);
                 $('#level').val(response.data.level);
-                $('#avaUrl').val(response.data.avaUrl);
+                // $('#avaUrl').val(response.data.avaUrl);
                 $('#btnSbm').val('Sửa Lại');
             }, function myError(response) {
                 console.log(response.statusText);
@@ -622,13 +628,16 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
                 method : "GET",
                 url : "http://localhost:3000/api/festivals/"+editID,
             }).then(function mySuccess(response) {
-                
-                $('#nameLeHoi').val(response.data.nameLeHoi);
-                $('#timeStart').val(response.data.timeStart);
-                $('#timeEnd').val(response.data.timeEnd);
-                $('#diadiem').val(response.data.diadiem);
-                $('#kinhdo').val(response.data.kinhdo);
-                $('#vido').val(response.data.vido);
+                console.log(response);
+                $scope.festival = response.data;
+                // $('#nameLeHoi').val(response.data.nameLeHoi);
+                // $('#timeStart').val(response.data.timeStart);
+                // $('#timeEnd').val(response.data.timeEnd);
+                // $('#diadiem').val(response.data.diadiem);
+                // $('#kinhdo').val(response.data.kinhdo);
+                // $('#vido').val(response.data.vido);
+                // $('#chitiet').val(response.data.chitiet);
+                // $('#url1').val(response.data.url1);
                 $('#btnSbm').val('Sửa Lại');
             }, function myError(response) {
                 console.log(response.statusText);
