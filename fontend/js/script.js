@@ -24,7 +24,9 @@ app.controller('ctrlHead', function($scope, $http){
         localStorage.removeItem("level");
         window.location.href = "index.html";
     }
-   
+    $scope.btnHeaderBar = function(){
+        $('nav').slideToggle();
+    }
 
 });
 app.controller('ctrlNav', function($scope, $http){

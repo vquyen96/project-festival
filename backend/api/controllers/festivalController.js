@@ -20,7 +20,7 @@ exports.getList = function(req, resp){
  //    	};
  //    	resp.send(responseData);
  //  	});
- 	Festival.find({'status': 1 },function(err, result){
+ 	Festival.find({},function(err, result){
 		resp.send(result);
 	});
 }
