@@ -1,3 +1,4 @@
+"use strict";
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlMenu', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
@@ -41,20 +42,30 @@ app.controller('ctrlListUser', function($scope, $http){
     var countLevel = 1;
     var countBirthDay = 1;
     var tokenKey = localStorage.getItem("tokenKey");
-    function getList(value, rev){
+    getList();
+    function getList(value, rev, page){
+        if(page == null){
+            page=1;
+        }
+        console.log(page)
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users",
+            url : "http://localhost:3000/api/users?page="+page+"&limit=10",
             // headers: {
             //     "Authorization": tokenKey
             // }
         }).then(function mySuccess(response) {
-            
+            var content = '';
+            var totalPage = response.data.totalPage;
+            // for(var i = 1; i <= totalPage ; i++){
+            //     content += '<li><a ng-click="btnPage(\'' + i + '\')" href="javascript:void(0)" >'+i+'</a></li>';
+            // }
+            // $('.pagination').html(content);
             if (value == 'none') {
-                $scope.listUser = response.data;
+                $scope.listUser = response.data.listUser;
             }
             else{
-                var dataObj = response.data.slice(0);
+                var dataObj = response.data.listUser.slice(0);
                 dataObj.sort(function(a,b) {
                     if (value == 'username') {
                         var x = a.username.toLowerCase();
@@ -122,7 +133,11 @@ app.controller('ctrlListUser', function($scope, $http){
         }
         countBirthDay++;
     }
-    getList('none', 'n');
+    $scope.btnPage = function(page){
+        alert(page);
+        console.log(page);
+        getList('none', 'n', page);
+    }
     $scope.btnAddUser = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addUser";
@@ -249,30 +264,30 @@ app.controller('ctrlAddUser', function($scope, $http){
        
 });
 
-app.controller('ctrlDanhmuc', function($scope, $http){
+app.controller('ctrlListDanhmuc', function($scope, $http){
     function getListLucdia(){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/lucdia",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listData = response.data;
+            $scope.listLucDia = response.data;
             
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     getListLucdia();
-    $scope.btnAdd = function(){
+    $scope.btnAddLucDia = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addLucDia";
     }    
-    $scope.btnEdit = function(id){
+    $scope.btnEditLucDia = function(id){
         $('#userid').attr('value',id);
         $('#userid').attr('name','edit');
         window.location.href = "index.html#!/addLucDia";
     }
-    $scope.btnDelete = function(id ,name){
+    $scope.btnDeleteLucDia = function(id ,name){
         var r = confirm("Bạn chắc chắn muốn xóa Lục Địa : " +  name);
         if (r == true) {
             $http({
@@ -293,23 +308,23 @@ app.controller('ctrlDanhmuc', function($scope, $http){
             url : "http://localhost:3000/api/tongiao",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listData = response.data;
+            $scope.listTonGiao = response.data;
             
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     getListTongiao();
-    $scope.btnAdd = function(){
+    $scope.btnAddTonGiao= function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addTonGiao";
     }    
-    $scope.btnEdit = function(id){
+    $scope.btnEditTonGiao = function(id){
         $('#userid').attr('value',id);
         $('#userid').attr('name','edit');
         window.location.href = "index.html#!/addTonGiao";
     }
-    $scope.btnDelete = function(id ,name){
+    $scope.btnDeleteTonGiao = function(id ,name){
         var r = confirm("Bạn chắc chắn muốn xóa Tôn Giáo : " +  name);
         if (r == true) {
             $http({
@@ -325,44 +340,6 @@ app.controller('ctrlDanhmuc', function($scope, $http){
     }
 });
 
-// app.controller('ctrlListLucDia', function($scope, $http){
-//     function getList(){
-//         $http({
-//             method : "GET",
-//             url : "http://localhost:3000/api/lucdia",
-//         }).then(function mySuccess(response) {
-//             console.log(response);
-//             $scope.listData = response.data;
-            
-//         }, function myError(response) {
-//             console.log(response.statusText);
-//         });
-//     }
-//     getList();
-//     $scope.btnAdd = function(){
-//         $('#userid').attr('name','add');
-//         window.location.href = "index.html#!/addLucDia";
-//     }    
-//     $scope.btnEdit = function(id){
-//         $('#userid').attr('value',id);
-//         $('#userid').attr('name','edit');
-//         window.location.href = "index.html#!/addLucDia";
-//     }
-//     $scope.btnDelete = function(id ,name){
-//         var r = confirm("Bạn chắc chắn muốn xóa Lục Địa : " +  name);
-//         if (r == true) {
-//             $http({
-//                 method : "DELETE",
-//                 url : "http://localhost:3000/api/lucdia/"+id,
-//             }).then(function mySuccess(response) {
-                
-//                 getList();
-//             }, function myError(response) {
-//                 console.log(response.statusText);
-//             });
-//         }
-//     }
-// });
 app.controller('ctrlAddLucDia', function($scope, $http){
     //lấy dữ liệu từ hidden input
     var typeAdd = $('#userid').attr('name');
@@ -375,8 +352,7 @@ app.controller('ctrlAddLucDia', function($scope, $http){
                 method : "GET",
                 url : "http://localhost:3000/api/lucdia/"+editID,
             }).then(function mySuccess(response) {
-                
-                $('#nameLucDia').val(response.data.nameLeHoi);
+                $scope.data = response.data;
                 $('#btnSbm').val('Sửa Lại');
             }, function myError(response) {
                 console.log(response.statusText);
@@ -451,44 +427,7 @@ app.controller('ctrlAddLucDia', function($scope, $http){
         };
     }
 });
-// app.controller('ctrlListTonGiao', function($scope, $http){
-//     function getList(){
-//         $http({
-//             method : "GET",
-//             url : "http://localhost:3000/api/tongiao",
-//         }).then(function mySuccess(response) {
-//             console.log(response);
-//             $scope.listData = response.data;
-            
-//         }, function myError(response) {
-//             console.log(response.statusText);
-//         });
-//     }
-//     getList();
-//     $scope.btnAdd = function(){
-//         $('#userid').attr('name','add');
-//         window.location.href = "index.html#!/addTonGiao";
-//     }    
-//     $scope.btnEdit = function(id){
-//         $('#userid').attr('value',id);
-//         $('#userid').attr('name','edit');
-//         window.location.href = "index.html#!/addTonGiao";
-//     }
-//     $scope.btnDelete = function(id ,name){
-//         var r = confirm("Bạn chắc chắn muốn xóa Tôn Giáo : " +  name);
-//         if (r == true) {
-//             $http({
-//                 method : "DELETE",
-//                 url : "http://localhost:3000/api/tongiao/"+id,
-//             }).then(function mySuccess(response) {
-                
-//                 getList();
-//             }, function myError(response) {
-//                 console.log(response.statusText);
-//             });
-//         }
-//     }
-// });
+
 app.controller('ctrlAddTonGiao', function($scope, $http){
     //lấy dữ liệu từ hidden input
     var typeAdd = $('#userid').attr('name');
@@ -501,8 +440,7 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
                 method : "GET",
                 url : "http://localhost:3000/api/tongiao/"+editID,
             }).then(function mySuccess(response) {
-                
-                $('#nameTonGiao').val(response.data.nameLeHoi);
+                $scope.data = response.data;
                 $('#btnSbm').val('Sửa Lại');
             }, function myError(response) {
                 console.log(response.statusText);
@@ -511,16 +449,11 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
         getDetail();
         //Khi click nút sửa
         $scope.btnAdd = function() {
-            $scope.data = {
-                "nameTonGiao": $('#nameTonGiao').val()
-            };
-            
             $http({
                 method : "PUT",
                 url : "http://localhost:3000/api/tongiao/"+editID,
                 data : $scope.data
-            }).then(function mySuccess(response) {
-                
+            }).then(function mySuccess(response) {     
                 //Thông báo khi thành công
                 $('.alert-success').text('Thành Công');
                 $('.alert-success').attr('style','display : inline-block');
@@ -582,16 +515,26 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     var countPlace = 1;
     var countLucDia = 1;
     var countTonGiao = 1;
-    function getList(value, rev){
+    function getList(value, rev, page){
+        if(page == null){
+            page=1;
+        }
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals",
+            url : "http://localhost:3000/api/festivals?page="+page+"&limit=10",
         }).then(function mySuccess(response) {
+            var content = '';
+            var totalPage = response.data.totalPage;
+            // for(var i = 1; i <= totalPage ; i++){
+            //     content += '<li><a href="#" ng-click="btnPage("none","n",'+i+')">'+i+'</a></li>';
+            // }
+            // $('.pagination').html(content);
+            // console.log(response);
             if (value == 'none') {
-                $scope.listUser = response.data;
+                $scope.listUser = response.data.listFestival;
             }
             else{
-                var dataObj = response.data.slice(0);
+                var dataObj = response.data.listFestival.slice(0);
                 dataObj.sort(function(a,b) {
                     switch(value){
                         case 'name': {
@@ -668,7 +611,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         }
         countTonGiao++;    
     }
-    getList('none','n');
+    getList('none','n','1');
     $scope.btnAddUser = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addLeHoi";

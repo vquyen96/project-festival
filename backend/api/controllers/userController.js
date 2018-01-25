@@ -11,27 +11,25 @@ exports.getList = function(req, resp){
 	// }
 
 	// Lấy tham số và parse ra number.	
-	// var page = Number(req.query.page);
-	// var limit = Number(req.query.limit);
-	// console.log(req.query.page); 
-	// console.log(req.query.limit); 
-	// User.find({})
-	// .paginate(page, limit, function(err, result, total) { 
-	// 	// console.log(result); 	
-	// 	// console.log(total);
- //    	var responseData = {
- //    		'listUser': result,
- //    		'totalPage': Math.ceil(total/limit)
- //    	};
- //    	resp.send(responseData);
- //  	});
+	var page = Number(req.query.page);
+	var limit = Number(req.query.limit);
+	User.find({'status': 1})
+	.paginate(page, limit, function(err, result, total) { 
+		// console.log(result); 	
+		// console.log(total);
+    	var responseData = {
+    		'listUser': result,
+    		'totalPage': Math.ceil(total/limit)
+    	};
+    	resp.send(responseData);
+  	});
 
-	User.find({'status': 1 }, function(err, task) {
-	    if (err)
-	      	resp.send(err);
-	    // var taskSort = arraySort(task, 'email');
-	    resp.json(task);
-	});
+	// User.find({'status': 1 }, function(err, task) {
+	//     if (err)
+	//       	resp.send(err);
+	//     // var taskSort = arraySort(task, 'email');
+	//     resp.json(task);
+	// });
 }
 
 exports.getDetail = function(req, resp){	

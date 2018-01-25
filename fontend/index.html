@@ -28,6 +28,7 @@
 			<div class="headerSearch col-md-4 col-sm-12 col-xs-12">
 				<div class="input-group">
 					<input type="hidden" name="" id="headSearch">
+					<input type="hidden" name="" id="headDetail">
 					<input type="text" class="valueSearch form-control">
 					<span class="input-group-btn">
 			        	<a href="" class="btn btn-default" ng-click="btnSearch()">
@@ -69,7 +70,7 @@
 				</a>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
-				<a href="#!vietnam" ng-click="menuSearchLucDia('Việt Nam')">
+				<a href="#!vietnam" ng-click="menuSearch('0')">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					Việt Nam
 				</a>
@@ -80,10 +81,11 @@
 					Châu Lục
 				</a>			
 				<ul class="navDrop">
-				    <li><a href="#" ng-click="menuSearchLucDia('Châu Âu')">Châu Á</a></li>
-				    <li><a href="#" ng-click="menuSearchLucDia('Châu Mỹ')">Châu Mỹ</a></li>
-				    <li><a href="#" ng-click="menuSearchLucDia('Châu Phi')">Châu Phi</a></li>
-				    <li><a href="#" ng-click="menuSearchLucDia('Châu Úc')">Châu Úc</a></li>
+				    <li><a href="#" ng-click="menuSearch('1')">Châu Á</a></li>
+				    <li><a href="#" ng-click="menuSearch('2')">Châu Âu</a></li>
+				    <li><a href="#" ng-click="menuSearch('3')">Châu Mỹ</a></li>
+				    <li><a href="#" ng-click="menuSearch('4')">Châu Phi</a></li>
+				    <li><a href="#" ng-click="menuSearch('5')">Châu Úc</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
@@ -92,10 +94,10 @@
 					Tôn Giáo
 				</a>				
 				<ul class="navDrop">
-				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Phật')">Đạo Phật</a></li>
-				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Hồi')">Đạo Hồi</a></li>
-				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Thiên Chúa')">Đạo Thiên Chúa</a></li>
-				    <li><a href="#" ng-click="menuSearchTonGiao('Đạo Hindu')">Đạo Hindu</a></li>
+				    <li><a href="#" ng-click="menuSearch('6')">Đạo Phật</a></li>
+				    <li><a href="#" ng-click="menuSearch('7')">Đạo Hồi</a></li>
+				    <li><a href="#" ng-click="menuSearch('8')">Đạo Thiên Chúa</a></li>
+				    <li><a href="#" ng-click="menuSearch('9')">Đạo Hindu</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">

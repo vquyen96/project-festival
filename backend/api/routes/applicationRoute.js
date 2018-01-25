@@ -1,5 +1,7 @@
 var userController = require('../controllers/userController');
 var festivalController = require('../controllers/festivalController');
+var findController = require('../controllers/findController');
+
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
 var tongiaoController = require('../controllers/tongiaoController');
@@ -26,7 +28,9 @@ module.exports = function(app){
 		.get(festivalController.getDetail)
 		.put(festivalController.update)
 		.delete(festivalController.delete);
-
+	//find api
+	app.route('/api/find')
+		.get(findController.findlist);
 	// authentication api.
 	app.route('/api/authentications')		
 		.post(authenticationController.checkLogin);		

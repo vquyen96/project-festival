@@ -2,23 +2,23 @@
 	<div class="col-md-8 col-sm-12 col-xs-12">
 		<div class="searchInformation">
 			<span class="searchHeadSearch">Tìm kiếm : </span>
-			<span class="searchHeadContent">"Châu Âu"</span>
+			<span class="searchHeadContent">"{{searchTitle}}"</span>
 		</div>
 		<div class="searchContent">
-			<div class="row searchContentItem">
+			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft">
 				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/Featured_Image.jpg">
+					<a href="" ng-click="btnDetail(dataleft._id)"><img ng-src="{{dataleft.url2}}"></a> 
 				</div>
 				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h4><a href="">Lễ hội bia Oktoberfest(Munich-Đức)</a></h4>
+					<h4><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.nameLeHoi}}</a></h4>
 					<div>
-						<span>12/10/2018</span>
+						<span>{{dataleft.timeStart}}</span>
 						<span>Đến</span>
-						<span>17/10/2018</span>
+						<span>{{dataleft.timeEnd}}</span>
 					</div>
 					<div>
 						<span class="glyphicon glyphicon-map-marker"></span>
-						<span><a href="">Munich-Đức</a></span>
+						<span><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.diadiem}}</a></span>
 					</div>
 				</div>
 				<div class="searchContentItemIcon col-md-2 col-sm-2 col-xs-12">
@@ -92,19 +92,19 @@
 			<span class="searchHotInfoContent">Lễ hội Thịnh Hành</span>
 		</div>
 		<div class="searchHotContent">
-			<div class="row searchHotContentItem">
+			<div class="row searchHotContentItem" ng-repeat="data in listDataRight">
 				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/1499331454_0!!-!!055533kb5bnb4ofn54f667 1.jpg">
+					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
 				</div>
 				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội hoa hồng</a></h5>
+					<h5><a href="" ng-click="btnDetail(data._id)">{{data.nameLeHoi}}</a></h5>
 					
 				</div>
 				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
-			<div class="row searchHotContentItem">
+			<!-- <div class="row searchHotContentItem">
 				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
 					<img src="imgs/veniice-carnival.jpg">
 				</div>
@@ -174,7 +174,7 @@
 				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	
