@@ -1,11 +1,11 @@
 var  festival = [{
     nameLeHoi: 'Oktoberfest',
-    tiemStart:'2018/10/12',
+    timeStart:'2018/10/12',
     timeEnd:'2018/10/17',
     diadiem: 'Munich, Đức',
     kinhdo:'48.155004',
     vido:'11.4717964',
-    lucdia:'châu Âu',
+    lucdia:'Châu Âu',
     tongiao:'Không',
     chitiet:'Lễ hội Oktoberfest là lễ hội bia tháng 10 của người dân xứ  Bavvaria –Munich nước Đức. Lễ hội được tổ chức nhằm kỉ niệm lễ cưới hoàng thái tử Ludwig (sau này là vua Ludwig I) và công chúa Therese của Sachsen-Hildburghausen (vì thế mà có tên Theresienwiese-Cánh đồng Therese) đã tổ chức một cuộc đua ngựa lớn. Lễ cưới được tổ chức vào ngày 12 tháng 10, cuộc đua ngựa vào ngày 17 tháng 10, vì thế mà thời điểm được ghi lại khác nhau. Đây là lễ hội bia lớn nhất thế giới có lịch sử hơn 200 năm của người Đức, ước tính hàng năm có khoảng trên 6 triệu lượt khách từ khắp nơi trên thế giới đổ về tham dự  lễ hội và tiêu thụ khoảng hơn 7 triệu lít bia. Lễ hội tháng Mười được khai mạc bằng 12 phát súng chào và sau khi thị trưởng đương nhiệm đóng vòi khui thùng bia đầu tiên. Người thị trưởng đầu tiên khui thùng bia là Thomas Wimmer.  Đây là dịp để các hãng bia nổi tiếng xứ Bavaria quảng bá sản phẩm tốt nhất tới toàn thể du khách tham gia lễ hội. Mọi người đến lễ hội với trang phục truyền thống cùng uống bia, thưởng thức các món ăn truyền thống, cùng tham gia hát các bài hát dân ca Đức và các trò chơi trong lễ hội ( Ví dụ như: Thi uống bia, đu quay, kéo co, thi ăn xúc xích…) .',
     url1:'imgs/oktoberfest/lễ hội bia 341.jpg',
@@ -17,7 +17,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội chanh',
-    tiemStart:'2018/02/15',
+    timeStart:'2018/02/15',
     timeEnd:'2018/3/3',
     diadiem: 'Menton, Pháp',
     kinhdo:'43.7763166',
@@ -34,7 +34,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội cõng vợ',
-    tiemStart:'2018/07/07',
+    timeStart:'2018/07/07',
     timeEnd:'2018/07/18',
     diadiem: 'Sonkajarvi, Phần Lan',
     kinhdo:'63.6716476',
@@ -51,7 +51,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội đấu bò tót',
-    tiemStart:'2018/09/23',
+    timeStart:'2018/09/23',
     timeEnd:'2018/10/22',
     diadiem: 'Pamplona, Tây Ban Nha',
     kinhdo:'42.8157961',
@@ -68,7 +68,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội hoa hồng',
-    tiemStart:'2018/06/05',
+    timeStart:'2018/06/05',
     timeEnd:'2018/06/12',
     diadiem: 'Kazanlak, Bulgaria',
     kinhdo:'42.625243',
@@ -85,7 +85,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội hóa trang venice',
-    tiemStart:'2018/02/13',
+    timeStart:'2018/02/13',
     timeEnd:'2018/02/27',
     diadiem: 'Venice, Ý',
     kinhdo:'45.4551712',
@@ -102,7 +102,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội hoa tulip',
-    tiemStart:'2018/03/22',
+    timeStart:'2018/03/22',
     timeEnd:'2018/05/20',
     diadiem: 'công viên Keukenhof, Hà Lan',
     kinhdo:'52.2700221',
@@ -119,7 +119,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Life Ball',
-    tiemStart:'2018/05/29',
+    timeStart:'2018/05/29',
     timeEnd:'2018/5/06',
     diadiem: 'Vienna, Áo',
     kinhdo:'48.220778',
@@ -136,7 +136,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội ánh sáng',
-    tiemStart:'2018/06/23',
+    timeStart:'2018/06/23',
     timeEnd:'2018/06/30',
     diadiem: 'Nhà thờ lớn Berlin ,Đức',
     kinhdo:'52.5119642',
@@ -153,7 +153,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội ném cà chua',
-    tiemStart:'2018/8/29',
+    timeStart:'2018/8/29',
     timeEnd:'2018/8/29',
     diadiem: 'Bunol, Tây Ban Nha',
     kinhdo:'39.4199219',
@@ -170,12 +170,12 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Agitagueda',
-    tiemStart:'2018/07/23',
+    timeStart:'2018/07/23',
     timeEnd:'2018/07/31',
     diadiem: 'Agitagueda, Bồ Đào Nha',
     kinhdo:'40.5721869',
     vido:'-8.4491686',
-    lucdia:'châu Âu',
+    lucdia:'Châu Âu',
     tongiao:'Không',
     chitiet:'Trong những ngày cuối tháng 7/2013, trên đường phố Agueda, Bồ Đào Nha đang tràn ngập sắc màu rực rỡ bởi những chiếc ô được treo lơ lửng. Đây chính là một phần đặc sắc của lễ hội nghệ thuật Agitagueda. Được biết, Ý tưởng độc đáo này là của một nhà thiết kế người Bồ Đào Nha – Ivotavares. Nhà thiết kế Ivotavares lựa chọn phố Agueda làm địa điểm trình bày ý tưởng của mình với mục đích biến một con phố mua sắm truyền thống trở nên hấp dẫn hơn và mang đến những trải nghiệm mới lạ cho khách tham quan và bạn bè quốc tế. Những chiếc “ô bay” này tồn tại trong suốt thời gian diễn ra lễ hội nghệ thuật Agitagueda. Với nhiều hoạ tiết, hình vẽ đẹp, lạ mắt cùng nhiều màu sắc sinh động, con "phố ô" Agueda đã thu hút sự quan tâm của đông đảo người dân và khách du lịch. Nếu đang du lịch tại Bồ Đào Nha hoặc sang đây vào những ngày này, bạn hãy tận hưởng dịp hiếm có để tham gia vào các hoạt động của lễ hội nghệ thuật Agitagueda. Đặc biệt, bạn không nên bỏ lỡ cơ hội được tản bộ dưới bóng mát của "phố ô” rực rỡ này và lưu lại những bức hình đáng nhớ cho chuyến du lịch của mình .',
     url1:'imgs/lễ hội ô (Bồ Đào Nha)/lehoio-431.jpg',
@@ -187,7 +187,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội thánh Patrick',
-    tiemStart:'2018/03/17',
+    timeStart:'2018/03/17',
     timeEnd:'2018/03/17',
     diadiem: 'Ireland',
     kinhdo:'53.3975179',
