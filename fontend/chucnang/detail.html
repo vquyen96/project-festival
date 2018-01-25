@@ -10,15 +10,15 @@
 	  
 	  <div class="carousel-inner">
 	    <div class="item active">
-	      <img class="detailslideimg" src="imgs/Black Friday/161126-macys-black-friday-1245a_fc78e4c221b91bdb8c44b010adba56ad.nbcnews-ux-2880-1000.jpg">
+	      <img class="detailslideimg" src="{{url4}}">
 	    </div>
 
 	    <div class="item">
-	      <img  class="detailslideimg" src="imgs/Black Friday/brazil-black-friday-1.jpg">
+	      <img  class="detailslideimg" src="{{url5}}">
 	    </div>
 
 	    <div class="item">
-	      <img  class="detailslideimg" src="imgs/Black Friday/Black-friday-shopping-1920x1080.jpg">
+	      <img  class="detailslideimg" src="{{url6}}">
 	    </div>
 	  </div>
 
@@ -34,27 +34,19 @@
 	</div>
 	<div class="container">
 		<div class="col-md-8 col-sm-12 col-xs-12">
-			<h2>Lễ hội tết</h2>
+			<h2>{{data.nameLeHoi}}</h2>
 			<div>
 				<div class="detailtimeleft">
-					Thời Gian : 1/1 ÂM LỊCH HẰNG NĂM
+					Thời Gian : {{data.timeStart}} đến {{data.timeEnd}}
 				</div>
 				<div class="detailplaceright">
-					Địa Điểm : VIỆT NAM
+					Địa Điểm : {{data.diadiem}}
 				</div>
 			</div>
 			<div>
 				<p>
-					Tết Nguyên Đán (hay còn gọi là Tết Cả, Tết Ta, Tết Âm lịch, Tết Cổ truyền hay chỉ đơn giản còn gọi là Tết) là dịp lễ quan trọng nhất của Việt Nam, cùng với văn hóa Tết Âm lịch của các nước Đông Á. Trước ngày Tết, thường có những ngày khác để sửa soạn như "Tết Táo Quân" (23 tháng chạp âm lịch) và "Tất Niên" (29 hoặc 30 tháng chạp âm lịch)
-                </p>
-                   
-                 <p>   
-                 	Vì Tết tính theo Âm lịch nên Tết Nguyên Đán của Việt Nam muộn hơn Tết Dương lịch (còn gọi nôm na là Tết Tây). Do quy luật 3 năm nhuận một tháng của âm lịch nên ngày đầu năm của dịp Tết Nguyên đán không bao giờ trước ngày 21 tháng 1 Dương lịch và sau ngày 19 tháng 2 Dương lịch mà thường rơi vào khoảng cuối tháng 1 đến giữa tháng 2 Dương lịch. Toàn bộ dịp Tết Nguyên đán hàng năm thường kéo dài trong khoảng 7 đến 8 ngày cuối năm cũ và 7 ngày đầu năm mới (23 tháng Chạp đến hết ngày 7 tháng Giêng).
-                 </p>
-                    
-                  <p> 
-                     Hàng năm, Tết được tổ chức vào ngày mồng 1 tháng 1 nông lịch trên đất nước Việt Nam và ở một vài nước khác có cộng đồng người Việt sinh sống. Trong những ngày Tết, các gia đình sum họp bên nhau, cùng thăm hỏi người thân, mừng tuổi và thờ cúng tổ tiên... Theo phong tục tập quán, Tết thường có những điều kiêng kỵ.
-				  </p>
+					{{data.chitiet}}
+				</p>
 			</div>
 			<a href="uploads/CARVAN.pdf">
 				<span class="glyphicon glyphicon-save"></span>
@@ -69,52 +61,53 @@
 			<div class="row">
 				<h2>Lễ hội liên quan</h2>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/hoihoadang.jpg">
+					<a href=""><img src="imgs/hoihoadang.jpg"></a>
+					
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Hội Hoa Đăng</p>
+					<h4><a href=""> Hội Hoa Đăng</a></h4>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/trungthu.jpg">
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Tết Trung Thu</p>
+					<h4>Tết Trung Thu</h4>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/duabo.jpg">
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Lễ Hội Đua Bò</p>
+					<h4>Lễ Hội Đua Bò</h4>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/leviaba.jpg">
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Lễ Vía Bà</p>
+					<h4>Lễ Vía Bà</h4>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/lecungtrang.jpg">
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Lễ Cúng Trăng</p>
+					<h4>Lễ Cúng Trăng</h4>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/duathuyen.jpg">
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<p>Hội Đua Thuyền</p>
+					<h4>Hội Đua Thuyền</h4>
 				</div>
 			</div>
 		</div>

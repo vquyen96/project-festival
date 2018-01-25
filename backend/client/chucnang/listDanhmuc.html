@@ -1,7 +1,7 @@
 <div ng-controller='ctrlListDanhmuc'>
    	<div class="col-md-6 col-sm-12 col-xs-12">
 		<div class="listTonGiaoHeader">
-			<input type="button" name="" class="btn btn-warning" value="Thêm Tôn Giáo" ng-click="btnAdd()"></input>
+			<input type="button" name="" class="btn btn-warning" value="Thêm Tôn Giáo" ng-click="btnAddTonGiao()"></input>
 		</div>
 		<div>
 			<table class="listTonGiaoTable">
@@ -10,10 +10,10 @@
 					<td>Sửa</td>
 					<td>Xóa</td>
 				</tr>
-				<tr ng-repeat="data in listData">
+				<tr ng-repeat="data in listTonGiao">
 					<td>{{data.nameTonGiao}}</td>
-					<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
-					<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameTonGiao)">Xóa</a></td>
+					<td><a href="" class="btn btn-primary" ng-click="btnEditTonGiao(data._id)">Sửa</a></td>
+					<td><a href="" class="btn btn-danger"  ng-click="btnDeleteTonGiao(data._id,data.nameTonGiao)">Xóa</a></td>
 				</tr>
 				
 			</table>
@@ -22,7 +22,7 @@
 
 	<div class="col-md-6 col-sm-12 col-xs-12" >
 		<div class="listChauLucHeader">
-			<input type="button" name="" class="btn btn-warning" value="Thêm Lục Địa" ng-click="btnAdd()"></input>
+			<input type="button" name="" class="btn btn-warning" value="Thêm Lục Địa" ng-click="btnAddLucDia()"></input>
 		</div>
 		<div>
 			<table class="listChauLucTable">
@@ -31,10 +31,10 @@
 					<td>Sửa</td>
 					<td>Xóa</td>
 				</tr>
-				<tr  ng-repeat="data in listData">
+				<tr  ng-repeat="data in listLucDia">
 					<td>{{data.nameLucDia}}</td>
-					<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
-					<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameLucDia)">Xóa</a></td>
+					<td><a href="" class="btn btn-primary" ng-click="btnEditLucDia(data._id)">Sửa</a></td>
+					<td><a href="" class="btn btn-danger"  ng-click="btnDeleteLucDia(data._id,data.nameLucDia)">Xóa</a></td>
 				</tr>
 				
 			</table>

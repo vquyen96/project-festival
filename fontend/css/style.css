@@ -155,7 +155,6 @@ nav ul{
 .mainItem{
 	padding: 0;
 	border: 5px solid #fff; 
-	
 	overflow: hidden;
 
 }
@@ -236,11 +235,37 @@ nav ul{
 
 /*end contact*/
 /*start detail*/
+
 #map {
     height: 400px;
     width: 100%;
 }
-
+.detailRightItem{
+	background: #f7f8f9;
+	margin: 5px;
+	padding: 5px;
+}
+.detailRightItem:hover{
+	background: #fff8f9;
+}
+.detailRightItem .thumbnail{
+	margin: 0;
+}
+.detailrightimg{
+	transition: .5s;
+}
+.detailrightimg:hover{
+	transform: scale(1.25);
+	z-index: 10;
+}
+.detailrightcontent a{
+	color: #333;
+	text-decoration: none;
+	transition: margin-left .5s;
+}
+.detailrightcontent:hover a{
+	margin-left: 20px;
+}
 /*end detail*/
 
 /*start media*/
@@ -334,10 +359,22 @@ nav ul{
 /*end Search*/
 
 /*start media*/
-
-.mediaHead h1{
-	color: red;
+.mediaModal{
+	color: #fff;
 }
+.mediaHead{
+	background: #000c;
+	opacity: 0.2;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	padding: 0 20px;
+}
+.mediaHead:hover{
+	opacity: 0.8;
+	color: #fff;
+}
+
 
 /*end media*/
 

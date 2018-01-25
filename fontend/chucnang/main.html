@@ -1,5 +1,5 @@
 <div class="mainRow row" ng-controller="ctrlMain">
-	<div class="col-md-6 col-sm-12 col-xs-12 mainItem">
+	<div class="col-md-6 col-sm-12 col-xs-12 mainItem" ng-repeat="data in listData" ng-click="detailPage(data._id)">
 		<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
   
 		  <ol class="carousel-indicators">
@@ -34,28 +34,28 @@
 		  </li>
 		</div> -->
 		<div class="mainSlide1">
-			<a href="#!detail"><img src="imgs/cd7ec84274a0c5174c49cae36ae8ccfe.jpg"></img></a>
+			<a href=""><img ng-src="{{data.url1}}"></img></a>
 		</div>
 		<div class="mainSlide2">
-			<a href="#!detail"><img src="imgs/31985860554_97c8dda9cc_b.jpg"></img></a>
+			<a href=""><img ng-src="{{data.url2}}"></img></a>
 		</div>
 		<div class="mainSlide3">
-			<a href="#!detail"><img src="imgs/main_900.jpg"></img></a>
+			<a href=""><img ng-src="{{data.url3}}"></img></a>
 		</div>
 		
 		<div class="mainItemContent">
-			<h3><a href="">Lễ hội Carnaval</a></h3>
-			<span>13/2/2018</span>
+			<h3><a href="">{{data.nameLeHoi}}</a></h3>
+			<span>{{data.timeStart}}</span>
 			<span>-</span>
-			<span>17/2/2018</span>
+			<span>{{data.timeEnd}}</span>
 			<span class="glyphicon glyphicon-map-marker"></span>
-			<span>Rio de Janeiro</span>
+			<span>{{data.diadiem}}</span>
 			<span class="mainFollow glyphicon glyphicon-heart"></span>
 			&nbsp;
 			<span class="mainCome glyphicon glyphicon-ok"></span>
 		</div>
 	</div>
-	<div class="col-md-6 col-sm-12 col-xs-12 mainItem">
+	<!-- <div class="col-md-6 col-sm-12 col-xs-12 mainItem">
 		<div class="mainSlide1">
 			<a href="#!detai4"><img src="imgs/Tin-PG-Hoa-Ky-7.jpg"></a>
 		</div>
@@ -215,5 +215,5 @@
 			&nbsp;
 			<span class="mainCome glyphicon glyphicon-ok"></span>
 		</div>
-	</div>
+	</div> -->
 </div>
