@@ -316,6 +316,13 @@ nav ul{
 }
 /*end Search*/
 
+/*start media*/
+
+.mediaHead h1{
+	color: red;
+}
+
+/*end media*/
 
 /*start footer*/
 footer{
