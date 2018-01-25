@@ -723,17 +723,17 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
         getDetail();
         //Khi click nút sửa
         $scope.btnAdd = function() {
-            $scope.festival = {
-                "nameLeHoi": $('#nameLeHoi').val(),
-                "timeStart": $('#timeStart').val(),
-                "timeEnd": $('#timeEnd').val(),
-                "diadiem": $('#diadiem').val(),
-                "kinhdo": $('#kinhdo').val(),
-                "vido": $('#vido').val(),
-                "lucdia": $('#lucdia').val(),
-                "tongiao": $('#tongiao').val(),
-                "chitiet": $('#chitiet').val()
-            };
+            // $scope.festival = {
+            //     "nameLeHoi": $('#nameLeHoi').val(),
+            //     "timeStart": $('#timeStart').val(),
+            //     "timeEnd": $('#timeEnd').val(),
+            //     "diadiem": $('#diadiem').val(),
+            //     "kinhdo": $('#kinhdo').val(),
+            //     "vido": $('#vido').val(),
+            //     "lucdia": $('#lucdia').val(),
+            //     "tongiao": $('#tongiao').val(),
+            //     "chitiet": $('#chitiet').val()
+            // };
             
             $http({
                 method : "PUT",
@@ -764,17 +764,17 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
     }
     else{
         $scope.btnAdd = function() {
-            $scope.festival = {
-                "nameLeHoi": $('#nameLeHoi').val(),
-                "timeStart": $('#timeStart').val(),
-                "timeEnd": $('#timeEnd').val(),
-                "diadiem": $('#diadiem').val(),
-                "kinhdo": $('#kinhdo').val(),
-                "vido": $('#vido').val(),
-                "lucdia": $('#lucdia').val(),
-                "tongiao": $('#tongiao').val(),
-                "chitiet": $('#chitiet').val()
-            };
+            // $scope.festival = {
+            //     "nameLeHoi": $('#nameLeHoi').val(),
+            //     "timeStart": $('#timeStart').val(),
+            //     "timeEnd": $('#timeEnd').val(),
+            //     "diadiem": $('#diadiem').val(),
+            //     "kinhdo": $('#kinhdo').val(),
+            //     "vido": $('#vido').val(),
+            //     "lucdia": $('#lucdia').val(),
+            //     "tongiao": $('#tongiao').val(),
+            //     "chitiet": $('#chitiet').val()
+            // };
             $http({
                 method : "POST",
                 url : "http://localhost:3000/api/festivals",
@@ -789,15 +789,15 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
                     $('.alert-success').attr('style','display : none');
                 },3000);
                 //Xóa các trường input khi thành công
-                $scope.festival.nameLeHoi = "";
-                $scope.festival.timeStart = "";
-                $scope.festival.timeEnd = "";
-                $scope.festival.diadiem = "";
-                $scope.festival.kinhdo = "1";
-                $scope.festival.vido = "1";
-                $scope.festival.lucdia = "1";
-                $scope.festival.tongiao = "1";
-                $scope.festival.chitiet = "1";
+                $scope.festival = "";
+                // $scope.festival.timeStart = "";
+                // $scope.festival.timeEnd = "";
+                // $scope.festival.diadiem = "";
+                // $scope.festival.kinhdo = "1";
+                // $scope.festival.vido = "1";
+                // $scope.festival.lucdia = "1";
+                // $scope.festival.tongiao = "1";
+                // $scope.festival.chitiet = "1";
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
