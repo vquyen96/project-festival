@@ -1,0 +1,44 @@
+<div ng-controller='ctrlListDanhmuc'>
+   	<div class="col-md-6 col-sm-12 col-xs-12">
+		<div class="listTonGiaoHeader">
+			<input type="button" name="" class="btn btn-warning" value="Thêm Tôn Giáo" ng-click="btnAdd()"></input>
+		</div>
+		<div>
+			<table class="listTonGiaoTable">
+				<tr>
+					<td>Tên</td>
+					<td>Sửa</td>
+					<td>Xóa</td>
+				</tr>
+				<tr ng-repeat="data in listData">
+					<td>{{data.nameTonGiao}}</td>
+					<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+					<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameTonGiao)">Xóa</a></td>
+				</tr>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-6 col-sm-12 col-xs-12" >
+		<div class="listChauLucHeader">
+			<input type="button" name="" class="btn btn-warning" value="Thêm Lục Địa" ng-click="btnAdd()"></input>
+		</div>
+		<div>
+			<table class="listChauLucTable">
+				<tr>
+					<td>Tên</td>
+					<td>Sửa</td>
+					<td>Xóa</td>
+				</tr>
+				<tr  ng-repeat="data in listData">
+					<td>{{data.nameLucDia}}</td>
+					<td><a href="" class="btn btn-primary" ng-click="btnEdit(data._id)">Sửa</a></td>
+					<td><a href="" class="btn btn-danger"  ng-click="btnDelete(data._id,data.nameLucDia)">Xóa</a></td>
+				</tr>
+				
+			</table>
+		</div>
+	</div>
+</div>
+	
