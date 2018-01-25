@@ -126,6 +126,18 @@ app.controller('ctrlAbout', function($scope, $http){
 });
 
 app.controller('ctrlMedia', function($scope, $http){
+    function getListLeHoi(){
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/festivals",
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.listData = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+    getListLeHoi();
     var videoFrame = document.getElementById("video-frame");
     
     $scope.showVideo = function(videoId){
@@ -134,6 +146,7 @@ app.controller('ctrlMedia', function($scope, $http){
             $('#modal-video').modal();
         }, 300);
     }
+
 });
 app.config(function($routeProvider) {
     $routeProvider
