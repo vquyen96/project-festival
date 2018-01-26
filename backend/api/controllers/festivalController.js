@@ -15,6 +15,7 @@ exports.getList = function(req, resp){
 	// 	limit = 10;
 	// }
 	var find = Number(req.query.find);
+	console.log(find);
 	switch(find){
 		case 0: {
 			Festival.find({'lucdia':'Việt Nam', 'status': 1})
@@ -161,108 +162,108 @@ exports.getDetail = function(req, resp){
 }
 
 exports.add = function(req, resp){	
-// 	var rawDocuments = [
-//     {
-//         nameLeHoi: 'Tết Nguyên Đán',
-//         timeStart:'2018-02-23',
-//         timeEnd:'2018-02-30',
-//         diadiem: 'Hà Nội-Việt Nam',
-//         kinhdo:'21.022736',
-//         vido:'105.801944',
-//         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
-//         tongiao:'Không',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
-//         chitiet:'Tết Nguyên Đán (hay còn gọi là Tết Cả, Tết Ta, Tết Âm lịch, Tết Cổ truyền hay chỉ đơn giản còn gọi là Tết) là dịp lễ quan trọng nhất của Việt Nam, cùng với văn hóa Tết Âm lịch của các nước Đông Á. Trước ngày Tết, thường có những ngày khác để sửa soạn như "Tết Táo Quân" (23 tháng chạp âm lịch) và "Tất Niên" (29 hoặc 30 tháng chạp âm lịch).Vì Tết tính theo Âm lịch nên Tết Nguyên Đán của Việt Nam muộn hơn Tết Dương lịch (còn gọi nôm na là Tết Tây). Do quy luật 3 năm nhuận một tháng của âm lịch nên ngày đầu năm của dịp Tết Nguyên đán không bao giờ trước ngày 21 tháng 1 Dương lịch và sau ngày 19 tháng 2 Dương lịch mà thường rơi vào khoảng cuối tháng 1 đến giữa tháng 2 Dương lịch. Toàn bộ dịp Tết Nguyên đán hàng năm thường kéo dài trong khoảng 7 đến 8 ngày cuối năm cũ và 7 ngày đầu năm mới (23 tháng Chạp đến hết ngày 7 tháng Giêng). Hàng năm, Tết được tổ chức vào ngày mồng 1 tháng 1 nông lịch trên đất nước Việt Nam và ở một vài nước khác có cộng đồng người Việt sinh sống. Trong những ngày Tết, các gia đình sum họp bên nhau, cùng thăm hỏi người thân, mừng tuổi và thờ cúng tổ tiên... Theo phong tục tập quán, Tết thường có những điều kiêng kỵ.',//Chi tiết
-//         url1:'imgs/Tết Nguyên Đán/chup-anh-sang-tu-nhien.jpg',//ảnh 4:3 
-//         url2:'imgs/Tết Nguyên Đán/1.jpg.1440.640.jpg',//ảnh 4:3 
-//         url3:'imgs/Tết Nguyên Đán/2016-01-31-04-02-47-2-1454236125234_ruwx.jpg',//ảnh 4:3 
-//         url4:'imgs/Tết Nguyên Đán/hongkong-1-1024x682.jpg',//ảnh độ phân giải trên 1920
-//         url5:'imgs/Tết Nguyên Đán/img20180115165349438-18e00.jpg',//ảnh độ phân giải trên 1920
-//         url6:'imgs/Tết Nguyên Đán/tet-mien-trung1.jpg',//ảnh độ phân giải trên 1920
-//         status: '1',
-//         __v:'0'
-//         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
+	var rawDocuments = [
+    {
+        nameLeHoi: 'Tết Nguyên Đán',
+        timeStart:'2018-02-23',
+        timeEnd:'2018-02-30',
+        diadiem: 'Hà Nội-Việt Nam',
+        kinhdo:'21.022736',
+        vido:'105.801944',
+        lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
+        tongiao:'Không',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
+        chitiet:'Tết Nguyên Đán (hay còn gọi là Tết Cả, Tết Ta, Tết Âm lịch, Tết Cổ truyền hay chỉ đơn giản còn gọi là Tết) là dịp lễ quan trọng nhất của Việt Nam, cùng với văn hóa Tết Âm lịch của các nước Đông Á. Trước ngày Tết, thường có những ngày khác để sửa soạn như "Tết Táo Quân" (23 tháng chạp âm lịch) và "Tất Niên" (29 hoặc 30 tháng chạp âm lịch).Vì Tết tính theo Âm lịch nên Tết Nguyên Đán của Việt Nam muộn hơn Tết Dương lịch (còn gọi nôm na là Tết Tây). Do quy luật 3 năm nhuận một tháng của âm lịch nên ngày đầu năm của dịp Tết Nguyên đán không bao giờ trước ngày 21 tháng 1 Dương lịch và sau ngày 19 tháng 2 Dương lịch mà thường rơi vào khoảng cuối tháng 1 đến giữa tháng 2 Dương lịch. Toàn bộ dịp Tết Nguyên đán hàng năm thường kéo dài trong khoảng 7 đến 8 ngày cuối năm cũ và 7 ngày đầu năm mới (23 tháng Chạp đến hết ngày 7 tháng Giêng). Hàng năm, Tết được tổ chức vào ngày mồng 1 tháng 1 nông lịch trên đất nước Việt Nam và ở một vài nước khác có cộng đồng người Việt sinh sống. Trong những ngày Tết, các gia đình sum họp bên nhau, cùng thăm hỏi người thân, mừng tuổi và thờ cúng tổ tiên... Theo phong tục tập quán, Tết thường có những điều kiêng kỵ.',//Chi tiết
+        url1:'imgs/Tết Nguyên Đán/chup-anh-sang-tu-nhien.jpg',//ảnh 4:3 
+        url2:'imgs/Tết Nguyên Đán/1.jpg.1440.640.jpg',//ảnh 4:3 
+        url3:'imgs/Tết Nguyên Đán/2016-01-31-04-02-47-2-1454236125234_ruwx.jpg',//ảnh 4:3 
+        url4:'imgs/Tết Nguyên Đán/hongkong-1-1024x682.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Tết Nguyên Đán/img20180115165349438-18e00.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Tết Nguyên Đán/tet-mien-trung1.jpg',//ảnh độ phân giải trên 1920
+        status: '1',
+        __v:'0'
+        // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
 
-//     },
-//     {
-//         nameLeHoi: 'Lễ Hội Hoa Anh Đào',
-//         timeStart:'2018-03-27',
-//         timeEnd:'2018-03-30',
-//         diadiem: 'Seoul-Hàn Quốc',
-//         kinhdo:'37.5650172',
-//         vido:'126.849464',
-//         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
-//         tongiao:'Không',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
-//         chitiet:'Hòn đảo nhỏ Yeouido, nằm trên sông Hàn, là một trong những địa điểm nổi tiếng nhất ở Seoul để thưởng thức mùa hoa anh đào. Hàng năm, lễ hội hoa xuân Yeouido thu hút rất nhiều khách du lịch và người dân địa phương, nhờ sắc hồng tuyệt đẹp của hoa anh đào và không khí sôi động của lễ hội. Với hơn 1.600 cây hoa anh đào nằm rải rác trên khắp hòn đảo, Yeouido thật sự là thiên đường sakura. Phố đi bộ Yeouiseo-ro là nơi du khách có thể tản bộ và thưởng thức các món ăn đường phố ngon tuyệt. Về đêm, những ánh đèn lung linh nhảy múa cùng cánh hoa mỏng manh làm sẽ làm ngất lòng du khách.',//Chi tiết
-//         url1:'imgs/Hoa anh đào/2710011201104009k_CherryblossominYeouido.jpg',//ảnh 4:3 
-//         url2:'imgs/Hoa anh đào/dai-hoc-han-quoc.jpg',//ảnh 4:3 
-//         url3:'imgs/Hoa anh đào/hoa-anh-dao-txtd-660-2.jpg',//ảnh 4:3 
-//         url4:'imgs/Hoa anh đào/cherry-trees.jpg',//ảnh độ phân giải trên 1920
-//         url5:'imgs/Hoa anh đào/le-hoi-hoa-anh-dao-thang-4-o-han-quoc8.jpg',//ảnh độ phân giải trên 1920
-//         url6:'imgs/Hoa anh đào/Thaophuongnguyen-174928034912-nx-5-1024x684.jpeg',//ảnh độ phân giải trên 1920
-//         status: '1',
-//         __v:'0'
-//         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
-//     },
-//     {
-//         nameLeHoi: 'Lễ Vu Lan',
-//         timeStart:'2018-02-23',
-//         timeEnd:'2018-08-15',
-//         diadiem: 'Hiroshima-Nhật Bản',
-//         kinhdo:'31.6776989',
-//         vido:'120.2741073',
-//         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
-//         tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
-//         chitiet:'Obon là lễ hội được mong chờ nhất trong mùa thu của người Nhật Bản. Lễ hội này mang ý nghĩa chào đón sự ghé thăm của những linh hồn tổ tiên đã khuất, thể hiện lòng biết ơn và cầu an cho các linh hồn. Ngày nay, lễ hội này cũng trở thành dịp để sum họp gia đình và thể hiện tình yêu thương đối với những người còn sống. Có thể nói, lễ hội Obon được coi như lễ Vu Lan của người Nhật Bản. Đây cũng là thời điểm sum họp gia đình gần giống với tết của người Việt Nam.',//Chi tiết
-//         url1:'imgs/Vu Lan/lễ-hội-vu-lan-ở-nhật-bản - Copy.jpg',//ảnh 4:3 
-//         url2:'imgs/Vu Lan/Tin-PG-Hoa-Ky-7.jpg',//ảnh 4:3 
-//         url3:'imgs/Vu Lan/Vu lan 3.jpg',//ảnh 4:3 
-//         url4:'imgs/Vu Lan/637130972.jpg',//ảnh độ phân giải trên 1920
-//         url5:'imgs/Vu Lan/bondance01.png',//ảnh độ phân giải trên 1920
-//         url6:'imgs/Vu Lan/japan-1-1504165211372.jpg',//ảnh độ phân giải trên 1920
-//         status: '1',
-//         __v:'0'
-//         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
-//     },
-//     {
-//         nameLeHoi: 'Lễ Hội Màu Sắc',
-//         timeStart:'2018-03-7',
-//         timeEnd:'2018-03-9',
-//         diadiem: 'Dubai-Ấn Độ',
-//         kinhdo:'-22.913885',
-//         vido:'-43.726182',
-//         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
-//         tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
-//         chitiet:'Vào dịp lễ hội Holi, người dân Ấn Độ lại ném bột màu vào nhau thể hiện cho sự tự do và không phân biệt giai cấp vốn tồn tại trong xã hội.. Lễ hội Holi chính thức được bắt đầu vào buổi sáng hôm sau và mọi người chơi đùa với màu sắc. Ai ai cũng nắm trong tay bột màu khô hoặc các quả bóng có chứa dung dịch màu để ném và phun màu vào những người khác.',//Chi tiết
-//         url1:'imgs/Màu sắc/224577.jpg',//ảnh 4:3 
-//         url2:'imgs/Màu sắc/631113.jpg',//ảnh 4:3 
-//         url3:'imgs/Màu sắc/631518.jpg',//ảnh 4:3 
-//         url4:'imgs/Màu sắc/447044.jpg',//ảnh độ phân giải trên 1920
-//         url5:'imgs/Màu sắc/638709.jpg',//ảnh độ phân giải trên 1920
-//         url6:'imgs/Màu sắc/1034284.jpg',//ảnh độ phân giải trên 1920
-//         status: '1',
-//         __v:'0'
-//         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
-//     },
-//     {
-//         nameLeHoi: 'Lễ Hội Té Nước',
-//         timeStart:'2018-04-14',
-//         timeEnd:'2018-04-16',
-//         diadiem: 'Vientiane-Lào',
-//         kinhdo:'17.960427',
-//         vido:'102.5357246',
-//         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
-//         tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
-//         chitiet:'Lễ hội Té Nước ở Lào có tên là Bunpimay, thường diễn ra trong 3 ngày từ 13 đến 15/4 theo Phật lịch. Vào dịp này, người dân Lào tập trung đến chùa lễ Phật, tắm Phật bằng nước thơm, nghe sư giảng đạo, rồi té nước cho các nhà sư, chùa và cây cối xung quanh chùa. Ngoài ra, người Lào còn té nước vào nhà cửa, dụng cụ lao động và súc vật để gột rửa điều xấu xa, bệnh tật và cầu chúc một năm mới tốt đẹp và mạnh khỏe. Ngoài nghi lễ té nước, người Lào có một tục lệ khá độc đáo đó là buộc chỉ cổ tay. Họ buộc những sợi chỉ màu như gửi lời chúc hạnh phúc và sức khỏe đến người được buộc. Tục lệ này tuy đơn giản như nó phản ánh sâu sắc tính cách hiền hòa của người dân Lào. Họ không bao giờ cầu cho mình mà chỉ cầu cho người khác, bởi theo họ khi làm điều gì tốt lành cho người khác, thì điều tốt lành ấy cũng sẽ đến với mình.',//Chi tiết
-//         url1:'imgs/Té nước/Songkran-History.jpg',//ảnh 4:3 
-//         url2:'imgs/Té nước/le_hoi_te_nuoc_thai_lan12.jpg',//ảnh 4:3 
-//         url3:'imgs/Té nước/16songkran832-2013-04-14.jpg',//ảnh 4:3 
-//         url4:'imgs/Té nước/no-powder-no-water-guns-no-sexy-dress-and-no-alcohol-for-songkran-festival-this-year-world-of-buzz-5.png',//ảnh độ phân giải trên 1920
-//         url5:'imgs/Té nước/W020120828533168740682.jpg',//ảnh độ phân giải trên 1920
-//         url6:'imgs/Té nước/1238-news1-pic10-1492953847853.jpg',//ảnh độ phân giải trên 1920
-//         status: '1',
-//         __v:'0'
-//         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
-//     },
+    },
+    {
+        nameLeHoi: 'Lễ Hội Hoa Anh Đào',
+        timeStart:'2018-03-27',
+        timeEnd:'2018-03-30',
+        diadiem: 'Seoul-Hàn Quốc',
+        kinhdo:'37.5650172',
+        vido:'126.849464',
+        lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
+        tongiao:'Không',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
+        chitiet:'Hòn đảo nhỏ Yeouido, nằm trên sông Hàn, là một trong những địa điểm nổi tiếng nhất ở Seoul để thưởng thức mùa hoa anh đào. Hàng năm, lễ hội hoa xuân Yeouido thu hút rất nhiều khách du lịch và người dân địa phương, nhờ sắc hồng tuyệt đẹp của hoa anh đào và không khí sôi động của lễ hội. Với hơn 1.600 cây hoa anh đào nằm rải rác trên khắp hòn đảo, Yeouido thật sự là thiên đường sakura. Phố đi bộ Yeouiseo-ro là nơi du khách có thể tản bộ và thưởng thức các món ăn đường phố ngon tuyệt. Về đêm, những ánh đèn lung linh nhảy múa cùng cánh hoa mỏng manh làm sẽ làm ngất lòng du khách.',//Chi tiết
+        url1:'imgs/Hoa anh đào/2710011201104009k_CherryblossominYeouido.jpg',//ảnh 4:3 
+        url2:'imgs/Hoa anh đào/dai-hoc-han-quoc.jpg',//ảnh 4:3 
+        url3:'imgs/Hoa anh đào/hoa-anh-dao-txtd-660-2.jpg',//ảnh 4:3 
+        url4:'imgs/Hoa anh đào/cherry-trees.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Hoa anh đào/le-hoi-hoa-anh-dao-thang-4-o-han-quoc8.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Hoa anh đào/Thaophuongnguyen-174928034912-nx-5-1024x684.jpeg',//ảnh độ phân giải trên 1920
+        status: '1',
+        __v:'0'
+        // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
+    },
+    {
+        nameLeHoi: 'Lễ Vu Lan',
+        timeStart:'2018-02-23',
+        timeEnd:'2018-08-15',
+        diadiem: 'Hiroshima-Nhật Bản',
+        kinhdo:'31.6776989',
+        vido:'120.2741073',
+        lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
+        tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
+        chitiet:'Obon là lễ hội được mong chờ nhất trong mùa thu của người Nhật Bản. Lễ hội này mang ý nghĩa chào đón sự ghé thăm của những linh hồn tổ tiên đã khuất, thể hiện lòng biết ơn và cầu an cho các linh hồn. Ngày nay, lễ hội này cũng trở thành dịp để sum họp gia đình và thể hiện tình yêu thương đối với những người còn sống. Có thể nói, lễ hội Obon được coi như lễ Vu Lan của người Nhật Bản. Đây cũng là thời điểm sum họp gia đình gần giống với tết của người Việt Nam.',//Chi tiết
+        url1:'imgs/Vu Lan/lễ-hội-vu-lan-ở-nhật-bản - Copy.jpg',//ảnh 4:3 
+        url2:'imgs/Vu Lan/Tin-PG-Hoa-Ky-7.jpg',//ảnh 4:3 
+        url3:'imgs/Vu Lan/Vu lan 3.jpg',//ảnh 4:3 
+        url4:'imgs/Vu Lan/637130972.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Vu Lan/bondance01.png',//ảnh độ phân giải trên 1920
+        url6:'imgs/Vu Lan/japan-1-1504165211372.jpg',//ảnh độ phân giải trên 1920
+        status: '1',
+        __v:'0'
+        // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
+    },
+    {
+        nameLeHoi: 'Lễ Hội Màu Sắc',
+        timeStart:'2018-03-7',
+        timeEnd:'2018-03-9',
+        diadiem: 'Dubai-Ấn Độ',
+        kinhdo:'-22.913885',
+        vido:'-43.726182',
+        lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
+        tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
+        chitiet:'Vào dịp lễ hội Holi, người dân Ấn Độ lại ném bột màu vào nhau thể hiện cho sự tự do và không phân biệt giai cấp vốn tồn tại trong xã hội.. Lễ hội Holi chính thức được bắt đầu vào buổi sáng hôm sau và mọi người chơi đùa với màu sắc. Ai ai cũng nắm trong tay bột màu khô hoặc các quả bóng có chứa dung dịch màu để ném và phun màu vào những người khác.',//Chi tiết
+        url1:'imgs/Màu sắc/224577.jpg',//ảnh 4:3 
+        url2:'imgs/Màu sắc/631113.jpg',//ảnh 4:3 
+        url3:'imgs/Màu sắc/631518.jpg',//ảnh 4:3 
+        url4:'imgs/Màu sắc/447044.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Màu sắc/638709.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Màu sắc/1034284.jpg',//ảnh độ phân giải trên 1920
+        status: '1',
+        __v:'0'
+        // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
+    },
+    {
+        nameLeHoi: 'Lễ Hội Té Nước',
+        timeStart:'2018-04-14',
+        timeEnd:'2018-04-16',
+        diadiem: 'Vientiane-Lào',
+        kinhdo:'17.960427',
+        vido:'102.5357246',
+        lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
+        tongiao:'Đạo Phật',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
+        chitiet:'Lễ hội Té Nước ở Lào có tên là Bunpimay, thường diễn ra trong 3 ngày từ 13 đến 15/4 theo Phật lịch. Vào dịp này, người dân Lào tập trung đến chùa lễ Phật, tắm Phật bằng nước thơm, nghe sư giảng đạo, rồi té nước cho các nhà sư, chùa và cây cối xung quanh chùa. Ngoài ra, người Lào còn té nước vào nhà cửa, dụng cụ lao động và súc vật để gột rửa điều xấu xa, bệnh tật và cầu chúc một năm mới tốt đẹp và mạnh khỏe. Ngoài nghi lễ té nước, người Lào có một tục lệ khá độc đáo đó là buộc chỉ cổ tay. Họ buộc những sợi chỉ màu như gửi lời chúc hạnh phúc và sức khỏe đến người được buộc. Tục lệ này tuy đơn giản như nó phản ánh sâu sắc tính cách hiền hòa của người dân Lào. Họ không bao giờ cầu cho mình mà chỉ cầu cho người khác, bởi theo họ khi làm điều gì tốt lành cho người khác, thì điều tốt lành ấy cũng sẽ đến với mình.',//Chi tiết
+        url1:'imgs/Té nước/Songkran-History.jpg',//ảnh 4:3 
+        url2:'imgs/Té nước/le_hoi_te_nuoc_thai_lan12.jpg',//ảnh 4:3 
+        url3:'imgs/Té nước/16songkran832-2013-04-14.jpg',//ảnh 4:3 
+        url4:'imgs/Té nước/no-powder-no-water-guns-no-sexy-dress-and-no-alcohol-for-songkran-festival-this-year-world-of-buzz-5.png',//ảnh độ phân giải trên 1920
+        url5:'imgs/Té nước/W020120828533168740682.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Té nước/1238-news1-pic10-1492953847853.jpg',//ảnh độ phân giải trên 1920
+        status: '1',
+        __v:'0'
+        // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
+    }]
 //     {
 //         nameLeHoi: ' Lễ hội Carnival ',
 //         timeStart:'2018/02/09',
@@ -379,20 +380,20 @@ exports.add = function(req, resp){
 //     }
 // ];
 
-// 	Festival.insertMany(rawDocuments)
-// 	    .then(function(mongooseDocuments) {
-// 			console.log(mongooseDocuments);
-// 	    })
-// 	    .catch(function(err) {
-// 	        console.log(err);
-// 	    });	
+	Festival.insertMany(rawDocuments)
+	    .then(function(mongooseDocuments) {
+			console.log(mongooseDocuments);
+	    })
+	    .catch(function(err) {
+	        console.log(err);
+	    });	
 
 
 
-	var festival = new Festival(req.body);	
-	festival.save(function(err){				
-		resp.send(festival);
-	});
+	// var festival = new Festival(req.body);	
+	// festival.save(function(err){				
+	// 	resp.send(festival);
+	// });
 }
 
 exports.update = function(req, resp){

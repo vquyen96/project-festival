@@ -521,7 +521,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         }
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page="+page+"&limit=10",
+            url : "http://localhost:3000/api/festivals?page="+page+"&limit=20",
         }).then(function mySuccess(response) {
             var content = '';
             var totalPage = response.data.totalPage;
