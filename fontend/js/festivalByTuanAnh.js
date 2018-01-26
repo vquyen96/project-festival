@@ -1,4 +1,167 @@
-	var rawDocuments = [
+var Festival = require('../models/festival');
+require('mongoose-pagination');
+
+exports.getList = function(req, resp){
+    // if (authenticationController.checkToken(req.headers.authorization)){
+    //  console.log('Okie');
+    // }else{
+    //  console.log('Not  okie');
+    // }
+
+    // Lấy tham số và parse ra number.  
+    var page = Number(req.query.page);
+    var limit = Number(req.query.limit);
+    // if (limit == undefined || limit == null) {
+    //  limit = 10;
+    // }
+    var find = Number(req.query.find);
+    switch(find){
+        case 0: {
+            Festival.find({'lucdia':'Việt Nam', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 1: {
+            Festival.find({'lucdia':'Châu Á', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 2: {
+            Festival.find({'lucdia':'Châu Âu', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 3: {
+            Festival.find({'lucdia':'Châu Mỹ', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 4: {
+            Festival.find({'lucdia':'Châu Phi', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 5: {
+            Festival.find({'lucdia':'Châu Úc', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 6: {
+            Festival.find({'tongiao':'Đạo Phật', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 7: {
+            Festival.find({'tongiao':'Đạo Hồi', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 8: {
+            Festival.find({'tongiao':'Đạo Thiên Chúa', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        case 9: {
+            Festival.find({'tongiao':'Đạo Hindu', 'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        };
+        break;
+        default:{
+            Festival.find({'status': 1})
+            .paginate(page, limit, function(err, result, total) {       
+                var responseData = {
+                    'listFestival': result,
+                    'totalPage': Math.ceil(total/limit)
+                };
+                resp.send(responseData);
+            });
+        }
+    }
+        
+    
+    // Festival.find({'status': 1})
+    // .paginate(page, limit, function(err, result, total) {        
+ //     var responseData = {
+ //         'listFestival': result,
+ //         'totalPage': Math.ceil(total/limit)
+ //     };
+ //     resp.send(responseData);
+ //     });
+ //     Festival.find({'status': 1 },function(err, result){
+    //  resp.send(result);
+    // });
+}
+
+exports.getDetail = function(req, resp){
+    
+    Festival.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+        
+        resp.send(result);
+    });
+}
+
+exports.add = function(req, resp){  
+    var rawDocuments = [
     {
         nameLeHoi: 'Tết Nguyên Đán',
         timeStart:'2018-02-23',
@@ -12,9 +175,9 @@
         url1:'imgs/Tết Nguyên Đán/chup-anh-sang-tu-nhien.jpg',//ảnh 4:3 
         url2:'imgs/Tết Nguyên Đán/1.jpg.1440.640.jpg',//ảnh 4:3 
         url3:'imgs/Tết Nguyên Đán/2016-01-31-04-02-47-2-1454236125234_ruwx.jpg',//ảnh 4:3 
-        url4:'imgs/Tết Nguyên Đán/hongkong-1-1024x682.jpg',//ảnh độ phân giải trên 1920
-        url5:'imgs/Tết Nguyên Đán/img20180115165349438-18e00.jpg',//ảnh độ phân giải trên 1920
-        url6:'imgs/Tết Nguyên Đán/tet-mien-trung1.jpg',//ảnh độ phân giải trên 1920
+        url4:'imgs/Tết Nguyên Đán/da-nang-ban-2000-qua-phao-hoa-don-giao-thua-tet-at-mui.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Tết Nguyên Đán/qqqqq.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Tết Nguyên Đán/huong-xuat-hanh-tot-ngay-tet-binh-than-2016_XSRG.jpg',//ảnh độ phân giải trên 1920
         status: '1',
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
@@ -33,9 +196,9 @@
         url1:'imgs/Hoa anh đào/2710011201104009k_CherryblossominYeouido.jpg',//ảnh 4:3 
         url2:'imgs/Hoa anh đào/dai-hoc-han-quoc.jpg',//ảnh 4:3 
         url3:'imgs/Hoa anh đào/hoa-anh-dao-txtd-660-2.jpg',//ảnh 4:3 
-        url4:'imgs/Hoa anh đào/cherry-trees.jpg',//ảnh độ phân giải trên 1920
-        url5:'imgs/Hoa anh đào/le-hoi-hoa-anh-dao-thang-4-o-han-quoc8.jpg',//ảnh độ phân giải trên 1920
-        url6:'imgs/Hoa anh đào/Thaophuongnguyen-174928034912-nx-5-1024x684.jpeg',//ảnh độ phân giải trên 1920
+        url4:'imgs/Hoa anh đào/hoa-anh-dao-nhat-ban-17.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Hoa anh đào/artsfon.com-19198.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Hoa anh đào/nhung-hinh-anh-mua-xuan-dep-nhat-tren-the-gioi-so-3.jpg',//ảnh độ phân giải trên 1920
         status: '1',
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
@@ -53,9 +216,9 @@
         url1:'imgs/Vu Lan/lễ-hội-vu-lan-ở-nhật-bản - Copy.jpg',//ảnh 4:3 
         url2:'imgs/Vu Lan/Tin-PG-Hoa-Ky-7.jpg',//ảnh 4:3 
         url3:'imgs/Vu Lan/Vu lan 3.jpg',//ảnh 4:3 
-        url4:'imgs/Vu Lan/637130972.jpg',//ảnh độ phân giải trên 1920
-        url5:'imgs/Vu Lan/bondance01.png',//ảnh độ phân giải trên 1920
-        url6:'imgs/Vu Lan/japan-1-1504165211372.jpg',//ảnh độ phân giải trên 1920
+        url4:'imgs/Vu Lan/ni.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Vu Lan/Ohara-Matsuri-Dance-Festival-in-Kagoshima-Japan.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Vu Lan/Vu_Lan_festival_1.jpg',//ảnh độ phân giải trên 1920
         status: '1',
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
@@ -73,9 +236,9 @@
         url1:'imgs/Màu sắc/224577.jpg',//ảnh 4:3 
         url2:'imgs/Màu sắc/631113.jpg',//ảnh 4:3 
         url3:'imgs/Màu sắc/631518.jpg',//ảnh 4:3 
-        url4:'imgs/Màu sắc/447044.jpg',//ảnh độ phân giải trên 1920
-        url5:'imgs/Màu sắc/638709.jpg',//ảnh độ phân giải trên 1920
-        url6:'imgs/Màu sắc/1034284.jpg',//ảnh độ phân giải trên 1920
+        url4:'imgs/Màu sắc/holi-festival-de-colores-4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Màu sắc/holi1.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Màu sắc/Holi-Festival-of-Colours-2.jpg',//ảnh độ phân giải trên 1920
         status: '1',
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
@@ -93,9 +256,9 @@
         url1:'imgs/Té nước/Songkran-History.jpg',//ảnh 4:3 
         url2:'imgs/Té nước/le_hoi_te_nuoc_thai_lan12.jpg',//ảnh 4:3 
         url3:'imgs/Té nước/16songkran832-2013-04-14.jpg',//ảnh 4:3 
-        url4:'imgs/Té nước/no-powder-no-water-guns-no-sexy-dress-and-no-alcohol-for-songkran-festival-this-year-world-of-buzz-5.png',//ảnh độ phân giải trên 1920
-        url5:'imgs/Té nước/W020120828533168740682.jpg',//ảnh độ phân giải trên 1920
-        url6:'imgs/Té nước/1238-news1-pic10-1492953847853.jpg',//ảnh độ phân giải trên 1920
+        url4:'imgs/Té nước/883296_572265736205744_1800545570_o.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/Té nước/o-SONGKRAN-900.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/Té nước/Songkran-Thai-New-Year-Festival.jpg',//ảnh độ phân giải trên 1920
         status: '1',
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
@@ -215,3 +378,39 @@
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     }
 ];
+
+    Festival.insertMany(rawDocuments)
+        .then(function(mongooseDocuments) {
+            console.log(mongooseDocuments);
+        })
+        .catch(function(err) {
+            console.log(err);
+        }); 
+
+
+
+    // var festival = new Festival(req.body);   
+    // festival.save(function(err){             
+    //  resp.send(festival);
+    // });
+}
+
+exports.update = function(req, resp){
+    Festival.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
+        resp.json(result);
+    });
+}
+
+exports.delete = function(req, resp){
+    // Festival.remove({
+    //     _id: req.params.id
+    //    }, function(err, result) {
+    //     resp.json({ message: 'Successfully deleted' });
+    // });
+    Festival.findById(req.params.id,function(err, result){              
+        result.status = 0;
+        Festival.findOneAndUpdate({_id: req.params.id}, result, {new: true}, function(err, result) {
+            resp.json(result);
+        });
+    }); 
+}

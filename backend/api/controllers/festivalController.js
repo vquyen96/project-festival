@@ -164,8 +164,6 @@ exports.add = function(req, resp){
 	var rawDocuments = [
 	
 ];
-
-
 	Festival.insertMany(rawDocuments)
 	    .then(function(mongooseDocuments) {
 			console.log(mongooseDocuments);
