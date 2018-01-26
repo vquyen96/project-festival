@@ -1,5 +1,5 @@
 <div class="container" ng-controller="ctrlAddLeHoi">
-	<div class="row addUserForm" >
+	<div class="row addLeHoiForm" >
 		<div class="alert alert-success" role="alert" style="display: none;"></div>
 		<div class="alert alert-danger" role="alert" style="display: none;"></div>
 		<form method="post">
@@ -7,13 +7,15 @@
 				<label>Tên Lễ Hội</label>
 				<input type="text" name="nameLeHoi" id="nameLeHoi" class="form-control" ng-model="festival.nameLeHoi">
 			</div>
-			<div class="form-group">
-				<label>Bắt đầu</label>
-				<input type="text" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
-			</div>
-			<div class="form-group">
-				<label>Kết thúc</label>
-				<input type="text" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Bắt đầu</label>
+					<input type="text" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Kết thúc</label>
+					<input type="text" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+				</div>
 			</div>
 			<div class="form-group">
 				<label>Địa điểm</label>
@@ -55,7 +57,8 @@
 			</div>
 			<div class="form-group">
 				<label>Chi tiết</label>
-				<input type="text" name="chitiet" id="chitiet" class="form-control" ng-model="festival.chitiet">
+				<textarea name="chitiet" id="chitiet" class="addLeHoiChiTiet form-control" ng-model="festival.chitiet" rows="10" ></textarea>
+				<!-- <input type="text" name="chitiet" id="chitiet" class="form-control" ng-model="festival.chitiet"> -->
 			</div>
 
 			<div class="row form-group">

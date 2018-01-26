@@ -37,6 +37,8 @@ app.controller('ctrlHead', function($scope, $http){
 app.controller('ctrlNav', function($scope, $http){
     $scope.menuSearch = function(val){
         localStorage.setItem("find", val);
+        // window.location.href('index.html#!/search');
+        window.open('index.html#!/search');
     }
     
     $scope.navItemDrop1 = function(){
@@ -54,7 +56,7 @@ app.controller('ctrlMain', function($scope, $http){
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=20",
+            url : "http://localhost:3000/api/festivals?page=1&limit=10",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listData = response.data.listFestival;
@@ -182,11 +184,6 @@ app.controller('ctrlSearch', function($scope, $http){
     }, function myError(response) {
         console.log(response.statusText);
     });
-
-    // var d = '12/12/1955 12:00:00 AM';
-    // d = d.split(' ')[0];
-    // console.log(d);
-    console.log(searchVal)
     $http({
         method : "GET",
         url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,
@@ -268,7 +265,8 @@ app.config(function($routeProvider) {
     .when("/register", {
         templateUrl : "chucnang/register.html"
     })
-    .when("/vietnam", {
+    .when("/search", {
         templateUrl : "chucnang/search.html"
     })
 });
+// AIzaSyDTUdSTKgfHqp4a0WOAY5JuBmkgl2obY5o 

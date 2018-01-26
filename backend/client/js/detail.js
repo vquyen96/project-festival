@@ -177,5 +177,5 @@ var  festival = [{
     url6:'hoiyentu/yentu6.jpg',//ảnh độ phân giải trên 1920
     // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     
-},
+}
 ];

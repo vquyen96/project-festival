@@ -5,7 +5,7 @@ module.exports = mongoose.model('accounts', {
 	password: String,
 	salt: String,
 	email: String,
-	birthday: Date,
+	birthday: String,
 	avaUrl: {
 		type: String,
 		default: "imgs/default-avatar.jpg"
