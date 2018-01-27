@@ -56,7 +56,7 @@ app.controller('ctrlMain', function($scope, $http){
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=20",
+            url : "http://localhost:3000/api/festivals?page=1&limit=10",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listData = response.data.listFestival;

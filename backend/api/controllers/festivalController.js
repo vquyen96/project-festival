@@ -161,23 +161,22 @@ exports.getDetail = function(req, resp){
 }
 
 exports.add = function(req, resp){	
-	var rawDocuments = [
-	
-];
-	Festival.insertMany(rawDocuments)
-	    .then(function(mongooseDocuments) {
-			console.log(mongooseDocuments);
-	    })
-	    .catch(function(err) {
-	        console.log(err);
-	    });	
+// 	var rawDocuments = [
+// ];
+// 	Festival.insertMany(rawDocuments)
+// 	    .then(function(mongooseDocuments) {
+// 			console.log(mongooseDocuments);
+// 	    })
+// 	    .catch(function(err) {
+// 	        console.log(err);
+// 	    });	
 
 
 
-	// var festival = new Festival(req.body);	
-	// festival.save(function(err){				
-	// 	resp.send(festival);
-	// });
+	var festival = new Festival(req.body);	
+	festival.save(function(err){				
+		resp.send(festival);
+	});
 }
 
 exports.update = function(req, resp){
