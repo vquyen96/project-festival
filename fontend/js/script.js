@@ -37,6 +37,8 @@ app.controller('ctrlHead', function($scope, $http){
 app.controller('ctrlNav', function($scope, $http){
     $scope.menuSearch = function(val){
         localStorage.setItem("find", val);
+        // window.location.href('index.html#!/search');
+        window.open('index.html#!/search');
     }
     
     $scope.navItemDrop1 = function(){
@@ -148,6 +150,7 @@ app.controller('ctrlDetail', function($scope, $http){
 });
 app.controller('ctrlSearch', function($scope, $http){
     var searchVal = localStorage.getItem("find");
+
     switch(searchVal){
         case '0': $scope.searchTitle = 'Việt Nam';
         break;
@@ -171,7 +174,7 @@ app.controller('ctrlSearch', function($scope, $http){
         break;
         default: $scope.searchTitle = 'Tất Cả';      
     }
-
+    searchVal = Number(searchVal);
     $http({
         method : "GET",
         url : "http://localhost:3000/api/festivals?page=1&limit=10",
@@ -181,13 +184,9 @@ app.controller('ctrlSearch', function($scope, $http){
     }, function myError(response) {
         console.log(response.statusText);
     });
-
-    // var d = '12/12/1955 12:00:00 AM';
-    // d = d.split(' ')[0];
-    // console.log(d);
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/festivals?page=1&limit=5find="+searchVal+"",
+        url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,
     }).then(function mySuccess(response) {
         console.log(response);
         $scope.listDataLeft = response.data.listFestival;
@@ -218,7 +217,7 @@ app.controller('ctrlMedia', function($scope, $http){
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=10",
+            url : "http://localhost:3000/api/festivals?page=1&limit=20",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listData = response.data.listFestival;
@@ -266,7 +265,8 @@ app.config(function($routeProvider) {
     .when("/register", {
         templateUrl : "chucnang/register.html"
     })
-    .when("/vietnam", {
+    .when("/search", {
         templateUrl : "chucnang/search.html"
     })
 });
+// AIzaSyDTUdSTKgfHqp4a0WOAY5JuBmkgl2obY5o 

@@ -29,9 +29,10 @@
 				<div class="input-group">
 					<input type="hidden" name="" id="headSearch">
 					<input type="hidden" name="" id="headDetail">
-					<input type="text" class="valueSearch form-control">
+
+					<input id="textbox" type="text" class="valueSearch form-control">
 					<span class="input-group-btn">
-			        	<a href="" class="btn btn-default" ng-click="btnSearch()">
+			        	<a class="btn btn-default"  id="googleLink" href="notrequired" target="_blank" onclick="this.href='http://www.google.com/search?q=' + encodeURIComponent(document.getElementById('textbox').value);">
 			        		<i class="fa fa-search" aria-hidden="true"></i>
 			        	</a>
 			    	</span>
@@ -70,7 +71,7 @@
 				</a>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
-				<a href="#!vietnam" ng-click="menuSearch('0')">
+				<a href="#!search" ng-click="menuSearch('0')">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					Việt Nam
 				</a>
@@ -81,11 +82,11 @@
 					Châu Lục
 				</a>			
 				<ul class="navDrop">
-				    <li><a href="#" ng-click="menuSearch('1')">Châu Á</a></li>
-				    <li><a href="#" ng-click="menuSearch('2')">Châu Âu</a></li>
-				    <li><a href="#" ng-click="menuSearch('3')">Châu Mỹ</a></li>
-				    <li><a href="#" ng-click="menuSearch('4')">Châu Phi</a></li>
-				    <li><a href="#" ng-click="menuSearch('5')">Châu Úc</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('1')">Châu Á</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('2')">Châu Âu</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('3')">Châu Mỹ</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('4')">Châu Phi</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('5')">Châu Úc</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
@@ -94,10 +95,10 @@
 					Tôn Giáo
 				</a>				
 				<ul class="navDrop">
-				    <li><a href="#" ng-click="menuSearch('6')">Đạo Phật</a></li>
-				    <li><a href="#" ng-click="menuSearch('7')">Đạo Hồi</a></li>
-				    <li><a href="#" ng-click="menuSearch('8')">Đạo Thiên Chúa</a></li>
-				    <li><a href="#" ng-click="menuSearch('9')">Đạo Hindu</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('6')">Đạo Phật</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('7')">Đạo Hồi</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('8')">Đạo Thiên Chúa</a></li>
+				    <li><a href="#!search" ng-click="menuSearch('9')">Đạo Hindu</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
@@ -170,6 +171,18 @@
 		</div>
 			
 	</footer>
+	<!-- <script>
+	  (function() {
+	    var cx = '011049519405399044806:htcys2-xoxg';
+	    var gcse = document.createElement('script');
+	    gcse.type = 'text/javascript';
+	    gcse.async = true;
+	    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(gcse, s);
+	  })();
+	</script>
+	<gcse:search></gcse:search> -->
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWqbSNVYy7jSr5KC14doMijaosdwF-Bw&callback=initMap"></script> 
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
