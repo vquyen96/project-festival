@@ -15,6 +15,8 @@ app.controller('ctrlHead', function($scope, $http){
             console.log(response);
             $scope.avaUrl = response.data.avaUrl;
             $scope.loggedInUsername = response.data.username;
+            localStorage.setItem("ownerName", response.data.username);
+            localStorage.setItem("ownerUrl", response.data.avaUrl);
             $scope.isLoggedIn = true;
         }, function myError(response) {
             $scope.isLoggedIn = false;
@@ -127,6 +129,41 @@ app.controller('ctrlDetail', function($scope, $http){
         });
     }
     getDetailLeHoi(idLeHoi);
+    function getDetailComment(idLeHoi){
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/comments/"+idLeHoi,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.listComment = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+    getDetailComment(idLeHoi);
+    
+    $scope.btnComment = function(){
+        var comments = {
+            userID : localStorage.getItem("ownerId"),
+            userName : localStorage.getItem("ownerName"),
+            userUrl : localStorage.getItem("ownerUrl"),
+            lehoiID : localStorage.getItem("idDetail"),
+            content : $('#commentContent').val()
+        }
+        $http({
+            method : "POST",
+            url : "http://localhost:3000/api/comments",
+            data: comments
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $('#commentContent').val(' ');
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+        setTimeout(function(){ 
+            getDetailComment(idLeHoi);
+        }, 1000);
+    }
     function initMap() {
         var vido = localStorage.getItem("vido");
         var vido1 = parseFloat(vido);
@@ -184,6 +221,9 @@ app.controller('ctrlSearch', function($scope, $http){
     }, function myError(response) {
         console.log(response.statusText);
     });
+    function search(){
+
+    }
     $http({
         method : "GET",
         url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,

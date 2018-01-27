@@ -1,6 +1,7 @@
 var userController = require('../controllers/userController');
 var festivalController = require('../controllers/festivalController');
 var findController = require('../controllers/findController');
+var commentController = require('../controllers/commentController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
@@ -54,6 +55,16 @@ module.exports = function(app){
 		.get(tongiaoController.getDetail)
 		.put(tongiaoController.update)
 		.delete(tongiaoController.delete);	
+
+	// comment api.
+	app.route('/api/comments')
+		.get(commentController.getList)
+		.post(commentController.add);	
+
+	app.route('/api/comments/:id')
+		.get(commentController.getDetail)
+		.put(commentController.update)
+		.delete(commentController.delete);
 
 	// thamgia api.
 	app.route('/api/thamgia')
