@@ -53,9 +53,32 @@
 				Tải về
 			</a>
 			<!-- start map -->
-			  <h3>Địa điểm tổ chức</h3>
-			  <div id="map"></div>
-			  <!-- end map -->	
+			<h3>Địa điểm tổ chức</h3>
+			<div id="map"></div>
+			<!-- end map -->
+			<div>
+				<h3>Bình Luận</h3>
+			</div>	
+			<div class="input-group">
+		      	<input type="text" class="form-control" id="commentContent" placeholder="Bình Luận" ng-model="comments.content">
+		      	<span class="input-group-btn">
+		        	<button class="btn btn-default" type="button" ng-click="btnComment()">Gửi</button>
+		      	</span>
+		    </div><!-- /input-group -->
+		    <div class="detailComment">
+		    	<div class="detailCommentItem" ng-repeat="comment in listComment">
+			    	<div class="detailCommentAva">
+			    		<a href=""><img ng-src="{{comment.userUrl}}"></a>
+			    	</div>
+			    	<div class="detailCommentContent">
+			    		<a href="" class="detailCommentContentName">
+			    			{{comment.userName}}
+			    		</a>
+			    		{{comment.content}}
+			    	</div>
+			    </div>
+		    </div>
+		    
 		</div>
 		<div class="col-md-4 col-sm-12 col-xs-12">
 			<div class="row">

@@ -266,6 +266,32 @@ nav ul{
 .detailrightcontent:hover a{
 	margin-left: 20px;
 }
+.detailComment{
+	background: #f2f3f5;
+	padding: 8px;
+	border: 1px solid #dddfe2;
+}
+.detailCommentItem{
+	padding: 4px;
+}
+.detailCommentAva{
+	display: inline-block;
+}
+.detailCommentAva a img{
+	height: 32px;
+	border-radius: 50%;
+}
+.detailCommentContent{
+	display: inline-block;
+	border-radius: 18px;
+	background: #fff;
+	line-height: 16px;
+	padding: 8px 10px;
+	margin-left: 4px;
+}
+.detailCommentContent a{
+	font-weight: bold;
+}
 /*end detail*/
 
 /*start media*/
