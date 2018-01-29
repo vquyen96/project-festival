@@ -7,7 +7,7 @@ exports.getList = function(req, resp){
 	    if (err)
 	      	resp.send(err);
 	    resp.json(task);
-	});
+	}).sort({lehoiName: 1});
 }
 
 exports.getDetail = function(req, resp){

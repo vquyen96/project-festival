@@ -13,7 +13,7 @@ exports.getList = function(req, resp){
 	// Lấy tham số và parse ra number.	
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	User.find({'status': 1})
+	User.find({'status': 1}).sort({username: 1})
 	.paginate(page, limit, function(err, result, total) { 
 		// console.log(result); 	
 		// console.log(total);
@@ -68,8 +68,7 @@ exports.add = function(req, resp){
 	obj.password = sha512(obj.password, obj.salt);
 	obj.save(function(err){
 		if(err){
-			resp.send(err);
-			return;
+			return resp.status(400).send('Tài khoản đã tồn tại');
 		}
 		resp.send(obj);
 	});	

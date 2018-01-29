@@ -29,6 +29,9 @@ app.controller('ctrlMenu', function($scope, $http){
         alert('Bạn không có quyền vào đây');
         window.location.href = "../../fontend/index.html";
     }
+    $scope.btnFontEnd = function(){
+        window.location.href = "../../fontend/index.html";
+    }
     $scope.logOut = function(){
         localStorage.removeItem("ownerId");
         localStorage.removeItem("tokenKey");
@@ -44,7 +47,7 @@ app.controller('ctrlListUser', function($scope, $http){
     var tokenKey = localStorage.getItem("tokenKey");
     getList('none', 'n');
     function getList(value, rev, page){
-        var limit = 5;
+        var limit = 8;
         if (page == null) {
             page = 1;
         }
@@ -213,7 +216,7 @@ app.controller('ctrlAddUser', function($scope, $http){
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data.errors[0].title + " " + response.data.errors[0].detail);
+                $('.alert-danger').text(response.data);
                 $('.alert-danger').attr('style','display : inline-block');
                 //Xóa thông báo sau 3s
                 setTimeout(function(){
@@ -249,7 +252,7 @@ app.controller('ctrlAddUser', function($scope, $http){
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data.errors[0].title + " " + response.data.errors[0].detail);
+                $('.alert-danger').text(response.data);
                 $('.alert-danger').attr('style','display : inline-block');
                 //Xóa thông báo sau 3s
                 setTimeout(function(){
@@ -513,6 +516,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     var countPlace = 1;
     var countLucDia = 1;
     var countTonGiao = 1;
+    var countTimeStart = 1;
     getList('none','n','1');
     function getList(value, rev, page){
         var limit = 10
@@ -557,6 +561,10 @@ app.controller('ctrlListLeHoi', function($scope, $http){
                             var x = a.tongiao.toLowerCase();
                             var y = b.tongiao.toLowerCase();
                             return x < y ? -1 : x > y ? 1 : 0;
+                        }
+                        break;
+                        case 'timeStart': {
+                            return a.timeStart - b.timeStart;
                         }
                         break;
                     }
@@ -607,6 +615,16 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         }
         countTonGiao++;    
     }
+    // $scope.btnSortTimeStart = function(currentPage){
+
+    //     if (countTimeStart % 2) {
+    //         getList('timeStart','n', currentPage);
+    //     }
+    //     else{
+    //         getList('timeStart','y', currentPage);
+    //     }
+    //     countTimeStart++;    
+    // }
     $scope.setPage = function (pageNo) {
         getList('username', 'n', pageNo);
         $scope.currentPage = pageNo;
@@ -753,10 +771,74 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
             });
 
         };
-    }
-    
+    }    
+});
 
-    
+app.controller('ctrlListComment', function($scope, $http){
+    function listComment(){
+       $http({
+            method : "GET",
+            url : "http://localhost:3000/api/comments",
+        }).then(function mySuccess(response) {
+            $scope.listData = response.data;
+            // var listData = response.data;
+            // var listLeHoi = {};
+            // var i, arrlehoiName = [], arrlehoiID = [] ;
+            // //gán mảnng
+            // for ( i = 0; i< listData.length; i++){
+            //     arrlehoiName[i] = listData[i].lehoiName;
+            //     arrlehoiID[i] = listData[i].lehoiID;
+            // }
+            
+            // var lenlehoiName = arrlehoiName.length,
+            //     outlehoiName = [],
+            //     objlehoiName = { },
+            //     lenlehoiID = arrlehoiID.length,
+            //     outlehoiID = [],
+            //     objlehoiID = { };
+            // //lọc mảng lehoiName
+            // for (i = 0; i < lenlehoiName; i++) {
+            //     objlehoiName[arrlehoiName[i]] = 0;
+            // }
+            // for (i in objlehoiName) {
+            //     outlehoiName.push(i);
+            // }
+            
+            // //lọc mảng lehoiID
+            // for (i = 0; i < lenlehoiID; i++) {
+            //     objlehoiID[arrlehoiID[i]] = 0;
+            // }
+            // for (i in objlehoiID) {
+            //     outlehoiID.push(i);
+            // }
+            // // $scope.listLeHoi = outlehoiName;
+            // // $scope.listLeHoi.ID = outlehoiID;
+            // var content = "";
+            // for(i = 0; i < outlehoiID.length; i++){
+            //     content += "<div><div>"+outlehoiName[i]+"</div><div><div>"
+            //     $http({
+            //         method : "GET",
+            //         url : "http://localhost:3000/api/comments/"+outlehoiID[i],
+            //     }).then(function mySuccess(response) {
+            //         console.log(response.data.length);
+            //         for(var j = 0; j < response.data.length; j++){
+            //             content += "<a>"+response.data[j].userName+"</a>"+response.data[j].content+"</div></div></div>";
+            //         }
+            //         console.log(content);
+            //         // $scope.listComment = response.data;
+            //     }, function myError(response) {
+            //         console.log(response.statusText);
+            //     });
+            // }
+            // console.log(content);
+            // $('#content').html(content);
+            // console.log(outlehoiName);
+            // console.log(outlehoiID);
+        }, function myError(response) {
+            console.log(response);
+        }); 
+    }
+    listComment();
 });
 app.config(function($routeProvider) {
     $routeProvider
@@ -781,7 +863,13 @@ app.config(function($routeProvider) {
     .when("/addLeHoi", {
         templateUrl : "chucnang/addLeHoi.html"
     })
-    .when("/user", {
-        templateUrl : "chucnang/user.html"
+    .when("/listComment", {
+        templateUrl : "chucnang/listComment.html"
+    })
+    .when("/listFeedBack", {
+        templateUrl : "chucnang/listFeedBack.html"
+    })
+    .when("/contact", {
+        templateUrl : "chucnang/contact.html"
     })
 });

@@ -135,6 +135,7 @@ exports.getList = function(req, resp){
 		    	};
 		    	resp.send(responseData);
 		  	});
+
 		}
 	}
 		

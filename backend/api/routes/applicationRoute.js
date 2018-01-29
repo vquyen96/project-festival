@@ -2,6 +2,7 @@ var userController = require('../controllers/userController');
 var festivalController = require('../controllers/festivalController');
 var findController = require('../controllers/findController');
 var commentController = require('../controllers/commentController');
+var feedbackController = require('../controllers/feedbackController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
@@ -65,6 +66,16 @@ module.exports = function(app){
 		.get(commentController.getDetail)
 		.put(commentController.update)
 		.delete(commentController.delete);
+
+	// feedback api.
+	app.route('/api/feedback')
+		.get(feedbackController.getList)
+		.post(feedbackController.add);	
+
+	app.route('/api/feedback/:id')
+		.get(feedbackController.getDetail)
+		.put(feedbackController.update)
+		.delete(feedbackController.delete);	
 
 	// thamgia api.
 	app.route('/api/thamgia')
