@@ -13,7 +13,7 @@ var  festival = [{
     url3:'imgs/oktoberfest/lễ hội bia 343.jpg', 
     url4:'imgs/oktoberfest/lehoibia-hight1.jpg',
     url5:'imgs/oktoberfest/lehoibiahight-2.jpg',
-    url6:'img/oktoberfest/lehoibia-hight3.jpg'
+    url6:'imgs/oktoberfest/lehoibia-hight3.jpg'
 },
 {
     nameLeHoi: 'Lễ hội chanh',

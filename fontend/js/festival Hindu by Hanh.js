@@ -1,6 +1,6 @@
 var  festival = [{
     nameLeHoi: 'lễ hội Dussehra',
-    tiemStart:'2018/9/25',
+    timeStart:'2018/9/25',
     timeEnd:'2018/10/05',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -17,7 +17,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'lễ hội ánh sáng Diwali',
-    tiemStart:'2018/10/29',
+    timeStart:'2018/10/29',
     timeEnd:'2018/11/2',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -34,7 +34,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Ganesha',
-    tiemStart:'2018/07/07',
+    timeStart:'2018/07/07',
     timeEnd:'2018/07/18',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -51,7 +51,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội sắc màu Holi',
-    tiemStart:'2018/03/16',
+    timeStart:'2018/03/16',
     timeEnd:'2018/3/27',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -68,7 +68,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'lễ hội Navratri',
-    tiemStart:'2018/03/05',
+    timeStart:'2018/03/05',
     timeEnd:'2018/03/14',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -85,7 +85,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Shivaratri',
-    tiemStart:'2018/02/26',
+    timeStart:'2018/02/26',
     timeEnd:'2018/02/27',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -102,7 +102,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Janmashtami',
-    tiemStart:'2018/09/02',
+    timeStart:'2018/09/02',
     timeEnd:'2018/09/02',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',
@@ -119,7 +119,7 @@ var  festival = [{
 },
 {
     nameLeHoi: 'Lễ hội Ugadi',
-    tiemStart:'2018/02/16',
+    timeStart:'2018/02/16',
     timeEnd:'2018/02/16',
     diadiem: 'Ấn Độ',
     kinhdo:'20.7689051',

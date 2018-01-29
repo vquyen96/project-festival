@@ -4,8 +4,9 @@ module.exports = mongoose.model('comment', {
 	userID: String,
 	userName: String,
 	userUrl: String,
-	lehoiID:String,
-	content:String,
+	lehoiID: String,
+	lehoiName: String,
+	content: String,
 	createdAt: {
 		type: Date,
 		default: Date.now

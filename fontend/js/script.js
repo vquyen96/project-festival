@@ -4,6 +4,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlHead', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
     var tokenKey = localStorage.getItem("tokenKey");
+    var level = localStorage.getItem("level");
     if (tokenKey != null && ownerId != null) {
         $http({
             method : "GET",
@@ -30,6 +31,14 @@ app.controller('ctrlHead', function($scope, $http){
         localStorage.removeItem("tokenKey");
         localStorage.removeItem("level");
         window.location.href = "index.html";
+    }
+    $scope.btnChangeAdmin = function(){
+        if(level == 1){
+            alert('Bạn không được chuyển trang vì bạn không phải quản lý')
+        }
+        else{
+            window.location.href = "../backend/client/index.html";
+        }
     }
     $scope.btnHeaderBar = function(){
         $('nav').slideToggle();
@@ -106,12 +115,12 @@ app.controller('ctrlMain', function($scope, $http){
         }, 10000);
     },  15000);
     $scope.detailPage = function(_id){
-        localStorage.setItem("idDetail", _id);
+        localStorage.setItem("lehoiID", _id);
         window.location.href = "index.html#!/detail";
     }
 });
 app.controller('ctrlDetail', function($scope, $http){
-    var idLeHoi = localStorage.getItem("idDetail");
+    var idLeHoi = localStorage.getItem("lehoiID");
     function getDetailLeHoi(idLeHoi){
         $http({
             method : "GET",
@@ -124,6 +133,7 @@ app.controller('ctrlDetail', function($scope, $http){
             $scope.url6 = response.data.url6;
             localStorage.setItem("kinhdo", response.data.kinhdo);
             localStorage.setItem("vido", response.data.vido);
+            localStorage.setItem("lehoiName", response.data.nameLeHoi);
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -143,26 +153,39 @@ app.controller('ctrlDetail', function($scope, $http){
     getDetailComment(idLeHoi);
     
     $scope.btnComment = function(){
-        var comments = {
-            userID : localStorage.getItem("ownerId"),
-            userName : localStorage.getItem("ownerName"),
-            userUrl : localStorage.getItem("ownerUrl"),
-            lehoiID : localStorage.getItem("idDetail"),
-            content : $('#commentContent').val()
+        var userID = localStorage.getItem("ownerId"),
+            userName = localStorage.getItem("ownerName"),
+            userUrl = localStorage.getItem("ownerUrl"),
+            lehoiID = localStorage.getItem("lehoiID"),
+            lehoiName = localStorage.getItem("lehoiName"),
+            content = $('#commentContent').val();
+        if(userID != null && userID != undefined && lehoiID != null && lehoiID != undefined){
+            var comments = {
+                userID : userID,
+                userName : userName,
+                userUrl : userUrl,
+                lehoiID : lehoiID,
+                lehoiName: lehoiName,
+                content : content
+            }
+            $http({
+                method : "POST",
+                url : "http://localhost:3000/api/comments",
+                data: comments
+            }).then(function mySuccess(response) {
+                console.log(response);
+                $('#commentContent').val(' ');
+            }, function myError(response) {
+                console.log(response.statusText);
+            });
+            setTimeout(function(){ 
+                getDetailComment(idLeHoi);
+            }, 1000);
         }
-        $http({
-            method : "POST",
-            url : "http://localhost:3000/api/comments",
-            data: comments
-        }).then(function mySuccess(response) {
-            console.log(response);
-            $('#commentContent').val(' ');
-        }, function myError(response) {
-            console.log(response.statusText);
-        });
-        setTimeout(function(){ 
-            getDetailComment(idLeHoi);
-        }, 1000);
+        else{
+            alert('Bạn phải đăng nhập nhé ! ^^');
+        }
+        
     }
     function initMap() {
         var vido = localStorage.getItem("vido");
@@ -234,7 +257,7 @@ app.controller('ctrlSearch', function($scope, $http){
         console.log(response.statusText);
     });
     $scope.btnDetail = function(_id){
-        localStorage.setItem("idDetail", _id);
+        localStorage.setItem("lehoiID", _id);
         window.location.href = "index.html#!/detail";
     }
 });
@@ -268,7 +291,7 @@ app.controller('ctrlMedia', function($scope, $http){
     getListLeHoi();
     var videoFrame = document.getElementById("video-frame");
     $scope.showVideo = function(videoId, nameLeHoi, _id){
-        localStorage.setItem("idDetail", _id);
+        localStorage.setItem("lehoiID", _id);
         $('#nameLeHoi').text(nameLeHoi);
         videoFrame.src = videoId;
         setTimeout(function(){ 

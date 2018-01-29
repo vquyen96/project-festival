@@ -11,10 +11,14 @@
     <link href="flexbin.css" type="text/css" rel="stylesheet" media="all" />
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular-route.js"></script>
+	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
 
 </head>
 <body>
+	<!-- <div class="bodyAlert">
+		
+	</div> -->
 	<header class="container-fluid" ng-controller="ctrlHead">
 		<div class="row">
 			<button type="button" class="btn btnHeaderBar" ng-click="btnHeaderBar()">
@@ -53,7 +57,7 @@
 					<i class="fa fa-sign-out" aria-hidden="true"></i>
 	    			Log Out
 				</a>
-				<a href="" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn">
+				<a href="" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn" ng-click="btnChangeAdmin()">
 					<img src="{{avaUrl}}" class="headerAva">
 					
 	    			{{loggedInUsername}}

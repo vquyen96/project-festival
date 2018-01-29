@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('accounts', {
-	username: String,
+	username: {
+		type: String,
+		unique: true
+	},
 	password: String,
 	salt: String,
 	email: String,
