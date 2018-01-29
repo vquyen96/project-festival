@@ -179,6 +179,7 @@ exports.add = function(req, resp){
         url5:'imgs/Tết Nguyên Đán/qqqqq.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Tết Nguyên Đán/huong-xuat-hanh-tot-ngay-tet-binh-than-2016_XSRG.jpg',//ảnh độ phân giải trên 1920
         status: '1',
+        upload: ''
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
 
@@ -200,6 +201,7 @@ exports.add = function(req, resp){
         url5:'imgs/Hoa anh đào/artsfon.com-19198.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Hoa anh đào/nhung-hinh-anh-mua-xuan-dep-nhat-tren-the-gioi-so-3.jpg',//ảnh độ phân giải trên 1920
         status: '1',
+        upload: ''
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
@@ -220,6 +222,7 @@ exports.add = function(req, resp){
         url5:'imgs/Vu Lan/Ohara-Matsuri-Dance-Festival-in-Kagoshima-Japan.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Vu Lan/Vu_Lan_festival_1.jpg',//ảnh độ phân giải trên 1920
         status: '1',
+        upload: ''
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
@@ -240,6 +243,7 @@ exports.add = function(req, resp){
         url5:'imgs/Màu sắc/holi1.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Màu sắc/Holi-Festival-of-Colours-2.jpg',//ảnh độ phân giải trên 1920
         status: '1',
+        upload: ''
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
@@ -260,6 +264,7 @@ exports.add = function(req, resp){
         url5:'imgs/Té nước/o-SONGKRAN-900.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Té nước/Songkran-Thai-New-Year-Festival.jpg',//ảnh độ phân giải trên 1920
         status: '1',
+        upload: ''
         __v:'0'
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
@@ -280,6 +285,7 @@ exports.add = function(req, resp){
         url5:'imgs/carnaval/8577411594_fb1482eca3_k.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/carnaval/carnaval_groupon8.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+        upload: ''
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
     {
@@ -299,6 +305,7 @@ exports.add = function(req, resp){
         url5:'imgs/Carnival/rio-carnival.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Carnival/carnaval.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+        upload: ''
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
     {
@@ -318,6 +325,7 @@ exports.add = function(req, resp){
         url5:'imgs/Lễ hội Tango/EB8387-001.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Lễ hội Tango/1718_TangoBuenosAires.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+        upload: ''
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
     {
@@ -337,6 +345,8 @@ exports.add = function(req, resp){
         url5:'imgs/Lễ hội Bia  Argentina/group-enjoying-oktoberfest.0d3987a5e5ece0c6bb012b72583d3e01.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Lễ hội Bia  Argentina/Oktoberfest-578f6b955f9b584d20fa50b8.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+upload: ''
+        
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
     {
@@ -356,6 +366,7 @@ exports.add = function(req, resp){
         url5:'imgs/Thanksgiving/thanksgiving2.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Thanksgiving/turjey.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+        upload: ''
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     },
     {
@@ -375,6 +386,7 @@ exports.add = function(req, resp){
         url5:'imgs/Black Friday/brazil-black-friday-1.jpg',//ảnh độ phân giải trên 1920
         url6:'imgs/Black Friday/Black-friday-shopping-1920x1080.jpg',//ảnh độ phân giải trên 1920
         status: '1'
+        upload: ''
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     }
 ];
