@@ -128,8 +128,9 @@ body{
 	padding: 5px ;
 }
 /*end listLeHoi*/
+/*start addLeHoi*/
 
-
+/*end addLeHoi*/
 /*start listTonGiao*/
 .listTonGiaoHeader{
 	padding: 20px 50px;
@@ -157,6 +158,14 @@ body{
 .addUserForm{
 	background: rgba(200, 200, 200, 0.7);
 	width: 50%;
+	display: block;
+	padding: 30px;
+	margin: 20px 10px;
+	border-radius: 20px;
+}
+.addLeHoiForm{
+	background: rgba(200, 200, 200, 0.7);
+	width: 80%;
 	display: block;
 	padding: 30px;
 	margin: 20px 10px;

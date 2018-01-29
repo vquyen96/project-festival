@@ -2,14 +2,20 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('festival', {
 	nameLeHoi: String,
-	timeStart: Date,
-	timeEnd: Date,
+	timeStart: String,
+	timeEnd: String,
 	diadiem: String,
 	kinhdo: String,
 	vido: String,
 	lucdia: String,
 	tongiao: String,
 	chitiet: String,
+	url1: String,
+	url2: String,
+	url3: String,
+	url4: String,
+	url5: String,
+	url6: String,
 	trangthai:  {
 		type: Number,
 		default: 1

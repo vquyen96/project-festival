@@ -4,14 +4,14 @@
 	</div>
 	<div>
 		<table class="listUserTable">
-			<tr>
-				<td><a href="" class="btn btn-warning" ng-click="btnSortName()">Tên Người Dùng<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning">Ảnh đại diện<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning" ng-click="btnSortEmail()">Email<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning" ng-click="btnSortBirthDay()">Ngày Sinh<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning" ng-click="btnSortLevel()">Quyền truy cập<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning">Sửa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
-				<td><a href="" class="btn btn-warning">Xóa<span class=" glyphicon glyphicon-triangle-bottom"></span></a></td>
+			<tr >
+				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Tên Người Dùng <span class=" glyphicon glyphicon-sort-by-alphabet"></span></a></td>
+				<td><a href="" class="btn">Ảnh đại diện</a></td>
+				<td><a href="" class="btn" ng-click="btnSortEmail(currentPage)">Email <span class=" glyphicon glyphicon-sort-by-alphabet"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortBirthDay(currentPage)">Ngày Sinh</a></td>
+				<td><a href="" class="btn" ng-click="btnSortLevel(currentPage)">Quyền truy cập <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn">Sửa</span></a></td>
+				<td><a href="" class="btn">Xóa</span></a></td>
 			</tr>
 			<tr ng-repeat="user in listUser">
 				<td>{{user.username}}</td>
@@ -24,5 +24,20 @@
 			</tr>
 			
 		</table>
+		
+
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "8">		
+		    </ul>
+		</div>
+
+
 	</div>
 </div>

@@ -1,64 +1,20 @@
 <div class="" ng-controller="ctrlMedia">
     <div class="flexbin flexbin-margin">
-        <a href=""  ng-click="showVideo('imgs/16songkran832-2013-04-14.jpg')">
-            <img src="imgs/16songkran832-2013-04-14.jpg" />
+        <a href="" ng-repeat="data in listData" ng-click="showVideo(data.url4,data.nameLeHoi,data._id)">
+            <img ng-src="{{data.url4}}" />
         </a>
-        <a href=""  ng-click="showVideo('imgs/2710011201104009k_CherryblossominYeouido.jpg')">
-            <img src="imgs/2710011201104009k_CherryblossominYeouido.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/10-candid-photography-holi-india.jpg')">
-            <img src="imgs/10-candid-photography-holi-india.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/tho-nhi-ky-le-hoi-vat.jpg')">
-            <img src="imgs/tho-nhi-ky-le-hoi-vat.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/31985860554_97c8dda9cc_b.jpg')">
-            <img src="imgs/31985860554_97c8dda9cc_b.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/La-Boca-Tango.jpg')">
-            <img src="imgs/La-Boca-Tango.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/Songkran-History.jpg')">
-            <img src="imgs/Songkran-History.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/th-3.jpg')">
-            <img src="imgs/th-3.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/cd7ec84274a0c5174c49cae36ae8ccfe.jpg')">
-            <img src="imgs/cd7ec84274a0c5174c49cae36ae8ccfe.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/main_900.jpg')">
-            <img src="imgs/main_900.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/oktoberfest-2013-09.jpg')">
-            <img src="imgs/oktoberfest-2013-09.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/Oktoberfest-578f6b955f9b584d20fa50b8.jpg')">
-            <img src="imgs/Oktoberfest-578f6b955f9b584d20fa50b8.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/tango.jpg')">
-            <img src="imgs/tango.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/tango0815.jpg')">
-            <img src="imgs/tango0815.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/Thanksgiving-Dinner.jpg')">
-            <img src="imgs/Thanksgiving-Dinner.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/thanksgiving1.jpg')">
-            <img src="imgs/thanksgiving1.jpg" />
-        </a>
-        <a href=""  ng-click="showVideo('imgs/zelte-hp.jpg')">
-            <img src="imgs/zelte-hp.jpg" />
-        </a>
+        
     </div>
     <div id="modal-video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="mediaHead">
-                <h1>Tên Lễ Hội</h1>
-            </div>
-
-            <a href=""><img id="video-frame" width="900" height="" ng-src="{{mySrc}}" frameborder="0" allowfullscreen></a>
+            
+            <a href="" class="mediaModal" ng-click="mediaBtnDetail()">
+                <img id="video-frame" width="900" height="" ng-src="{{mySrc}}" frameborder="0" allowfullscreen>
+                <div class="mediaHead">
+                    <h1 id="nameLeHoi"></h1>
+                </div>
+            </a>
+            
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->          
 </div>

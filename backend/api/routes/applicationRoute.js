@@ -1,5 +1,9 @@
 var userController = require('../controllers/userController');
 var festivalController = require('../controllers/festivalController');
+var findController = require('../controllers/findController');
+var commentController = require('../controllers/commentController');
+var feedbackController = require('../controllers/feedbackController');
+
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
 var tongiaoController = require('../controllers/tongiaoController');
@@ -26,7 +30,9 @@ module.exports = function(app){
 		.get(festivalController.getDetail)
 		.put(festivalController.update)
 		.delete(festivalController.delete);
-
+	//find api
+	app.route('/api/find')
+		.get(findController.findlist);
 	// authentication api.
 	app.route('/api/authentications')		
 		.post(authenticationController.checkLogin);		
@@ -50,6 +56,26 @@ module.exports = function(app){
 		.get(tongiaoController.getDetail)
 		.put(tongiaoController.update)
 		.delete(tongiaoController.delete);	
+
+	// comment api.
+	app.route('/api/comments')
+		.get(commentController.getList)
+		.post(commentController.add);	
+
+	app.route('/api/comments/:id')
+		.get(commentController.getDetail)
+		.put(commentController.update)
+		.delete(commentController.delete);
+
+	// feedback api.
+	app.route('/api/feedback')
+		.get(feedbackController.getList)
+		.post(feedbackController.add);	
+
+	app.route('/api/feedback/:id')
+		.get(feedbackController.getDetail)
+		.put(feedbackController.update)
+		.delete(feedbackController.delete);	
 
 	// thamgia api.
 	app.route('/api/thamgia')

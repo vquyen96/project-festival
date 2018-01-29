@@ -20,6 +20,7 @@
     "crypto": "^1.0.1",
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
+    "express-paginate": "^0.3.0",
     "mongoose": "^5.0.0",
     "mongoose-pagination": "^1.0.0"
   }

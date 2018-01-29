@@ -1,19 +1,21 @@
 <div class="container" ng-controller="ctrlAddLeHoi">
-	<div class="row addUserForm" >
+	<div class="row addLeHoiForm" >
 		<div class="alert alert-success" role="alert" style="display: none;"></div>
 		<div class="alert alert-danger" role="alert" style="display: none;"></div>
 		<form method="post">
 			<div class="form-group">
 				<label>Tên Lễ Hội</label>
-				<input type="text" name="nameLeHoi" id="nameLeHoi" class="form-control" ng-model="festival.festivalname">
+				<input type="text" name="nameLeHoi" id="nameLeHoi" class="form-control" ng-model="festival.nameLeHoi">
 			</div>
-			<div class="form-group">
-				<label>Bắt đầu</label>
-				<input type="text" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
-			</div>
-			<div class="form-group">
-				<label>Kết thúc</label>
-				<input type="text" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+			<div class="row form-group">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Bắt đầu</label>
+					<input type="text" name="timeStart" id="timeStart" class="form-control" ng-model="festival.timeStart">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<label>Kết thúc</label>
+					<input type="text" name="timeEnd" id="timeEnd" class="form-control" ng-model="festival.timeEnd">
+				</div>
 			</div>
 			<div class="form-group">
 				<label>Địa điểm</label>
@@ -23,7 +25,7 @@
 			<div class="row form-group">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Kinh độ</label>
-					<input type="text" name="kingdo" id="kingdo" class="form-control" ng-model="festival.kingdo">
+					<input type="text" name="kinhdo" id="kinhdo" class="form-control" ng-model="festival.kinhdo">
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Vĩ độ</label>
@@ -55,37 +57,38 @@
 			</div>
 			<div class="form-group">
 				<label>Chi tiết</label>
-				<input type="text" name="chitiet" id="chitiet" class="form-control" ng-model="festival.chitiet">
+				<textarea name="chitiet" id="chitiet" class="addLeHoiChiTiet form-control" ng-model="festival.chitiet" rows="10" ></textarea>
+				<!-- <input type="text" name="chitiet" id="chitiet" class="form-control" ng-model="festival.chitiet"> -->
 			</div>
 
 			<div class="row form-group">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 1</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url1" class="form-control" ng-model="festival.url1">
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 2</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url2" class="form-control" ng-model="festival.url2">
 				</div>
 			</div>
 			<div class="row form-group">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 3</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url3" class="form-control" ng-model="festival.url3">
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 4</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url4" class="form-control" ng-model="festival.url4">
 				</div>
 			</div>
 			<div class="row form-group">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 5</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url5" class="form-control" ng-model="festival.url5">
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<label>Ảnh 6</label>
-					<input type="file" name="festivalFile" id="avaUrl" ng-model="festival.avaUrl">
+					<input type="text" name="festivalFile" id="url6" class="form-control" ng-model="festival.url6">
 				</div>
 			</div>
 			<div>
