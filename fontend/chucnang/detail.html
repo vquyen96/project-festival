@@ -56,28 +56,6 @@
 			<h3>Địa điểm tổ chức</h3>
 			<div id="map"></div>
 			<!-- end map -->
-			<div>
-				<h3>Bình Luận</h3>
-			</div>	
-			<div class="input-group">
-		      	<input type="text" class="form-control" id="commentContent" placeholder="Bình Luận" ng-model="comments.content">
-		      	<span class="input-group-btn">
-		        	<button class="btn btn-default" type="button" ng-click="btnComment()">Gửi</button>
-		      	</span>
-		    </div><!-- /input-group -->
-		    <div class="detailComment">
-		    	<div class="detailCommentItem" ng-repeat="comment in listComment">
-			    	<div class="detailCommentAva">
-			    		<a href=""><img ng-src="{{comment.userUrl}}"></a>
-			    	</div>
-			    	<div class="detailCommentContent">
-			    		<a href="" class="detailCommentContentName">
-			    			{{comment.userName}}
-			    		</a>
-			    		{{comment.content}}
-			    	</div>
-			    </div>
-		    </div>
 		    
 		</div>
 		<div class="col-md-4 col-sm-12 col-xs-12">
@@ -86,53 +64,13 @@
 			</div>
 			<div class="row detailRightItem" ng-repeat='data in listDataLeft'>
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<a href=""><img ng-src="{{data.url2}}"></a>
+					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
 					
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4><a href=""> {{data.nameLeHoi}}</a></h4>
+					<h4><a href="" ng-click="btnDetail(data._id)"> {{data.nameLeHoi}}</a></h4>
 				</div>
 			</div>
-			<!-- <div class="row detailRightItem">
-				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/trungthu.jpg">
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4>Tết Trung Thu</h4>
-				</div>
-			</div>
-			<div class="row detailRightItem">
-				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/duabo.jpg">
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4>Lễ Hội Đua Bò</h4>
-				</div>
-			</div>
-			<div class="row detailRightItem">
-				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/leviaba.jpg">
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4>Lễ Vía Bà</h4>
-				</div>
-			</div>
-			<div class="row detailRightItem">
-				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/lecungtrang.jpg">
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4>Lễ Cúng Trăng</h4>
-				</div>
-			</div>
-			<div class="row detailRightItem">
-				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<img src="imgs/duathuyen.jpg">
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4>Hội Đua Thuyền</h4>
-				</div>
-			</div> -->
 		</div>
 	</div>
 
