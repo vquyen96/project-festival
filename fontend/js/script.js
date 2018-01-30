@@ -169,54 +169,54 @@ app.controller('ctrlDetail', function($scope, $http){
         });
     }
     getDetailLeHoi(idLeHoi);
-    function getDetailComment(idLeHoi){
-        $http({
-            method : "GET",
-            url : "http://localhost:3000/api/comments/"+idLeHoi,
-        }).then(function mySuccess(response) {
-            console.log(response);
-            $scope.listComment = response.data;
-        }, function myError(response) {
-            console.log(response.statusText);
-        });
-    }
-    getDetailComment(idLeHoi);
+    // function getDetailComment(idLeHoi){
+    //     $http({
+    //         method : "GET",
+    //         url : "http://localhost:3000/api/comments/"+idLeHoi,
+    //     }).then(function mySuccess(response) {
+    //         console.log(response);
+    //         $scope.listComment = response.data;
+    //     }, function myError(response) {
+    //         console.log(response.statusText);
+    //     });
+    // }
+    // getDetailComment(idLeHoi);
     
-    $scope.btnComment = function(){
-        var userID = localStorage.getItem("ownerId"),
-            userName = localStorage.getItem("ownerName"),
-            userUrl = localStorage.getItem("ownerUrl"),
-            lehoiID = localStorage.getItem("lehoiID"),
-            lehoiName = localStorage.getItem("lehoiName"),
-            content = $('#commentContent').val();
-        if(userID != null && userID != undefined && lehoiID != null && lehoiID != undefined){
-            var comments = {
-                userID : userID,
-                userName : userName,
-                userUrl : userUrl,
-                lehoiID : lehoiID,
-                lehoiName: lehoiName,
-                content : content
-            }
-            $http({
-                method : "POST",
-                url : "http://localhost:3000/api/comments",
-                data: comments
-            }).then(function mySuccess(response) {
-                console.log(response);
-                $('#commentContent').val(' ');
-            }, function myError(response) {
-                console.log(response.statusText);
-            });
-            setTimeout(function(){ 
-                getDetailComment(idLeHoi);
-            }, 1000);
-        }
-        else{
-            alert('Bạn phải đăng nhập nhé ! ^^');
-        }
+    // $scope.btnComment = function(){
+    //     var userID = localStorage.getItem("ownerId"),
+    //         userName = localStorage.getItem("ownerName"),
+    //         userUrl = localStorage.getItem("ownerUrl"),
+    //         lehoiID = localStorage.getItem("lehoiID"),
+    //         lehoiName = localStorage.getItem("lehoiName"),
+    //         content = $('#commentContent').val();
+    //     if(userID != null && userID != undefined && lehoiID != null && lehoiID != undefined){
+    //         var comments = {
+    //             userID : userID,
+    //             userName : userName,
+    //             userUrl : userUrl,
+    //             lehoiID : lehoiID,
+    //             lehoiName: lehoiName,
+    //             content : content
+    //         }
+    //         $http({
+    //             method : "POST",
+    //             url : "http://localhost:3000/api/comments",
+    //             data: comments
+    //         }).then(function mySuccess(response) {
+    //             console.log(response);
+    //             $('#commentContent').val(' ');
+    //         }, function myError(response) {
+    //             console.log(response.statusText);
+    //         });
+    //         setTimeout(function(){ 
+    //             getDetailComment(idLeHoi);
+    //         }, 1000);
+    //     }
+    //     else{
+    //         alert('Bạn phải đăng nhập nhé ! ^^');
+    //     }
         
-    }
+    // }
     function initMap() {
         var vido = localStorage.getItem("vido");
         var vido1 = parseFloat(vido);
@@ -274,7 +274,10 @@ app.controller('ctrlDetail', function($scope, $http){
             console.log(response.statusText);
         });
     }, 2000);
-
+    $scope.btnDetail = function(_id){
+        localStorage.setItem("lehoiID", _id);
+         window.open('index.html#!/detail');
+    }
     
     
 });

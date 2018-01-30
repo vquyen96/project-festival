@@ -266,7 +266,7 @@ nav ul{
 .detailrightcontent:hover a{
 	margin-left: 20px;
 }
-.detailComment{
+/*.detailComment{
 	background: #f2f3f5;
 	padding: 8px;
 	border: 1px solid #dddfe2;
@@ -291,7 +291,7 @@ nav ul{
 }
 .detailCommentContent a{
 	font-weight: bold;
-}
+}*/
 /*end detail*/
 
 /*start media*/

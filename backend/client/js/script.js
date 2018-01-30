@@ -774,72 +774,72 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
     }    
 });
 
-app.controller('ctrlListComment', function($scope, $http){
-    function listComment(){
-       $http({
-            method : "GET",
-            url : "http://localhost:3000/api/comments",
-        }).then(function mySuccess(response) {
-            $scope.listData = response.data;
-            // var listData = response.data;
-            // var listLeHoi = {};
-            // var i, arrlehoiName = [], arrlehoiID = [] ;
-            // //gán mảnng
-            // for ( i = 0; i< listData.length; i++){
-            //     arrlehoiName[i] = listData[i].lehoiName;
-            //     arrlehoiID[i] = listData[i].lehoiID;
-            // }
+// app.controller('ctrlListComment', function($scope, $http){
+//     function listComment(){
+//        $http({
+//             method : "GET",
+//             url : "http://localhost:3000/api/comments",
+//         }).then(function mySuccess(response) {
+//             $scope.listData = response.data;
+//             // var listData = response.data;
+//             // var listLeHoi = {};
+//             // var i, arrlehoiName = [], arrlehoiID = [] ;
+//             // //gán mảnng
+//             // for ( i = 0; i< listData.length; i++){
+//             //     arrlehoiName[i] = listData[i].lehoiName;
+//             //     arrlehoiID[i] = listData[i].lehoiID;
+//             // }
             
-            // var lenlehoiName = arrlehoiName.length,
-            //     outlehoiName = [],
-            //     objlehoiName = { },
-            //     lenlehoiID = arrlehoiID.length,
-            //     outlehoiID = [],
-            //     objlehoiID = { };
-            // //lọc mảng lehoiName
-            // for (i = 0; i < lenlehoiName; i++) {
-            //     objlehoiName[arrlehoiName[i]] = 0;
-            // }
-            // for (i in objlehoiName) {
-            //     outlehoiName.push(i);
-            // }
+//             // var lenlehoiName = arrlehoiName.length,
+//             //     outlehoiName = [],
+//             //     objlehoiName = { },
+//             //     lenlehoiID = arrlehoiID.length,
+//             //     outlehoiID = [],
+//             //     objlehoiID = { };
+//             // //lọc mảng lehoiName
+//             // for (i = 0; i < lenlehoiName; i++) {
+//             //     objlehoiName[arrlehoiName[i]] = 0;
+//             // }
+//             // for (i in objlehoiName) {
+//             //     outlehoiName.push(i);
+//             // }
             
-            // //lọc mảng lehoiID
-            // for (i = 0; i < lenlehoiID; i++) {
-            //     objlehoiID[arrlehoiID[i]] = 0;
-            // }
-            // for (i in objlehoiID) {
-            //     outlehoiID.push(i);
-            // }
-            // // $scope.listLeHoi = outlehoiName;
-            // // $scope.listLeHoi.ID = outlehoiID;
-            // var content = "";
-            // for(i = 0; i < outlehoiID.length; i++){
-            //     content += "<div><div>"+outlehoiName[i]+"</div><div><div>"
-            //     $http({
-            //         method : "GET",
-            //         url : "http://localhost:3000/api/comments/"+outlehoiID[i],
-            //     }).then(function mySuccess(response) {
-            //         console.log(response.data.length);
-            //         for(var j = 0; j < response.data.length; j++){
-            //             content += "<a>"+response.data[j].userName+"</a>"+response.data[j].content+"</div></div></div>";
-            //         }
-            //         console.log(content);
-            //         // $scope.listComment = response.data;
-            //     }, function myError(response) {
-            //         console.log(response.statusText);
-            //     });
-            // }
-            // console.log(content);
-            // $('#content').html(content);
-            // console.log(outlehoiName);
-            // console.log(outlehoiID);
-        }, function myError(response) {
-            console.log(response);
-        }); 
-    }
-    listComment();
-});
+//             // //lọc mảng lehoiID
+//             // for (i = 0; i < lenlehoiID; i++) {
+//             //     objlehoiID[arrlehoiID[i]] = 0;
+//             // }
+//             // for (i in objlehoiID) {
+//             //     outlehoiID.push(i);
+//             // }
+//             // // $scope.listLeHoi = outlehoiName;
+//             // // $scope.listLeHoi.ID = outlehoiID;
+//             // var content = "";
+//             // for(i = 0; i < outlehoiID.length; i++){
+//             //     content += "<div><div>"+outlehoiName[i]+"</div><div><div>"
+//             //     $http({
+//             //         method : "GET",
+//             //         url : "http://localhost:3000/api/comments/"+outlehoiID[i],
+//             //     }).then(function mySuccess(response) {
+//             //         console.log(response.data.length);
+//             //         for(var j = 0; j < response.data.length; j++){
+//             //             content += "<a>"+response.data[j].userName+"</a>"+response.data[j].content+"</div></div></div>";
+//             //         }
+//             //         console.log(content);
+//             //         // $scope.listComment = response.data;
+//             //     }, function myError(response) {
+//             //         console.log(response.statusText);
+//             //     });
+//             // }
+//             // console.log(content);
+//             // $('#content').html(content);
+//             // console.log(outlehoiName);
+//             // console.log(outlehoiID);
+//         }, function myError(response) {
+//             console.log(response);
+//         }); 
+//     }
+//     listComment();
+// });
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -862,9 +862,6 @@ app.config(function($routeProvider) {
     })
     .when("/addLeHoi", {
         templateUrl : "chucnang/addLeHoi.html"
-    })
-    .when("/listComment", {
-        templateUrl : "chucnang/listComment.html"
     })
     .when("/listFeedBack", {
         templateUrl : "chucnang/listFeedBack.html"

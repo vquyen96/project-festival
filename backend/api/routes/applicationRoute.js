@@ -58,14 +58,14 @@ module.exports = function(app){
 		.delete(tongiaoController.delete);	
 
 	// comment api.
-	app.route('/api/comments')
-		.get(commentController.getList)
-		.post(commentController.add);	
+	// app.route('/api/comments')
+	// 	.get(commentController.getList)
+	// 	.post(commentController.add);	
 
-	app.route('/api/comments/:id')
-		.get(commentController.getDetail)
-		.put(commentController.update)
-		.delete(commentController.delete);
+	// app.route('/api/comments/:id')
+	// 	.get(commentController.getDetail)
+	// 	.put(commentController.update)
+	// 	.delete(commentController.delete);
 
 	// feedback api.
 	app.route('/api/feedback')
