@@ -447,6 +447,27 @@ footer a{
 	width: 100%;
 }
 /*end footer*/
+
+/*start logoChangeAdminpage*/
+.btnChangeAdminpage{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #fff;
+	border-radius: 50%;
+	padding: 10px;
+}
+.btnChangeAdminpage a img{
+	height: 40px;
+	transition: 1s;
+}
+.btnChangeAdminpage:hover a img{
+	transform: rotate(360deg);
+}
+
+/*end logoChangeAdminpage*/
+
+
 /*start profile*/
 .accout-center{
 	padding: 20px 0;
@@ -471,6 +492,7 @@ footer a{
 	margin: 10px 0;
 }
 /*End profile*/
+
 @media screen and (max-width: 992px){
 	.searchHot{
 		border-left: 0;
