@@ -6,23 +6,23 @@ const Transaction = require('mongoose-transactions'); // phải chạy
 // lệnh npm install mongoose-transactions --save
 
 exports.saveCart = function(req, resp){
-	var listOrderFestivals = JSON.parse(req.body.products);
+	var listOrderProducts = JSON.parse(req.body.products);
 
 	// Lấy productId từ trong cart truyền lên, tạo ra một mảng
 	// các objectId.
 	var ids = [];
-	var mapFestival = {}; // Lưu map product để lấy số lượng sản phẩm về sau.
-	for (var i = 0; i < listOrderFestivals.length; i++) {
-		mapFestival[listOrderFestivals[i].id] = listOrderFestivals[i].quantity;
+	var mapProduct = {}; // Lưu map product để lấy số lượng sản phẩm về sau.
+	for (var i = 0; i < listOrderProducts.length; i++) {
+		mapProduct[listOrderProducts[i].id] = listOrderProducts[i].quantity;
 				
-		var objectId = mongoose.Types.ObjectId(listOrderFestivals[i].id);		
+		var objectId = mongoose.Types.ObjectId(listOrderProducts[i].id);		
 		ids.push(objectId);
 	}	
 
 	// Tìm các sản phẩm nằm trong danh sách id truyền lên.
 	Festival.find({
 	    '_id': { $in: ids}
-	}, function(err, festivalResult){
+	}, function(err, productResult){
 
 		var orderDetailArray = [];
 		var totalPrice = 0;
@@ -37,12 +37,12 @@ exports.saveCart = function(req, resp){
 		});
 
 		// Tạo mảng order detail.
-	    for (var i = 0; i < festivalResult.length; i++) {
+	    for (var i = 0; i < productResult.length; i++) {
 	     	var orderDetail = new OrderDetail({
 	     		orderId: order._id,
-	     		productId: festivalResult[i]._id,
-	     		quantity: mapFestival[festivalResult[i]._id],
-	     		unitPrice: festivalResult[i].price
+	     		productId: productResult[i]._id,
+	     		quantity: mapProduct[productResult[i]._id],
+	     		unitPrice: productResult[i].price
 	     	});
 	     	// Thêm từng đối tượng order detail vào mảng.
 	     	orderDetailArray.push(orderDetail);
@@ -51,7 +51,7 @@ exports.saveCart = function(req, resp){
 	    }
 	    // Set tổng giá cho order.
 	    order.totalPrice = totalPrice;
-	    
+	    console.log(order);
 	    // Tiến hành lưu vào database với transaction, đảm bảo tất cả đều thành công.
 	    var transaction = new Transaction();
 	    // Lưu order
