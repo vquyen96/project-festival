@@ -1,7 +1,6 @@
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlRegister', function($scope, $http){
 	$scope.btnSbm = function(){
-        alert(1);
 		console.log($scope.data);
 		$http({
             method : "POST",
