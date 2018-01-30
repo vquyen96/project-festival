@@ -235,7 +235,12 @@ nav ul{
 
 /*end contact*/
 /*start detail*/
-
+/*.detailLeftTitle{
+	display: inline-block;
+}*/
+.detailAddCart{
+	float: right;
+}
 #map {
     height: 400px;
     width: 100%;

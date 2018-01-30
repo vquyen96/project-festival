@@ -4,13 +4,11 @@ var findController = require('../controllers/findController');
 var commentController = require('../controllers/commentController');
 var feedbackController = require('../controllers/feedbackController');
 var cartController = require('../controllers/cartController');
+var addController = require('../controllers/addController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
 var tongiaoController = require('../controllers/tongiaoController');
-var quantamController = require('../controllers/quantamController');
-var thamgiaController = require('../controllers/thamgiaController');
-
 module.exports = function(app){
 	// users api.
 	app.route('/api/users')
@@ -81,25 +79,8 @@ module.exports = function(app){
 		.put(feedbackController.update)
 		.delete(feedbackController.delete);	
 
-	// thamgia api.
-	app.route('/api/thamgia')
-		.get(thamgiaController.getList)
-		.post(thamgiaController.add);	
-
-	app.route('/api/thamgia/:id')
-		.get(thamgiaController.getDetail)
-		.put(thamgiaController.update)
-		.delete(thamgiaController.delete);	
-
-	// quantam api.
-	app.route('/api/quantam')
-		.get(quantamController.getList)
-		.post(quantamController.add);	
-
-	app.route('/api/quantam/:id')
-		.get(quantamController.getDetail)
-		.put(quantamController.update)
-		.delete(quantamController.delete);	
+	app.route('/api/add')
+		.post(addController.add);	
 
 	// image api.	
 	app.post('/api/images', function(req, res) {		
