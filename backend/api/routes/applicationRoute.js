@@ -3,6 +3,7 @@ var festivalController = require('../controllers/festivalController');
 var findController = require('../controllers/findController');
 var commentController = require('../controllers/commentController');
 var feedbackController = require('../controllers/feedbackController');
+var cartController = require('../controllers/cartController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
@@ -56,6 +57,9 @@ module.exports = function(app){
 		.get(tongiaoController.getDetail)
 		.put(tongiaoController.update)
 		.delete(tongiaoController.delete);	
+
+	app.route('/api/cart')
+		.post(cartController.saveCart);
 
 	// comment api.
 	// app.route('/api/comments')

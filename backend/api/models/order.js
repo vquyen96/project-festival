@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('thamgia', {
-	userID: String,
-	fesID:String,
+module.exports = mongoose.model('orders', {	
+	customerId: String,
+	totalPrice: Number,
+	shipName: String,
 	createdAt: {
 		type: Date,
 		default: Date.now
