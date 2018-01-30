@@ -84,16 +84,16 @@
 			<div class="row">
 				<h2>Lễ hội liên quan</h2>
 			</div>
-			<div class="row detailRightItem">
+			<div class="row detailRightItem" ng-repeat='data in listDataLeft'>
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
-					<a href=""><img src="imgs/hoihoadang.jpg"></a>
+					<a href=""><img ng-src="{{data.url2}}"></a>
 					
 				</div>
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
-					<h4><a href=""> Hội Hoa Đăng</a></h4>
+					<h4><a href=""> {{data.nameLeHoi}}</a></h4>
 				</div>
 			</div>
-			<div class="row detailRightItem">
+			<!-- <div class="row detailRightItem">
 				<div class="detailrightimg col-md-4 col-sm-12 col-xs-12 thumbnail">
 					<img src="imgs/trungthu.jpg">
 				</div>
@@ -132,7 +132,7 @@
 				<div class="detailrightcontent col-md-8 col-sm-12 col-xs-12">
 					<h4>Hội Đua Thuyền</h4>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 

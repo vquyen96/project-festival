@@ -134,6 +134,36 @@ app.controller('ctrlDetail', function($scope, $http){
             localStorage.setItem("kinhdo", response.data.kinhdo);
             localStorage.setItem("vido", response.data.vido);
             localStorage.setItem("lehoiName", response.data.nameLeHoi);
+            localStorage.setItem("lehoiName", response.data.nameLeHoi);
+            if (response.data.tongiao == 'Không') {
+                switch(response.data.lucdia){
+                    case 'Việt Nam':localStorage.setItem("find", 0);
+                    break;
+                    case 'Châu Á':localStorage.setItem("find", 1);
+                    break;
+                    case 'Châu Âu':localStorage.setItem("find", 2);
+                    break;
+                    case 'Châu Mỹ':localStorage.setItem("find", 3);
+                    break;
+                    case 'Châu Phi':localStorage.setItem("find", 4);
+                    break;
+                    case 'Châu Úc':localStorage.setItem("find", 5);
+                    break;
+                }
+            }
+            else{
+                switch(response.data.tongiao){
+                    case 'Đạo Phật':localStorage.setItem("find", 6);
+                    break;
+                    case 'Đạo Hồi':localStorage.setItem("find", 7);
+                    break;
+                    case 'Đạo Thiên Chúa':localStorage.setItem("find", 8);
+                    break;
+                    case 'Đạo Hindu':localStorage.setItem("find", 9);
+                    break;
+                }
+            }
+
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -206,6 +236,46 @@ app.controller('ctrlDetail', function($scope, $http){
     setTimeout(function(){ 
         initMap();
     }, 2000);
+    setTimeout(function(){ 
+        var searchVal = localStorage.getItem("find");
+
+        switch(searchVal){
+            case '0': $scope.searchTitle = 'Việt Nam';
+            break;
+            case '1': $scope.searchTitle = 'Châu Á';
+            break;
+            case '2': $scope.searchTitle = 'Châu Âu';
+            break;
+            case '3': $scope.searchTitle = 'Châu Mỹ';
+            break;
+            case '4': $scope.searchTitle = 'Châu Phi';
+            break;
+            case '5': $scope.searchTitle = 'Châu Úc';
+            break;
+            case '6': $scope.searchTitle = 'Đạo Phật';
+            break;
+            case '7': $scope.searchTitle = 'Đạo Hồi';
+            break;
+            case '8': $scope.searchTitle = 'Đạo Thiên Chúa';
+            break;
+            case '9': $scope.searchTitle = 'Đạo Hindu';
+            break;
+            default: $scope.searchTitle = 'Tất Cả';      
+        }
+        searchVal = Number(searchVal);
+        
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.listDataLeft = response.data.listFestival;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }, 2000);
+
+    
     
 });
 app.controller('ctrlSearch', function($scope, $http){
