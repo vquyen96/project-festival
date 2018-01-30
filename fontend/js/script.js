@@ -331,5 +331,8 @@ app.config(function($routeProvider) {
     .when("/search", {
         templateUrl : "chucnang/search.html"
     })
+    .when("/profile", {
+        templateUrl : "chucnang/accoutcenter.html"
+    })    
 });
 // AIzaSyDTUdSTKgfHqp4a0WOAY5JuBmkgl2obY5o 
