@@ -174,10 +174,10 @@ exports.add = function(req, resp){
 
 
 
-	var festival = new Festival(req.body);	
-	festival.save(function(err){				
-		resp.send(festival);
-	});
+	// var festival = new Festival(req.body);	
+	// festival.save(function(err){				
+	// 	resp.send(festival);
+	// });
 }
 
 exports.update = function(req, resp){
