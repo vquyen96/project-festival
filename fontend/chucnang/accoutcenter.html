@@ -1,0 +1,62 @@
+<div class="container accout-center">
+	<div class="col-md-5 col-sm-12 col-xs-12">
+		<div class="acc-photo-and-infomations">
+			<img src="imgs/user-avata/user rango.jpg">
+			<div class="infomations">
+				<b>
+					Tài Khoản:
+				</b>
+				Rango
+			</div>
+			<div class="infomations">
+				<b>
+					Ngày Sinh:
+				</b>
+				1/1/2011
+			</div>
+			<div class="infomations">
+				<b>
+					Số Điện Thoại:
+				</b>
+				0123456789
+			</div>
+			<div class="infomations">
+				<b>
+					Email:
+				</b>
+				ABCZWE@gmail.com
+			</div>
+		</div>
+	</div>
+	<div class="col-md-7 col-sm-12 col-xs-12">
+		<form method="post" class="change-infomation">
+			<div class="form-group">
+				<label>Tên Tài Khoản</label>
+				<input type="text" name="username" placeholder="Điền vào tài khoản của bạn" id="username" class="form-control" ng-model="user.username">
+			</div>
+			<div class="form-group">
+				<label>Mật khẩu</label>
+				<input type="text" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="user.password">
+			</div>
+			<div class="form-group">
+				<label>Nhập lại mật khẩu</label>
+				<input type="text" name="re-password" placeholder="Nhập Lại mật khẩu" id="re-password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" name="email" placeholder="Điền vào Email của bạn" id="email" class="form-control" ng-model="user.email">
+			</div>
+			<div class="form-group">
+				<label>Ngày Sinh</label>
+				<input type="text" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="user.birthday">
+			</div>
+			<div class="form-group">
+				<label>URL Ảnh Đại Diện</label>
+				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="user.avaUrl" class="form-control">
+			</div>
+			<div>
+				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnAdd()">
+			</div>
+		</form>
+	</div>
+</div>

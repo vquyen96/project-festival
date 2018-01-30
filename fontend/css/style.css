@@ -467,6 +467,32 @@ footer a{
 
 /*end logoChangeAdminpage*/
 
+
+/*start profile*/
+.accout-center{
+	padding: 20px 0;
+}
+.acc-photo-and-infomations{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.acc-photo-and-infomations img{
+	width: 100px;
+	border-radius: 50%;
+}
+.change-infomation{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.infomations{
+	margin: 10px 0;
+}
+/*End profile*/
+
 @media screen and (max-width: 992px){
 	.searchHot{
 		border-left: 0;
