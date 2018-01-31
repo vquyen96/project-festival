@@ -1,0 +1,40 @@
+<div class="row" ng-controller="ctrlListFeedBack">
+	<div class="listLeHoiHeader">
+		<input type="button" name="" class="btn btn-warning" value="Thêm Lễ Hội"  ng-click="btnAddUser()"></input>
+	</div>
+	<div>
+		<table class="listLeHoiTable">
+			<tr>
+				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Tên tài khoản <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortEmail(currentPage)">Email<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn">Thời gian gửi <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortTitle(currentPage)">Tiêu đề<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortContent(currentPage)">Nội dung<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn">Xóa góp ý</span></a></td>
+				<td><a href="" class="btn">Xóa tài khoản</span></a></td>
+				
+			</tr>
+			<tr ng-repeat="data in listFeedBack">
+				<td>{{data.username}}</td>
+				<td>{{data.email}}</td>
+				<td>{{data.createdAt}}</td>
+				<td>{{data.title}}</td>
+				<td>{{data.content}}</td>
+				<td><a href="" class="btn btn-primary" ng-click="btnDelFeedBack(data._id, data.username)">Xóa</a></td>
+				<td><a href="" class="btn btn-danger"  ng-click="btnDelUser(data.userID, data.username, data._id)">Xóa</a></td>
+			</tr>
+			
+		</table>
+		<div>
+		    <ul uib-pagination total-items="totalItems" 
+		    	ng-model="currentPage" 
+		    	ng-click="setPage(currentPage)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "10">		
+		    </ul>
+		</div>
+	</div>
+</div>
