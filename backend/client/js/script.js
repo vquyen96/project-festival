@@ -229,36 +229,45 @@ app.controller('ctrlAddUser', function($scope, $http){
     else{
         $scope.btnAdd = function() {
             console.log($scope.user);
-            $http({
-                method : "POST",
-                url : "http://localhost:3000/api/users",
-                data : $scope.user
-            }).then(function mySuccess(response) {
-                console.log(response);
-                //Thông báo khi thành công
-                $('.alert-success').text('Thành Công');
-                $('.alert-success').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-success').attr('style','display : none');
-                },3000);
-                //Xóa các trường input khi thành công
-                $scope.user.username = "";
-                $scope.user.password = "";
-                $scope.user.email = "";
-                $scope.user.birthday = "";
-                $scope.user.level = "1";
-                $scope.user.avaUrl = "";
-            }, function myError(response) {
-                console.log(response);
-                //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data);
-                $('.alert-danger').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-danger').attr('style','display : none');
-                },3000);
-            });
+            var day = $scope.user.birthday.getTime();
+            var today = new Date();
+            today=today.getTime();
+            if(today>day){
+                  $http({
+                    method : "POST",
+                    url : "http://localhost:3000/api/users",
+                    data : $scope.user
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    //Thông báo khi thành công
+                    $('.alert-success').text('Thành Công');
+                    $('.alert-success').attr('style','display : inline-block');
+                    //Xóa thông báo sau 3s
+                    setTimeout(function(){
+                        $('.alert-success').attr('style','display : none');
+                    },3000);
+                    //Xóa các trường input khi thành công
+                    $scope.user.username = "";
+                    $scope.user.password = "";
+                    $scope.user.email = "";
+                    $scope.user.birthday = "";
+                    $scope.user.level = "1";
+                    $scope.user.avaUrl = "";
+                }, function myError(response) {
+                    console.log(response);
+                    //Thông báo khi có lỗi                      
+                    $('.alert-danger').text(response.data);
+                    $('.alert-danger').attr('style','display : inline-block');
+                    //Xóa thông báo sau 3s
+                    setTimeout(function(){
+                        $('.alert-danger').attr('style','display : none');
+                    },3000);
+                });     
+ 
+            }
+            else{
+                alert("Bạn không được chon ngày tương lai !");
+            }   
 
         };
     }
