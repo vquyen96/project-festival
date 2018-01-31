@@ -33,7 +33,7 @@
 	  </li>
 	</div>
 	<div class="container">
-		<div class="col-md-8 col-sm-12 col-xs-12">
+		<div class="col-md-8 col-sm-12 col-xs-12" id="detailcontent">
 			<h2 class="detailLeftTitle">
 				{{data.nameLeHoi}}
 				<a href="" class="btn btn-success detailAddCart" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1)'>
@@ -53,7 +53,7 @@
 					{{data.chitiet}}
 				</p>
 			</div>
-			<a href="uploads/CARVAN.pdf">
+			<a href="" class="btn btn-warning" ng-click="detailDowload()">
 				<span class="glyphicon glyphicon-save"></span>
 				Tải về
 			</a>
@@ -63,6 +63,7 @@
 			<!-- end map -->
 		    
 		</div>
+		<div id="editor"></div>
 		<div class="col-md-4 col-sm-12 col-xs-12">
 			<div class="row">
 				<h2>Lễ hội liên quan</h2>
