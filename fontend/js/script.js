@@ -32,18 +32,35 @@ app.controller('ctrlHead', function($scope, $http){
         localStorage.removeItem("level");
         window.location.href = "index.html";
     }
-    // $scope.btnChangeAdmin = function(){
-    //     if(level == 1){
-    //         alert('Bạn không được chuyển trang vì bạn không phải quản lý')
-    //     }
-    //     else{
-    //         window.location.href = "../backend/client/index.html";
-    //     }
-    // }
+    
     $scope.btnHeaderBar = function(){
         $('nav').slideToggle();
     }
 
+});
+app.controller('ctrlCart', function($scope, $http){
+    alert(1);
+    var level = localStorage.getItem("level");
+    if (level == 2|| level == 3) {
+        $('#btnChangeAdminimg').attr('src','../imgs/logochange.png');
+
+    }
+    else{
+        $('#btnChangeAdminimg').attr('src','../imgs/icon_cart.png');
+    }
+    var cart = localStorage.getItem('cart');
+    cart = JSON.parse(cart);
+    $('.countCart').text(cart.products.length);
+    $scope.btnChangeAdmin = function(){
+        if(level == 2|| level == 3){
+            
+            window.location.href = "../backend/client/index.html";
+        }
+        else{
+            window.location.href = "index.html#!/cart";
+            alert(1);  
+        }
+    }
 });
 app.controller('ctrlNav', function($scope, $http){
     $scope.menuSearch = function(val){
