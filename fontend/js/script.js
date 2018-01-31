@@ -300,6 +300,20 @@ app.controller('ctrlDetail', function($scope, $http){
     //     }
         
     // }
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    };
+
+    $scope.detailDowload=function () {   
+        doc.fromHTML($('#detailcontent').html(), 15, 15, {
+            'width': 170,
+                'elementHandlers': specialElementHandlers
+        });
+        doc.save('festivals-file.pdf');
+    };
     function initMap() {
         var vido = localStorage.getItem("vido");
         var vido1 = parseFloat(vido);
