@@ -10,7 +10,7 @@ app.controller('ctrlRegister', function($scope, $http){
                 url : "http://localhost:3000/api/users",
                 data: $scope.data
             }).then(function mySuccess(response) {
-                alert(Thêm Tài khoản thành công);
+                alert("Thêm Tài khoản thành công");
                 console.log(response);
                 window.location.href = "login.html";
             }, function myError(response) {
