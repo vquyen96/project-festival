@@ -475,7 +475,26 @@ app.controller('ctrlMedia', function($scope, $http){
     }
 });
 app.controller('ctrlContact', function($scope, $http){
+    var ownerId = localStorage.getItem("ownerId");
+    var ownerName = localStorage.getItem("ownerName");
+    $scope.btnFeedback = function(){
+        $scope.data.userID = ownerId;
+        $http({
+            method : "POST",
+            url : "http://localhost:3000/api/feedback",
+            data: $scope.data
+        }).then(function mySuccess(response) {
+            alert("Cảm ơn bạn đã đóng góp ý kiến !!!");
+            console.log(response);
+            window.location.href = "index.html";
+        }, function myError(response) {
+            alert(response.data);
+        });
+    }
+    console.log($scope.data);
+    
 });
+
 
 app.controller('ctrlCart', function($scope, $http){
     function loadCart(){
@@ -593,6 +612,7 @@ app.controller('ctrlCart', function($scope, $http){
         });   
     }
 });
+
 
 app.config(function($routeProvider) {
     $routeProvider

@@ -54,7 +54,7 @@
           <input type="text" name="username" class="form-control" ng-model="data.username" placeholder="Tài khoản có từ 6-15 kí tự." ng-minlength="6" ng-maxlength="15" required>
           <i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.username.$error.required">Vui lòng điền tài khoản</span>
+            <span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
             <span ng-show="form.username.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
             <span ng-show="form.username.$error.maxlength">Tên truy cập ngắn hơn 15 kí tự</span>
           </div>
@@ -64,28 +64,28 @@
           <input type="email" name="email" class="form-control" ng-model="data.email" placeholder="Ví dụ: abc@gmail.com." required>
           <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
+            <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
             <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
           </div>
         </div>
         <div class="form-group">
           <label>Chủ đề</label>
-          <input type="text" name="description" class="form-control" ng-model="data.description" required>
-          <i class="fa fa-check text-success" ng-show="form.description.$dirty && form.description.$valid"></i>
+          <input type="text" name="title" class="form-control" ng-model="data.title" required>
+          <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.description.$error.required">Vui lòng nhập chủ đề</span>
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập chủ đề</span>
           </div>
         </div>
         <div class="form-group">
           <label>Chi tiết</label>
-          <textarea name="detail" id="detail" class="form-control" ng-model="data.detail" rows="10" required></textarea>
-          <i class="fa fa-check text-success" ng-show="form.detail.$dirty && form.detail.$valid"></i>
+          <textarea name="content" id="content" class="form-control" ng-model="data.content" rows="10" required></textarea>
+          <i class="fa fa-check text-success" ng-show="form.content.$dirty && form.content.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.detail.$error.required">Vui lòng điền ý kiến của bạn xin cảm ơn !</span>
+            <span ng-show="form.content.$dirty && form.content.$error.required">Vui lòng điền ý kiến của bạn xin cảm ơn !</span>
           </div>
         </div>
         <div class="form-group">
-          <input type="submit" name="sbm" value="Gửi đi" class="btn btn-primary" ng-disabled="form.username.$invalid || form.email.$invalid || form.description.$invalid || form.detail.$invalid">
+          <input type="submit" name="sbm" ng-click="btnFeedback()" value="Gửi đi" class="btn btn-primary" ng-disabled="form.username.$invalid || form.email.$invalid || form.title.$invalid || form.content.$invalid">
         </div>
       </form>
     </div>
