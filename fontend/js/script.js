@@ -473,7 +473,8 @@ app.controller('ctrlMedia', function($scope, $http){
         $('#modal-video').modal('hide')
         window.location.href = "index.html#!/detail";
     }
-
+});
+app.controller('ctrlContact', function($scope, $http){
 });
 
 app.controller('ctrlCart', function($scope, $http){
