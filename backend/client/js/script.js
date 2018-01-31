@@ -526,6 +526,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     var countLucDia = 1;
     var countTonGiao = 1;
     var countTimeStart = 1;
+
     getList('none','n','1');
     function getList(value, rev, page){
         var limit = 10
@@ -734,50 +735,49 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
     }
     else{
         $scope.btnAdd = function() {
-            // $scope.festival = {
-            //     "nameLeHoi": $('#nameLeHoi').val(),
-            //     "timeStart": $('#timeStart').val(),
-            //     "timeEnd": $('#timeEnd').val(),
-            //     "diadiem": $('#diadiem').val(),
-            //     "kinhdo": $('#kinhdo').val(),
-            //     "vido": $('#vido').val(),
-            //     "lucdia": $('#lucdia').val(),
-            //     "tongiao": $('#tongiao').val(),
-            //     "chitiet": $('#chitiet').val()
-            // };
-            $http({
-                method : "POST",
-                url : "http://localhost:3000/api/festivals",
-                data : $scope.festival
-            }).then(function mySuccess(response) {
-                console.log(response);
-                //Thông báo khi thành công
-                $('.alert-success').text('Thành Công');
-                $('.alert-success').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-success').attr('style','display : none');
-                },3000);
-                //Xóa các trường input khi thành công
-                $scope.festival = "";
-                // $scope.festival.timeStart = "";
-                // $scope.festival.timeEnd = "";
-                // $scope.festival.diadiem = "";
-                // $scope.festival.kinhdo = "1";
-                // $scope.festival.vido = "1";
-                // $scope.festival.lucdia = "1";
-                // $scope.festival.tongiao = "1";
-                // $scope.festival.chitiet = "1";
-            }, function myError(response) {
-                console.log(response);
-                //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data.errors[0].title + " " + response.data.errors[0].detail);
-                $('.alert-danger').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-danger').attr('style','display : none');
-                },3000);
-            });
+            var daystart = $scope.festival.timeStart.getTime();
+            var dayend = $scope.festival.timeEnd.getTime();
+            var today = new Date();
+            today = today.getTime;
+            if (timeStart>today && timeStart<timeEnd) {
+                $http({
+                    method : "POST",
+                    url : "http://localhost:3000/api/festivals",
+                    data : $scope.festival
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    //Thông báo khi thành công
+                    $('.alert-success').text('Thành Công');
+                    $('.alert-success').attr('style','display : inline-block');
+                    //Xóa thông báo sau 3s
+                    setTimeout(function(){
+                        $('.alert-success').attr('style','display : none');
+                    },3000);
+                    //Xóa các trường input khi thành công
+                    $scope.festival = "";
+                    // $scope.festival.timeStart = "";
+                    // $scope.festival.timeEnd = "";
+                    // $scope.festival.diadiem = "";
+                    // $scope.festival.kinhdo = "1";
+                    // $scope.festival.vido = "1";
+                    // $scope.festival.lucdia = "1";
+                    // $scope.festival.tongiao = "1";
+                    // $scope.festival.chitiet = "1";
+                }, function myError(response) {
+                    console.log(response);
+                    //Thông báo khi có lỗi                      
+                    $('.alert-danger').text(response.data.errors[0].title + " " + response.data.errors[0].detail);
+                    $('.alert-danger').attr('style','display : inline-block');
+                    //Xóa thông báo sau 3s
+                    setTimeout(function(){
+                        $('.alert-danger').attr('style','display : none');
+                    },3000);
+                });
+            }
+        else{
+            alert("Sự kiện không hợp lệ !");
+        }
+
 
         };
     }    
