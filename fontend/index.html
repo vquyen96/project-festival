@@ -173,8 +173,14 @@
 			</div>
 		</div>
 	</footer>
-	<div class="btnChangeAdminpage">
-		<a href="#!cart" ng-click="btnChangeAdmin()"> <img src="imgs/logochange.png"></a>
+	<div ng-controller="ctrlCart">
+		<div  class="btnChangeAdminpage">
+			<a href="" ng-click="btnChangeAdmin()"> 
+				<img src="" id="btnChangeAdminimg">
+ 				<span class="countCart"></span>
+			</a>
+		</div>
+		
 	</div>
 	<!-- <script>
 	  (function() {
