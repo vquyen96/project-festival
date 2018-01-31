@@ -24,7 +24,7 @@ exports.getList = function(req, resp){
 }
 
 exports.getDetail = function(req, resp){	
-	FeedBack.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+	FeedBack.find({ userID: req.params.id, 'status': 1 },function(err, result){
 		resp.send(result);
 	});
 }

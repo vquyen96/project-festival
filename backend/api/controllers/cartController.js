@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
-var Festival = require('../models/festival');
+var Transaction = require('mongoose-transactions'); // phải chạy 
+// lệnh npm install mongoose-transactions --save
 var Order = require('../models/order');
 var OrderDetail = require('../models/order_detail');
-const Transaction = require('mongoose-transactions'); // phải chạy 
-// lệnh npm install mongoose-transactions --save
+var Festival = require('../models/festival');
+
 
 exports.saveCart = function(req, resp){
 	var listOrderProducts = JSON.parse(req.body.products);

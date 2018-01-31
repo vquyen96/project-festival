@@ -14,11 +14,20 @@ app.controller('ctrlHead', function($scope, $http){
             }
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.avaUrl = response.data.avaUrl;
-            $scope.loggedInUsername = response.data.username;
-            localStorage.setItem("ownerName", response.data.username);
-            localStorage.setItem("ownerUrl", response.data.avaUrl);
-            $scope.isLoggedIn = true;
+            if (response.data != null && response.data != undefined && response.data != '') {
+                $scope.avaUrl = response.data.avaUrl;
+                $scope.loggedInUsername = response.data.username;
+                localStorage.setItem("ownerName", response.data.username);
+                localStorage.setItem("ownerUrl", response.data.avaUrl);
+                $scope.isLoggedIn = true;
+            }
+            else{
+                alert('Bạn chưa đăng nhập');
+                localStorage.removeItem("ownerId");
+                localStorage.removeItem("tokenKey");
+                localStorage.removeItem("level"); 
+            }
+            
         }, function myError(response) {
             $scope.isLoggedIn = false;
             console.log(response);
