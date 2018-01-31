@@ -41,10 +41,10 @@
 							</div>
 							<div class="form-group">
 								<label>Xác nhận lại mật khẩu</label>
-								<input type="password" name="repassword" id="repassword" class="form-control" ng-model="data.repassword" placeholder="Nhập lại mật khẩu" required>
-								<i class="fa fa-check text-success" ng-show="data.password == data.repassword"></i>
+								<input type="password" name="repassword" id="repassword" class="form-control" ng-model="repassword" placeholder="Nhập lại mật khẩu" required>
+								<i class="fa fa-check text-success" ng-show="data.password == repassword"></i>
 								<div class="text-danger">
-									<span ng-show="data.password !== data.repassword">Mật khẩu không trùng khớp</span>
+									<span ng-show="data.password !== repassword">Mật khẩu không trùng khớp</span>
 								</div>
 							</div>
 							<div class="form-group">
@@ -58,7 +58,7 @@
 							</div>
 							<div class="form-group">
 								<label>Ngày sinh</label>
-								<input type="text" name="birthday" id="birthday" class="form-control" ng-model="data.birthday" placeholder="Định dạng dd/mm/yyyy.">
+								<input type="date" name="birthday" id="birthday" class="form-control" ng-model="data.birthday" placeholder="Định dạng dd/mm/yyyy.">
 							</div>
 							<div class="form-group">
 								<label></label>
