@@ -1,0 +1,28 @@
+<div class="container" ng-controller="ctrlCart">
+	<h2>Danh sách vé đã đặt</h2>
+	<table class="table">
+		<tr>
+			<td><b>Lễ Hội</b></td>
+			<td><b>Giá vé</b></td>
+			<td><b>Số lượng</b></td>
+			<td><b>Tổng giá</b></td>
+		</tr>
+		<tr ng-repeat="data in listData">
+			<td>{{data.name}}</td>
+			<td>{{data.price}} <b>VND</b></td>
+			<td>
+				{{data.quantity}}
+				<a href="" class="btn btn-success" ng-click="btnAddToCart(data.id, data.name, data.price, 1)">+</a>
+				<a href="" class="btn btn-warning" ng-click="btnAddToCart(data.id, data.name, data.price, -1)">-</a>
+			</td>
+			<td>{{data.totalItemPrice}} <b>VND</b></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td class="CartTotalPrice"></td>
+		</tr>
+	</table>
+	<a href="" class="btn btn-success" ng-click="btnPay()"><b>Thanh Toán</b></a>
+</div>
