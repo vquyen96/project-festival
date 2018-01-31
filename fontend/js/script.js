@@ -38,34 +38,39 @@ app.controller('ctrlHead', function($scope, $http){
     }
 
 });
-app.controller('ctrlCart', function($scope, $http){
-    alert(1);
+app.controller('ctrlbtnCart', function($scope, $http){
     var level = localStorage.getItem("level");
+    //phan quyen` admin
     if (level == 2|| level == 3) {
-        $('#btnChangeAdminimg').attr('src','../imgs/logochange.png');
+        $('#btnChangeAdminimg').attr('src','imgs/logochange.png');
 
     }
+    //phan quyen user
     else{
-        $('#btnChangeAdminimg').attr('src','../imgs/icon_cart.png');
+        $('#btnChangeAdminimg').attr('src','imgs/icon_cart.png');
+        //lấy đơn hàng
+        var cart = localStorage.getItem('cart');
+        //nếu đơn hàng tồn tại
+        if (cart != null && cart != undefined) {
+            //chuyển sang json
+            cart = JSON.parse(cart);
+            //set giá trị
+            $('.countCart').text(cart.products.length);
+        } 
     }
-    var cart = localStorage.getItem('cart');
-    cart = JSON.parse(cart);
-    $('.countCart').text(cart.products.length);
+    //Khi click nut cart = changeadmin
     $scope.btnChangeAdmin = function(){
         if(level == 2|| level == 3){
-            
             window.location.href = "../backend/client/index.html";
         }
         else{
-            window.location.href = "index.html#!/cart";
-            alert(1);  
+            window.location.href = "index.html#!/cart"; 
         }
     }
 });
 app.controller('ctrlNav', function($scope, $http){
     $scope.menuSearch = function(val){
         localStorage.setItem("find", val);
-        // window.location.href('index.html#!/search');
         window.open('index.html#!/search');
     }
     
