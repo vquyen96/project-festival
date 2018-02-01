@@ -505,6 +505,35 @@ app.controller('ctrlContact', function($scope, $http){
 });
 
 
+/*code api hanh*/
+app.controller('ctrlAccountCenter' , function($scope, $http){
+    $scope.btnChange = function(){
+    var day = $scope.data.birthday.getTime();
+    var today = new Date();
+        today=today.getTime();
+    if(today>day){
+        // $http({
+        //         method : "POST",
+        //         url : "http://localhost:3000/api/accoutcenter",
+        //         data: $scope.data
+        //     }).then(function mySuccess(response) {
+        //         alert("Thêm Tài khoản thành công");
+        //         console.log(response);
+        //         window.location.href = "login.html";
+        //     }, function myError(response) {
+        //         alert(response.data);
+        //     });
+        alert("Thông Tin tài khoản được thay đổi thành công !");
+        }
+        else{
+            alert("Bạn không được chọn ngày tương lai !");
+        }
+        console.log($scope.data);
+        
+    }
+    });
+/*code api hanh*/
+
 app.controller('ctrlCart', function($scope, $http){
     function loadCart(){
         var cart = localStorage.getItem('cart');
