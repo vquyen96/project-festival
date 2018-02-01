@@ -28,31 +28,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-7 col-sm-12 col-xs-12">
-		<form method="post" name="form" class="change-infomation">
+	<div class="col-md-7 col-sm-12 col-xs-12" ng-controller="ctrlAccountCenter">
+		<form method="post" name="form" class="change-infomation" ng-submit="register()" novalidate>
 			<div class="form-group">
 				<label>Tên Tài Khoản</label>
 				<input type="text" name="username" placeholder="Điền vào tài khoản của bạn" id="username" class="form-control" ng-model="data.username" ng-minlength="6" ng-maxlength="15" required>
 				<i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
 				<div class="text-danger">
-					<span ng-show="form.userName.$dirty && form.userName.$error.required">Vui lòng điền tài khoản</span>
-					<span ng-show="form.userName.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
-					<span ng-show="form.userName.$error.maxlength">Tên truy cập phải ngắn hơn 15 kí tự</span>
+					<span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
+					<span ng-show="form.username.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
+					<span ng-show="form.username.$error.maxlength">Tên truy cập ngắn hơn 15 kí tự</span>
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Mật khẩu</label>
-				<input type="text" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="data.password" ng-minlength="6" ng-maxlength="15" required>
-				<i class="fa fa-check text-success" ng-show="form.userPass.$dirty && form.userPass.$valid"></i>
+				<input type="password" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="data.password" ng-minlength="6" ng-maxlength="15" required>
+				<i class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></i>
 				<div class="text-danger">
-					<span ng-show="form.userPass.$dirty && form.userPass.$error.required">Vui lòng điền mật khẩu</span>
-					<span ng-show="form.userPass.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
-					<span ng-show="form.userPass.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
+					<span ng-show="form.password.$dirty && form.password.$error.required">Vui lòng điền mật khẩu</span>
+					<span ng-show="form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
+					<span ng-show="form.password.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Nhập lại mật khẩu</label>
-				<input type="text" name="re-password" placeholder="Nhập Lại mật khẩu" id="re-password" class="form-control" required>
+				<input type="password" name="repassword" placeholder="Nhập Lại mật khẩu" id="re-password" class="form-control" ng-model="repassword" required>
 				<i class="fa fa-check text-success" ng-show="form.repassword.$dirty && data.password == repassword"></i>
 				<div class="text-danger">
 					<span ng-show="form.repassword.$dirty && data.password !== repassword">Mật khẩu không trùng khớp</span>
@@ -69,14 +69,14 @@
 			</div>
 			<div class="form-group">
 				<label>Ngày Sinh</label>
-				<input type="text" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="user.birthday">
+				<input type="date" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="data.birthday">
 			</div>
 			<div class="form-group">
 				<label>URL Ảnh Đại Diện</label>
 				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="user.avaUrl" class="form-control">
 			</div>
 			<div>
-				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnAdd()">
+				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnChange()" ng-disabled="form.username.$invalid || form.password.$invalid || form.repassword.$invalid ||form.email.$invalid">
 			</div>
 		</form>
 	</div>
