@@ -1,34 +1,28 @@
-<div class="container accout-center">
+<div class="container accout-center" ng-controller="ctrlAccountCenter">
 	<div class="col-md-5 col-sm-12 col-xs-12">
 		<div class="acc-photo-and-infomations">
-			<img src="imgs/user-avata/user rango.jpg">
+			<img src="{{avaUrl}}">
 			<div class="infomations">
 				<b>
 					Tài Khoản:
 				</b>
-				Rango
+				{{username}}
 			</div>
 			<div class="infomations">
 				<b>
 					Ngày Sinh:
 				</b>
-				1/1/2011
-			</div>
-			<div class="infomations">
-				<b>
-					Số Điện Thoại:
-				</b>
-				0123456789
+				{{bithday}}
 			</div>
 			<div class="infomations">
 				<b>
 					Email:
 				</b>
-				ABCZWE@gmail.com
+				{{email}}
 			</div>
 		</div>
 	</div>
-	<div class="col-md-7 col-sm-12 col-xs-12" ng-controller="ctrlAccountCenter">
+	<div class="col-md-7 col-sm-12 col-xs-12">
 		<form method="post" name="form" class="change-infomation" ng-submit="register()" novalidate>
 			<div class="form-group">
 				<label>Tên Tài Khoản</label>
@@ -73,7 +67,7 @@
 			</div>
 			<div class="form-group">
 				<label>URL Ảnh Đại Diện</label>
-				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="user.avaUrl" class="form-control">
+				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="data.avaUrl" class="form-control">
 			</div>
 			<div>
 				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnChange()" ng-disabled="form.username.$invalid || form.password.$invalid || form.repassword.$invalid ||form.email.$invalid">
