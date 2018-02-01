@@ -504,7 +504,16 @@ footer a{
 	margin: 10px 0;
 }
 /*End profile*/
-
+/*Start cart */
+.cartBorderInfoPay{
+	border-bottom: 5px solid #fc8804;
+	margin: 10px;
+}
+.cartInfoPay{
+	display: none;
+	margin: 0 20px;
+}
+/*End cart*/
 @media screen and (max-width: 992px){
 	.searchHot{
 		border-left: 0;
