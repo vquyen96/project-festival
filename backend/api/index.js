@@ -1,16 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 // Kết nối database.
 const mongoose = require('mongoose');
-const fileUpload = require('express-fileupload');
 mongoose.connect('mongodb://localhost/projectFestival');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});
 
 var app = express();
 var port = 3000;

@@ -235,7 +235,12 @@ nav ul{
 
 /*end contact*/
 /*start detail*/
-
+/*.detailLeftTitle{
+	display: inline-block;
+}*/
+.detailAddCart{
+	float: right;
+}
 #map {
     height: 400px;
     width: 100%;
@@ -266,7 +271,7 @@ nav ul{
 .detailrightcontent:hover a{
 	margin-left: 20px;
 }
-.detailComment{
+/*.detailComment{
 	background: #f2f3f5;
 	padding: 8px;
 	border: 1px solid #dddfe2;
@@ -291,7 +296,7 @@ nav ul{
 }
 .detailCommentContent a{
 	font-weight: bold;
-}
+}*/
 /*end detail*/
 
 /*start media*/
@@ -447,6 +452,58 @@ footer a{
 	width: 100%;
 }
 /*end footer*/
+
+/*start logoChangeAdminpage*/
+.btnChangeAdminpage{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #f5f4f3;
+	border-radius: 50%;
+	padding: 12px;
+}
+.btnChangeAdminpage a img{
+	height: 50px;
+	transition: 1s;
+}
+.btnChangeAdminpage:hover a img{
+	transform: rotate(-360deg);
+}
+.countCart{
+	position: absolute;
+	top: 22px;
+	left: 35px;
+	color: red;
+	font-weight: bold;
+}
+
+/*end logoChangeAdminpage*/
+
+
+/*start profile*/
+.accout-center{
+	padding: 20px 0;
+}
+.acc-photo-and-infomations{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.acc-photo-and-infomations img{
+	width: 100px;
+	border-radius: 50%;
+}
+.change-infomation{
+	border-radius: 10px;
+	padding: 20px;
+	background:#F7F8f9;
+	box-shadow: 5px 10px 8px #888888;
+}
+.infomations{
+	margin: 10px 0;
+}
+/*End profile*/
 
 @media screen and (max-width: 992px){
 	.searchHot{

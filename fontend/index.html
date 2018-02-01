@@ -57,9 +57,8 @@
 					<i class="fa fa-sign-out" aria-hidden="true"></i>
 	    			Log Out
 				</a>
-				<a href="" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn" ng-click="btnChangeAdmin()">
+				<a href="#!profile" class="headerUserAva col-md-6 col-sm-6 col-xs-6" ng-show="isLoggedIn">
 					<img src="{{avaUrl}}" class="headerAva">
-					
 	    			{{loggedInUsername}}
 				</a>
 			</div>
@@ -75,7 +74,7 @@
 				</a>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
-				<a href="#!search" ng-click="menuSearch('0')">
+				<a href="" ng-click="menuSearch('0')">
 					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					Việt Nam
 				</a>
@@ -86,11 +85,11 @@
 					Châu Lục
 				</a>			
 				<ul class="navDrop">
-				    <li><a href="#!search" ng-click="menuSearch('1')">Châu Á</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('2')">Châu Âu</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('3')">Châu Mỹ</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('4')">Châu Phi</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('5')">Châu Úc</a></li>
+				    <li><a href="" ng-click="menuSearch('1')">Châu Á</a></li>
+				    <li><a href="" ng-click="menuSearch('2')">Châu Âu</a></li>
+				    <li><a href="" ng-click="menuSearch('3')">Châu Mỹ</a></li>
+				    <li><a href="" ng-click="menuSearch('4')">Châu Phi</a></li>
+				    <li><a href="" ng-click="menuSearch('5')">Châu Úc</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
@@ -99,10 +98,10 @@
 					Tôn Giáo
 				</a>				
 				<ul class="navDrop">
-				    <li><a href="#!search" ng-click="menuSearch('6')">Đạo Phật</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('7')">Đạo Hồi</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('8')">Đạo Thiên Chúa</a></li>
-				    <li><a href="#!search" ng-click="menuSearch('9')">Đạo Hindu</a></li>
+				    <li><a href="" ng-click="menuSearch('6')">Đạo Phật</a></li>
+				    <li><a href="" ng-click="menuSearch('7')">Đạo Hồi</a></li>
+				    <li><a href="" ng-click="menuSearch('8')">Đạo Thiên Chúa</a></li>
+				    <li><a href="" ng-click="menuSearch('9')">Đạo Hindu</a></li>
 				 </ul>
 			</li>
 			<li class="navItem col-md-2 col-sm-2 col-xs-12">
@@ -173,8 +172,17 @@
 				</div>
 			</div>
 		</div>
-			
 	</footer>
+
+	<div  ng-controller="ctrlbtnCart">
+		<div  class="btnChangeAdminpage">
+			<a href="" ng-click="btnChangeAdmin()"> 
+				<img src="" id="btnChangeAdminimg">
+ 				<span class="countCart"></span>
+			</a>
+		</div>
+		
+	</div>
 	<!-- <script>
 	  (function() {
 	    var cx = '011049519405399044806:htcys2-xoxg';
@@ -191,5 +199,7 @@
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 </body>
 </html>

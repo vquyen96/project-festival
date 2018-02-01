@@ -1,4 +1,4 @@
-<div class="row container">
+<div class="row container" ng-controller="ctrlContact">
     <div class="col-md-6 col-sm-12 col-xs-12">
       <div>
         <h3>Liên Hệ</h3>
@@ -48,33 +48,44 @@
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
       <h3>Ý kiến người dùng</h3>
-      <form method="post">
+      <form method="post" name="form" ng-submit="submit()" novalidate>
         <div class="form-group">
           <label>Tên tài khoản</label>
-          <input type="text" name="userName" class="form-control" placeholder="Tài khoản có ít nhất 8 ký tự.">
+          <input type="text" name="username" class="form-control" ng-model="data.username" placeholder="Tài khoản có từ 6-15 kí tự." ng-minlength="6" ng-maxlength="15" required>
+          <i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
+            <span ng-show="form.username.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
+            <span ng-show="form.username.$error.maxlength">Tên truy cập ngắn hơn 15 kí tự</span>
+          </div>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="text" name="email" class="form-control" placeholder="Ví dụ: abc@gmail.com.">
+          <input type="email" name="email" class="form-control" ng-model="data.email" placeholder="Ví dụ: abc@gmail.com." required>
+          <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
+            <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+          </div>
         </div>
         <div class="form-group">
           <label>Chủ đề</label>
-          <input type="text"  class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="country">Quốc gia</label>
-              <select id="country" name="country" class="form-control">
-                <option value="australia">Australia</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-              </select>
+          <input type="text" name="title" class="form-control" ng-model="data.title" required>
+          <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập chủ đề</span>
+          </div>
         </div>
         <div class="form-group">
           <label>Chi tiết</label>
-          <input type="text" class="form-control" style="height:150px">
+          <textarea name="content" id="content" class="form-control" ng-model="data.content" rows="10" required></textarea>
+          <i class="fa fa-check text-success" ng-show="form.content.$dirty && form.content.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.content.$dirty && form.content.$error.required">Vui lòng điền ý kiến của bạn xin cảm ơn !</span>
+          </div>
         </div>
         <div class="form-group">
-          <input type="submit" name="sbm" value="Gửi đi" class="btn btn-primary">
+          <input type="submit" name="sbm" ng-click="btnFeedback()" value="Gửi đi" class="btn btn-primary" ng-disabled="form.username.$invalid || form.email.$invalid || form.title.$invalid || form.content.$invalid">
         </div>
       </form>
     </div>

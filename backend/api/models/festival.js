@@ -10,6 +10,7 @@ module.exports = mongoose.model('festival', {
 	lucdia: String,
 	tongiao: String,
 	chitiet: String,
+	price: Number,
 	url1: String,
 	url2: String,
 	url3: String,
