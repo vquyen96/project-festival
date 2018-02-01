@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Transaction = require('mongoose-transactions'); // phải chạy 
+var Transaction = require('mongoose-transaction')(mongoose); // phải chạy 
 // lệnh npm install mongoose-transactions --save
 var Order = require('../models/order');
 var OrderDetail = require('../models/order_detail');
@@ -63,7 +63,7 @@ exports.saveCart = function(req, resp){
 	    });
 	    // Kết thúc transaction.
 	    transaction.run(function(err, docs){
-		    resp.send('OK');
+		    resp.send(docs);
 		});    
 	});
 }
