@@ -42,6 +42,9 @@ app.controller('ctrlMenu', function($scope, $http){
         localStorage.removeItem("level");
         window.location.href = "../../fontend/index.html";
     }
+    $scope.btnHeaderBar = function(){
+        $('.dropmenu').slideToggle();
+    }
 });
 app.controller('ctrlListUser', function($scope, $http){
     var countName = 1;

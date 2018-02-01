@@ -50,6 +50,12 @@ body{
 .menuItem:hover {
 	background: #f9a232;
 }
+.btnHeaderBar{
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	display: none;
+}
 
 /*end index*/
 
@@ -170,4 +176,39 @@ body{
 	padding: 30px;
 	margin: 20px 10px;
 	border-radius: 20px;
+}
+@media screen and (max-width: 992px){
+	.responsive992{
+		display: none;
+	}
+	.dropmenu{
+		display: block;
+	}
+}
+@media screen and (max-width: 768px){
+	.responsive992{
+		display: none;
+	}
+	.responsive768{
+		display: none;
+	}
+	.menuAva img{
+		width: 60px;
+	}
+	.menuLogo a img{
+		width: 200px;
+		margin-left: 30px;
+	}
+	.dropmenu {
+		background: rgba(10, 10, 10, 0.9);
+		display: none;
+		position: absolute;
+		top: 100px;
+		width: 100%;
+		z-index: 98;
+	}
+	.btnHeaderBar {
+		display: block;
+		z-index: 99;
+	}
 }
