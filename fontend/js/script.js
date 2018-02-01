@@ -331,5 +331,26 @@ app.config(function($routeProvider) {
     .when("/search", {
         templateUrl : "chucnang/search.html"
     })
+    .when("/chinhsachvanchuyen", {
+        templateUrl : "chucnang/chinhsachvanchuyen.html"
+    })
+    .when("/chinhsachthanhtoan", {
+        templateUrl : "chucnang/chinhsachthanhtoan.html"
+    })
+    .when("/chinhsachbaomat", {
+        templateUrl : "chucnang/chinhsachbaomat.html"
+    })
+    .when("/chinhsachdoitra", {
+        templateUrl : "chucnang/chinhsachdoitra.html"
+    })
+    .when("/huongdanmuave", {
+        templateUrl : "chucnang/huongdanmuave.html"
+    })
+    .when("/huongdanthanhtoan", {
+        templateUrl : "chucnang/huongdanthanhtoan.html"
+    })
+    .when("/huongdandoitra", {
+        templateUrl : "chucnang/huongdandoitra.html"
+    })
 });
 // AIzaSyDTUdSTKgfHqp4a0WOAY5JuBmkgl2obY5o 
