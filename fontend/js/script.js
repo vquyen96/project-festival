@@ -507,30 +507,49 @@ app.controller('ctrlContact', function($scope, $http){
 
 /*code api hanh*/
 app.controller('ctrlAccountCenter' , function($scope, $http){
+    var ownerId = localStorage.getItem('ownerId');
+    var tokenKey = localStorage.getItem("tokenKey");
+
+    $http({
+        method : "GET",
+        url : "http://localhost:3000/api/users/"+ownerId,
+        headers: {
+            "Authorization": tokenKey
+        }
+    }).then(function mySuccess(response) {
+        console.log(response);
+        $scope.avaUrl = response.data.avaUrl;
+        $scope.username = response.data.username;
+        $scope.birthday = response.data.birthday;
+        $scope.email = response.data.email;
+        $scope.data = response.data;
+    }, function myError(response) {
+        alert(response.data);
+    });
     $scope.btnChange = function(){
-    var day = $scope.data.birthday.getTime();
-    var today = new Date();
-        today=today.getTime();
-    if(today>day){
-        // $http({
-        //         method : "POST",
-        //         url : "http://localhost:3000/api/accoutcenter",
-        //         data: $scope.data
-        //     }).then(function mySuccess(response) {
-        //         alert("Thêm Tài khoản thành công");
-        //         console.log(response);
-        //         window.location.href = "login.html";
-        //     }, function myError(response) {
-        //         alert(response.data);
-        //     });
-        alert("Thông Tin tài khoản được thay đổi thành công !");
+        var day = $scope.data.birthday.getTime();
+        var today = new Date();
+            today=today.getTime();
+        if(today>day){
+            $http({
+                    method : "PUT",
+                    url : "http://localhost:3000/api/users/"+ownerId,
+                    data: $scope.data
+                }).then(function mySuccess(response) {
+                    alert("Thêm Tài khoản thành công");
+                    console.log(response);
+                    window.location.href = "login.html";
+                }, function myError(response) {
+                    alert(response.data);
+                });
+            alert("Thông Tin tài khoản được thay đổi thành công !");
+            }
+            else{
+                alert("Bạn không được chọn ngày tương lai !");
+            }
+            console.log($scope.data);
+            
         }
-        else{
-            alert("Bạn không được chọn ngày tương lai !");
-        }
-        console.log($scope.data);
-        
-    }
     });
 /*code api hanh*/
 
