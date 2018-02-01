@@ -24,5 +24,46 @@
 			<td class="CartTotalPrice"></td>
 		</tr>
 	</table>
-	<a href="" class="btn btn-success" ng-click="btnPay()"><b>Thanh Toán</b></a>
+	<a href="" class="btn btn-success" ng-click="btnInfoPay()"><b>Tiến hành đặt vé</b></a>
+	<div class="cartBorderInfoPay"></div>
+	<div class="cartInfoPay">
+		<form method="post" name="form" ng-submit="submit()" novalidate>
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" name="username" class="form-control" ng-model="data.username" placeholder="Tên đầy đủ." required>
+          <i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" ng-model="data.email" placeholder="Ví dụ: abc@gmail.com." required>
+          <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
+            <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input type="text" name="title" class="form-control" ng-model="data.title" required>
+          <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập số điện thoại</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ nhận vé</label>
+          <textarea name="content" id="content" class="form-control" ng-model="data.content" rows="3" required></textarea>
+          <i class="fa fa-check text-success" ng-show="form.content.$dirty && form.content.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.content.$dirty && form.content.$error.required">Vui lòng điền đầy đủ thông tin để chúng tôi giao vé xin cảm ơn !</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" name="sbm" ng-click="btnPay()" value="Đặt vé" class="btn btn-primary" ng-disabled="form.username.$invalid || form.email.$invalid || form.title.$invalid || form.content.$invalid">
+        </div>
+      </form>
+	</div>
 </div>

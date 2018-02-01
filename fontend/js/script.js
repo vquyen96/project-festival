@@ -554,6 +554,9 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
 /*code api hanh*/
 
 app.controller('ctrlCart', function($scope, $http){
+    $scope.btnInfoPay = function(){
+        $('.cartInfoPay').slideToggle();
+    }
     function loadCart(){
         var cart = localStorage.getItem('cart');
         // Kiểm tra sự tồn tại của giỏ hàng.            
