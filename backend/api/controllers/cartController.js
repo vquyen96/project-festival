@@ -8,7 +8,8 @@ var Festival = require('../models/festival');
 
 exports.saveCart = function(req, resp){
 	var listOrderProducts = JSON.parse(req.body.products);
-
+	var infoOrder = JSON.parse(req.body.info);
+	var customerId = Number(req.query.customerId);
 	// Lấy productId từ trong cart truyền lên, tạo ra một mảng
 	// các objectId.
 	var ids = [];
@@ -31,8 +32,12 @@ exports.saveCart = function(req, resp){
 		// Tạo đối tượng order.
 		var order = new Order({
 			_id: mongoose.Types.ObjectId(),
-			customerId: 'lay_tu_credentail_user_id',
+			customerId: customerId,
 			shipName: 'Ship Name',
+			fullName: infoOrder.fullName,
+			phone: infoOrder.phone,
+			email: infoOrder.email,
+			adress: infoOrder.adress,
 			totalPrice: 0,
 			status: 2
 		});
@@ -51,7 +56,9 @@ exports.saveCart = function(req, resp){
 	     	totalPrice += orderDetail.quantity * orderDetail.unitPrice;	     	
 	    }
 	    // Set tổng giá cho order.
+	    
 	    order.totalPrice = totalPrice;
+	    order.createdAt = new Date();
 	    console.log(order);
 	    // Tiến hành lưu vào database với transaction, đảm bảo tất cả đều thành công.
 	    var transaction = new Transaction();

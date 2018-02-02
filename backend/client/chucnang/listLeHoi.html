@@ -17,8 +17,8 @@
 			</tr>
 			<tr ng-repeat="data in listUser">
 				<td>{{data.nameLeHoi}}</td>
-				<td>{{data.timeStart}}</td>
-				<td class="responsive992 responsive768">{{data.timeEnd}}</td>
+				<td>{{data.timeStart| date : "dd.MM.y" }}</td>
+				<td class="responsive992 responsive768">{{data.timeEnd| date : "dd.MM.y" }}</td>
 				<td>{{data.diadiem}}</td>
 				<td class="responsive992 responsive768">{{data.lucdia}}</td>
 				<td class="responsive992 responsive768">{{data.tongiao}}</td>

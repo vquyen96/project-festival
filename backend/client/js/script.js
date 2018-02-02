@@ -906,6 +906,34 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         }
     }
 });
+
+app.controller('ctrlListOrder', function($scope, $http){
+    $http({
+        method : "GET",
+        url : "http://localhost:3000/api/order",
+    }).then(function mySuccess(response) {
+        console.log(response);
+        $scope.listData = response.data.listData;
+    }, function myError(response) {
+        console.log(response.statusText);
+    });
+    $scope.btnOrderDetail = function(orderID, customerID){
+        var tokenKey = localStorage.getItem("tokenKey");
+        $('#modalOrderDetail').modal();
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/users/"+customerID,
+            headers: {
+                "Authorization": tokenKey
+            }
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.userName = response.data.username;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+});
 // app.controller('ctrlListComment', function($scope, $http){
 //     function listComment(){
 //        $http({
@@ -998,6 +1026,9 @@ app.config(function($routeProvider) {
     })
     .when("/listFeedBack", {
         templateUrl : "chucnang/listFeedBack.html"
+    })
+    .when("/listOrder", {
+        templateUrl : "chucnang/listOrder.html"
     })
     .when("/contact", {
         templateUrl : "chucnang/contact.html"
