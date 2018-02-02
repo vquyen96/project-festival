@@ -1027,12 +1027,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Thiên Chúa',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Hài kịch Quốc tế Melbourne Comedy được tổ chức vào cuối tháng Ba và giữa tháng Tư mỗi năm. Là một trong ba lễ hội hài kịch lớn nhất trên thế giới và lớn nhất ở nam bán cầu. Trong khoảng ba tuần rưỡi, Melbourne trở thành trung tâm của hài kịch thế giới với các chương trình mở rộng như: tấu hài, các trò mua vui trong quán rượu, ca kịch, biểu diễn trên đường phố, phim ảnh và các tiết mục biểu diễn trên truyền hình và đài phát thanh. Với sự tham gia của hơn 600.000 người, lễ hội đã trở thành một trong các sự kiện văn hóa lớn nhất Úc.',//Chi tiết
         price: '450000',
-        url1:'haikich/haikich1.jpg',//ảnh 4:3 
-        url2:'haikich/haikich2.jpg',//ảnh 4:3 
-        url3:'haikich/haikich3.jpg',//ảnh 4:3 
-        url4:'haikich/haikich4.jpg',//ảnh độ phân giải trên 1920
-        url5:'haikich/haikich5.jpg',//ảnh độ phân giải trên 1920
-        url6:'haikich/haikich6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/haikich/haikich1.jpg',//ảnh 4:3 
+        url2:'imgs/haikich/haikich2.jpg',//ảnh 4:3 
+        url3:'imgs/haikich/haikich3.jpg',//ảnh 4:3 
+        url4:'imgs/haikich/haikich4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/haikich/haikich5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/haikich/haikich6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },{
         
@@ -1046,12 +1046,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Tháng 9, dưới tiết trời xuân Canberra mát mẻ, các loài hoa tulip, violet, thủy tiên, dạ lý hương… đua nhau khoe sắc và tỏa hương thơm nồng. Đặc biệt, đến với thủ đô Canberra, du khác sẽ tận mắt chiêm ngưỡng hàng trăm chủng loại hoa tulip nổi tiếng trên thế giới cùng hàng chục tác phẩm hoa đặc biệt. Các sắc màu như đỏ, cam, vàng, hồng… xen kẽ với nhiều kích cỡ khác nhau bừng sáng dưới vẻ đẹp tráng lệ của thủ đô Canberra xinh đẹp.',
         price: '450000',
-        url1:'hoihoa/hoihoa1.jpg',//ảnh 4:3 
-        url2:'hoihoa/hoihoa2.jpg',//ảnh 4:3 
-        url3:'hoihoa/hoihoa3.jpg',//ảnh 4:3 
-        url4:'hoihoa/hoihoa4.jpg',//ảnh độ phân giải trên 1920
-        url5:'hoihoa/hoihoa5.jpg',//ảnh độ phân giải trên 1920
-        url6:'hoihoa/hoihoa6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/hoihoa/hoihoa1.jpg',//ảnh 4:3 
+        url2:'imgs/hoihoa/hoihoa2.jpg',//ảnh 4:3 
+        url3:'imgs/hoihoa/hoihoa3.jpg',//ảnh 4:3 
+        url4:'imgs/hoihoa/hoihoa4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/hoihoa/hoihoa5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/hoihoa/hoihoa6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
 
        },{
@@ -1066,12 +1066,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Lễ hội ánh sáng Vivid ở Sydney. Vivid Sydney được mô tả là lễ hội hoành tráng của âm nhạc, ánh sáng và ý tưởng thường được tổ chức từ trung tuần tháng 5 kéo dài cho tới đầu tháng 6 hàng năm. Với hơn 60 điểm lắp đặt ánh sáng tương tác, các ý tưởng gia cùng các nghệ sỹ tài năng hàng đầu thế giới đã mang đến những màn trình diễn công nghệ kỹ thuật số đặc sắc, từ trò chơi điện tử tới thời trang, kỹ xảo điện ảnh, nghệ thuật ánh sáng di động',//Chi tiết
         price: '450000',
-        url1:'hoianhsang/anhsang1.jpg',//ảnh 4:3 
-        url2:'hoianhsang/anhsang2.jpg',//ảnh 4:3 
-        url3:'hoianhsang/anhsang3.jpg',//ảnh 4:3 
-        url4:'hoianhsang/anhsang4.jpg',//ảnh độ phân giải trên 1920
-        url5:'hoianhsang/anhsang5.jpg',//ảnh độ phân giải trên 1920
-        url6:'hoianhsang/anhsang6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/hoianhsang/anhsang1.jpg',//ảnh 4:3 
+        url2:'imgs/hoianhsang/anhsang2.jpg',//ảnh 4:3 
+        url3:'imgs/hoianhsang/anhsang3.jpg',//ảnh 4:3 
+        url4:'imgs/hoianhsang/anhsang4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/hoianhsang/anhsang5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/hoianhsang/anhsang6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },{
         
@@ -1085,12 +1085,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Thiên Chúa',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Tới đây bạn sẽ được thưởng thức các loại rượu quý, rượu vang hảo hạng được trên thế giới hội tụ đầy đủ ở Melbourne. Ngoài ra, bạn sẽ khám phá nét văn hóa ẩm thực vô vùng phong phú của đất nước Australia xinh đẹp.',//Chi tiết
         price: '450000',
-        url1:'amthuc/amthuc1.jpg',//ảnh 4:3 
-        url2:'amthuc/amthuc2.jpg',//ảnh 4:3 
-        url3:'amthuc/amthuc3.jpg',//ảnh 4:3 
-        url4:'amthuc/amthuc4.jpg',//ảnh độ phân giải trên 1920amthuc/amthuc1.jpg
-        url5:'amthuc/amthuc5.jpg',//ảnh độ phân giải trên 1920
-        url6:'amthuc/amthuc6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/amthuc/amthuc1.jpg',//ảnh 4:3 
+        url2:'imgs/amthuc/amthuc2.jpg',//ảnh 4:3 
+        url3:'imgs/amthuc/amthuc3.jpg',//ảnh 4:3 
+        url4:'imgs/amthuc/amthuc4.jpg',//ảnh độ phân giải trên 1920amthuc/amthuc1.jpg
+        url5:'imgs/amthuc/amthuc5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/amthuc/amthuc6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },{
         
@@ -1104,12 +1104,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Lễ hội đua ngựa Melbourne có biểu diễn thời trang, phục vụ thức ăn đặc sản, rượu ngon, các hoạt động ngoài trời vui nhộn cho trẻ em, các chương trình giải trí nơi công cộng và các cuộc đua ngựa liên miên, tất cả kết hợp với nhau ở một số vùng nông thôn tươi đẹp.',//Chi tiết
         price: '450000',
-        url1:'duangua/duangua1.jpg',//ảnh 4:3 
-        url2:'duangua/duangua2.jpg',//ảnh 4:3 
-        url3:'duangua/duangua3.jpg',//ảnh 4:3 
-        url4:'duangua/duangua4.jpg',//ảnh độ phân giải trên 1920
-        url5:'duangua/duangua5.jpg',//ảnh độ phân giải trên 1920
-        url6:'duangua/duangua6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/duangua/duangua1.jpg',//ảnh 4:3 
+        url2:'imgs/duangua/duangua2.jpg',//ảnh 4:3 
+        url3:'imgs/duangua/duangua3.jpg',//ảnh 4:3 
+        url4:'imgs/duangua/duangua4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/duangua/duangua5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/duangua/duangua6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },{
         
@@ -1117,18 +1117,18 @@ exports.add = function(req, resp){
         timeStart:'2018/11/02',
         timeEnd:'2018/11/05',
         diadiem: 'Canberra',
-        kinhdo:'-35.2812958,149',
-        vido:'124822,16z',
+        kinhdo:'-35.2813043,149',
+        vido:'1204446,15z',
         lucdia:'Châu Úc',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Thiên Chúa',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Dành cho những người yêu thích dòng nhạc nhẹ nhàng, có tâm hồn lãng mạn, lễ hội dân gian tại thủ đô Canberra sẽ đưa du khách chìm đắm trong một không gian văn hóa cổ điển với nhiều loại hình biểu diễn như buổi hòa nhạc, giao lưu thơ ca, khiêu vũ hay hội thảo giao lưu văn hóa.',//Chi tiết
         price: '450000',
-        url1:'dangian/dangian1.jpg',//ảnh 4:3 
-        url2:'dangian/dangian2.jpg',//ảnh 4:3 
-        url3:'dangian/dangian3.jpg',//ảnh 4:3 
-        url4:'dangian/dangian4.jpg',//ảnh độ phân giải trên 1920
-        url5:'dangian/dangian5.jpg',//ảnh độ phân giải trên 1920
-        url6:'dangian/dangian6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/dangian/dangian1.jpg',//ảnh 4:3 
+        url2:'imgs/dangian/dangian2.jpg',//ảnh 4:3 
+        url3:'imgs/dangian/dangian3.jpg',//ảnh 4:3 
+        url4:'imgs/dangian/dangian4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/dangian/dangian5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/dangian/dangian6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920 
        },{
        
@@ -1142,12 +1142,12 @@ exports.add = function(req, resp){
         tongiao:'Đạo Thiên Chúa',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Với hơn 900 sự kiện được điễn ra ở khắp các địa điểm trong thành phố, du khách sẽ được đắm chìm vào một không gian nghệ thuật đặc sắc tại Adelaide. Được tổ chức từ giữa tháng 2 đến giữa tháng 3, du khách sẽ được thưởng thức tất cả các màn trình diễn nghệ thuật như múa đương đại, múa rối hay hài kịch,...',//Chi tiết
         price: '450000',
-        url1:'adelaide/adelaide1.jpg',//ảnh 4:3 
-        url2:'adelaide/adelaide2.jpg',//ảnh 4:3 
-        url3:'adelaide/adelaide3.jpg',//ảnh 4:3 
-        url4:'adelaide/adelaide4.jpg',//ảnh độ phân giải trên 1920
-        url5:'adelaide/adelaide5.jpg',//ảnh độ phân giải trên 1920
-        url6:'adelaide/adelaide6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/adelaide/adelaide1.jpg',//ảnh 4:3 
+        url2:'imgs/adelaide/adelaide2.jpg',//ảnh 4:3 
+        url3:'imgs/adelaide/adelaide3.jpg',//ảnh 4:3 
+        url4:'imgs/adelaide/adelaide4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/adelaide/adelaide5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/adelaide/adelaide6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920   
     },
     { 
@@ -1160,12 +1160,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Phi',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Lễ Ramadan của người Hồi giáo trên khắp thế giới thường diễn ra vào cuối mùa hè. Đó là khoảng thời gian một tháng mà những người theo đạo Hồi sẽ nhịn ăn, uống, hút thuốc, quan hệ luyến ái từ lúc mặt trời mọc cho đến khi mặt trời lặn.',//Chi tiết
-        url1:'ramadan/ramadan1.jpg',//ảnh 4:3 
-        url2:'ramadan/ramadan2.jpg',//ảnh 4:3 
-        url3:'ramadan/ramadan3.jpg',//ảnh 4:3 
-        url4:'ramadan/ramadan4.jpg',//ảnh độ phân giải trên 1920
-        url5:'ramadan/ramadan5.jpg',//ảnh độ phân giải trên 1920
-        url6:'ramadan/ramadan6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/ramadan/ramadan1.jpg',//ảnh 4:3 
+        url2:'imgs/ramadan/ramadan2.jpg',//ảnh 4:3 
+        url3:'imgs/ramadan/ramadan3.jpg',//ảnh 4:3 
+        url4:'imgs/ramadan/ramadan4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/ramadan/ramadan5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/ramadan/ramadan6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },
 
@@ -1179,12 +1179,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Á',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Người Hồi giáo trên toàn thế giới đang thực hành nghi lễ Eid Mubarak, hay còn còn gọi là Eid al-Adha, một trong hai dịp lễ lớn và quan trọng nhất trong năm của người Hồi giáo và được coi như là Tết năm mới của các tín đồ theo đạo Hồi.',//Chi tiết
-        url1:'letesinh/letesinh1.jpg',//ảnh 4:3 
-        url2:'letesinh/letesinh2.jpg',//ảnh 4:3 
-        url3:'letesinh/letesinh3.jpg',//ảnh 4:3 
-        url4:'letesinh/letesinh4.jpg',//ảnh độ phân giải trên 1920
-        url5:'letesinh/letesinh5.jpg',//ảnh độ phân giải trên 1920
-        url6:'letesinh/letesinh6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/letesinh/letesinh1.jpg',//ảnh 4:3 
+        url2:'imgs/letesinh/letesinh2.jpg',//ảnh 4:3 
+        url3:'imgs/letesinh/letesinh3.jpg',//ảnh 4:3 
+        url4:'imgs/letesinh/letesinh4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/letesinh/letesinh5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/letesinh/letesinh6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },
 
@@ -1198,12 +1198,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Âu',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Phần cuối buổi lễ, các chú hề Gilles sẽ ném cam vào đám đông để ban phước cho mọi người. Đặc biệt là nếu ai “bị” Gilles ném trúng quả cam vào trán, người đó sẽ được ban phước lành và có thể gặp may mắn cả năm.',//Chi tiết
-        url1:'dieuhanh/dieuhanh1.jpg',//ảnh 4:3 
-        url2:'dieuhanh/dieuhanh2.jpg',//ảnh 4:3 
-        url3:'dieuhanh/dieuhanh3.jpg',//ảnh 4:3 
-        url4:'dieuhanh/dieuhanh4.jpg',//ảnh độ phân giải trên 1920
-        url5:'dieuhanh/dieuhanh5.jpg',//ảnh độ phân giải trên 1920
-        url6:'dieuhanh/dieuhanh6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/dieuhanh/dieuhanh1.jpg',//ảnh 4:3 
+        url2:'imgs/dieuhanh/dieuhanh2.jpg',//ảnh 4:3 
+        url3:'imgs/dieuhanh/dieuhanh3.jpg',//ảnh 4:3 
+        url4:'imgs/dieuhanh/dieuhanh4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/dieuhanh/dieuhanh5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/dieuhanh/dieuhanh6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },
 
@@ -1217,12 +1217,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Âu',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Một lễ hội không kém phần đặc sắc ở xứ bò tót là lễ hội hình nhân Falles. Người dân của thành phố Valencia phải chuẩn bị một năm trời cho việc gây quỹ và chế tác những hình nhân làm từ giấy, sáp, bột cứng và các nguyên liệu khác.',//Chi tiết
-        url1:'hinhnhan/hinhnhan1.jpg',//ảnh 4:3 
-        url2:'hinhnhan/hinhnhan2.jpg',//ảnh 4:3 
-        url3:'hinhnhan/hinhnhan3.jpg',//ảnh 4:3 
-        url4:'hinhnhan/hinhnhan4.jpg',//ảnh độ phân giải trên 1920
-        url5:'hinhnhan/hinhnhan5.jpg',//ảnh độ phân giải trên 1920
-        url6:'hinhnhan/hinhnhan6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/hinhnhan/hinhnhan1.jpg',//ảnh 4:3 
+        url2:'imgs/hinhnhan/hinhnhan2.jpg',//ảnh 4:3 
+        url3:'imgs/hinhnhan/hinhnhan3.jpg',//ảnh 4:3 
+        url4:'imgs/hinhnhan/hinhnhan4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/hinhnhan/hinhnhan5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/hinhnhan/hinhnhan6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },
 
@@ -1236,12 +1236,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Âu',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Phần cuối buổi lễ, các chú hề Gilles sẽ ném cam vào đám đông để ban phước cho mọi người. Đặc biệt là nếu ai “bị” Gilles ném trúng quả cam vào trán, người đó sẽ được ban phước lành và có thể gặp may mắn cả năm.',//Chi tiết
-        url1:'dieuhanh/dieuhanh1.jpg',//ảnh 4:3 
-        url2:'dieuhanh/dieuhanh2.jpg',//ảnh 4:3 
-        url3:'dieuhanh/dieuhanh3.jpg',//ảnh 4:3 
-        url4:'dieuhanh/dieuhanh4.jpg',//ảnh độ phân giải trên 1920
-        url5:'dieuhanh/dieuhanh5.jpg',//ảnh độ phân giải trên 1920
-        url6:'dieuhanh/dieuhanh6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/dieuhanh/dieuhanh1.jpg',//ảnh 4:3 
+        url2:'imgs/dieuhanh/dieuhanh2.jpg',//ảnh 4:3 
+        url3:'imgs/dieuhanh/dieuhanh3.jpg',//ảnh 4:3 
+        url4:'imgs/dieuhanh/dieuhanh4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/dieuhanh/dieuhanh5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/dieuhanh/dieuhanh6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
        },
 
@@ -1255,12 +1255,12 @@ exports.add = function(req, resp){
         lucdia:'Châu Âu',//Việt Nam, Châu Á, Châu Âu, Châu Mỹ, Châu Phi, Châu Úc
         tongiao:'Đạo Hồi',//Không, Đạo Phật, Đâọ Hồi, Đạo Thiên Chúa, Đâọ Hindu
         chitiet:'Australia được bà mẹ thiên nhiên ưu đãi trong khí hậu và cảnh quan đẹp. Trong đó, mùa thu là một trong những mùa được nhiều du khách lựa chọn tham quan trong tour du lịch Úc. Không  chỉ có cảnh quan đẹp, mà mùa thu ở Úc còn xuất hiện những lễ hội như lễ hội khinh khí cầu  Canberra Balloon Fiesta',//Chi tiết
-        url1:'khinhkhicau/khinhkhicau1.jpg',//ảnh 4:3 
-        url2:'khinhkhicau/khinhkhicau2.jpg',//ảnh 4:3 
-        url3:'khinhkhicau/khinhkhicau3.jpg',//ảnh 4:3 khinhkhicau/khinhkhicau1.jpg
-        url4:'khinhkhicau/khinhkhicau4.jpg',//ảnh độ phân giải trên 1920
-        url5:'khinhkhicau/khinhkhicau5.jpg',//ảnh độ phân giải trên 1920
-        url6:'khinhkhicau/khinhkhicau6.jpg'//ảnh độ phân giải trên 1920
+        url1:'imgs/khinhkhicau/khinhkhicau1.jpg',//ảnh 4:3 
+        url2:'imgs/khinhkhicau/khinhkhicau2.jpg',//ảnh 4:3 
+        url3:'imgs/khinhkhicau/khinhkhicau3.jpg',//ảnh 4:3 khinhkhicau/khinhkhicau1.jpg
+        url4:'imgs/khinhkhicau/khinhkhicau4.jpg',//ảnh độ phân giải trên 1920
+        url5:'imgs/khinhkhicau/khinhkhicau5.jpg',//ảnh độ phân giải trên 1920
+        url6:'imgs/khinhkhicau/khinhkhicau6.jpg'//ảnh độ phân giải trên 1920
         // có tất cả 6 ảnh : 3 ảnh là cỡ 4:3, 3 ảnh độ phân giải trên 1920
     }
 ];

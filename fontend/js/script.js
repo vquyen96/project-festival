@@ -642,11 +642,31 @@ app.controller('ctrlCart', function($scope, $http){
         }
         alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
         // Lưu lại thông tin giỏ hàng vào localStorage.
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // localStorage.setItem('cart', JSON.stringify(cart));
+        console.log(cart);
         loadCart();
     }
 
+    var ownerId = localStorage.getItem("ownerId");
+    var tokenKey = localStorage.getItem("tokenKey");
+    if (tokenKey != null && ownerId != null) {
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/users/" + ownerId,
+            headers: {
+                "Authorization": tokenKey
+            }
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.infousername=response.data.username;
+            $scope.infoemail=response.data.email;
+        }, function myError(response) {
+            console.log(response);
+        });
+
+    }
     $scope.btnPay = function(){
+        var ownerId = localStorage.getItem("ownerId");
         var cart = localStorage.getItem('cart');
         cart = JSON.parse(cart);
         
@@ -658,18 +678,29 @@ app.controller('ctrlCart', function($scope, $http){
             };
             arrayProducts.push(product);
         }
+
         var data = {
-            'products': JSON.stringify(arrayProducts)
+            'products': JSON.stringify(arrayProducts),
+            'info': {
+                'fullname':$scope.fullname ,
+                'email':$scope.email,
+                'phone':$scope.phone,
+                'city':$scope.city,
+                'adress':$scope.adress
+            }
         }   
-        $http({
-            method : "POST",
-            url : "http://localhost:3000/api/cart",
-            data: data
-        }).then(function mySuccess(response) {
-            console.log(response);
-        }, function myError(response) {
-            console.log(response.statusText);
-        });   
+        console.log(data);
+        // $http({
+        //     method : "POST",
+        //     url : "http://localhost:3000/api/cart?customerId="+ownerId,
+        //     data: data
+        // }).then(function mySuccess(response) {
+        //     console.log(response);
+        //     localStorage.removeItem("cart");
+        //     alert('Cảm Ơn Bạn Đã Đặt Vé');
+        // }, function myError(response) {
+        //     console.log(response.statusText);
+        // });   
     }
 });
 
