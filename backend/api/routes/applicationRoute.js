@@ -5,6 +5,7 @@ var commentController = require('../controllers/commentController');
 var feedbackController = require('../controllers/feedbackController');
 var cartController = require('../controllers/cartController');
 var addController = require('../controllers/addController');
+var orderController = require('../controllers/orderController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
@@ -55,6 +56,16 @@ module.exports = function(app){
 		.get(tongiaoController.getDetail)
 		.put(tongiaoController.update)
 		.delete(tongiaoController.delete);	
+
+	// order api.
+	app.route('/api/order')
+		.get(orderController.getList)
+		.post(orderController.add);	
+
+	app.route('/api/order/:id')
+		.get(orderController.getDetail)
+		.put(orderController.update)
+		.delete(orderController.delete);	
 
 	app.route('/api/cart')
 		.post(cartController.saveCart);
