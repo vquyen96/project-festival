@@ -231,8 +231,12 @@ nav ul{
 /*end main*/
 
 /*start contact*/
-
-
+.Case{
+	color: orange;
+}
+.title{
+	font-size: 15px;
+}
 /*end contact*/
 /*start detail*/
 /*.detailLeftTitle{
@@ -320,7 +324,12 @@ nav ul{
 .aboutbody {
 	margin-bottom: 20px;
 }
-
+.main-title{
+	color: orange;
+}
+.about-title{
+	color: orange;
+}
 
 /*end about*/
 
