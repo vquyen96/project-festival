@@ -42,6 +42,9 @@ app.controller('ctrlMenu', function($scope, $http){
         localStorage.removeItem("level");
         window.location.href = "../../fontend/index.html";
     }
+    $scope.btnHeaderBar = function(){
+        $('.dropmenu').slideToggle();
+    }
 });
 app.controller('ctrlListUser', function($scope, $http){
     var countName = 1;
@@ -903,6 +906,33 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         }
     }
 });
+
+app.controller('ctrlListOrder', function($scope, $http){
+    $http({
+        method : "GET",
+        url : "http://localhost:3000/api/order",
+    }).then(function mySuccess(response) {
+        console.log(response);
+        $scope.listData = response.data.listData;
+    }, function myError(response) {
+        console.log(response.statusText);
+    });
+    $scope.btnOrderDetail = function(orderID, customerID){
+        $('#modalOrderDetail').modal();
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/users/"+customerID,
+            headers: {
+                "Authorization": tokenKey
+            }
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.userName = response.data.listData.username;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+});
 // app.controller('ctrlListComment', function($scope, $http){
 //     function listComment(){
 //        $http({
@@ -995,6 +1025,9 @@ app.config(function($routeProvider) {
     })
     .when("/listFeedBack", {
         templateUrl : "chucnang/listFeedBack.html"
+    })
+    .when("/listOrder", {
+        templateUrl : "chucnang/listOrder.html"
     })
     .when("/contact", {
         templateUrl : "chucnang/contact.html"
