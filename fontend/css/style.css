@@ -231,8 +231,12 @@ nav ul{
 /*end main*/
 
 /*start contact*/
-
-
+.Case{
+	color: orange;
+}
+.title{
+	font-size: 15px;
+}
 /*end contact*/
 /*start detail*/
 /*.detailLeftTitle{
@@ -320,7 +324,12 @@ nav ul{
 .aboutbody {
 	margin-bottom: 20px;
 }
-
+.main-title{
+	color: orange;
+}
+.about-title{
+	color: orange;
+}
 
 /*end about*/
 
@@ -504,7 +513,16 @@ footer a{
 	margin: 10px 0;
 }
 /*End profile*/
-
+/*Start cart */
+.cartBorderInfoPay{
+	border-bottom: 5px solid #fc8804;
+	margin: 10px;
+}
+.cartInfoPay{
+	display: none;
+	margin: 0 20px;
+}
+/*End cart*/
 @media screen and (max-width: 992px){
 	.searchHot{
 		border-left: 0;
