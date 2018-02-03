@@ -242,6 +242,7 @@ nav ul{
 /*.detailLeftTitle{
 	display: inline-block;
 }*/
+
 .detailAddCart{
 	float: right;
 }
@@ -274,6 +275,21 @@ nav ul{
 }
 .detailrightcontent:hover a{
 	margin-left: 20px;
+}
+.detailModalBG{
+	background: white;
+}
+.detailModalImgPay{
+	width: 100%;
+}
+.detailModalBotItem{
+	padding: 15px;
+}
+.detailModalBotImg{
+	width: 100%;
+}
+.detailModalPrice{
+	color: red;
 }
 /*.detailComment{
 	background: #f2f3f5;
