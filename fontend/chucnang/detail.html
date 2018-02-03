@@ -36,7 +36,7 @@
 		<div class="col-md-8 col-sm-12 col-xs-12" id="detailcontent">
 			<h2 class="detailLeftTitle">
 				{{data.nameLeHoi}}
-				<a href="" class="btn btn-success detailAddCart" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1)'>
+				<a href="" class="btn btn-success detailAddCart" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1)' data-toggle="modal" data-target=".bs-example-modal-lg">
 					<b>Đặt vé ngay</b>
 				</a>
 			</h2>
@@ -82,5 +82,43 @@
 		</div>
 	</div>
 
-  
+	<div id="modal-video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg " role="document">
+           	<div class="modal-content">
+           		<div class="row">
+		            <div class="col-md-5 col-sm-5 col-xs-5">
+		            	<img src="imgs/amthuc/amthuc1.jpg" class="detailModalImgPay thumbnail">
+		            </div>
+		            <div class="col-md-7 col-sm-5 col-xs-5" class="Pay-title">
+		            	<h2>Tên lễ hội:</h2>
+		            	<p>Giá vé:</p>
+		            	<a href="">Xem thêm lễ hội</a>
+		            	<input type="button" value="Đặt vé" class="btn-success btn">
+		            </div>
+		        </div>
+		        <div class="row">
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
+		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
+		        		<h4>Tên lễ hội</h4>
+		        		<p class="detailModalPrice">150000</p>
+		        	</div>
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
+		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
+		        		<h4>Tên lễ hội</h4>
+		        		<p class="detailModalPrice">200000</p>
+		        	</div>
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
+		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
+		        		<h4>Tên lễ hội</h4>
+		        		<p class="detailModalPrice">500000</p>
+		        	</div>	
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
+		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
+		        		<h4>Tên lễ hội</h4>
+		        		<p class="detailModalPrice">100000</p>
+		        	</div>		        		        			        	
+		        </div>
+           	</div> 
+        </div>
+    </div>
 </div>

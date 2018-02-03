@@ -257,9 +257,12 @@ app.controller('ctrlDetail', function($scope, $http){
                 }                   
             }                               
         }
-        alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
+        // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
         // Lưu lại thông tin giỏ hàng vào localStorage.
         localStorage.setItem('cart', JSON.stringify(cart));
+        setTimeout(function(){ 
+            $('#modal-video').modal();
+        }, 300);
     }
     // function getDetailComment(idLeHoi){
     //     $http({
