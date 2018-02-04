@@ -1,24 +1,24 @@
 <div class="container accout-center" ng-controller="ctrlAccountCenter">
 	<div class="col-md-5 col-sm-12 col-xs-12">
 		<div class="acc-photo-and-infomations">
-			<img src="{{avaUrl}}">
+			<img ng-src="{{user.avaUrl}}" class="thumbnail">
 			<div class="infomations">
 				<b>
 					Tài Khoản:
 				</b>
-				{{username}}
+				{{user.username}}
 			</div>
 			<div class="infomations">
 				<b>
 					Ngày Sinh:
 				</b>
-				{{bithday}}
+				{{user.birthday | date : "dd/MM/y" }}
 			</div>
 			<div class="infomations">
 				<b>
 					Email:
 				</b>
-				{{email}}
+				{{user.email}}
 			</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 		<form method="post" name="form" class="change-infomation" ng-submit="register()" novalidate>
 			<div class="form-group">
 				<label>Tên Tài Khoản</label>
-				<input type="text" name="username" placeholder="Điền vào tài khoản của bạn" id="username" class="form-control" ng-model="data.username" ng-minlength="6" ng-maxlength="15" required>
+				<input type="text" name="username" placeholder="Điền vào tài khoản của bạn" id="username" class="form-control" ng-model="user.username" ng-minlength="6" ng-maxlength="15" required>
 				<i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
@@ -36,25 +36,25 @@
 			</div>
 			<div class="form-group">
 				<label>Mật khẩu</label>
-				<input type="password" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="data.password" ng-minlength="6" ng-maxlength="15" required>
+				<input type="password" name="password" placeholder="Mật khẩu" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="15" required>
 				<i class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.password.$dirty && form.password.$error.required">Vui lòng điền mật khẩu</span>
-					<span ng-show="form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
-					<span ng-show="form.password.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
+					<span ng-show="form.password.$dirty && form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
+					<span ng-show="form.password.$dirty && form.password.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Nhập lại mật khẩu</label>
 				<input type="password" name="repassword" placeholder="Nhập Lại mật khẩu" id="re-password" class="form-control" ng-model="repassword" required>
-				<i class="fa fa-check text-success" ng-show="form.repassword.$dirty && data.password == repassword"></i>
+				<i class="fa fa-check text-success" ng-show="form.repassword.$dirty && user.password == repassword"></i>
 				<div class="text-danger">
-					<span ng-show="form.repassword.$dirty && data.password !== repassword">Mật khẩu không trùng khớp</span>
+					<span ng-show="form.repassword.$dirty && user.password !== repassword">Mật khẩu không trùng khớp</span>
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Email</label>
-				<input type="email" name="email" placeholder="Điền vào Email của bạn" id="email" class="form-control" ng-model="data.email" required>
+				<input type="email" name="email" placeholder="Điền vào Email của bạn" id="email" class="form-control" ng-model="user.email" required>
 				<i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
@@ -63,14 +63,14 @@
 			</div>
 			<div class="form-group">
 				<label>Ngày Sinh</label>
-				<input type="date" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="data.birthday">
+				<input type="date" name="birthday" placeholder="YYYY/MM/DD" id="birthday" class="form-control" ng-model="user.birthday">
 			</div>
 			<div class="form-group">
 				<label>URL Ảnh Đại Diện</label>
-				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="data.avaUrl" class="form-control">
+				<input type="text" name="userFile" placeholder="Đường link ảnh đại diện" id="avaUrl" ng-model="user.avaUrl" class="form-control">
 			</div>
 			<div>
-				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnChange()" ng-disabled="form.username.$invalid || form.password.$invalid || form.repassword.$invalid ||form.email.$invalid">
+				<input type="button" class="btn btn-warning" id="btnSbm"  name="btnSbm" value="Thay Đổi" ng-click="btnChange()" ng-disabled="form.username.$invalid || form.password.$invalid || form.repassword.$invalid || form.repassword.$invalid ||form.email.$invalid">
 			</div>
 		</form>
 	</div>

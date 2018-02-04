@@ -9,13 +9,13 @@
 		</tr>
 		<tr ng-repeat="data in listData">
 			<td>{{data.name}}</td>
-			<td>{{data.price}} <b>VND</b></td>
+			<td>{{data.price| currency: "" :0}} <b>VND</b></td>
 			<td>
 				{{data.quantity}}
 				<a href="" class="btn btn-success" ng-click="btnAddToCart(data.id, data.name, data.price, 1)">+</a>
 				<a href="" class="btn btn-warning" ng-click="btnAddToCart(data.id, data.name, data.price, -1)">-</a>
 			</td>
-			<td>{{data.totalItemPrice}} <b>VND</b></td>
+			<td>{{data.totalItemPrice| currency: "" :0}} <b>VND</b></td>
 		</tr>
 		<tr>
 			<td> </td>
@@ -30,7 +30,7 @@
 		<form method="post" name="form" ng-submit="submit()" novalidate>
         <div class="form-group">
           <label>Họ và tên</label>
-          <input type="text" name="username" class="form-control" ng-model="data.username" placeholder="Tên đầy đủ." required>
+          <input type="text" name="username" class="form-control" ng-model="fullname" placeholder="Tên đầy đủ." required>
           <i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
           <div class="text-danger">
             <span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" name="email" class="form-control" ng-model="data.email" placeholder="Ví dụ: abc@gmail.com." required>
+          <input type="email" name="email" class="form-control" ng-model="email" placeholder="Ví dụ: abc@gmail.com." required>
           <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
           <div class="text-danger">
             <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
@@ -47,15 +47,23 @@
         </div>
         <div class="form-group">
           <label>Số điện thoại</label>
-          <input type="text" name="title" class="form-control" ng-model="data.title" required>
+          <input type="text" name="phone" class="form-control" ng-model="phone" required>
+          <i class="fa fa-check text-success" ng-show="form.phone.$dirty && form.phone.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.phone.$dirty && form.phone.$error.required">Vui lòng nhập số điện thoại</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Thành Phố</label>
+          <input type="text" name="title" class="form-control" ng-model="city" required>
           <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập số điện thoại</span>
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập thành phố của bạn</span>
           </div>
         </div>
         <div class="form-group">
           <label>Địa chỉ nhận vé</label>
-          <textarea name="content" id="content" class="form-control" ng-model="data.content" rows="3" required></textarea>
+          <textarea name="content" id="content" class="form-control" ng-model="adress" rows="3" required></textarea>
           <i class="fa fa-check text-success" ng-show="form.content.$dirty && form.content.$valid"></i>
           <div class="text-danger">
             <span ng-show="form.content.$dirty && form.content.$error.required">Vui lòng điền đầy đủ thông tin để chúng tôi giao vé xin cảm ơn !</span>

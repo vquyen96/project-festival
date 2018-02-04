@@ -1,4 +1,5 @@
 <div class="mainRow row" ng-controller="ctrlMain">
+	<div class="detailLoad"></div>
 	<div class="col-md-6 col-sm-12 col-xs-12 mainItem" ng-repeat="data in listData" ng-click="detailPage(data._id)">
 		<div class="mainSlide1">
 			<a href=""><img ng-src="{{data.url1}}"></img></a>
@@ -11,12 +12,26 @@
 		</div>
 		
 		<div class="mainItemContent">
-			<h3><a href="">{{data.nameLeHoi}}</a></h3>
-			<span>{{data.timeStart}}</span>
-			<span>-</span>
-			<span>{{data.timeEnd}}</span>
-			<span class="glyphicon glyphicon-map-marker"></span>
-			<span>{{data.diadiem}}</span>
+			<div class="mainItemContentShow">
+				<h3><a href="" class="mainItemContentShowName">{{data.nameLeHoi}}</a></h3>
+				<p>
+					<span class="glyphicon glyphicon-globe"></span>
+					<span>{{data.timeStart | date : "dd/MM/y" }}</span>
+					<span>-</span>
+					<span>{{data.timeEnd | date : "dd/MM/y" }}</span>
+				</p>
+				
+				<p>
+					<span class="glyphicon glyphicon-map-marker"></span>
+					<span>{{data.diadiem}}</span>
+				</p>
+				<p class="mainItemContentPrice">
+					<span class=" glyphicon glyphicon-btc"></span>
+					{{data.price | currency: "" :0 }} VND
+					
+				</p>
+			</div>
+			
 		</div>
 	</div>
 </div>

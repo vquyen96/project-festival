@@ -8,8 +8,10 @@ var Festival = require('../models/festival');
 
 exports.saveCart = function(req, resp){
 	var listOrderProducts = JSON.parse(req.body.products);
-	var infoOrder = JSON.parse(req.body.info);
-	var customerId = Number(req.query.customerId);
+	console.log(req.body);
+	var infoOrder = (req.body.info);
+	var customerId = req.params.id;
+	console.log(customerId);
 	// Lấy productId từ trong cart truyền lên, tạo ra một mảng
 	// các objectId.
 	var ids = [];
@@ -34,9 +36,10 @@ exports.saveCart = function(req, resp){
 			_id: mongoose.Types.ObjectId(),
 			customerId: customerId,
 			shipName: 'Ship Name',
-			fullName: infoOrder.fullName,
+			fullName: infoOrder.fullname,
 			phone: infoOrder.phone,
 			email: infoOrder.email,
+			city: infoOrder.city,
 			adress: infoOrder.adress,
 			totalPrice: 0,
 			status: 2
@@ -47,6 +50,7 @@ exports.saveCart = function(req, resp){
 	     	var orderDetail = new OrderDetail({
 	     		orderId: order._id,
 	     		productId: productResult[i]._id,
+	     		nameLehoi: productResult[i].nameLeHoi,
 	     		quantity: mapProduct[productResult[i]._id],
 	     		unitPrice: productResult[i].price
 	     	});

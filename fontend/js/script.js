@@ -1,4 +1,4 @@
-
+$(document).ready();
 var app = angular.module("myApp", ["ngRoute"]);
 
 app.controller('ctrlHead', function($scope, $http){
@@ -46,34 +46,47 @@ app.controller('ctrlHead', function($scope, $http){
         $('nav').slideToggle();
     }
 
+    var body = $("html, body");
+    body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
+       
+    });
 });
 app.controller('ctrlbtnCart', function($scope, $http){
+    var ownerId = localStorage.getItem("ownerId");
     var level = localStorage.getItem("level");
     //phan quyen` admin
     if (level == 2|| level == 3) {
         $('#btnChangeAdminimg').attr('src','imgs/logochange.png');
-
+        $('.countCart').attr('style','display:none;');
     }
     //phan quyen user
     else{
-        $('#btnChangeAdminimg').attr('src','imgs/icon_cart.png');
+        $('#btnChangeAdminimg').attr('src','imgs/ticket4.png');
         //lấy đơn hàng
         var cart = localStorage.getItem('cart');
         //nếu đơn hàng tồn tại
-        if (cart != null && cart != undefined) {
+        if (cart != null && cart != undefined && ownerId != null && ownerId != undefined ) {
             //chuyển sang json
             cart = JSON.parse(cart);
             //set giá trị
             $('.countCart').text(cart.products.length);
         } 
+        else{
+            $('.countCart').attr('style','display:none;');
+        }
     }
     //Khi click nut cart = changeadmin
     $scope.btnChangeAdmin = function(){
-        if(level == 2|| level == 3){
-            window.location.href = "../backend/client/index.html";
+        if (ownerId != null && ownerId != undefined) {
+            if(level == 2|| level == 3){
+                window.location.href = "../backend/client/index.html";
+            }
+            else{
+                window.location.href = "index.html#!/cart"; 
+            }
         }
         else{
-            window.location.href = "index.html#!/cart"; 
+            alert('Bạn phải đăng nhập để mua hàng');
         }
     }
 });
@@ -94,7 +107,12 @@ app.controller('ctrlFooter', function($scope, $http){
 
 });
 app.controller('ctrlMain', function($scope, $http){
-
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     function getListLeHoi(){
         $http({
             method : "GET",
@@ -145,13 +163,22 @@ app.controller('ctrlMain', function($scope, $http){
             $('.mainSlide9').fadeOut(1000);
         }, 10000);
     },  15000);
+
+    
     $scope.detailPage = function(_id){
         localStorage.setItem("lehoiID", _id);
         window.location.href = "index.html#!/detail";
     }
 });
 app.controller('ctrlDetail', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     var idLeHoi = localStorage.getItem("lehoiID");
+    var ownerId = localStorage.getItem("ownerId");
     function getDetailLeHoi(idLeHoi){
         $http({
             method : "GET",
@@ -162,6 +189,7 @@ app.controller('ctrlDetail', function($scope, $http){
             $scope.url4 = response.data.url4;
             $scope.url5 = response.data.url5;
             $scope.url6 = response.data.url6;
+            $scope.url3 = response.data.url3;
             localStorage.setItem("kinhdo", response.data.kinhdo);
             localStorage.setItem("vido", response.data.vido);
             localStorage.setItem("lehoiName", response.data.nameLeHoi);
@@ -201,65 +229,80 @@ app.controller('ctrlDetail', function($scope, $http){
     }
     getDetailLeHoi(idLeHoi);
     $scope.btnAddToCart = function(productId, productName, productPrice, quantity){
-        var cart = localStorage.getItem('cart');    
-        if (cart == null){
-            // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
-            // kèm số lượng.
-            if(quantity > 0){
-                cart = {
-                    'products': [
-                        {
+        if (ownerId != null && ownerId != undefined) {
+            var cart = localStorage.getItem('cart');    
+            if (cart == null){
+                // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
+                // kèm số lượng.
+                if(quantity > 0){
+                    cart = {
+                        'products': [
+                            {
+                                'id': productId,
+                                'name': productName,
+                                'price': productPrice,
+                                'quantity': quantity
+                            }
+                        ]
+                    }   
+                }                       
+            } else{
+                // Nếu đã tồn tại sản phẩm.
+                // Parse thông tin giỏ hàng về json object.
+                cart = JSON.parse(cart);
+                // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
+                if(cart.products != undefined && cart.products != null){
+                    // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
+                    var existsItem = false;
+                    for (var i = 0; i < cart.products.length; i++) {
+                        // Nếu tồn tại sản phẩm.
+                        if(cart.products[i].id == productId){
+                            existsItem = true;
+                            // tăng số lượng sản phẩm trong giỏ hàng lên 1.
+                            if(quantity == 1){
+                                cart.products[i].quantity += quantity;
+                            }
+                            else{
+                                cart.products[i].quantity = quantity;
+                            }
+                            quantity = cart.products[i].quantity;
+                            if(quantity <= 0){
+                                // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
+                                cart.products.splice(i, 1);
+                            }
+                            break;
+                        }
+                    }
+                    // Nếu không tồn tại sản phẩm trong giỏ hàng.
+                    if(!existsItem){
+                        // Thêm mới sản phẩm với quantity default là 1.
+                        cart.products.push({
                             'id': productId,
+                            'quantity': quantity,
                             'name': productName,
                             'price': productPrice,
-                            'quantity': quantity
-                        }
-                    ]
-                }   
-            }                       
-        } else{
-            // Nếu đã tồn tại sản phẩm.
-            // Parse thông tin giỏ hàng về json object.
-            cart = JSON.parse(cart);
-            // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
-            if(cart.products != undefined && cart.products != null){
-                // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
-                var existsItem = false;
-                for (var i = 0; i < cart.products.length; i++) {
-                    // Nếu tồn tại sản phẩm.
-                    if(cart.products[i].id == productId){
-                        existsItem = true;
-                        // tăng số lượng sản phẩm trong giỏ hàng lên 1.
-                        if(quantity == 1){
-                            cart.products[i].quantity += quantity;
-                        }
-                        else{
-                            cart.products[i].quantity = quantity;
-                        }
-                        quantity = cart.products[i].quantity;
-                        if(quantity <= 0){
-                            // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
-                            cart.products.splice(i, 1);
-                        }
-                        break;
-                    }
-                }
-                // Nếu không tồn tại sản phẩm trong giỏ hàng.
-                if(!existsItem){
-                    // Thêm mới sản phẩm với quantity default là 1.
-                    cart.products.push({
-                        'id': productId,
-                        'quantity': quantity,
-                        'name': productName,
-                        'price': productPrice,
-                        'totalItemPrice': 0
-                    });
-                }                   
-            }                               
+                            'totalItemPrice': 0
+                        });
+                    }                   
+                }                               
+            }
+            // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
+            // Lưu lại thông tin giỏ hàng vào localStorage.
+            localStorage.setItem('cart', JSON.stringify(cart));
+            setTimeout(function(){ 
+                $('#modal-video').modal();
+            }, 300);
         }
-        alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
-        // Lưu lại thông tin giỏ hàng vào localStorage.
-        localStorage.setItem('cart', JSON.stringify(cart));
+        else{
+            alert('Bạn phải đăng nhập để đặt vé');
+        }
+    }
+    $scope.detailOffModal = function(){
+        $('#modal-video').modal('hide');
+    }
+    $scope.detailbtnCart = function(){
+        $('#modal-video').modal('hide');
+        window.location.href = "index.html#!/cart";
     }
     // function getDetailComment(idLeHoi){
     //     $http({
@@ -382,10 +425,9 @@ app.controller('ctrlDetail', function($scope, $http){
     }, 2000);
     $scope.btnDetail = function(_id){
         localStorage.setItem("lehoiID", _id);
-         window.open('index.html#!/detail');
+        window.open('index.html#!/detail');
     }
-    
-    
+       
 });
 app.controller('ctrlSearch', function($scope, $http){
     var searchVal = localStorage.getItem("find");
@@ -456,6 +498,12 @@ app.controller('ctrlAbout', function($scope, $http){
 });
 
 app.controller('ctrlMedia', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },1000);
+        
+    });
     function getListLeHoi(){
         $http({
             method : "GET",
@@ -486,6 +534,17 @@ app.controller('ctrlMedia', function($scope, $http){
 app.controller('ctrlContact', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
     var ownerName = localStorage.getItem("ownerName");
+    function getContact(){
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/contact",
+        }).then(function mySuccess(response) {
+            $scope.contact = response.data;
+        }, function myError(response) {
+            alert(response.data);
+        });
+    }
+    getContact();
     $scope.btnFeedback = function(){
         $scope.data.userID = ownerId;
         $http({
@@ -500,8 +559,6 @@ app.controller('ctrlContact', function($scope, $http){
             alert(response.data);
         });
     }
-    console.log($scope.data);
-    
 });
 
 
@@ -518,27 +575,22 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
         }
     }).then(function mySuccess(response) {
         console.log(response);
-        $scope.avaUrl = response.data.avaUrl;
-        $scope.username = response.data.username;
-        $scope.birthday = response.data.birthday;
-        $scope.email = response.data.email;
-        $scope.data = response.data;
+        $scope.user = response.data;
+        $scope.user.birthday = new Date(response.data.birthday) ;
     }, function myError(response) {
         alert(response.data);
     });
     $scope.btnChange = function(){
-        var day = $scope.data.birthday.getTime();
+        var day = $scope.user.birthday.getTime();
         var today = new Date();
             today=today.getTime();
         if(today>day){
             $http({
                     method : "PUT",
                     url : "http://localhost:3000/api/users/"+ownerId,
-                    data: $scope.data
+                    data: $scope.user
                 }).then(function mySuccess(response) {
-                    alert("Thêm Tài khoản thành công");
                     console.log(response);
-                    window.location.href = "login.html";
                 }, function myError(response) {
                     alert(response.data);
                 });
@@ -643,10 +695,30 @@ app.controller('ctrlCart', function($scope, $http){
         alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
         // Lưu lại thông tin giỏ hàng vào localStorage.
         localStorage.setItem('cart', JSON.stringify(cart));
+        console.log(cart);
         loadCart();
     }
 
+    // var ownerId = localStorage.getItem("ownerId");
+    // var tokenKey = localStorage.getItem("tokenKey");
+    // if (tokenKey != null && ownerId != null) {
+    //     $http({
+    //         method : "GET",
+    //         url : "http://localhost:3000/api/users/" + ownerId,
+    //         headers: {
+    //             "Authorization": tokenKey
+    //         }
+    //     }).then(function mySuccess(response) {
+    //         console.log(response);
+    //         $scope.infousername=response.data.username;
+    //         $scope.infoemail=response.data.email;
+    //     }, function myError(response) {
+    //         console.log(response);
+    //     });
+
+    // }
     $scope.btnPay = function(){
+        var ownerId = localStorage.getItem("ownerId");
         var cart = localStorage.getItem('cart');
         cart = JSON.parse(cart);
         
@@ -658,18 +730,30 @@ app.controller('ctrlCart', function($scope, $http){
             };
             arrayProducts.push(product);
         }
+
         var data = {
-            'products': JSON.stringify(arrayProducts)
+            'products': JSON.stringify(arrayProducts),
+            'info': {
+                'fullname':$scope.fullname ,
+                'email':$scope.email,
+                'phone':$scope.phone,
+                'city':$scope.city,
+                'adress':$scope.adress
+            }
         }   
+        console.log(ownerId);
         $http({
             method : "POST",
-            url : "http://localhost:3000/api/cart",
+            url : "http://localhost:3000/api/cart/"+ownerId,
             data: data
         }).then(function mySuccess(response) {
             console.log(response);
+            localStorage.removeItem("cart");
+            alert('Cảm Ơn Bạn Đã Đặt Vé');
+            window.location.href = "index.html";
         }, function myError(response) {
             console.log(response.statusText);
-        });   
+        });
     }
 });
 

@@ -5,7 +5,25 @@
 	margin: 0;
 }
 body{
-	background: url('../imgs/bg.jpg');
+	background: url('../imgs/Buku-Music-Festival-2013-Review.jpg');
+}
+.masterLoad{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../../../fontend/imgs/Preloader_2.gif') center no-repeat #fff;
+}
+.detailLoad{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../../../fontend/imgs/Preloader_3.gif') center no-repeat #fff;
 }
 .menu{
 	background: rgba(10, 10, 10, 0.9);
@@ -63,6 +81,10 @@ body{
 .listUserHeader{
 	padding: 20px 50px;
 }
+.listLeHoiHeaderSetItem{
+	display: block;
+	margin-top: 10px;
+}
 .listUserTable{
 	width: 100%;
 	background: rgba(200, 200, 200, 0.7);
@@ -114,6 +136,17 @@ body{
 /*start listLeHoi*/
 .listLeHoiHeader{
 	padding: 20px 50px;
+}
+.listLeHoiHeaderSetItem{
+	display: inline-block;
+}
+.listLeHoiHeaderSetItem h4{
+	display: inline-block;
+	margin-left: 20px;
+	color: #fff;
+}
+.listLeHoiHeaderSetItem input{
+	display: inline-block;
 }
 .listLeHoiTable{
 	width: 100%;
@@ -177,6 +210,28 @@ body{
 	margin: 20px 10px;
 	border-radius: 20px;
 }
+
+/*start list Order*/
+.listOrderModal{
+	padding: 20px;
+}
+.listOrderModalFull{
+
+}
+.listOrderModalPrice{
+	color: red;
+}
+.listOrderModalEmail{
+
+}
+.listOrderModalHeadTable{
+	background: #f9a232;
+}
+.listOrderModalOff{
+	float: right;
+	margin:0 20px;
+}
+/*end list Order*/
 @media screen and (max-width: 992px){
 	.responsive992{
 		display: none;
