@@ -296,6 +296,7 @@ app.controller('ctrlDetail', function($scope, $http){
         else{
             alert('Bạn phải đăng nhập để đặt vé');
         }
+
     }
     $scope.detailOffModal = function(){
         $('#modal-video').modal('hide');
@@ -303,6 +304,7 @@ app.controller('ctrlDetail', function($scope, $http){
     $scope.detailbtnCart = function(){
         $('#modal-video').modal('hide');
         window.location.href = "index.html#!/cart";
+
     }
     // function getDetailComment(idLeHoi){
     //     $http({
@@ -694,7 +696,9 @@ app.controller('ctrlCart', function($scope, $http){
         }
         alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
         // Lưu lại thông tin giỏ hàng vào localStorage.
+
         localStorage.setItem('cart', JSON.stringify(cart));
+
         console.log(cart);
         loadCart();
     }
@@ -717,6 +721,7 @@ app.controller('ctrlCart', function($scope, $http){
     //     });
 
     // }
+
     $scope.btnPay = function(){
         var ownerId = localStorage.getItem("ownerId");
         var cart = localStorage.getItem('cart');
@@ -741,6 +746,7 @@ app.controller('ctrlCart', function($scope, $http){
                 'adress':$scope.adress
             }
         }   
+
         console.log(ownerId);
         $http({
             method : "POST",
@@ -754,6 +760,7 @@ app.controller('ctrlCart', function($scope, $http){
         }, function myError(response) {
             console.log(response.statusText);
         });
+
     }
 });
 

@@ -918,7 +918,9 @@ app.controller('ctrlListOrder', function($scope, $http){
         console.log(response.statusText);
     });
     $scope.btnOrderDetail = function(orderID, customerID){
+
         var tokenKey = localStorage.getItem("tokenKey");
+
         $('#modalOrderDetail').modal();
         $http({
             method : "GET",
@@ -928,7 +930,9 @@ app.controller('ctrlListOrder', function($scope, $http){
             }
         }).then(function mySuccess(response) {
             console.log(response);
+
             $scope.userName = response.data.username;
+
         }, function myError(response) {
             console.log(response.statusText);
         });

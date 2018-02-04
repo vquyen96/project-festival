@@ -58,6 +58,16 @@ module.exports = function(app){
 		.put(tongiaoController.update)
 		.delete(tongiaoController.delete);	
 
+	// order api.
+	app.route('/api/order')
+		.get(orderController.getList)
+		.post(orderController.add);	
+
+	app.route('/api/order/:id')
+		.get(orderController.getDetail)
+		.put(orderController.update)
+		.delete(orderController.delete);	
+
 	app.route('/api/cart')
 		.post(cartController.saveCart);
 

@@ -250,10 +250,12 @@ nav ul{
 .Case{
 	color: orange;
 }
+
 .contactLeft{
 	margin:10px 0;
 }
 .contactLeftTitle{
+
 
 }
 /*end contact*/
@@ -298,6 +300,7 @@ nav ul{
 .detailrightcontent:hover h4 a{
 	margin-left: 20px;
 }
+
 .detailModalBig{
 	padding: 10px;
 }
@@ -320,6 +323,7 @@ nav ul{
 }
 .detailModalBotItem:hover{
 	background: #f1f2f3;
+
 }
 .detailModalBotImg{
 	width: 100%;

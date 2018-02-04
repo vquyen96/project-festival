@@ -47,10 +47,20 @@
         </div>
         <div class="form-group">
           <label>Số điện thoại</label>
+
           <input type="text" name="phone" class="form-control" ng-model="phone" required>
           <i class="fa fa-check text-success" ng-show="form.phone.$dirty && form.phone.$valid"></i>
           <div class="text-danger">
             <span ng-show="form.phone.$dirty && form.phone.$error.required">Vui lòng nhập số điện thoại</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Thành Phố</label>
+          <input type="text" name="title" class="form-control" ng-model="city" required>
+
+          <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập thành phố của bạn</span>
           </div>
         </div>
         <div class="form-group">
