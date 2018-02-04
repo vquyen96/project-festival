@@ -4,35 +4,41 @@
         <h3 class="Case">Liên Hệ Với Chúng Tôi</h3>
       </div>
       <div>
-        <div class="content">
-          <b class="title">
+        <div class="contactLeft">
+          <b class="contactLeftTitle">
             Địa chỉ: 
           </b>
-            Số 8A Tôn Thất Thuyết - Quận Nam Từ Liêm - Thành Phố Hà Nội      
+            {{contact.adress}}      
         </div>
-         <div class="content">
-          <b class="title">
-            Điện thoại liên hệ:
+         <div class="contactLeft">
+          <b class="contactLeftTitle">
+            Chăm sóc khách hàng:
           </b>
-            (04)7305-3939    
+            {{contact.phoneCSKH}}  
         </div>
-         <div class="content">
-          <b class="title">
-            Hotline:
+        <div class="contactLeft">
+          <b class="contactLeftTitle">
+            Liên hệ đối tác:
           </b>
-            0987654321 - 0984575125         
+            {{contact.phoneDoiTac}}        
         </div>
-        <div class="content">
-          <b class="title">
+        <div class="contactLeft">
+          <b class="contactLeftTitle">
+            Liên hệ tuyển dụng:
+          </b>
+            {{contact.phoneTuyenDung}}        
+        </div>
+        <div class="contactLeft">
+          <b class="contactLeftTitle">
             Email:
           </b>
-            FestivalCompany@gmail.com        
+            {{contact.email}}       
         </div>
-        <div class="content">
-          <b class="title">
+        <div class="contactLeft">
+          <b class="contactLeftTitle">
             Website:
           </b>
-            WWW.Festival.com.vn         
+            {{contact.website}}           
         </div>                            
       </div>
     </div>
@@ -55,7 +61,7 @@
           <i class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></i>
           <div class="text-danger">
             <span ng-show="form.email.$dirty && form.email.$error.required">Vui lòng nhập địa chỉ Email</span>
-            <span ng-show="form.email.$error.email">Không đúng định dạng email</span>
+            <span ng-show="form.email.$dirty && form.email.$error.email">Không đúng định dạng email</span>
           </div>
         </div>
         <div class="form-group">

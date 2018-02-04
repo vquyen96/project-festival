@@ -9,13 +9,13 @@
 		</tr>
 		<tr ng-repeat="data in listData">
 			<td>{{data.name}}</td>
-			<td>{{data.price}} <b>VND</b></td>
+			<td>{{data.price| currency: "" :0}} <b>VND</b></td>
 			<td>
 				{{data.quantity}}
 				<a href="" class="btn btn-success" ng-click="btnAddToCart(data.id, data.name, data.price, 1)">+</a>
 				<a href="" class="btn btn-warning" ng-click="btnAddToCart(data.id, data.name, data.price, -1)">-</a>
 			</td>
-			<td>{{data.totalItemPrice}} <b>VND</b></td>
+			<td>{{data.totalItemPrice| currency: "" :0}} <b>VND</b></td>
 		</tr>
 		<tr>
 			<td> </td>
@@ -47,10 +47,20 @@
         </div>
         <div class="form-group">
           <label>Số điện thoại</label>
-          <input type="text" name="title" class="form-control" ng-model="phone" required>
+
+          <input type="text" name="phone" class="form-control" ng-model="phone" required>
+          <i class="fa fa-check text-success" ng-show="form.phone.$dirty && form.phone.$valid"></i>
+          <div class="text-danger">
+            <span ng-show="form.phone.$dirty && form.phone.$error.required">Vui lòng nhập số điện thoại</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Thành Phố</label>
+          <input type="text" name="title" class="form-control" ng-model="city" required>
+
           <i class="fa fa-check text-success" ng-show="form.title.$dirty && form.title.$valid"></i>
           <div class="text-danger">
-            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập số điện thoại</span>
+            <span ng-show="form.title.$dirty && form.title.$error.required">Vui lòng nhập thành phố của bạn</span>
           </div>
         </div>
         <div class="form-group">

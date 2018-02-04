@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('festival', {
 	nameLeHoi: String,
-	timeStart: String,
-	timeEnd: String,
+	timeStart: Date,
+	timeEnd: Date,
 	diadiem: String,
 	kinhdo: String,
 	vido: String,

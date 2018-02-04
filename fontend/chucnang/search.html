@@ -6,22 +6,25 @@
 		</div>
 		<div class="searchContent">
 			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
+				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
 					<a href="" ng-click="btnDetail(dataleft._id)"><img ng-src="{{dataleft.url2}}"></a> 
 				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
+				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-6">
 					<h4><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.nameLeHoi}}</a></h4>
 					<div>
-						<span>{{dataleft.timeStart}}</span>
+						<span>{{dataleft.timeStart  | date : "dd/MM/y" }}</span>
 						<span>Đến</span>
-						<span>{{dataleft.timeEnd}}</span>
+						<span>{{dataleft.timeEnd  | date : "dd/MM/y" }}</span>
 					</div>
 					<div>
 						<span class="glyphicon glyphicon-map-marker"></span>
 						<span><a href="" ng-click="btnDetail(dataleft._id)">{{dataleft.diadiem}}</a></span>
 					</div>
+					<div class="searchPrice">
+						<span><a href="" ng-click="btnDetail(dataleft._id)"><b>Giá vé :</b> {{dataleft.price | currency: "" :0 }} VND</a></span>
+					</div>
 				</div>
-				<div class="searchContentItemIcon col-md-2 col-sm-2 col-xs-12">
+				<div class="searchContentItemIcon col-md-2 col-sm-2 col-xs-2">
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
@@ -33,88 +36,20 @@
 		</div>
 		<div class="searchHotContent">
 			<div class="row searchHotContentItem" ng-repeat="data in listDataRight">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
+				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
 					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
 				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
+				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-6">
 					<h5><a href="" ng-click="btnDetail(data._id)">{{data.nameLeHoi}}</a></h5>
-					
+					<div class="searchPrice">
+						<span class=" glyphicon glyphicon-credit-card"></span>
+						<span><a href="" ng-click="btnDetail(dataleft._id)">{{data.price | currency: "" :0 }} VND</a></span>
+					</div>
 				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
+				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-2">
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
-			<!-- <div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/veniice-carnival.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội carnival</a></h5>
-					
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div>
-			<div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/92f6662032f69a4c5290f1bdb3b11e12.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội hoa tulip</a></h5>
-					
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div>
-			<div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/68.265.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội Life Ball</a></h5>
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div>
-			<div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/1499331454_0!!-!!055533kb5bnb4ofn54f667 1.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội hoa hồng</a></h5>
-					
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div>
-			<div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/veniice-carnival.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội carnival</a></h5>
-					
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div>
-			<div class="row searchHotContentItem">
-				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-12 thumbnail">
-					<img src="imgs/92f6662032f69a4c5290f1bdb3b11e12.jpg">
-				</div>
-				<div class="searchContentItemCap col-md-6 col-sm-6 col-xs-12">
-					<h5><a href="">Lễ hội hoa tulip</a></h5>
-					
-				</div>
-				<div class="searchHotItemIcon col-md-2 col-sm-2 col-xs-12">
-					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
-				</div>
-			</div> -->
 		</div>
 	</div>
 	

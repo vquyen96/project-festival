@@ -7,6 +7,7 @@ var cartController = require('../controllers/cartController');
 var addController = require('../controllers/addController');
 var orderController = require('../controllers/orderController');
 
+
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
 var tongiaoController = require('../controllers/tongiaoController');
@@ -69,6 +70,16 @@ module.exports = function(app){
 
 	app.route('/api/cart')
 		.post(cartController.saveCart);
+
+	// order api.
+	app.route('/api/order')
+		.get(orderController.getList)
+		.post(orderController.add);	
+
+	app.route('/api/order/:id')
+		.get(orderController.getDetail)
+		.put(orderController.update)
+		.delete(orderController.delete);	
 
 	// comment api.
 	// app.route('/api/comments')
