@@ -602,9 +602,12 @@ footer a{
 	.headerSearch{
 		display: none;
 	}
+	.detailModalBot {
+		display: none;
+	}
 	footer{
 		margin-top: 5px;
-		background: url('../imgs/.jpg');
+		background: url('../imgs/multicolor-background-31822-32557-hd-wallpapers.jpg');
 		background-size: 100%;
 		color: #fff;
 	}
@@ -647,6 +650,9 @@ footer a{
     .btnHeaderBar{
     	display: block;
     }
+    .detailModalBot {
+		display: none;
+	}
     footer{
 		margin-top: 5px;
 		background: url('../imgs/multicolor-background-31822-32557-hd-wallpapers.jpg');
