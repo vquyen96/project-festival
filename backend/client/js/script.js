@@ -1,4 +1,4 @@
-"use strict";
+
 var app = angular.module("myApp", ["ngRoute", "ui.bootstrap"]);
 app.controller('ctrlMenu', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
@@ -14,7 +14,7 @@ app.controller('ctrlMenu', function($scope, $http){
         }).then(function mySuccess(response) {
             console.log(response);
             if (response.data != null && response.data != undefined && response.data != '') {
-                $scope.avaUrl = response.data.avaUrl;
+                $scope.user = response.data;
             }
             else{
                 alert('Bạn chưa đăng nhập');
@@ -45,6 +45,12 @@ app.controller('ctrlMenu', function($scope, $http){
     $scope.btnHeaderBar = function(){
         $('.dropmenu').slideToggle();
     }
+    $scope.btnEdit = function(id){
+        localStorage.setItem("editId", id);
+        localStorage.setItem("type", 'edit');
+       
+        window.location.href = "index.html#!/addUser";
+    }
 });
 app.controller('ctrlListUser', function($scope, $http){
     angular.element(document).ready(function () {
@@ -53,17 +59,17 @@ app.controller('ctrlListUser', function($scope, $http){
         },500);
         
     });
-    var countName = 1;
-    var countEmail = 1;
-    var countLevel = 1;
-    var countBirthDay = 1;
+    var ownerId = localStorage.getItem("ownerId");
+    var limit = 8,
+        page= 1;
+    $scope.perPage = limit;
+    $scope.listLeHoiRun = function(perPage){
+        limit = perPage;
+        getList('1');
+    }
     var tokenKey = localStorage.getItem("tokenKey");
-    getList('none', 'n');
-    function getList(value, rev, page){
-        var limit = 8;
-        if (page == null) {
-            page = 1;
-        }
+    getList('1');
+    function getList(page){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users?page="+page+"&limit="+limit,
@@ -72,81 +78,29 @@ app.controller('ctrlListUser', function($scope, $http){
             var totalPage = response.data.totalPage;
             $scope.currentPage = page;
             $scope.totalItems  = totalPage*limit;
-            if (value == 'none') {
-                $scope.listUser = response.data.listUser;
-            }
-            else{
-                var dataObj = response.data.listUser.slice(0);
-                dataObj.sort(function(a,b) {
-                    if (value == 'username') {
-                        var x = a.username.toLowerCase();
-                        var y = b.username.toLowerCase();
-                        return x < y ? -1 : x > y ? 1 : 0;
-                    }
-                    if (value == 'email') {
-                        var x = a.email.toLowerCase();
-                        var y = b.email.toLowerCase(); 
-                        return x < y ? -1 : x > y ? 1 : 0; 
-                    }
-                    if (value == 'level') {
-                        return a.level - b.level;
-                    }
-                    if (value == 'birthday') {
-                        return a.birthday - b.birthday;
-                    }
-                });
-                if (rev == 'y') {
-                    $scope.listUser = dataObj.reverse();
-                }else{
-                    $scope.listUser = dataObj;
-                }
-            }
+            $scope.listUser = response.data.listUser;
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     $scope.setPage = function (pageNo) {
-        getList('username', 'n', pageNo);
+        getList(pageNo);
         $scope.currentPage = pageNo;
     };
     $scope.btnSortName = function(currentPage){
-        if(countName % 2){
-            getList('username', 'n', currentPage);
-        }
-        else{
-            getList('username', 'y', currentPage);
-        }
-        countName++;
+        $scope.listUserSort = 'username';
     }
     $scope.btnSortEmail = function(currentPage){
-        if(countEmail % 2){
-            getList('email', 'n', currentPage);
-        }
-        else{
-            getList('email', 'y', currentPage);
-        }
-        countEmail++;
+        $scope.listUserSort = 'email';
     }
     $scope.btnSortLevel = function(currentPage){
-        if(countLevel % 2){
-            getList('level', 'n', currentPage);
-        }
-        else{
-            getList('level', 'y', currentPage);
-        }
-        countLevel++;
+        $scope.listUserSort = 'level';
     }
     $scope.btnSortBirthDay = function(currentPage){
-        if(countBirthDay % 2){
-            getList('birthday', 'n', currentPage);
-        }
-        else{
-            getList('birthday', 'y', currentPage);
-        }
-        countBirthDay++;
+        $scope.listUserSort = 'birthday';
     }
     $scope.btnAddUser = function(){
-        $('#userid').attr('name','add');
+        localStorage.setItem("type", "add");
         window.location.href = "index.html#!/addUser";
     }    
     $scope.btnEdit = function(id){
@@ -155,29 +109,34 @@ app.controller('ctrlListUser', function($scope, $http){
         window.location.href = "index.html#!/addUser";
     }
     $scope.btnDelete = function(id ,name){
-        var r = confirm("Bạn chắc chắn muốn xóa thành viên" +  name);
-        if (r == true) {
-            $http({
-                method : "DELETE",
-                url : "http://localhost:3000/api/users/"+id,
-            }).then(function mySuccess(response) {
-                console.log(response);
-                window.location.href = "index.html";
-            }, function myError(response) {
-                console.log(response.statusText);
-            });
+        if(id == ownerId){
+            alert('Bạn không được phép xóa chính mình');
         }
+        else{
+            var r = confirm("Bạn chắc chắn muốn xóa thành viên" +  name);
+            if (r == true) {
+                $http({
+                    method : "DELETE",
+                    url : "http://localhost:3000/api/users/"+id,
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    window.location.href = "index.html";
+                }, function myError(response) {
+                    console.log(response.statusText);
+                });
+            }
+        }
+        
     }
 
 });
 app.controller('ctrlAddUser', function($scope, $http){
     //lấy dữ liệu từ hidden input
-    var typeAdd = $('#userid').attr('name');
-    var editID = $('#userid').val();
+    var typeAdd = localStorage.getItem("type");
+    var editID = localStorage.getItem("editId");
     var tokenKey = localStorage.getItem("tokenKey");
     //nếu hidden input đúng dữ liệu
-    console.log(editID);
-    console.log(typeAdd);
+    
     if (typeAdd == 'edit') {
         //điền dữ liệu vào input
         function getDetail(){
@@ -190,9 +149,7 @@ app.controller('ctrlAddUser', function($scope, $http){
             }).then(function mySuccess(response) {
                 console.log(response);
                 $scope.user = response.data;
-                // $('#username').val(response.data.username);
-                // $('#email').val(response.data.email);
-                // $('#birthday').val(response.data.birthday);
+                $scope.user.birthday = new Date(response.data.birthday) ;
                 $('#level').val(response.data.level);
                 // $('#avaUrl').val(response.data.avaUrl);
                 $('#btnSbm').val('Sửa Lại');
@@ -240,6 +197,9 @@ app.controller('ctrlAddUser', function($scope, $http){
         getDetail();
     }
     else{
+        $scope.user = {
+            level: '1'
+        };
         $scope.btnAdd = function() {
             console.log($scope.user);
             var day = $scope.user.birthday.getTime();
@@ -546,18 +506,15 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         },500);
         
     });
-    var countName = 1;
-    var countPlace = 1;
-    var countLucDia = 1;
-    var countTonGiao = 1;
-    var countTimeStart = 1;
-
-    getList('none','n','1');
-    function getList(value, rev, page){
-        var limit = 10
-        if(page == null){
-            page=1;
-        }
+    var limit = 10,
+        page= 1;
+    $scope.perPage = limit;
+    $scope.listLeHoiRun = function(perPage){
+        limit = perPage;
+        getList('1');
+    }
+    getList('1');
+    function getList(page){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/festivals?page="+page+"&limit="+limit,
@@ -567,104 +524,34 @@ app.controller('ctrlListLeHoi', function($scope, $http){
             $scope.currentPage = page;
             $scope.totalItems  = totalPage*limit;
             console.log(response);
-            if (value == 'none') {
-                $scope.listUser = response.data.listFestival;
-            }
-            else{
-                var dataObj = response.data.listFestival.slice(0);
-                dataObj.sort(function(a,b) {
-                    switch(value){
-                        case 'name': {
-                            var x = a.nameLeHoi.toLowerCase();
-                            var y = b.nameLeHoi.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                        case 'place': {
-                            var x = a.diadiem.toLowerCase();
-                            var y = b.diadiem.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                        case 'lucdia': {
-                            var x = a.lucdia.toLowerCase();
-                            var y = b.lucdia.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                        case 'tongiao': {
-                            var x = a.tongiao.toLowerCase();
-                            var y = b.tongiao.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                        case 'timeStart': {
-                            return a.timeStart - b.timeStart;
-                        }
-                        break;
-                    }
-                });
-                if (rev == 'y') {
-                    $scope.listUser = dataObj.reverse();
-                }else{
-                    $scope.listUser = dataObj;
-                }
-            }
+            $scope.listUser = response.data.listFestival;
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     $scope.btnSortName = function(currentPage){
-        if (countName % 2) {
-            getList('name','n', currentPage);
-        }
-        else{
-            getList('name','y', currentPage);
-        } 
-        countName++;   
+       $scope.listUserSort = 'nameLeHoi';
     }
     $scope.btnSortPlace = function(currentPage){
-        if (countPlace % 2) {
-            getList('place','n', currentPage);
-        }
-        else{
-            getList('place','y', currentPage);
-        }  
-        countPlace++;
+        $scope.listUserSort = 'diadiem';
     }
     $scope.btnSortLucDia = function(currentPage){
-        if (countLucDia % 2) {
-            getList('lucdia','n', currentPage);
-        }
-        else{
-            getList('lucdia','y', currentPage);
-        }  
-        countLucDia++;  
+        $scope.listUserSort = 'lucdia';
     }
     $scope.btnSortTonGiao = function(currentPage){
-        if (countTonGiao % 2) {
-            getList('tongiao','n', currentPage);
-        }
-        else{
-            getList('tongiao','y', currentPage);
-        }
-        countTonGiao++;    
+        $scope.listUserSort = 'tongiao';   
     }
-    // $scope.btnSortTimeStart = function(currentPage){
+    $scope.btnSortTimeStart = function(currentPage){
 
-    //     if (countTimeStart % 2) {
-    //         getList('timeStart','n', currentPage);
-    //     }
-    //     else{
-    //         getList('timeStart','y', currentPage);
-    //     }
-    //     countTimeStart++;    
-    // }
+        $scope.listUserSort = 'timeStart';   
+    }
     $scope.setPage = function (pageNo) {
-        getList('username', 'n', pageNo);
+        getList(pageNo);
         $scope.currentPage = pageNo;
     };
-    
+    $scope.pageChanged = function() {
+        $log.log('Page changed to: ' + $scope.currentPage);
+    };
     $scope.btnAddUser = function(){
         $('#userid').attr('name','add');
         window.location.href = "index.html#!/addLeHoi";
@@ -703,14 +590,8 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
             }).then(function mySuccess(response) {
                 console.log(response);
                 $scope.festival = response.data;
-                // $('#nameLeHoi').val(response.data.nameLeHoi);
-                // $('#timeStart').val(response.data.timeStart);
-                // $('#timeEnd').val(response.data.timeEnd);
-                // $('#diadiem').val(response.data.diadiem);
-                // $('#kinhdo').val(response.data.kinhdo);
-                // $('#vido').val(response.data.vido);
-                // $('#chitiet').val(response.data.chitiet);
-                // $('#url1').val(response.data.url1);
+                $scope.festival.timeStart = new Date(response.data.timeStart) ;
+                $scope.festival.timeEnd = new Date(response.data.timeEnd) ;
                 $('#btnSbm').val('Sửa Lại');
             }, function myError(response) {
                 console.log(response.statusText);
@@ -759,6 +640,10 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
         getDetail();
     }
     else{
+        $scope.festival = {
+            lucdia : 'Việt Nam',
+            tongiao: 'Không'
+        };
         $scope.btnAdd = function() {
             var daystart = $scope.festival.timeStart.getTime();
             var dayend = $scope.festival.timeEnd.getTime();
@@ -879,6 +764,10 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         }  
         countPlace++;
     }
+    $scope.setPage = function (pageNo) {
+       getList('none','n',pageNo);
+        $scope.currentPage = pageNo;
+    };
     $scope.btnDelFeedBack = function(id, name){
         var r = confirm("Bạn chắc chắn muốn xóa góp ý của " +  name);
         if (r == true) {
@@ -938,36 +827,90 @@ app.controller('ctrlListOrder', function($scope, $http){
         },500);
         
     });
-    $http({
-        method : "GET",
-        url : "http://localhost:3000/api/order",
-    }).then(function mySuccess(response) {
-        console.log(response);
-        $scope.listData = response.data.listData;
-    }, function myError(response) {
-        console.log(response.statusText);
-    });
-    $scope.btnOrderDetail = function(orderID, customerID){
-
-        var tokenKey = localStorage.getItem("tokenKey");
-
-        $('#modalOrderDetail').modal();
+    var limit = 10,
+        page = 1;
+    function getList(page){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users/"+customerID,
-            headers: {
-                "Authorization": tokenKey
-            }
+            url : "http://localhost:3000/api/order?page="+page+"&limit="+limit,
         }).then(function mySuccess(response) {
             console.log(response);
-
-            $scope.userName = response.data.username;
-
+            $scope.listData = response.data.listData;
+            var totalPage = response.data.totalPage;
+                $scope.totalItems  = totalPage*limit;
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
+    getList(1);
+    $scope.setPage = function (pageNo) {
+        getList(pageNo);
+        $scope.currentPage = pageNo;
+    };
+    $scope.btnOrderDetail = function(order_id, orderfullName, ordertotalPrice, orderemail, orderphone, orderadress){
+        $('#modalOrderDetail').modal();
+        $scope.fullName = orderfullName;
+        $scope.price = ordertotalPrice;
+        $scope.email = orderemail;
+        $scope.phone = orderphone;
+        $scope.adress = orderadress;
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/orderdetail/"+order_id,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.orderDetail = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+    $scope.btnDone = function(fullName, id, status){
+        if (status == 1) {
+            var r = confirm("Bạn sẽ nhận đơn hàng của " +  name);
+            if (r == true) {
+                $http({
+                    method : "PUT",
+                    url : "http://localhost:3000/api/order/"+id,
+                    data: {
+                        "status" : status
+                    }
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    
+                    getList(1);
+                }, function myError(response) {
+                    console.log(response.statusText);
+                });
+            }
+        }
+        else if(status == 0){
+            var r = confirm("Bạn chắc chắn đã làm việc xong với " +  name);
+            if (r == true) {
+                $http({
+                    method : "PUT",
+                    url : "http://localhost:3000/api/order/"+id,
+                    data: {
+                        "status" : status
+                    }
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    
+                    getList(1);
+                }, function myError(response) {
+                    console.log(response.statusText);
+                });
+            }
+        }
+        else{
+            var r = confirm("Bạn chắc chắn không còn vé cho " +  name);
+            if (r == true) {}
+        }
+    }
+    $scope.offModal = function(){
+        $('#modalOrderDetail').modal('hide');
+    }
 });
+
 app.controller('ctrlContact', function($scope, $http){
     angular.element(document).ready(function () {
         setTimeout(function(){
