@@ -231,6 +231,10 @@ body{
 	float: right;
 	margin:0 20px;
 }
+.listOrderTotalPrice{
+	float: right;
+	margin-top: 20px;
+}
 /*end list Order*/
 @media screen and (max-width: 992px){
 	.responsive992{
