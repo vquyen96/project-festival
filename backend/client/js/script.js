@@ -150,6 +150,7 @@ app.controller('ctrlAddUser', function($scope, $http){
                 console.log(response);
                 $scope.user = response.data;
                 $scope.user.birthday = new Date(response.data.birthday) ;
+                $scope.user.password = "";
                 $('#level').val(response.data.level);
                 // $('#avaUrl').val(response.data.avaUrl);
                 $('#btnSbm').val('Sửa Lại');
@@ -158,13 +159,13 @@ app.controller('ctrlAddUser', function($scope, $http){
             });
         }
         getDetail();
-        $('#password').attr('style','display:none;');
-        $('#btnPass').attr('style','display:block;');
-        $scope.btnPass = function(){
-            $scope.user.password = "";
-            $('#btnPass').attr('style','display:none;');
-            $('#password').attr('style','display:block;');
-        }
+        // $('#password').attr('style','display:none;');
+        // $('#btnPass').attr('style','display:block;');
+        // $scope.btnPass = function(){
+        //     $scope.user.password = "";
+        //     $('#btnPass').attr('style','display:none;');
+        //     $('#password').attr('style','display:block;');
+        // }
         //Khi click nút sửa
         $scope.btnAdd = function() {
             
