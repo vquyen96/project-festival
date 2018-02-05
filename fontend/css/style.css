@@ -602,6 +602,12 @@ footer a{
 	.headerSearch{
 		display: none;
 	}
+	footer{
+		margin-top: 5px;
+		background: url('../imgs/.jpg');
+		background-size: 100%;
+		color: #fff;
+	}
 }
 @media screen and (max-width: 768px) {
 	.headerLogo img{
@@ -641,5 +647,11 @@ footer a{
     .btnHeaderBar{
     	display: block;
     }
+    footer{
+		margin-top: 5px;
+		background: url('../imgs/multicolor-background-31822-32557-hd-wallpapers.jpg');
+		background-size: 100%;
+		color: #fff;
+	}
     
 }
