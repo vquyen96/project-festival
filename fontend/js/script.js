@@ -588,23 +588,49 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
             today=today.getTime();
         if(today>day){
             $http({
-                    method : "PUT",
-                    url : "http://localhost:3000/api/users/"+ownerId,
-                    data: $scope.user
+                method : "PUT",
+                url : "http://localhost:3000/api/users/"+ownerId,
+                data: $scope.user
+            }).then(function mySuccess(response) {
+                console.log(response);
+            }, function myError(response) {
+                alert(response.data);
+            });
+        alert("Thông Tin tài khoản được thay đổi thành công !");
+        }
+        else{
+            alert("Bạn không được chọn ngày tương lai !");
+        }
+        console.log($scope.data);
+    }
+    function history(){
+        var historyArray = [];
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/order/"+ownerId,
+        }).then(function mySuccess(response) {
+            console.log(response);
+            for(var i = 0 ; i< response.data.length ; i++){
+                $http({
+                    method : "GET",
+                    url : "http://localhost:3000/api/orderdetail/"+response.data[i]._id,
                 }).then(function mySuccess(response) {
                     console.log(response);
+                    for(var j = 0 ; j< response.data.length ; j++){
+                            historyArray.push(response.data[j]);
+                    }
                 }, function myError(response) {
                     alert(response.data);
                 });
-            alert("Thông Tin tài khoản được thay đổi thành công !");
             }
-            else{
-                alert("Bạn không được chọn ngày tương lai !");
-            }
-            console.log($scope.data);
-            
-        }
-    });
+            console.log(historyArray);  
+            $scope.history = historyArray;
+        }, function myError(response) {
+            alert(response.data);
+        });
+    }
+    history();
+});
 /*code api hanh*/
 
 app.controller('ctrlCart', function($scope, $http){

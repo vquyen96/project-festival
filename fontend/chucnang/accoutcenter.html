@@ -31,7 +31,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr ng-repeat="his in history">
+						<th>{{his.nameLehoi}}</th>
+						<th>{{his.updatedAt | date : "dd/MM/y" }}</th>
+					</tr>
+					<!-- <tr>
 						<th>oktoberfest</th>
 						<th>11/10/1111</th>
 					</tr>
@@ -46,11 +50,7 @@
 					<tr>
 						<th>oktoberfest</th>
 						<th>11/10/1111</th>
-					</tr>
-					<tr>
-						<th>oktoberfest</th>
-						<th>11/10/1111</th>
-					</tr>																				
+					</tr> -->																				
 				</tbody>
 			</table>
 		</div>

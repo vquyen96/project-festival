@@ -5,5 +5,9 @@ module.exports = mongoose.model('order_details', {
 	productId: mongoose.Schema.Types.ObjectId,
 	nameLehoi: String,
 	quantity: Number,	
-	unitPrice: Number
+	unitPrice: Number,
+	updatedAt: {
+		type: Date,
+		default: Date.now
+	},
 });

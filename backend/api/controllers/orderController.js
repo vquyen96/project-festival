@@ -18,7 +18,7 @@ exports.getList = function(req, resp){
 }
 exports.getDetail = function(req, resp){
 	
-	Order.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+	Order.find({ customerId: req.params.id},function(err, result){
 		
 		resp.send(result);
 	});
