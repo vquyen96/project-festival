@@ -69,7 +69,7 @@ module.exports = function(app){
 		.put(orderController.update)
 		.delete(orderController.delete);	
 
-	app.route('/api/cart')
+	app.route('/api/cart/:id')
 		.post(cartController.saveCart);
 
 	// order api.

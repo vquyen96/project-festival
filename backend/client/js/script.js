@@ -104,8 +104,8 @@ app.controller('ctrlListUser', function($scope, $http){
         window.location.href = "index.html#!/addUser";
     }    
     $scope.btnEdit = function(id){
-        $('#userid').attr('value',id);
-        $('#userid').attr('name','edit');
+        localStorage.setItem("editId", id);
+        localStorage.setItem("type", 'edit');
         window.location.href = "index.html#!/addUser";
     }
     $scope.btnDelete = function(id ,name){
@@ -553,14 +553,14 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         $log.log('Page changed to: ' + $scope.currentPage);
     };
     $scope.btnAddUser = function(){
-        $('#userid').attr('name','add');
+        localStorage.setItem("type", 'add');
         window.location.href = "index.html#!/addLeHoi";
-    }    
+    } 
     $scope.btnEdit = function(id){
-        $('#userid').attr('value',id);
-        $('#userid').attr('name','edit');
+        localStorage.setItem("editId", id);
+        localStorage.setItem("type", 'edit');
         window.location.href = "index.html#!/addLeHoi";
-    }
+    }   
     $scope.btnDelete = function(id ,name){
         var r = confirm("Bạn chắc chắn muốn xóa Lế Hội " +  name);
         if (r == true) {
@@ -578,8 +578,8 @@ app.controller('ctrlListLeHoi', function($scope, $http){
 });
 app.controller('ctrlAddLeHoi', function($scope, $http){
     //lấy dữ liệu từ hidden input
-    var typeAdd = $('#userid').attr('name');
-    var editID = $('#userid').val();
+    var typeAdd = localStorage.getItem("type");
+    var editID = localStorage.getItem("editId");
     //nếu hidden input đúng dữ liệu
     if (typeAdd == 'edit') {
         //điền dữ liệu vào input
