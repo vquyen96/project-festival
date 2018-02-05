@@ -594,6 +594,11 @@ footer a{
 	display: none;
 	margin: 0 20px;
 }
+.alert-cart{
+	text-align: center;
+	color: green;
+	font-size: 20px;
+}
 /*End cart*/
 @media screen and (max-width: 992px){
 	.searchHot{

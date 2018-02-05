@@ -755,8 +755,12 @@ app.controller('ctrlCart', function($scope, $http){
         }).then(function mySuccess(response) {
             console.log(response);
             localStorage.removeItem("cart");
-            alert('Cảm Ơn Bạn Đã Đặt Vé');
-            window.location.href = "index.html";
+            setTimeout(function(){ 
+                $('#modal-video').modal();
+            }, 300);
+            setTimeout(function(){ 
+                window.location.href = "index.html";
+            }, 5000);
         }, function myError(response) {
             console.log(response);
         });
