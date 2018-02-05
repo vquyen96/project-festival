@@ -47,6 +47,12 @@ app.controller('ctrlMenu', function($scope, $http){
     }
 });
 app.controller('ctrlListUser', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     var countName = 1;
     var countEmail = 1;
     var countLevel = 1;
@@ -282,6 +288,12 @@ app.controller('ctrlAddUser', function($scope, $http){
 });
 
 app.controller('ctrlListDanhmuc', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     function getListLucdia(){
         $http({
             method : "GET",
@@ -528,6 +540,12 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
     }
 });
 app.controller('ctrlListLeHoi', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     var countName = 1;
     var countPlace = 1;
     var countLucDia = 1;
@@ -790,6 +808,12 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
     }    
 });
 app.controller('ctrlListFeedBack', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     var countName = 1;
     var countEmail = 1;
     getList('none','n','1');
@@ -908,6 +932,12 @@ app.controller('ctrlListFeedBack', function($scope, $http){
 });
 
 app.controller('ctrlListOrder', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     $http({
         method : "GET",
         url : "http://localhost:3000/api/order",
@@ -933,6 +963,40 @@ app.controller('ctrlListOrder', function($scope, $http){
 
             $scope.userName = response.data.username;
 
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+});
+app.controller('ctrlContact', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
+    function getContact(){
+        $http({
+            method : "GET",
+            url : "http://localhost:3000/api/contact",
+        }).then(function mySuccess(response) {
+            console.log(response);
+            $scope.contact = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+    }
+    getContact()
+    $scope.btnEditContact = function(id){
+        console.log($scope.contact);
+        $http({
+            method : "PUT",
+            url : "http://localhost:3000/api/contact/"+id,
+            data: $scope.contact
+        }).then(function mySuccess(response) {
+            console.log(response);
+            
+            getContact();
         }, function myError(response) {
             console.log(response.statusText);
         });
