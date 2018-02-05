@@ -6,6 +6,7 @@ var feedbackController = require('../controllers/feedbackController');
 var cartController = require('../controllers/cartController');
 var addController = require('../controllers/addController');
 var orderController = require('../controllers/orderController');
+var contactController = require('../controllers/contactController');
 
 
 var authenticationController = require('../controllers/authenticationController');
@@ -81,6 +82,15 @@ module.exports = function(app){
 		.put(orderController.update)
 		.delete(orderController.delete);	
 
+	// contact api.
+	app.route('/api/contact')
+		.get(contactController.getAll)
+		.post(contactController.add);	
+
+	app.route('/api/contact/:id')
+		.get(contactController.getDetail)
+		.put(contactController.update)
+		.delete(contactController.delete);	
 	// comment api.
 	// app.route('/api/comments')
 	// 	.get(commentController.getList)
