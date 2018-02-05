@@ -18,7 +18,7 @@
 			<tr ng-repeat="data in listFeedBack">
 				<td>{{data.username}}</td>
 				<td>{{data.email}}</td>
-				<td>{{data.createdAt}}</td>
+				<td>{{data.createdAt | date : "h:mm a  d/M/yy "}}</td>
 				<td>{{data.title}}</td>
 				<td>{{data.content}}</td>
 				<td><a href="" class="btn btn-primary" ng-click="btnDelFeedBack(data._id, data.username)">Xóa</a></td>
