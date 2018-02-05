@@ -5,7 +5,7 @@ exports.getList = function(req, resp){
 
 	var page = Number(req.query.page);
 	var limit = Number(req.query.limit);
-	Order.find({}).sort({username: 1})
+	Order.find({}).sort({createdAt: -1})
 	.paginate(page, limit, function(err, result, total) { 
 		// console.log(result); 	
 		// console.log(total);

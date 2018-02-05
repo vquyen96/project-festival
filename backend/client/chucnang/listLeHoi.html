@@ -1,11 +1,19 @@
 <div class="row" ng-controller="ctrlListLeHoi">
 	<div class="detailLoad"></div>
 	<div class="listLeHoiHeader">
-		<input type="button" name="" class="btn btn-warning" value="Thêm Lễ Hội"  ng-click="btnAddUser()"></input>
 		<div class="listLeHoiHeaderSetItem">
-			<h4>Số bản ghi</h4>
-			<input type="number" name="" ng-model="perPage" class="">
-			<input type="button" name="" class="btn btn-success" value="Chạy" ng-click="listLeHoiRun(perPage)"> 
+			<div class="input-group">
+				<span class="input-group-btn">
+		        	<button class="btn btn-warning" type="button"  ng-click="btnAddUser()">Thêm Lễ Hội</button>
+		      	</span>
+		      	<span class="input-group-btn">
+		        	<button class="btn btn-success" type="button"  ng-click="listLeHoiRun(perPage)">Số bản ghi trong trang</button>
+		      	</span>
+		      	<input type="text" class="form-control" ng-model="perPage" placeholder="Số bản ghi">
+		      	<span class="input-group-btn">
+		        	<button class="btn btn-success" type="button"  ng-click="listLeHoiRun(perPage)">Go!</button>
+		      	</span>
+		    </div><!-- /input-group -->
 		</div>
 		
 	</div>
