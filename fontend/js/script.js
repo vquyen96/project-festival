@@ -747,7 +747,7 @@ app.controller('ctrlCart', function($scope, $http){
             }
         }   
 
-        console.log(ownerId);
+        console.log(data);
         $http({
             method : "POST",
             url : "http://localhost:3000/api/cart/"+ownerId,
@@ -758,7 +758,7 @@ app.controller('ctrlCart', function($scope, $http){
             alert('Cảm Ơn Bạn Đã Đặt Vé');
             window.location.href = "index.html";
         }, function myError(response) {
-            console.log(response.statusText);
+            console.log(response);
         });
 
     }

@@ -861,7 +861,7 @@ app.controller('ctrlListOrder', function($scope, $http){
             console.log(response);
             $scope.orderDetail = response.data;
         }, function myError(response) {
-            console.log(response.statusText);
+            console.log(response.data);
         });
     }
     $scope.btnDone = function(fullName, id, status){

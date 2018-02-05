@@ -7,7 +7,7 @@ var cartController = require('../controllers/cartController');
 var addController = require('../controllers/addController');
 var orderController = require('../controllers/orderController');
 var contactController = require('../controllers/contactController');
-
+var orderdetailController = require('../controllers/orderdetailController');
 
 var authenticationController = require('../controllers/authenticationController');
 var lucdiaController = require('../controllers/lucdiaController');
@@ -90,7 +90,18 @@ module.exports = function(app){
 	app.route('/api/contact/:id')
 		.get(contactController.getDetail)
 		.put(contactController.update)
-		.delete(contactController.delete);	
+		.delete(contactController.delete);
+
+
+		// orderdetail api.
+	app.route('/api/orderdetail')
+		.get(orderdetailController.getList)
+		.post(orderdetailController.add);	
+
+	app.route('/api/orderdetail/:id')
+		.get(orderdetailController.getbyOrder)
+		.put(orderdetailController.update)
+		.delete(orderdetailController.delete);
 	// comment api.
 	// app.route('/api/comments')
 	// 	.get(commentController.getList)
