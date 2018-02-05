@@ -5,23 +5,23 @@
 		<form method="post" name="form" ng-submit="plususer()" novalidate>
 			<div class="form-group">
 				<label>Tên Tài Khoản</label>
-				<input type="text" name="username" id="username" class="form-control" ng-model="user.username" ng-minlength="6" ng-maxlength="15" required>
+				<input type="text" name="username" id="username" class="form-control" ng-model="user.username" ng-minlength="6" ng-maxlength="20" required>
 				<i class="fa fa-check text-success" ng-show="form.username.$dirty && form.username.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.username.$dirty && form.username.$error.required">Vui lòng điền tài khoản</span>
 					<span ng-show="form.username.$dirty && form.username.$error.minlength">Tên truy cập phải dài hơn 6 kí tự</span>
-					<span ng-show="form.username.$dirty && form.username.$error.maxlength">Tên truy cập phải ngắn hơn 15 kí tự</span>
+					<span ng-show="form.username.$dirty && form.username.$error.maxlength">Tên truy cập phải ngắn hơn 20 kí tự</span>
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Mật khẩu</label>
-				<input type="button" name="btnPass" id="btnPass" class="btn btn-primary" value="Sửa lại mật khẩu" ng-click="btnPass()" style="display: none;">
-				<input type="text" name="password" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="15" required>
+				<!-- <input type="button" name="btnPass" id="btnPass" class="btn btn-primary" value="Sửa lại mật khẩu" ng-click="btnPass()" style="display: none;"> -->
+				<input type="text" name="password" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="20" required>
 				<i class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.password.$dirty && form.password.$error.required">Vui lòng điền mật khẩu</span>
 					<span ng-show="form.password.$dirty && form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
-					<span ng-show="form.password.$dirty && form.password.$error.maxlength">Mật khẩu phải ngắn hơn 15 kí tự</span>
+					<span ng-show="form.password.$dirty && form.password.$error.maxlength">Mật khẩu phải ngắn hơn 20 kí tự</span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -38,8 +38,8 @@
 				<input type="date" name="birthday" id="birthday" class="form-control" ng-model="user.birthday">
 			</div>
 			<div class="form-group">
-				<label>Quền Truy Cập</label>
-				<select class="form-control" ng-model="user.level" id="level">
+				<label>Quyền Truy Cập</label>
+				<select class="form-control" ng-model="user.level" id="level" name="level">
 					<option value="3">Chủ</option>
 					<option value="2">Quản Lý</option>
 					<option selected="selected" value="1">Người dùng</option>
@@ -50,7 +50,8 @@
 				<input type="text" name="userFile" id="avaUrl" ng-model="user.avaUrl" class="form-control">
 			</div>
 			<div>
-				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()" ng-disabled="form.username.$invalid || form.password.$invalid || form.email.$invalid">
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Thêm mới" ng-click="btnAdd()" ng-show="user_id == null" ng-disabled="form.username.$invalid || form.password.$invalid || form.email.$invalid">
+				<input type="button" class="btn btn-primary" id="btnSbm"  name="btnSbm" value="Sửa lại" ng-click="btnAdd()" ng-show="user_id != null" ng-disabled="form.username.$invalid && form.password.$invalid && form.email.$invalid && form.userFile.$invalid && form.level.$invalid">
 			</div>
 		</form>
 	</div>
