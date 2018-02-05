@@ -1,6 +1,12 @@
 
 var app = angular.module("myApp", ["ngRoute", "ui.bootstrap"]);
 app.controller('ctrlMenu', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     var ownerId = localStorage.getItem("ownerId");
     var tokenKey = localStorage.getItem("tokenKey");
     var level = localStorage.getItem("level");
@@ -904,7 +910,20 @@ app.controller('ctrlListOrder', function($scope, $http){
         }
         else{
             var r = confirm("Bạn chắc chắn không còn vé cho " +  name);
-            if (r == true) {}
+            if (r == true) {
+               $http({
+                    method : "PUT",
+                    url : "http://localhost:3000/api/order/"+id,
+                    data: {
+                        "status" : status
+                    }
+                }).then(function mySuccess(response) {
+                    console.log(response);
+                    getList(1);
+                }, function myError(response) {
+                    console.log(response.statusText);
+                }); 
+            }
         }
     }
     $scope.offModal = function(){
