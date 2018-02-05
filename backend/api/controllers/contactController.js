@@ -14,9 +14,16 @@ exports.getAll = function(req, resp){
 	});
 }
 
-exports.add = function(req, resp){		
-	var contact = new Contact(req.body);
-	console.log(req.body);
+exports.add = function(req, resp){	
+
+	var contact = new Contact( { 
+      	adress: "Số 8A Tôn Thất Thuyết - Quận Nam Từ Liêm - Thành Phố Hà Nội ",
+		phoneCSKH: "19001009",
+		phoneDoiTac: "0984575125 ",
+		phoneTuyenDung: "0473053939 ",
+		email: " festival_company@gmail.com ",
+		website: "https://festival-no1.com"
+     });
 	contact.save(function(err){
 		if(err){
 			console.log(err);	
