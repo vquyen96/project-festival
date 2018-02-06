@@ -103,12 +103,12 @@ body{
 /*end index*/
 
 /*start list User*/
-.listUserHeader{
+/*.listUserHeader{
 	padding: 20px 50px;
-}
+}*/
 .listLeHoiHeaderSetItem{
 	display: block;
-	margin-top: 10px;
+	
 }
 .listUserTable{
 	width: 100%;

@@ -1,5 +1,11 @@
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlLogin', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
     function alertError(data){
         $('.alert-danger').text(data);
         $('.alert-danger').attr('style','display : block');

@@ -184,11 +184,20 @@
 	</footer>
 
 	<div  ng-controller="ctrlbtnCart">
-		<div  class="btnChangeAdminpage">
-			<a href="" ng-click="btnChangeAdmin()"> 
+		<div  class="btnChangeAdminpage" ng-mouseover="hoverfb()" ng-mouseleave="outfb()">
+			<a href="" class="btnCart" ng-click="btnChangeAdmin()"> 
 				<img src="" id="btnChangeAdminimg">
  				<span class="countCart"></span>
 			</a>
+			<!-- <a href="" class="btnCartfb"> 
+				<img src="imgs/facebook_circle-512.png" id="btnHoverFb">
+			</a>
+			<a href="" class="btnCartYotu"> 
+				<img src="imgs/109354_media_512x512.png" id="btnHoverYotu">
+			</a>
+			<a href="" class="btnCartInsta"> 
+				<img src="imgs/social-instagram-new-circle-256.png" id="btnHoverInsta">
+			</a> -->
 		</div>
 		
 	</div>

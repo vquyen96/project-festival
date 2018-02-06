@@ -1,5 +1,11 @@
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlRegister', function($scope, $http){
+    angular.element(document).ready(function () {
+        setTimeout(function(){
+            $(".detailLoad").fadeOut("slow");
+        },500);
+        
+    });
 	$scope.btnSbm = function(){
         var day = $scope.data.birthday.getTime();
         var today = new Date();

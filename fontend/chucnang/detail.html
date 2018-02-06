@@ -128,7 +128,7 @@
 		            </div>
 		        </div>
 		        <div class="row detailModalBot">
-		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem" ng-repeat="data in listDataLeft | limitTo:4 "  ng-click="btnDetail(data._id)">
+		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem" ng-repeat="data in listDataRight | limitTo:4 "  ng-click="btnDetail(data._id)">
 		        		<a href="">
 		        			<img ng-src="{{data.url3}}" class="detailModalBotImg thumbnail">
 		        		</a>
@@ -138,22 +138,6 @@
 		        		</a>
 		        		<p class="detailModalPrice">{{data.price | currency: "" :0 }} VND</p>
 		        	</div>
-		        	<!-- <div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
-		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
-		        		<h4>Tên lễ hội</h4>
-		        		<p class="detailModalPrice">200000</p>
-		        	</div>
-		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
-		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
-		        		<h4>Tên lễ hội</h4>
-		        		<p class="detailModalPrice">500000</p>
-		        	</div>	
-		        	<div class="col-md-3 col-sm-6 col-xs-12 detailModalBotItem">
-		        		<img src="imgs/amthuc/amthuc1.jpg" class="detailModalBotImg thumbnail">
-		        		<h4>Tên lễ hội</h4>
-		        		<p class="detailModalPrice">100000</p>
-
-		        	</div>		        		        			         -->	
 		        </div>
            	</div> 
         </div>
