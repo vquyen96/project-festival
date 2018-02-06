@@ -75,7 +75,7 @@ app.controller('ctrlListUser', function($scope, $http){
     function getList(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users?page="+page+"&limit="+limit,
+            url : "http://localhost:3000/api/users",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.totalItems  = response.data.length;
@@ -102,6 +102,9 @@ app.controller('ctrlListUser', function($scope, $http){
     $scope.btnAddUser = function(){
         localStorage.setItem("type", "add");
         window.location.href = "index.html#!/addUser";
+    }
+    $scope.btnUserSearch = function(){
+        $scope.perPage = $scope.totalItems;
     }    
     $scope.btnEdit = function(id){
         localStorage.setItem("editId", id);
@@ -549,6 +552,9 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     $scope.pageChanged = function() {
         $log.log('Page changed to: ' + $scope.currentPage);
     };
+    $scope.btnFesSearch = function(){
+        $scope.perPage = $scope.totalItems;
+    }
     $scope.btnAddUser = function(){
         localStorage.setItem("type", 'add');
         window.location.href = "index.html#!/addLeHoi";

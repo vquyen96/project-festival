@@ -1,8 +1,16 @@
 <div class="container" ng-controller="ctrlSearch">
 	<div class="col-md-8 col-sm-12 col-xs-12">
-		<div class="searchInformation">
+		<!-- <div class="searchInformation form-group" >
 			<span class="searchHeadSearch">Tìm kiếm : </span>
+			<input type="text" name="search" class="form-control" ng-model="searchTitle">
 			<span class="searchHeadContent">"{{searchTitle}}"</span>
+		</div> -->
+		<div class="searchInformation">
+			<div class="input-group input-group-lg col-md-6 col-sm-12 col-xs-12">
+				<span class="input-group-addon">Tìm kiếm </span>
+		  		<input type="text" class="form-control" aria-describedby="basic-addon3" ng-model="searchTitle">
+			</div>
+		  	
 		</div>
 		<div class="searchContent">
 			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft.slice(((currentPageL-1)*perPageL), ((currentPageL)*perPageL)) | filter : searchTitle">
@@ -28,7 +36,7 @@
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
-			<ul uib-pagination total-items="totalItemsR" 
+			<ul uib-pagination total-items="totalItemsL" 
 		    	ng-model="currentPageL" 
 		    	ng-click="setPage(currentPageL)" 
 		    	max-size="maxSize" 

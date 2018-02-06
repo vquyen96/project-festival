@@ -1,4 +1,4 @@
-$(document).ready();
+
 var app = angular.module("myApp", ["ngRoute"]);
 
 app.controller('ctrlHead', function($scope, $http){
@@ -79,6 +79,12 @@ app.controller('ctrlbtnCart', function($scope, $http){
         }
     }
     //Khi click nut cart = changeadmin
+    $scope.hoverfb = function(){
+        
+    }
+    $scope.outfb = function(){
+        
+    }
     $scope.btnChangeAdmin = function(){
         if (ownerId != null && ownerId != undefined) {
             if(level == 2|| level == 3){
@@ -371,7 +377,7 @@ app.controller('ctrlSearch', function($scope, $http){
     function search(){
 
     }
-    $scope.perPageL = 100;
+    
     $scope.currentPageL = 1;
     $http({
         method : "GET",
@@ -379,7 +385,8 @@ app.controller('ctrlSearch', function($scope, $http){
     }).then(function mySuccess(response) {
         console.log(response);
         $scope.listDataLeft = response.data;
-        $scope.totalItemsR  = response.data.length;
+        $scope.totalItemsL  = response.data.length;
+        $scope.perPageL = response.data.length
     }, function myError(response) {
         console.log(response.statusText);
     });
