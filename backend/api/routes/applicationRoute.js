@@ -72,16 +72,6 @@ module.exports = function(app){
 	app.route('/api/cart/:id')
 		.post(cartController.saveCart);
 
-	// order api.
-	app.route('/api/order')
-		.get(orderController.getList)
-		.post(orderController.add);	
-
-	app.route('/api/order/:id')
-		.get(orderController.getDetail)
-		.put(orderController.update)
-		.delete(orderController.delete);	
-
 	// contact api.
 	app.route('/api/contact')
 		.get(contactController.getAll)

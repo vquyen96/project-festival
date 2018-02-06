@@ -16,7 +16,7 @@
 			<div class="form-group">
 				<label>Mật khẩu</label>
 				<!-- <input type="button" name="btnPass" id="btnPass" class="btn btn-primary" value="Sửa lại mật khẩu" ng-click="btnPass()" style="display: none;"> -->
-				<input type="text" name="password" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="20" required>
+				<input type="text" name="password" id="password" class="form-control" ng-model="user.password" ng-minlength="6" ng-maxlength="20" required placeholder="Nhập mật khẩu">
 				<i class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></i>
 				<div class="text-danger">
 					<span ng-show="form.password.$dirty && form.password.$error.required">Vui lòng điền mật khẩu</span>

@@ -74,18 +74,34 @@
 			<div class="row">
 				<h2>Lễ hội liên quan</h2>
 			</div>
-			<div class="row detailRightItem" ng-repeat='data in listDataLeft'>
-				<div class="detailrightimg col-md-4 col-sm-4 col-xs-4 thumbnail">
-					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
-					
-				</div>
-				<div class="detailrightcontent col-md-8 col-sm-8 col-xs-8">
-					<h4><a href="" ng-click="btnDetail(data._id)"> {{data.nameLeHoi}}</a></h4>
-					<div class="searchPrice">
-						<span class=" glyphicon glyphicon-credit-card"></span>
-						<span><a href="" ng-click="btnDetail(dataleft._id)">{{data.price | currency: "" :0 }} VND</a></span>
+			<div class="detailRight">
+				<div class="row detailRightItem" ng-repeat='data in listDataRight.slice(((currentPageR-1)*perPageR), ((currentPageR)*perPageR)) | filter : searchTitle'>
+					<div class="detailrightimg col-md-4 col-sm-4 col-xs-4 thumbnail">
+						<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
+						
+					</div>
+					<div class="detailrightcontent col-md-8 col-sm-8 col-xs-8">
+						<h4><a href="" ng-click="btnDetail(data._id)"> {{data.nameLeHoi}}</a></h4>
+						<div class="searchPrice">
+							<span class=" glyphicon glyphicon-credit-card"></span>
+							<span><a href="" ng-click="btnDetail(dataleft._id)">{{data.price | currency: "" :0 }} VND</a></span>
+						</div>
 					</div>
 				</div>
+			</div>
+			
+			<div>
+			    <ul uib-pagination total-items="totalItemsR" 
+			    	ng-model="currentPageR" 
+			    	ng-click="setPage(currentPageR)" 
+			    	max-size="maxSize" 
+			    	class="pagination-sm" 
+			    	boundary-links="true"
+			    	rotate = "true"  
+			    	force-ellipses="true" 
+			    	num-pages="numPages"
+			    	items-per-page= "perPageR">		
+			    </ul>
 			</div>
 		</div>
 	</div>
@@ -101,7 +117,7 @@
 		            	</a>
 		            	
 		            </div>
-		            <div class="col-md-7 col-sm-5 col-xs-5" class="Pay-title">
+		            <div class="col-md-7 col-sm-7 col-xs-7" class="Pay-title">
 		            	<h2>{{data.nameLeHoi}}</h2>
 		            	<p class="detailLeftPrice">Giá vé: {{data.price | currency: "" :0 }} VND</p>
 		            	<p class="detailModalbtn">

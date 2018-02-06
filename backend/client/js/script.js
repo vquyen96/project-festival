@@ -68,29 +68,23 @@ app.controller('ctrlListUser', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
     var limit = 8,
         page= 1;
-    $scope.perPage = limit;
-    $scope.listLeHoiRun = function(perPage){
-        limit = perPage;
-        getList('1');
-    }
+    $scope.perPage = 10;
+    $scope.currentPage = 1;
     var tokenKey = localStorage.getItem("tokenKey");
-    getList('1');
-    function getList(page){
+    getList();
+    function getList(){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/users?page="+page+"&limit="+limit,
         }).then(function mySuccess(response) {
             console.log(response);
-            var totalPage = response.data.totalPage;
-            $scope.currentPage = page;
-            $scope.totalItems  = totalPage*limit;
-            $scope.listUser = response.data.listUser;
+            $scope.totalItems  = response.data.length;
+            $scope.listUser = response.data;
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     $scope.setPage = function (pageNo) {
-        getList(pageNo);
         $scope.currentPage = pageNo;
     };
     $scope.btnSortName = function(currentPage){
@@ -513,9 +507,8 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         },500);
         
     });
-    var limit = 10,
-        page= 1;
-    $scope.perPage = limit;
+    $scope.perPage = 10;
+    $scope.currentPage = 1;
     $scope.listLeHoiRun = function(perPage){
         limit = perPage;
         getList('1');
@@ -524,14 +517,11 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     function getList(page){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page="+page+"&limit="+limit,
+            url : "http://localhost:3000/api/festivals",
         }).then(function mySuccess(response) {
-            var content = '';
-            var totalPage = response.data.totalPage;
-            $scope.currentPage = page;
-            $scope.totalItems  = totalPage*limit;
             console.log(response);
-            $scope.listUser = response.data.listFestival;
+            $scope.listUser = response.data;
+            $scope.totalItems  = response.data.length;
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -706,73 +696,35 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         },500);
         
     });
-    var countName = 1;
-    var countEmail = 1;
-    getList('none','n','1');
-    function getList(value, rev, page){
-        var limit = 10
-        if(page == null){
-            page=1;
-        }
+    $scope.currentPage = 1;
+    $scope.perPage = 10;
+    getList();
+    function getList(){
+        
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/feedback?page="+page+"&limit="+limit,
+            url : "http://localhost:3000/api/feedback",
         }).then(function mySuccess(response) {
-            var totalPage = response.data.totalPage;
-            $scope.currentPage = page;
-            $scope.totalItems  = totalPage*limit;
+            $scope.listFeedBack = response.data;
+            $scope.totalItems  = response.data.length;
             console.log(response);
-            if (value == 'none') {
-                $scope.listFeedBack = response.data.listFeedBack;
-            }
-            else{
-                var dataObj = response.data.listFeedBack.slice(0);
-                dataObj.sort(function(a,b) {
-                    switch(value){
-                        case 'name': {
-                            var x = a.username.toLowerCase();
-                            var y = b.username.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                        case 'email': {
-                            var x = a.email.toLowerCase();
-                            var y = b.email.toLowerCase();
-                            return x < y ? -1 : x > y ? 1 : 0;
-                        }
-                        break;
-                    }
-                });
-                if (rev == 'y') {
-                    $scope.listUser = dataObj.reverse();
-                }else{
-                    $scope.listUser = dataObj;
-                }
-            }
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
     $scope.btnSortName = function(currentPage){
-        if (countName % 2) {
-            getList('name','n', currentPage);
-        }
-        else{
-            getList('name','y', currentPage);
-        } 
-        countName++;   
+        $scope.listFeedbackSort = 'username';
     }
     $scope.btnSortEmail = function(currentPage){
-        if (countEmail % 2) {
-            getList('email','n', currentPage);
-        }
-        else{
-            getList('email','y', currentPage);
-        }  
-        countPlace++;
+        $scope.listFeedbackSort = 'email';
+    }
+    $scope.btnSortCreatedAt = function(currentPage){
+        $scope.listFeedbackSort = 'createdAt';
+    }
+    $scope.btnSortTitle = function(currentPage){
+        $scope.listFeedbackSort = 'title';
     }
     $scope.setPage = function (pageNo) {
-       getList('none','n',pageNo);
         $scope.currentPage = pageNo;
     };
     $scope.btnDelFeedBack = function(id, name){
@@ -831,29 +783,41 @@ app.controller('ctrlListOrder', function($scope, $http){
     angular.element(document).ready(function () {
         setTimeout(function(){
             $(".detailLoad").fadeOut("slow");
-        },500);
-        
+        },500); 
     });
-    var limit = 10,
-        page = 1;
-    function getList(page){
+    $scope.currentPage = 1;
+    $scope.perPage = 10;
+    function getList(timeSta, timeEnd){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/order?page="+page+"&limit="+limit,
+            url : "http://localhost:3000/api/order",
         }).then(function mySuccess(response) {
-            console.log(response);
-            $scope.listData = response.data.listData;
-            var totalPage = response.data.totalPage;
-                $scope.totalItems  = totalPage*limit;
+            var totalPricePage = 0 ;
+            var orders = response.data;
+            console.log(orders);
+            var listOrder = [];
+            var price = 0;
+            for(var i = 0; i < orders.length; i++){
+                var createdAt = orders[i].createdAt;
+                createdAt = new Date(createdAt).getTime();
+                if(createdAt > timeSta && createdAt < timeEnd){
+                    listOrder.push(orders[i]);
+                    if (orders[i].status == 0) {
+                        totalPricePage += orders[i].totalPrice;
+                    }  
+                }
+            }
+            $scope.totalPricePage = totalPricePage;
+            console.log(listOrder);
+            $scope.totalItems  = listOrder.length;
+            $scope.listData = listOrder;
         }, function myError(response) {
             console.log(response.statusText);
         });
     }
-    getList(1);
-    $scope.setPage = function (pageNo) {
-        getList(pageNo);
-        $scope.currentPage = pageNo;
-    };
+    //
+    $scope.setDate = '1';
+    getDatePer();
     $scope.btnOrderDetail = function(order_id, orderfullName, ordertotalPrice, orderemail, orderphone, orderadress){
         $('#modalOrderDetail').modal();
         $scope.fullName = orderfullName;
@@ -929,6 +893,57 @@ app.controller('ctrlListOrder', function($scope, $http){
     $scope.offModal = function(){
         $('#modalOrderDetail').modal('hide');
     }
+    function getDatePer(){
+        switch($scope.setDate){
+            case '1': {
+                $scope.timeEn = new Date();
+                $scope.timeEn.setHours(0);
+                var timeEnd = $scope.timeEn.getTime() + 86400000;
+                $scope.timeSt = new Date(timeEnd - 86400000*3);
+                var timeSta = $scope.timeSt.getTime();    
+            }
+            break;
+            case '2': {
+                $scope.timeEn = new Date();
+                $scope.timeEn.setHours(0);
+                var timeEnd = $scope.timeEn.getTime() + 86400000;
+                $scope.timeSt = new Date(timeEnd - 86400000*7);
+                var timeSta = $scope.timeSt.getTime();
+            }
+            break;
+            case '3': {
+                $scope.timeEn = new Date();
+                $scope.timeEn.setHours(0);
+                var timeEnd = $scope.timeEn.getTime() + 86400000;
+                $scope.timeSt = new Date(timeEnd - 86400000*30);
+                var timeSta = $scope.timeSt.getTime();
+            }
+            break;
+            case '4': {
+                $scope.timeEn = new Date();
+                $scope.timeEn.setHours(0);
+                var timeEnd = $scope.timeEn.getTime() + 86400000;
+                $scope.timeSt = new Date(timeEnd - 86400000*365);
+                var timeSta = $scope.timeSt.getTime();
+            }
+            break;
+        }
+        getList(timeSta,timeEnd);
+    }
+    $scope.getDate = function(){
+        getDatePer();
+    }
+    $scope.btnTotalPrice = function(){
+        var timeSta = $scope.timeSt.getTime();
+        if ($scope.timeEn == null || $scope.timeEn == undefined)   {
+            $scope.timeEn = new Date();
+            $scope.timeEn.setHours(0);
+        } 
+        console.log($scope.timeEn);
+        var timeEnd = $scope.timeEn.getTime() + 86400000;
+        getList();
+        
+    }
 });
 
 app.controller('ctrlContact', function($scope, $http){
@@ -965,73 +980,6 @@ app.controller('ctrlContact', function($scope, $http){
         });
     }
 });
-// app.controller('ctrlListComment', function($scope, $http){
-//     function listComment(){
-//        $http({
-//             method : "GET",
-//             url : "http://localhost:3000/api/comments",
-//         }).then(function mySuccess(response) {
-//             $scope.listData = response.data;
-//             // var listData = response.data;
-//             // var listLeHoi = {};
-//             // var i, arrlehoiName = [], arrlehoiID = [] ;
-//             // //gán mảnng
-//             // for ( i = 0; i< listData.length; i++){
-//             //     arrlehoiName[i] = listData[i].lehoiName;
-//             //     arrlehoiID[i] = listData[i].lehoiID;
-//             // }
-            
-//             // var lenlehoiName = arrlehoiName.length,
-//             //     outlehoiName = [],
-//             //     objlehoiName = { },
-//             //     lenlehoiID = arrlehoiID.length,
-//             //     outlehoiID = [],
-//             //     objlehoiID = { };
-//             // //lọc mảng lehoiName
-//             // for (i = 0; i < lenlehoiName; i++) {
-//             //     objlehoiName[arrlehoiName[i]] = 0;
-//             // }
-//             // for (i in objlehoiName) {
-//             //     outlehoiName.push(i);
-//             // }
-            
-//             // //lọc mảng lehoiID
-//             // for (i = 0; i < lenlehoiID; i++) {
-//             //     objlehoiID[arrlehoiID[i]] = 0;
-//             // }
-//             // for (i in objlehoiID) {
-//             //     outlehoiID.push(i);
-//             // }
-//             // // $scope.listLeHoi = outlehoiName;
-//             // // $scope.listLeHoi.ID = outlehoiID;
-//             // var content = "";
-//             // for(i = 0; i < outlehoiID.length; i++){
-//             //     content += "<div><div>"+outlehoiName[i]+"</div><div><div>"
-//             //     $http({
-//             //         method : "GET",
-//             //         url : "http://localhost:3000/api/comments/"+outlehoiID[i],
-//             //     }).then(function mySuccess(response) {
-//             //         console.log(response.data.length);
-//             //         for(var j = 0; j < response.data.length; j++){
-//             //             content += "<a>"+response.data[j].userName+"</a>"+response.data[j].content+"</div></div></div>";
-//             //         }
-//             //         console.log(content);
-//             //         // $scope.listComment = response.data;
-//             //     }, function myError(response) {
-//             //         console.log(response.statusText);
-//             //     });
-//             // }
-//             // console.log(content);
-//             // $('#content').html(content);
-//             // console.log(outlehoiName);
-//             // console.log(outlehoiID);
-//         }, function myError(response) {
-//             console.log(response);
-//         }); 
-//     }
-//     listComment();
-// });
-
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {

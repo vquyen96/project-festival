@@ -1,24 +1,12 @@
 var FeedBack = require('../models/feedback');
 
 exports.getList = function(req, resp){
-	// if (authenticationController.checkToken(req.headers.authorization)){
-	// 	console.log('Okie');
-	// }else{
-	// 	console.log('Not  okie');
-	// }
-
-	// Lấy tham số và parse ra number.	
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-
-	FeedBack.find({'status': 1})
-	.paginate(page, limit, function(err, result, total) {    	
-    	var responseData = {
-    		'listFeedBack': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	resp.send(responseData);
-  	});
+	FeedBack.find({'status': 1 },function(err, result){
+		if (err) {
+			console.log(err);
+		}
+		resp.send(result);
+	});
 
  	
 }

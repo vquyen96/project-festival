@@ -5,7 +5,7 @@
 			<span class="searchHeadContent">"{{searchTitle}}"</span>
 		</div>
 		<div class="searchContent">
-			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft">
+			<div class="row searchContentItem" ng-repeat="dataleft in listDataLeft.slice(((currentPageL-1)*perPageL), ((currentPageL)*perPageL)) | filter : searchTitle">
 				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
 					<a href="" ng-click="btnDetail(dataleft._id)"><img ng-src="{{dataleft.url2}}"></a> 
 				</div>
@@ -28,6 +28,17 @@
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
+			<ul uib-pagination total-items="totalItemsR" 
+		    	ng-model="currentPageL" 
+		    	ng-click="setPage(currentPageL)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true"
+		    	rotate = "true"  
+		    	force-ellipses="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPageL">		
+		    </ul>
 		</div>
 	</div>
 	<div class="searchHot col-md-4 col-sm-12 col-xs-12">
@@ -35,7 +46,7 @@
 			<span class="searchHotInfoContent">Lễ hội Thịnh Hành</span>
 		</div>
 		<div class="searchHotContent">
-			<div class="row searchHotContentItem" ng-repeat="data in listDataRight">
+			<div class="row searchHotContentItem" ng-repeat="data in listDataRight.slice(((currentPageR-1)*perPageR), ((currentPageR)*perPageR))">
 				<div class="searchContentItemImg col-md-4 col-sm-4 col-xs-4 thumbnail">
 					<a href="" ng-click="btnDetail(data._id)"><img ng-src="{{data.url2}}"></a>
 				</div>
@@ -50,6 +61,19 @@
 					<a href=""><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
+		</div>
+		<div>
+		    <ul uib-pagination total-items="totalItemsR" 
+		    	ng-model="currentPageR" 
+		    	ng-click="setPage(currentPageR)" 
+		    	max-size="maxSize" 
+		    	class="pagination-sm" 
+		    	boundary-links="true"
+		    	rotate = "true"  
+		    	force-ellipses="true" 
+		    	num-pages="numPages"
+		    	items-per-page= "perPageR">		
+		    </ul>
 		</div>
 	</div>
 	

@@ -30,7 +30,7 @@
 				<td class="responsive768"><a href="" class="btn">Xóa</span></a></td>
 				
 			</tr>
-			<tr ng-repeat="data in listUser | orderBy : listUserSort">
+			<tr ng-repeat="data in listUser.slice(((currentPage-1)*perPage), ((currentPage)*perPage)) | orderBy : listUserSort">
 				<td>{{data.nameLeHoi}}</td>
 				<td>{{data.timeStart| date : "dd/MM/y" }}</td>
 				<td class="responsive992 responsive768">{{data.timeEnd| date : "dd/MM/y" }}</td>
@@ -54,7 +54,6 @@
 		    	num-pages="numPages"
 		    	items-per-page= "perPage">		
 		    </ul>
-		    <!-- <ul uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul> -->
 		</div>
 	</div>
 </div>
