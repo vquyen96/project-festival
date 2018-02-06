@@ -77,11 +77,13 @@
 	                		<td>Tên lễ hội</td>
 	                		<!-- <td>Bắt đầu</td>
 	                		<td>Kết thúc</td> -->
+	                		<td>Tham gia</td>
 	                		<td>Số vé</td>
 	                		<td>Giá/vé</td>
 	                	</tr>
 	                	<tr ng-repeat="data in orderDetail">
 	                		<td>{{data.nameLehoi}}</td>
+	                		<td>{{data.time | date : "h:mm a  d/M/yy " }}</td>
 	                		<!-- <td>{{data.timeStart | date : "dd/MM/y" }}</td>
 	                		<td>{{data.timeEnd | date : "dd/MM/y" }}</td> -->
 	                		<td>{{data.quantity}}</td>

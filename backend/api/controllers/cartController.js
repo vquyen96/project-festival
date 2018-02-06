@@ -51,16 +51,20 @@ exports.saveCart = function(req, resp){
 	     		orderId: order._id,
 	     		productId: productResult[i]._id,
 	     		nameLehoi: productResult[i].nameLeHoi,
+	     		time: productResult[i].timeStart,
 	     		quantity: mapProduct[productResult[i]._id],
 	     		unitPrice: productResult[i].price
 	     	});
+	     	console.log(productResult[i].time);
 	     	// Thêm từng đối tượng order detail vào mảng.
 	     	orderDetailArray.push(orderDetail);
 	     	// Tính toán tổng giá đơn hàng.
 	     	totalPrice += orderDetail.quantity * orderDetail.unitPrice;	     	
 	    }
 	    // Set tổng giá cho order.
-	    
+	    for(var i = 0; i < listOrderProducts.length; i++){
+	    	orderDetailArray[i].time = listOrderProducts[i].time;
+	    }
 	    order.totalPrice = totalPrice;
 	    order.createdAt = new Date();
 	    console.log(order);

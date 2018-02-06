@@ -3,12 +3,14 @@
 	<table class="table">
 		<tr>
 			<td><b>Lễ Hội</b></td>
+      <td><b>Tham gia</b></td>
 			<td><b>Giá vé</b></td>
 			<td><b>Số lượng</b></td>
 			<td><b>Tổng giá</b></td>
 		</tr>
 		<tr ng-repeat="data in listData">
 			<td>{{data.name}}</td>
+      <td>{{data.time | date : "dd/MM/y" }}</td>
 			<td>{{data.price| currency: "" :0}} <b>VND</b></td>
 			<td>
 				{{data.quantity}}
