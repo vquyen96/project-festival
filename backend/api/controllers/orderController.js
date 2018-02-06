@@ -1,20 +1,31 @@
 var Order = require('../models/order');
-require('mongoose-pagination');
+// require('mongoose-pagination');
 
 exports.getList = function(req, resp){
 
-	var page = Number(req.query.page);
-	var limit = Number(req.query.limit);
-	Order.find({}).sort({createdAt: -1})
-	.paginate(page, limit, function(err, result, total) { 
-		// console.log(result); 	
-		// console.log(total);
-    	var responseData = {
-    		'listData': result,
-    		'totalPage': Math.ceil(total/limit)
-    	};
-    	resp.send(responseData);
-  	});
+	// var page = Number(req.query.page);
+	// var limit = Number(req.query.limit);
+	// console.log(limit);
+	// console.log(page);
+	// if (page != null && page != NaN && limit != null && limit != NaN) {
+	// 	Order.find({}).sort({createdAt: -1})
+	// 	.paginate(page, limit, function(err, result, total) { 
+	//     	var responseData = {
+	//     		'listData': result,
+	//     		'totalPage': Math.ceil(total/limit)
+	//     	};
+	//     	resp.send(responseData);
+	//   	});
+	// }
+	// else{
+		Order.find({},function(err, result){
+			if (err) {
+				console.log(err);
+			}	
+			resp.send(result);
+		}).sort({createdAt: -1});
+	// }
+	
 }
 exports.getDetail = function(req, resp){
 	

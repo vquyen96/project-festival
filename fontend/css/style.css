@@ -275,10 +275,15 @@ nav ul{
 .detailLeftPrice{
 	color: #fa3e3e;
 }
+.detailRight{
+	height: 900px;
+	overflow: auto;
+}
 .detailRightItem{
 	background: #f7f8f9;
 	margin: 5px;
 	padding: 5px;
+	
 }
 .detailRightItem:hover{
 	background: #fff8f9;
@@ -407,6 +412,10 @@ nav ul{
 }
 .searchHeadContent{
 	font-size: 22px;
+}
+.searchContent{
+	height: 1100px;
+	overflow: auto;
 }
 .searchContentItem{
 	padding: 10px;

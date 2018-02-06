@@ -1,6 +1,6 @@
 <div class="mainRow row" ng-controller="ctrlMain">
 	<div class="detailLoad"></div>
-	<div class="col-md-6 col-sm-12 col-xs-12 mainItem" ng-repeat="data in listData" ng-click="detailPage(data._id)">
+	<div class="col-md-6 col-sm-12 col-xs-12 mainItem" ng-repeat="data in listData.slice(((currentPage-1)*perPage), ((currentPage)*perPage))" ng-click="detailPage(data._id)">
 		<div class="mainSlide1">
 			<a href=""><img ng-src="{{data.url1}}"></img></a>
 		</div>
@@ -33,5 +33,18 @@
 			</div>
 			
 		</div>
+	</div>
+	<div class="mainPaginate">
+	    <ul uib-pagination total-items="totalItems" 
+	    	ng-model="currentPage" 
+	    	ng-click="setPage(currentPage)" 
+	    	max-size="maxSize" 
+	    	class="pagination-sm" 
+	    	boundary-links="true"
+	    	rotate = "true"  
+	    	force-ellipses="true" 
+	    	num-pages="numPages"
+	    	items-per-page= "perPage">		
+	    </ul>
 	</div>
 </div>

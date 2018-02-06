@@ -31,9 +31,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="his in history">
+					<tr ng-repeat="his in history | orderBy : 'updatedAt' | limitTo : 5">
 						<th>{{his.nameLehoi}}</th>
-						<th>{{his.updatedAt | date : "dd/MM/y" }}</th>
+						<th>{{his.updatedAt | date : "dd/MM/y hh:mm a" }}</th>
 					</tr>
 					<!-- <tr>
 						<th>oktoberfest</th>

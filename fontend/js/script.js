@@ -45,9 +45,12 @@ app.controller('ctrlHead', function($scope, $http){
     $scope.btnHeaderBar = function(){
         $('nav').slideToggle();
     }
-
+    $scope.btnHeadSearch = function(){
+        localStorage.setItem("find", $scope.searchTitle);
+        window.location.href = "index.html#!/search";
+    }
     var body = $("html, body");
-    body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
+        body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
        
     });
 });
@@ -113,13 +116,16 @@ app.controller('ctrlMain', function($scope, $http){
         },500);
         
     });
+    $scope.perPage = 10;
+    $scope.currentPage = 1;
     function getListLeHoi(){
         $http({
             method : "GET",
             url : "http://localhost:3000/api/festivals?page=1&limit=10",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listData = response.data.listFestival;
+            $scope.listData = response.data;
+            $scope.totalItems  = response.data.length;
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -179,6 +185,7 @@ app.controller('ctrlDetail', function($scope, $http){
     });
     var idLeHoi = localStorage.getItem("lehoiID");
     var ownerId = localStorage.getItem("ownerId");
+    var level = localStorage.getItem("level");
     function getDetailLeHoi(idLeHoi){
         $http({
             method : "GET",
@@ -195,32 +202,10 @@ app.controller('ctrlDetail', function($scope, $http){
             localStorage.setItem("lehoiName", response.data.nameLeHoi);
             localStorage.setItem("lehoiName", response.data.nameLeHoi);
             if (response.data.tongiao == 'Không') {
-                switch(response.data.lucdia){
-                    case 'Việt Nam':localStorage.setItem("find", 0);
-                    break;
-                    case 'Châu Á':localStorage.setItem("find", 1);
-                    break;
-                    case 'Châu Âu':localStorage.setItem("find", 2);
-                    break;
-                    case 'Châu Mỹ':localStorage.setItem("find", 3);
-                    break;
-                    case 'Châu Phi':localStorage.setItem("find", 4);
-                    break;
-                    case 'Châu Úc':localStorage.setItem("find", 5);
-                    break;
-                }
+                localStorage.setItem("find", response.data.lucdia);
             }
             else{
-                switch(response.data.tongiao){
-                    case 'Đạo Phật':localStorage.setItem("find", 6);
-                    break;
-                    case 'Đạo Hồi':localStorage.setItem("find", 7);
-                    break;
-                    case 'Đạo Thiên Chúa':localStorage.setItem("find", 8);
-                    break;
-                    case 'Đạo Hindu':localStorage.setItem("find", 9);
-                    break;
-                }
+                localStorage.setItem("find", response.data.tongiao);
             }
 
         }, function myError(response) {
@@ -230,68 +215,74 @@ app.controller('ctrlDetail', function($scope, $http){
     getDetailLeHoi(idLeHoi);
     $scope.btnAddToCart = function(productId, productName, productPrice, quantity){
         if (ownerId != null && ownerId != undefined) {
-            var cart = localStorage.getItem('cart');    
-            if (cart == null){
-                // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
-                // kèm số lượng.
-                if(quantity > 0){
-                    cart = {
-                        'products': [
-                            {
+            if(level == 1){
+                var cart = localStorage.getItem('cart');    
+                if (cart == null){
+                    // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
+                    // kèm số lượng.
+                    if(quantity > 0){
+                        cart = {
+                            'products': [
+                                {
+                                    'id': productId,
+                                    'name': productName,
+                                    'price': productPrice,
+                                    'quantity': quantity
+                                }
+                            ]
+                        }   
+                    }                       
+                } else{
+                    // Nếu đã tồn tại sản phẩm.
+                    // Parse thông tin giỏ hàng về json object.
+                    cart = JSON.parse(cart);
+                    // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
+                    if(cart.products != undefined && cart.products != null){
+                        // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
+                        var existsItem = false;
+                        for (var i = 0; i < cart.products.length; i++) {
+                            // Nếu tồn tại sản phẩm.
+                            if(cart.products[i].id == productId){
+                                existsItem = true;
+                                // tăng số lượng sản phẩm trong giỏ hàng lên 1.
+                                if(quantity == 1){
+                                    cart.products[i].quantity += quantity;
+                                }
+                                else{
+                                    cart.products[i].quantity = quantity;
+                                }
+                                quantity = cart.products[i].quantity;
+                                if(quantity <= 0){
+                                    // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
+                                    cart.products.splice(i, 1);
+                                }
+                                break;
+                            }
+                        }
+                        // Nếu không tồn tại sản phẩm trong giỏ hàng.
+                        if(!existsItem){
+                            // Thêm mới sản phẩm với quantity default là 1.
+                            cart.products.push({
                                 'id': productId,
+                                'quantity': quantity,
                                 'name': productName,
                                 'price': productPrice,
-                                'quantity': quantity
-                            }
-                        ]
-                    }   
-                }                       
-            } else{
-                // Nếu đã tồn tại sản phẩm.
-                // Parse thông tin giỏ hàng về json object.
-                cart = JSON.parse(cart);
-                // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
-                if(cart.products != undefined && cart.products != null){
-                    // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
-                    var existsItem = false;
-                    for (var i = 0; i < cart.products.length; i++) {
-                        // Nếu tồn tại sản phẩm.
-                        if(cart.products[i].id == productId){
-                            existsItem = true;
-                            // tăng số lượng sản phẩm trong giỏ hàng lên 1.
-                            if(quantity == 1){
-                                cart.products[i].quantity += quantity;
-                            }
-                            else{
-                                cart.products[i].quantity = quantity;
-                            }
-                            quantity = cart.products[i].quantity;
-                            if(quantity <= 0){
-                                // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
-                                cart.products.splice(i, 1);
-                            }
-                            break;
-                        }
-                    }
-                    // Nếu không tồn tại sản phẩm trong giỏ hàng.
-                    if(!existsItem){
-                        // Thêm mới sản phẩm với quantity default là 1.
-                        cart.products.push({
-                            'id': productId,
-                            'quantity': quantity,
-                            'name': productName,
-                            'price': productPrice,
-                            'totalItemPrice': 0
-                        });
-                    }                   
-                }                               
+                                'totalItemPrice': 0
+                            });
+                        }                   
+                    }                               
+                }
+                // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
+                // Lưu lại thông tin giỏ hàng vào localStorage.
+                localStorage.setItem('cart', JSON.stringify(cart));
+                setTimeout(function(){ 
+                    $('#modal-video').modal();
+                }, 300);
             }
-            // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
-            // Lưu lại thông tin giỏ hàng vào localStorage.
-            localStorage.setItem('cart', JSON.stringify(cart));
-            setTimeout(function(){ 
-                $('#modal-video').modal();
-            }, 300);
+            else{
+                alert('Bạn không có quyền mua vé! Đề nghị đăng nhập bằng tài khoản khác');
+            }
+            
         }
         else{
             alert('Bạn phải đăng nhập để đặt vé');
@@ -306,54 +297,6 @@ app.controller('ctrlDetail', function($scope, $http){
         window.location.href = "index.html#!/cart";
 
     }
-    // function getDetailComment(idLeHoi){
-    //     $http({
-    //         method : "GET",
-    //         url : "http://localhost:3000/api/comments/"+idLeHoi,
-    //     }).then(function mySuccess(response) {
-    //         console.log(response);
-    //         $scope.listComment = response.data;
-    //     }, function myError(response) {
-    //         console.log(response.statusText);
-    //     });
-    // }
-    // getDetailComment(idLeHoi);
-    
-    // $scope.btnComment = function(){
-    //     var userID = localStorage.getItem("ownerId"),
-    //         userName = localStorage.getItem("ownerName"),
-    //         userUrl = localStorage.getItem("ownerUrl"),
-    //         lehoiID = localStorage.getItem("lehoiID"),
-    //         lehoiName = localStorage.getItem("lehoiName"),
-    //         content = $('#commentContent').val();
-    //     if(userID != null && userID != undefined && lehoiID != null && lehoiID != undefined){
-    //         var comments = {
-    //             userID : userID,
-    //             userName : userName,
-    //             userUrl : userUrl,
-    //             lehoiID : lehoiID,
-    //             lehoiName: lehoiName,
-    //             content : content
-    //         }
-    //         $http({
-    //             method : "POST",
-    //             url : "http://localhost:3000/api/comments",
-    //             data: comments
-    //         }).then(function mySuccess(response) {
-    //             console.log(response);
-    //             $('#commentContent').val(' ');
-    //         }, function myError(response) {
-    //             console.log(response.statusText);
-    //         });
-    //         setTimeout(function(){ 
-    //             getDetailComment(idLeHoi);
-    //         }, 1000);
-    //     }
-    //     else{
-    //         alert('Bạn phải đăng nhập nhé ! ^^');
-    //     }
-        
-    // }
     var doc = new jsPDF();
     var specialElementHandlers = {
         '#editor': function (element, renderer) {
@@ -388,39 +331,16 @@ app.controller('ctrlDetail', function($scope, $http){
         initMap();
     }, 2000);
     setTimeout(function(){ 
-        var searchVal = localStorage.getItem("find");
-
-        switch(searchVal){
-            case '0': $scope.searchTitle = 'Việt Nam';
-            break;
-            case '1': $scope.searchTitle = 'Châu Á';
-            break;
-            case '2': $scope.searchTitle = 'Châu Âu';
-            break;
-            case '3': $scope.searchTitle = 'Châu Mỹ';
-            break;
-            case '4': $scope.searchTitle = 'Châu Phi';
-            break;
-            case '5': $scope.searchTitle = 'Châu Úc';
-            break;
-            case '6': $scope.searchTitle = 'Đạo Phật';
-            break;
-            case '7': $scope.searchTitle = 'Đạo Hồi';
-            break;
-            case '8': $scope.searchTitle = 'Đạo Thiên Chúa';
-            break;
-            case '9': $scope.searchTitle = 'Đạo Hindu';
-            break;
-            default: $scope.searchTitle = 'Tất Cả';      
-        }
-        searchVal = Number(searchVal);
-        
+        $scope.searchTitle = localStorage.getItem("find");
+        $scope.perPageR = 100;
+        $scope.currentPageR = 1;
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,
+            url : "http://localhost:3000/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listDataLeft = response.data.listFestival;
+            $scope.listDataRight = response.data;
+            $scope.totalItemsR  = response.data.length;
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -432,50 +352,34 @@ app.controller('ctrlDetail', function($scope, $http){
        
 });
 app.controller('ctrlSearch', function($scope, $http){
-    var searchVal = localStorage.getItem("find");
-
-    switch(searchVal){
-        case '0': $scope.searchTitle = 'Việt Nam';
-        break;
-        case '1': $scope.searchTitle = 'Châu Á';
-        break;
-        case '2': $scope.searchTitle = 'Châu Âu';
-        break;
-        case '3': $scope.searchTitle = 'Châu Mỹ';
-        break;
-        case '4': $scope.searchTitle = 'Châu Phi';
-        break;
-        case '5': $scope.searchTitle = 'Châu Úc';
-        break;
-        case '6': $scope.searchTitle = 'Đạo Phật';
-        break;
-        case '7': $scope.searchTitle = 'Đạo Hồi';
-        break;
-        case '8': $scope.searchTitle = 'Đạo Thiên Chúa';
-        break;
-        case '9': $scope.searchTitle = 'Đạo Hindu';
-        break;
-        default: $scope.searchTitle = 'Tất Cả';      
-    }
-    searchVal = Number(searchVal);
+    $scope.searchTitle = localStorage.getItem("find");
+    $scope.perPageR = 10;
+    $scope.currentPageR = 1;
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/festivals?page=1&limit=10",
+        url : "http://localhost:3000/api/festivals",
     }).then(function mySuccess(response) {
         console.log(response);
-        $scope.listDataRight = response.data.listFestival;
+        $scope.listDataRight = response.data;
+        $scope.totalItemsR  = response.data.length;
     }, function myError(response) {
         console.log(response.statusText);
     });
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
     function search(){
 
     }
+    $scope.perPageL = 100;
+    $scope.currentPageL = 1;
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/festivals?page=1&limit=5&find="+searchVal,
+        url : "http://localhost:3000/api/festivals",
     }).then(function mySuccess(response) {
         console.log(response);
-        $scope.listDataLeft = response.data.listFestival;
+        $scope.listDataLeft = response.data;
+        $scope.totalItemsR  = response.data.length;
     }, function myError(response) {
         console.log(response.statusText);
     });
@@ -506,13 +410,16 @@ app.controller('ctrlMedia', function($scope, $http){
         },1000);
         
     });
+    $scope.perPage = 10;
+    $scope.currentPage = 1;
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=20",
+            url : "http://localhost:3000/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
-            $scope.listData = response.data.listFestival;
+            $scope.listData = response.data;
+            $scope.totalItems  = response.data.length;
         }, function myError(response) {
             console.log(response.statusText);
         });

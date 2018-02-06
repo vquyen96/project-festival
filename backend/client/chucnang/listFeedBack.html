@@ -8,14 +8,14 @@
 			<tr>
 				<td><a href="" class="btn" ng-click="btnSortName(currentPage)">Tên tài khoản <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
 				<td><a href="" class="btn" ng-click="btnSortEmail(currentPage)">Email<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
-				<td><a href="" class="btn">Thời gian gửi <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
+				<td><a href="" class="btn" ng-click="btnSortCreatedAt(currentPage)">Thời gian gửi <span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
 				<td><a href="" class="btn" ng-click="btnSortTitle(currentPage)">Tiêu đề<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
 				<td><a href="" class="btn" ng-click="btnSortContent(currentPage)">Nội dung<span class=" glyphicon glyphicon-sort-by-attributes"></span></a></td>
 				<td><a href="" class="btn">Xóa góp ý</span></a></td>
 				<td><a href="" class="btn">Xóa tài khoản</span></a></td>
 				
 			</tr>
-			<tr ng-repeat="data in listFeedBack">
+			<tr ng-repeat="data in listFeedBack.slice(((currentPage-1)*perPage), ((currentPage)*perPage)) | orderBy : listFeedbackSort">
 				<td>{{data.username}}</td>
 				<td>{{data.email}}</td>
 				<td>{{data.createdAt | date : "h:mm a  d/M/yy "}}</td>
@@ -34,7 +34,7 @@
 		    	class="pagination-sm" 
 		    	boundary-links="true" 
 		    	num-pages="numPages"
-		    	items-per-page= "10">		
+		    	items-per-page= "perPage">		
 		    </ul>
 		</div>
 	</div>
