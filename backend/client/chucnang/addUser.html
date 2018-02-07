@@ -40,7 +40,7 @@
 			<div class="form-group">
 				<label>Quyền Truy Cập</label>
 				<select class="form-control" ng-model="user.level" id="level" name="level">
-					<option value="3">Chủ</option>
+					<option ng-show="level == 3" value="3">Chủ</option>
 					<option value="2">Quản Lý</option>
 					<option selected="selected" value="1">Người dùng</option>
 				</select>

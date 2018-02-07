@@ -123,6 +123,7 @@
 		            </div>
 		            <div class="col-md-7 col-sm-7 col-xs-7" class="Pay-title">
 		            	<h2>{{data.nameLeHoi}}</h2>
+		            	<p><b>Tham gia: </b>{{timeCome | date : "dd/MM/y" }}</p>
 		            	<p class="detailLeftPrice">Giá vé: {{data.price | currency: "" :0 }} VND</p>
 		            	<p class="detailModalbtn">
 		            		<a class="btn btn-default" href="" ng-click="detailOffModal()">Xem thêm lễ hội</a>

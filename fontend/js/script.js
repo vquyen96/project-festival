@@ -1,6 +1,6 @@
-
+var URL = 'https://festival-number1.appspot.com';
+// var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute"]);
-
 app.controller('ctrlHead', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
     var tokenKey = localStorage.getItem("tokenKey");
@@ -8,7 +8,7 @@ app.controller('ctrlHead', function($scope, $http){
     if (tokenKey != null && ownerId != null) {
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users/" + ownerId,
+            url : URL+"/api/users/" + ownerId,
             headers: {
                 "Authorization": tokenKey
             }
@@ -61,6 +61,7 @@ app.controller('ctrlbtnCart', function($scope, $http){
     if (level == 2|| level == 3) {
         $('#btnChangeAdminimg').attr('src','imgs/logochange.png');
         $('.countCart').attr('style','display:none;');
+        localStorage.removeItem("cart");
     }
     //phan quyen user
     else{
@@ -127,7 +128,7 @@ app.controller('ctrlMain', function($scope, $http){
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals?page=1&limit=10",
+            url : URL+"/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listData = response.data;
@@ -195,7 +196,7 @@ app.controller('ctrlDetail', function($scope, $http){
     function getDetailLeHoi(idLeHoi){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals/"+idLeHoi,
+            url : URL+"/api/festivals/"+idLeHoi,
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.data = response.data;
@@ -206,14 +207,13 @@ app.controller('ctrlDetail', function($scope, $http){
             localStorage.setItem("kinhdo", response.data.kinhdo);
             localStorage.setItem("vido", response.data.vido);
             localStorage.setItem("lehoiName", response.data.nameLeHoi);
-            localStorage.setItem("lehoiName", response.data.nameLeHoi);
             if (response.data.tongiao == 'Không') {
                 localStorage.setItem("find", response.data.lucdia);
             }
             else{
                 localStorage.setItem("find", response.data.tongiao);
             }
-
+            $scope.timeCome = new Date($scope.data.timeStart) ;
         }, function myError(response) {
             console.log(response.statusText);
         });
@@ -302,7 +302,11 @@ app.controller('ctrlDetail', function($scope, $http){
                     
                 }
                 else{
-                    alert('Bạn phải đăng nhập để đặt vé');
+                    var r = confirm("Bạn có muốn đăng nhập để  đặt vé");
+                    if (r == true){
+                        window.location.href = "../login.html";
+                    }
+                    
                 }
             }
             else{
@@ -365,7 +369,7 @@ app.controller('ctrlDetail', function($scope, $http){
         $scope.currentPageR = 1;
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals",
+            url : URL+"/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listDataRight = response.data;
@@ -386,7 +390,7 @@ app.controller('ctrlSearch', function($scope, $http){
     $scope.currentPageR = 1;
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/festivals",
+        url : URL+"/api/festivals",
     }).then(function mySuccess(response) {
         console.log(response);
         $scope.listDataRight = response.data;
@@ -404,7 +408,7 @@ app.controller('ctrlSearch', function($scope, $http){
     $scope.currentPageL = 1;
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/festivals",
+        url : URL+"/api/festivals",
     }).then(function mySuccess(response) {
         console.log(response);
         $scope.listDataLeft = response.data;
@@ -445,7 +449,7 @@ app.controller('ctrlMedia', function($scope, $http){
     function getListLeHoi(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals",
+            url : URL+"/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listData = response.data;
@@ -476,7 +480,7 @@ app.controller('ctrlContact', function($scope, $http){
     function getContact(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/contact",
+            url : URL+"/api/contact",
         }).then(function mySuccess(response) {
             $scope.contact = response.data;
         }, function myError(response) {
@@ -488,7 +492,7 @@ app.controller('ctrlContact', function($scope, $http){
         $scope.data.userID = ownerId;
         $http({
             method : "POST",
-            url : "http://localhost:3000/api/feedback",
+            url : URL+"/api/feedback",
             data: $scope.data
         }).then(function mySuccess(response) {
             alert("Cảm ơn bạn đã đóng góp ý kiến !!!");
@@ -508,7 +512,7 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
 
     $http({
         method : "GET",
-        url : "http://localhost:3000/api/users/"+ownerId,
+        url : URL+"/api/users/"+ownerId,
         headers: {
             "Authorization": tokenKey
         }
@@ -526,7 +530,7 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
         if(today>day){
             $http({
                 method : "PUT",
-                url : "http://localhost:3000/api/users/"+ownerId,
+                url : URL+"/api/users/"+ownerId,
                 data: $scope.user
             }).then(function mySuccess(response) {
                 console.log(response);
@@ -544,13 +548,13 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
         var historyArray = [];
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/order/"+ownerId,
+            url : URL+"/api/order/"+ownerId,
         }).then(function mySuccess(response) {
             console.log(response);
             for(var i = 0 ; i< response.data.length ; i++){
                 $http({
                     method : "GET",
-                    url : "http://localhost:3000/api/orderdetail/"+response.data[i]._id,
+                    url : URL+"/api/orderdetail/"+response.data[i]._id,
                 }).then(function mySuccess(response) {
                     console.log(response);
                     for(var j = 0 ; j< response.data.length ; j++){
@@ -572,7 +576,14 @@ app.controller('ctrlAccountCenter' , function($scope, $http){
 
 app.controller('ctrlCart', function($scope, $http){
     $scope.btnInfoPay = function(){
-        $('.cartInfoPay').slideToggle();
+        var disBtn = localStorage.getItem('disBtn');
+        if (disBtn == "none") {
+            alert('Bạn không thể tham gia 2 lễ hội cùng lúc');
+        }
+        else{
+            $('.cartInfoPay').slideToggle();
+        }
+        
     }
     function loadCart(){
         var cart = localStorage.getItem('cart');
@@ -592,6 +603,26 @@ app.controller('ctrlCart', function($scope, $http){
         for(var i = 0; i < cart.products.length; i++){
             cart.products[i].totalItemPrice =  cart.products[i].quantity * cart.products[i].price;
             totalPrice += cart.products[i].totalItemPrice;
+            for(var j = i+1 ; j < cart.products.length; j++ ){
+                console.log(i);
+                console.log(j);
+                console.log(cart.products[i].time);
+                console.log(cart.products[j].time);
+                var d1 = new Date(cart.products[i].time).getTime();
+                var d2 = new Date(cart.products[j].time).getTime();
+                if (d1 < (d2+ 86400000) && d1 > (d2- 86400000 )) {
+                    angular.element(document).ready(function () {
+                        setTimeout(function(){
+                            alert('Bạn đang tham gia 2 lễ hội cùng 1 lúc');
+                        },1000);
+                    });
+                    localStorage.setItem('disBtn', 'none');    
+                }
+                else{
+                    localStorage.removeItem("disBtn");
+                }
+                
+            }
         }
         $('.CartTotalPrice').html(totalPrice+' <b>VND</b>');
         // alert('Tổng giá tiền: '+ totalPrice);
@@ -673,7 +704,7 @@ app.controller('ctrlCart', function($scope, $http){
     // if (tokenKey != null && ownerId != null) {
     //     $http({
     //         method : "GET",
-    //         url : "http://localhost:3000/api/users/" + ownerId,
+    //         url : URL+"/api/users/" + ownerId,
     //         headers: {
     //             "Authorization": tokenKey
     //         }
@@ -716,7 +747,7 @@ app.controller('ctrlCart', function($scope, $http){
         console.log(data);
         $http({
             method : "POST",
-            url : "http://localhost:3000/api/cart/"+ownerId,
+            url : URL+"/api/cart/"+ownerId,
             data: data
         }).then(function mySuccess(response) {
             console.log(response);

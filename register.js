@@ -1,3 +1,5 @@
+var URL = 'https://festival-number1.appspot.com';
+// var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlRegister', function($scope, $http){
     angular.element(document).ready(function () {
@@ -13,7 +15,7 @@ app.controller('ctrlRegister', function($scope, $http){
         if(today>day){
             $http({
                 method : "POST",
-                url : "http://localhost:3000/api/users",
+                url : URL+"/api/users",
                 data: $scope.data
             }).then(function mySuccess(response) {
                 alert("Thêm Tài khoản thành công");
