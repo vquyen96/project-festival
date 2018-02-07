@@ -1,4 +1,5 @@
-
+var URL = 'https://festival-number1.appspot.com';
+// var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute", "ui.bootstrap"]);
 app.controller('ctrlMenu', function($scope, $http){
     angular.element(document).ready(function () {
@@ -13,7 +14,7 @@ app.controller('ctrlMenu', function($scope, $http){
     if(ownerId != null && tokenKey != null && level != 1){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users/"+ownerId,
+            url : URL+"/api/users/"+ownerId,
             headers: {
                 "Authorization": tokenKey
             }
@@ -66,16 +67,15 @@ app.controller('ctrlListUser', function($scope, $http){
         
     });
     var ownerId = localStorage.getItem("ownerId");
-    var limit = 8,
-        page= 1;
-    $scope.perPage = 10;
+    $scope.level = localStorage.getItem("level");
+    $scope.perPage = 8;
     $scope.currentPage = 1;
     var tokenKey = localStorage.getItem("tokenKey");
     getList();
     function getList(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/users",
+            url : URL+"/api/users",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.totalItems  = response.data.length;
@@ -120,7 +120,7 @@ app.controller('ctrlListUser', function($scope, $http){
             if (r == true) {
                 $http({
                     method : "DELETE",
-                    url : "http://localhost:3000/api/users/"+id,
+                    url : URL+"/api/users/"+id,
                 }).then(function mySuccess(response) {
                     console.log(response);
                     window.location.href = "index.html";
@@ -138,6 +138,8 @@ app.controller('ctrlAddUser', function($scope, $http){
     var typeAdd = localStorage.getItem("type");
     var editID = localStorage.getItem("editId");
     var tokenKey = localStorage.getItem("tokenKey");
+    $scope.level = localStorage.getItem("level");
+
     //nếu hidden input đúng dữ liệu
     
     if (typeAdd == 'edit') {
@@ -145,7 +147,7 @@ app.controller('ctrlAddUser', function($scope, $http){
         function getDetail(){
             $http({
                 method : "GET",
-                url : "http://localhost:3000/api/users/"+editID,
+                url : URL+"/api/users/"+editID,
                 headers: {
                     "Authorization": tokenKey
                 }
@@ -175,7 +177,7 @@ app.controller('ctrlAddUser', function($scope, $http){
             console.log($scope.user);
             $http({
                 method : "PUT",
-                url : "http://localhost:3000/api/users/"+editID,
+                url : URL+"/api/users/"+editID,
                 data : $scope.user
             }).then(function mySuccess(response) {
                 console.log(response);
@@ -212,7 +214,7 @@ app.controller('ctrlAddUser', function($scope, $http){
             if(today>day){
                   $http({
                     method : "POST",
-                    url : "http://localhost:3000/api/users",
+                    url : URL+"/api/users",
                     data : $scope.user
                 }).then(function mySuccess(response) {
                     console.log(response);
@@ -261,7 +263,7 @@ app.controller('ctrlListDanhmuc', function($scope, $http){
     function getListLucdia(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/lucdia",
+            url : URL+"/api/lucdia",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listLucDia = response.data;
@@ -285,7 +287,7 @@ app.controller('ctrlListDanhmuc', function($scope, $http){
         if (r == true) {
             $http({
                 method : "DELETE",
-                url : "http://localhost:3000/api/lucdia/"+id,
+                url : URL+"/api/lucdia/"+id,
             }).then(function mySuccess(response) {
                 
                 getListLucdia();
@@ -298,7 +300,7 @@ app.controller('ctrlListDanhmuc', function($scope, $http){
     function getListTongiao(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/tongiao",
+            url : URL+"/api/tongiao",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listTonGiao = response.data;
@@ -322,7 +324,7 @@ app.controller('ctrlListDanhmuc', function($scope, $http){
         if (r == true) {
             $http({
                 method : "DELETE",
-                url : "http://localhost:3000/api/tongiao/"+id,
+                url : URL+"/api/tongiao/"+id,
             }).then(function mySuccess(response) {
                 
                 getListTongiao();
@@ -343,7 +345,7 @@ app.controller('ctrlAddLucDia', function($scope, $http){
         function getDetail(){
             $http({
                 method : "GET",
-                url : "http://localhost:3000/api/lucdia/"+editID,
+                url : URL+"/api/lucdia/"+editID,
             }).then(function mySuccess(response) {
                 $scope.data = response.data;
                 $('#btnSbm').val('Sửa Lại');
@@ -360,7 +362,7 @@ app.controller('ctrlAddLucDia', function($scope, $http){
             
             $http({
                 method : "PUT",
-                url : "http://localhost:3000/api/lucdia/"+editID,
+                url : URL+"/api/lucdia/"+editID,
                 data : $scope.data
             }).then(function mySuccess(response) {
                 
@@ -392,7 +394,7 @@ app.controller('ctrlAddLucDia', function($scope, $http){
             };
             $http({
                 method : "POST",
-                url : "http://localhost:3000/api/lucdia",
+                url : URL+"/api/lucdia",
                 data : $scope.data
             }).then(function mySuccess(response) {
                 console.log(response);
@@ -431,7 +433,7 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
         function getDetail(){
             $http({
                 method : "GET",
-                url : "http://localhost:3000/api/tongiao/"+editID,
+                url : URL+"/api/tongiao/"+editID,
             }).then(function mySuccess(response) {
                 $scope.data = response.data;
                 $('#btnSbm').val('Sửa Lại');
@@ -444,7 +446,7 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
         $scope.btnAdd = function() {
             $http({
                 method : "PUT",
-                url : "http://localhost:3000/api/tongiao/"+editID,
+                url : URL+"/api/tongiao/"+editID,
                 data : $scope.data
             }).then(function mySuccess(response) {     
                 //Thông báo khi thành công
@@ -475,7 +477,7 @@ app.controller('ctrlAddTonGiao', function($scope, $http){
             };
             $http({
                 method : "POST",
-                url : "http://localhost:3000/api/tongiao",
+                url : URL+"/api/tongiao",
                 data : $scope.data
             }).then(function mySuccess(response) {
                 console.log(response);
@@ -520,7 +522,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
     function getList(page){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/festivals",
+            url : URL+"/api/festivals",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.listUser = response.data;
@@ -569,7 +571,7 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         if (r == true) {
             $http({
                 method : "DELETE",
-                url : "http://localhost:3000/api/festivals/"+id,
+                url : URL+"/api/festivals/"+id,
             }).then(function mySuccess(response) {
                 
                 getList();
@@ -589,7 +591,7 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
         function getDetail(){
             $http({
                 method : "GET",
-                url : "http://localhost:3000/api/festivals/"+editID,
+                url : URL+"/api/festivals/"+editID,
             }).then(function mySuccess(response) {
                 console.log(response);
                 $scope.festival = response.data;
@@ -617,7 +619,7 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
             
             $http({
                 method : "PUT",
-                url : "http://localhost:3000/api/festivals/"+editID,
+                url : URL+"/api/festivals/"+editID,
                 data : $scope.festival
             }).then(function mySuccess(response) {
                 
@@ -655,7 +657,7 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
             if (timeStart>today && timeStart<timeEnd) {
                 $http({
                     method : "POST",
-                    url : "http://localhost:3000/api/festivals",
+                    url : URL+"/api/festivals",
                     data : $scope.festival
                 }).then(function mySuccess(response) {
                     console.log(response);
@@ -709,7 +711,7 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/feedback",
+            url : URL+"/api/feedback",
         }).then(function mySuccess(response) {
             $scope.listFeedBack = response.data;
             $scope.totalItems  = response.data.length;
@@ -738,7 +740,7 @@ app.controller('ctrlListFeedBack', function($scope, $http){
         if (r == true) {
             $http({
                 method : "DELETE",
-                url : "http://localhost:3000/api/feedback/"+id,
+                url : URL+"/api/feedback/"+id,
             }).then(function mySuccess(response) {
                 console.log(response);
                 window.location.href = "index.html#!/listFeedBack";
@@ -754,13 +756,13 @@ app.controller('ctrlListFeedBack', function($scope, $http){
 
             $http({
                 method : "GET",
-                url : "http://localhost:3000/api/feedback/"+userid,
+                url : URL+"/api/feedback/"+userid,
             }).then(function mySuccess(response) {
                 for(var i = 0 ; i < response.data.length; i++){
                     alert(response.data[i]._id);
                     $http({
                         method : "DELETE",
-                        url : "http://localhost:3000/api/feedback/"+response.data[i]._id,
+                        url : URL+"/api/feedback/"+response.data[i]._id,
                     }).then(function mySuccess(response) {
                         console.log(response);
                     }, function myError(response) {
@@ -773,7 +775,7 @@ app.controller('ctrlListFeedBack', function($scope, $http){
 
             $http({
                 method : "DELETE",
-                url : "http://localhost:3000/api/users/"+userid,
+                url : URL+"/api/users/"+userid,
             }).then(function mySuccess(response) {
                 console.log(response);
                 window.location.href = "index.html#!/listFeedBack";
@@ -796,7 +798,7 @@ app.controller('ctrlListOrder', function($scope, $http){
     function getList(timeSta, timeEnd){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/order",
+            url : URL+"/api/order",
         }).then(function mySuccess(response) {
             var totalPricePage = 0 ;
             var orders = response.data;
@@ -833,7 +835,7 @@ app.controller('ctrlListOrder', function($scope, $http){
         $scope.adress = orderadress;
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/orderdetail/"+order_id,
+            url : URL+"/api/orderdetail/"+order_id,
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.orderDetail = response.data;
@@ -847,7 +849,7 @@ app.controller('ctrlListOrder', function($scope, $http){
             if (r == true) {
                 $http({
                     method : "PUT",
-                    url : "http://localhost:3000/api/order/"+id,
+                    url : URL+"/api/order/"+id,
                     data: {
                         "status" : status
                     }
@@ -865,7 +867,7 @@ app.controller('ctrlListOrder', function($scope, $http){
             if (r == true) {
                 $http({
                     method : "PUT",
-                    url : "http://localhost:3000/api/order/"+id,
+                    url : URL+"/api/order/"+id,
                     data: {
                         "status" : status
                     }
@@ -883,7 +885,7 @@ app.controller('ctrlListOrder', function($scope, $http){
             if (r == true) {
                $http({
                     method : "PUT",
-                    url : "http://localhost:3000/api/order/"+id,
+                    url : URL+"/api/order/"+id,
                     data: {
                         "status" : status
                     }
@@ -962,7 +964,7 @@ app.controller('ctrlContact', function($scope, $http){
     function getContact(){
         $http({
             method : "GET",
-            url : "http://localhost:3000/api/contact",
+            url : URL+"/api/contact",
         }).then(function mySuccess(response) {
             console.log(response);
             $scope.contact = response.data;
@@ -975,7 +977,7 @@ app.controller('ctrlContact', function($scope, $http){
         console.log($scope.contact);
         $http({
             method : "PUT",
-            url : "http://localhost:3000/api/contact/"+id,
+            url : URL+"/api/contact/"+id,
             data: $scope.contact
         }).then(function mySuccess(response) {
             console.log(response);

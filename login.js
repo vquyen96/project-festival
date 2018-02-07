@@ -1,3 +1,5 @@
+var URL = 'https://festival-number1.appspot.com';
+// var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlLogin', function($scope, $http){
     angular.element(document).ready(function () {
@@ -24,7 +26,7 @@ app.controller('ctrlLogin', function($scope, $http){
 		console.log($scope.data);
 		$http({
             method : "POST",
-            url : "http://localhost:3000/api/authentications",
+            url : URL+"/api/authentications",
             data: $scope.data
         }).then(function mySuccess(response) {
             console.log(response);

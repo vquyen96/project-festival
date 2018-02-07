@@ -1,4 +1,4 @@
-<div class="row" ng-controller="ctrlListUser">
+ <div class="row" ng-controller="ctrlListUser">
 	<div class="detailLoad"></div>
 	<div class="listLeHoiHeader">
 		
@@ -29,9 +29,12 @@
 				<td><img ng-src="{{user.avaUrl}}"></img></td>
 				<td class="responsive992 responsive768">{{user.email}}</td>
 				<td class="responsive992 responsive768">{{user.birthday | date : "dd/MM/y" }}</td>
-				<td>{{user.level}}</td>
-				<td class="responsive768"><a href="" class="btn btn-primary" ng-click="btnEdit(user._id)">Sửa</a></td>
-				<td class="responsive768"><a href="" class="btn btn-danger"  ng-click="btnDelete(user._id,user.username)">Xóa</a></td>
+				<td ng-show="user.level == 3">Chủ</td>
+				<td ng-show="user.level == 2">Quản lí</td>
+				<td ng-show="user.level == 1">Người dùng</td>
+				<!-- <td>{{user.level}}</td> -->
+				<td class="responsive768" ng-show="user.level <= level"><a href="" class="btn btn-primary" ng-click="btnEdit(user._id)">Sửa</a></td>
+				<td class="responsive768" ng-show="user.level <= level"><a href="" class="btn btn-danger"  ng-click="btnDelete(user._id,user.username)">Xóa</a></td>
 			</tr>
 			
 		</table>
