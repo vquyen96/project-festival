@@ -37,9 +37,13 @@
 		<div class="col-md-8 col-sm-12 col-xs-12" id="detailcontent">
 			<h2 class="detailLeftTitle">
 				{{data.nameLeHoi}}
-				<a href="" class="btn btn-success detailAddCart" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1)' data-toggle="modal" data-target=".bs-example-modal-lg">
-					<b>Đặt vé ngay</b>
-				</a>
+				<div class="detailAddCart">
+					<input type="date" name="" class="btn btn-default" ng-model="timeCome">
+					<a href="" class="btn btn-success" ng-click='btnAddToCart(data._id, data.nameLeHoi, data.price, 1 , timeCome, data.timeStart , data.timeEnd)' data-toggle="modal" data-target=".bs-example-modal-lg">
+						<b>Đặt vé ngay</b>
+					</a>
+				</div>
+				
 			</h2>
 			<div>
 				<div class="detailtimeleft">

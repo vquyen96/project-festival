@@ -267,6 +267,7 @@ nav ul{
 
 .detailAddCart{
 	float: right;
+	display: inline-block;
 }
 #map {
     height: 400px;

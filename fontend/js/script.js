@@ -219,80 +219,103 @@ app.controller('ctrlDetail', function($scope, $http){
         });
     }
     getDetailLeHoi(idLeHoi);
-    $scope.btnAddToCart = function(productId, productName, productPrice, quantity){
-        if (ownerId != null && ownerId != undefined) {
-            if(level == 1){
-                var cart = localStorage.getItem('cart');    
-                if (cart == null){
-                    // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
-                    // kèm số lượng.
-                    if(quantity > 0){
-                        cart = {
-                            'products': [
-                                {
-                                    'id': productId,
-                                    'name': productName,
-                                    'price': productPrice,
-                                    'quantity': quantity
+    $scope.btnAddToCart = function(productId, productName, productPrice, quantity, timeCome, timeStart, timeEnd){
+        console.log(timeCome);
+        console.log(timeStart);
+        console.log(timeEnd);
+        if (timeCome  != null && timeCome != undefined) {
+            var timeCome = timeCome.getTime();
+            var timeStart = new Date(timeStart).getTime();
+            var timeEnd = new Date(timeEnd).getTime();
+            if (timeCome >= timeStart && timeCome <= timeEnd) {
+                timeCome = new Date(timeCome);
+                if (ownerId != null && ownerId != undefined) {
+                    if(level == 1){
+                        var cart = localStorage.getItem('cart');    
+                        if (cart == null){
+                            // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
+                            // kèm số lượng.
+                            if(quantity > 0){
+                                cart = {
+                                    'products': [
+                                        {
+                                            'id': productId,
+                                            'name': productName,
+                                            'time': timeCome,
+                                            'price': productPrice,
+                                            'quantity': quantity
+                                        }
+                                    ]
+                                }   
+                            }                       
+                        } else{
+                            // Nếu đã tồn tại sản phẩm.
+                            // Parse thông tin giỏ hàng về json object.
+                            cart = JSON.parse(cart);
+                            // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
+                            if(cart.products != undefined && cart.products != null){
+                                // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
+                                var existsItem = false;
+                                for (var i = 0; i < cart.products.length; i++) {
+                                    // Nếu tồn tại sản phẩm.
+                                    if(cart.products[i].id == productId){
+                                        existsItem = true;
+                                        // tăng số lượng sản phẩm trong giỏ hàng lên 1.
+                                        if(quantity == 1){
+                                            cart.products[i].quantity += quantity;
+                                        }
+                                        else{
+                                            cart.products[i].quantity = quantity;
+                                        }
+                                        quantity = cart.products[i].quantity;
+                                        if(quantity <= 0){
+                                            // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
+                                            cart.products.splice(i, 1);
+                                        }
+                                        break;
+                                    }
                                 }
-                            ]
-                        }   
-                    }                       
-                } else{
-                    // Nếu đã tồn tại sản phẩm.
-                    // Parse thông tin giỏ hàng về json object.
-                    cart = JSON.parse(cart);
-                    // Kiểm tra sự tồn tại của trường products trong giỏ hàng.
-                    if(cart.products != undefined && cart.products != null){
-                        // Kiểm tra sự tồn tại của sản phầm trong giỏ hàng.
-                        var existsItem = false;
-                        for (var i = 0; i < cart.products.length; i++) {
-                            // Nếu tồn tại sản phẩm.
-                            if(cart.products[i].id == productId){
-                                existsItem = true;
-                                // tăng số lượng sản phẩm trong giỏ hàng lên 1.
-                                if(quantity == 1){
-                                    cart.products[i].quantity += quantity;
-                                }
-                                else{
-                                    cart.products[i].quantity = quantity;
-                                }
-                                quantity = cart.products[i].quantity;
-                                if(quantity <= 0){
-                                    // Xoá bỏ sản phẩm khỏi giỏ hàng trong trường hợp số lượng nhỏ hơn 0.
-                                    cart.products.splice(i, 1);
-                                }
-                                break;
-                            }
+                                // Nếu không tồn tại sản phẩm trong giỏ hàng.
+                                if(!existsItem){
+                                    // Thêm mới sản phẩm với quantity default là 1.
+                                    cart.products.push({
+                                        'id': productId,
+                                        'quantity': quantity,
+                                        'name': productName,
+                                        'time': timeCome,
+                                        'price': productPrice,
+                                        'totalItemPrice': 0
+                                    });
+                                }                   
+                            }                               
                         }
-                        // Nếu không tồn tại sản phẩm trong giỏ hàng.
-                        if(!existsItem){
-                            // Thêm mới sản phẩm với quantity default là 1.
-                            cart.products.push({
-                                'id': productId,
-                                'quantity': quantity,
-                                'name': productName,
-                                'price': productPrice,
-                                'totalItemPrice': 0
-                            });
-                        }                   
-                    }                               
+                        // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
+                        // Lưu lại thông tin giỏ hàng vào localStorage.
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        setTimeout(function(){ 
+                            $('#modal-video').modal();
+                        }, 300);
+                    }
+                    else{
+                        alert('Bạn không có quyền mua vé! Đề nghị đăng nhập bằng tài khoản khác');
+                    }
+                    
                 }
-                // alert('Đặt vé' + productName + ' vào giỏ hàng thành công. Số lượng ' + quantity);
-                // Lưu lại thông tin giỏ hàng vào localStorage.
-                localStorage.setItem('cart', JSON.stringify(cart));
-                setTimeout(function(){ 
-                    $('#modal-video').modal();
-                }, 300);
+                else{
+                    alert('Bạn phải đăng nhập để đặt vé');
+                }
             }
             else{
-                alert('Bạn không có quyền mua vé! Đề nghị đăng nhập bằng tài khoản khác');
+                alert('Thời gian bạn nhập không diễn ra lế hội');
             }
-            
         }
         else{
-            alert('Bạn phải đăng nhập để đặt vé');
+            alert('Bạn phải điền thời gian sẽ tham gia lễ hội')
         }
+        
+        
+        
+        
 
     }
     $scope.detailOffModal = function(){
@@ -577,7 +600,7 @@ app.controller('ctrlCart', function($scope, $http){
     loadCart();
 
 
-    $scope.btnAddToCart = function(productId, productName, productPrice, quantity){
+    $scope.btnAddToCart = function(productId, productName, productPrice, quantity ,timeCome){
         var cart = localStorage.getItem('cart');    
         if (cart == null){
             // Nếu chưa thì tạo mới giỏ hàng với products là danh sách các sản phẩm
@@ -588,6 +611,7 @@ app.controller('ctrlCart', function($scope, $http){
                         {
                             'id': productId,
                             'name': productName,
+                            'time': timeCome,
                             'price': productPrice,
                             'quantity': quantity
                         }
@@ -628,6 +652,7 @@ app.controller('ctrlCart', function($scope, $http){
                         'id': productId,
                         'quantity': quantity,
                         'name': productName,
+                        'time': timeCome,
                         'price': productPrice,
                         'totalItemPrice': 0
                     });
@@ -671,7 +696,8 @@ app.controller('ctrlCart', function($scope, $http){
         for (var i = 0; i < cart.products.length; i++) {
             var product = {
                 'id': cart.products[i].id,
-                'quantity': cart.products[i].quantity                   
+                'quantity': cart.products[i].quantity,
+                'time': cart.products[i].time              
             };
             arrayProducts.push(product);
         }
