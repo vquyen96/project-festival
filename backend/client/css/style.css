@@ -114,6 +114,8 @@ body{
 	width: 100%;
 	background: rgba(200, 200, 200, 0.7);
 	border-radius: 10px 10px 0 0;
+	/*height: 1000px;*/
+	/*overflow: auto;*/
 }
 .listUserTable tr{
 	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
@@ -173,10 +175,15 @@ body{
 .listLeHoiHeaderSetItem input{
 	display: inline-block;
 }
+/*.listLeHoiTableBig{
+	max-height: 1000px;
+	overflow: auto;
+}*/
 .listLeHoiTable{
 	width: 100%;
 	background: rgba(200, 200, 200, 0.7);
 	border-radius: 10px 10px 0 0;
+	
 }
 .listLeHoiTable tr{
 	border-bottom: 1px solid rgba(200, 200, 200, 0.3);
@@ -261,6 +268,18 @@ body{
 	margin-top: 20px;
 	color: #f00;
 	font-weight: bold;
+}
+.listOrderSta2{
+	color: #ec6c00; ;
+}
+.listOrderSta1{
+	color:#09098c ;
+}
+.listOrderSta0{
+	color:#318300 ;
+}
+.listOrderSta_1{
+	color:#c30600 ;
 }
 /*end list Order*/
 @media screen and (max-width: 992px){

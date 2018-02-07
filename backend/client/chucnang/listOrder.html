@@ -33,7 +33,11 @@
 				<td class="">{{data.createdAt | date : "h:mm a  d/M/yy " }}</td>
 				<td>{{data.city}}</td>
 				<td class="responsive992 responsive768">{{data.totalPrice | currency: "" :0 }} VND</td>
-				<td class="">{{data.status}}</td>
+				<!-- <td class="">{{data.status}}</td> -->
+				<td class="listOrderSta2" ng-show="data.status == 2"><b>Đang chờ</b></td>
+				<td class="listOrderSta1" ng-show="data.status == 1"><b>Đã nhận</b></td>
+				<td class="listOrderSta0" ng-show="data.status == 0"><b>Đã xong</b></td>
+				<td class="listOrderSta_1" ng-show="data.status == -1"><b>Từ chối</b></td>
 				<td class="" ng-if="data.status == '2'"  ng-click="btnDone(data.fullName, data._id, 1)"><a href="" class="btn btn-primary">Nhận</a></td>
 				<td class="" ng-if="data.status == '1'" ng-click="btnDone(data.fullName, data._id, 0)"><a href="" class="btn btn-success">Xong</a></td>
 				<td class="responsive768 responsive992" ng-if="data.status == '2'" ng-click="btnDone(data.fullName, data._id, -1)"><a href="" class="btn btn-danger" >Từ chối</a></td>

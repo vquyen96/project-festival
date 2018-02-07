@@ -1,5 +1,5 @@
-var URL = 'https://festival-number1.appspot.com';
-// var URL = 'http://localhost:3000';
+// var URL = 'https://festival-number1.appspot.com';
+var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute"]);
 app.controller('ctrlHead', function($scope, $http){
     var ownerId = localStorage.getItem("ownerId");
@@ -123,8 +123,10 @@ app.controller('ctrlMain', function($scope, $http){
         },500);
         
     });
-    $scope.perPage = 10;
-    $scope.currentPage = 1;
+    // $scope.timeNow = new Date();
+    // console.log($scope.timeNow);
+    $scope.perPage = 8;
+    $scope.currentPage = 2;
     function getListLeHoi(){
         $http({
             method : "GET",
@@ -316,11 +318,6 @@ app.controller('ctrlDetail', function($scope, $http){
         else{
             alert('Bạn phải điền thời gian sẽ tham gia lễ hội')
         }
-        
-        
-        
-        
-
     }
     $scope.detailOffModal = function(){
         $('#modal-video').modal('hide');
@@ -330,20 +327,22 @@ app.controller('ctrlDetail', function($scope, $http){
         window.location.href = "index.html#!/cart";
 
     }
-    var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
+    // var doc = new jsPDF();
+    // var specialElementHandlers = {
+    //     '#editor': function (element, renderer) {
+    //         return true;
+    //     }
+    // };
 
-    $scope.detailDowload=function () {   
-        doc.fromHTML($('#detailcontent').html(), 15, 15, {
-            'width': 170,
-                'elementHandlers': specialElementHandlers
-        });
-        doc.save('festivals-file.pdf');
-    };
+    // $scope.detailDowload=function () {   
+    //     doc.fromHTML($('#detailcontent').html(), 15, 15, {
+    //         'width': 170,
+    //             'elementHandlers': specialElementHandlers
+    //     });
+    //     doc.save('festivals.pdf');
+    // };
+    
+
     function initMap() {
         var vido = localStorage.getItem("vido");
         var vido1 = parseFloat(vido);
@@ -489,18 +488,26 @@ app.controller('ctrlContact', function($scope, $http){
     }
     getContact();
     $scope.btnFeedback = function(){
-        $scope.data.userID = ownerId;
-        $http({
-            method : "POST",
-            url : URL+"/api/feedback",
-            data: $scope.data
-        }).then(function mySuccess(response) {
-            alert("Cảm ơn bạn đã đóng góp ý kiến !!!");
-            console.log(response);
-            window.location.href = "index.html";
-        }, function myError(response) {
-            alert(response.data);
-        });
+        if (ownerId != null && ownerId != undefined ) {
+            $scope.data.userID = ownerId;
+            $http({
+                method : "POST",
+                url : URL+"/api/feedback",
+                data: $scope.data
+            }).then(function mySuccess(response) {
+                alert("Cảm ơn bạn đã đóng góp ý kiến !!!");
+                console.log(response);
+                window.location.href = "index.html";
+            }, function myError(response) {
+                alert(response.data);
+            });
+        }
+        else{
+            var r = confirm("Bạn có muốn đăng nhập để  góp ý");
+            if (r == true){
+                window.location.href = "../login.html";
+            }
+        }
     }
 });
 
@@ -590,6 +597,7 @@ app.controller('ctrlCart', function($scope, $http){
         // Kiểm tra sự tồn tại của giỏ hàng.            
         if (cart == null){
             alert('Hiện tại chưa có sản phẩm trong giỏ hàng.');
+            window.location.href = "index.html";
             return;
         }
         // Parse thông tin giỏ hàng.
@@ -597,6 +605,7 @@ app.controller('ctrlCart', function($scope, $http){
         // Kiểm tra thông tin sản phẩm trong giỏ hàng.
         if(cart.products == undefined || cart.products == null){
             alert('Hiện tại chưa có sản phẩm trong giỏ hàng.');
+            window.location.href = "index.html";
             return;
         }
         var totalPrice = 0;
@@ -627,6 +636,10 @@ app.controller('ctrlCart', function($scope, $http){
         $('.CartTotalPrice').html(totalPrice+' <b>VND</b>');
         // alert('Tổng giá tiền: '+ totalPrice);
         $scope.listData = cart.products;
+        if(cart.products.length == 0){
+            alert('Hiện tại chưa có sản phẩm trong giỏ hàng.');
+            window.location.href = "index.html";
+        }
     }
     loadCart();
 

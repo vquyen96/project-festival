@@ -8,7 +8,7 @@
 			<input type="button" name="" class="btn btn-success" value= "Số bản ghi"></input>
 		</div>
 		<div class="col-md-5 col-sm-12 col-xs-12 form-group">
-			<input type="text" name="" class="btn btn-default" ng-model="userSearch"></input>
+			<input type="text" name="" class="btn btn-default" id="userSearch" ng-model="userSearch"></input>
 			<input type="button" name="" class="btn btn-success" value="Tìm kiếm" ng-click="btnUserSearch()"></input>
 		</div>
 	</div>
@@ -54,4 +54,15 @@
 
 
 	</div>
+
+	<!-- <input type="hidden" ng-model="productData.avatar">
+    <div class="form-group">
+        <h5>Ảnh mô tả <span class="text-danger">*</span></h5>
+        <input type="file" accept="image/*" file-model="avatar" ng-model-instant multiple onchange="angular.element(this).scope().file_changed(this)"><br>
+        <div class="card-group">
+            <div class="card" ng-repeat="prev_img in Siin">
+                <img class="card-img-top img-responsive" ng-src="{{prev_img}}">
+            </div>
+        </div>
+    </div> -->
 </div>

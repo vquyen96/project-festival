@@ -1,5 +1,5 @@
-var URL = 'https://festival-number1.appspot.com';
-// var URL = 'http://localhost:3000';
+// var URL = 'https://festival-number1.appspot.com';
+var URL = 'http://localhost:3000';
 var app = angular.module("myApp", ["ngRoute", "ui.bootstrap"]);
 app.controller('ctrlMenu', function($scope, $http){
     angular.element(document).ready(function () {
@@ -104,7 +104,13 @@ app.controller('ctrlListUser', function($scope, $http){
         window.location.href = "index.html#!/addUser";
     }
     $scope.btnUserSearch = function(){
-        $scope.perPage = $scope.totalItems;
+        if($scope.userSearch != null && $scope.userSearch != undefined && $scope.userSearch != ''){
+            $scope.perPage = $scope.totalItems;
+        }
+        else{
+            alert('Không có gì để tìm kiếm');
+        }
+        
     }    
     $scope.btnEdit = function(id){
         localStorage.setItem("editId", id);
@@ -188,16 +194,12 @@ app.controller('ctrlAddUser', function($scope, $http){
                 setTimeout(function(){
                     $('.alert-success').attr('style','display : none');
                 },3000);
+                window.location.href = "index.html";
                 //Xóa các trường input khi thành công
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data);
-                $('.alert-danger').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-danger').attr('style','display : none');
-                },3000);
+                alert(response.data);
             });
         };
         getDetail();
@@ -555,7 +557,12 @@ app.controller('ctrlListLeHoi', function($scope, $http){
         $log.log('Page changed to: ' + $scope.currentPage);
     };
     $scope.btnFesSearch = function(){
-        $scope.perPage = $scope.totalItems;
+         if($scope.fesSearch != null && $scope.fesSearch != undefined && $scope.fesSearch != ''){
+            $scope.perPage = $scope.totalItems;
+        }
+        else{
+            alert('Không có gì để tìm kiếm');
+        }
     }
     $scope.btnAddUser = function(){
         localStorage.setItem("type", 'add');
@@ -634,12 +641,7 @@ app.controller('ctrlAddLeHoi', function($scope, $http){
             }, function myError(response) {
                 console.log(response);
                 //Thông báo khi có lỗi                      
-                $('.alert-danger').text(response.data.errors[0].title + " " + response.data.errors[0].detail);
-                $('.alert-danger').attr('style','display : inline-block');
-                //Xóa thông báo sau 3s
-                setTimeout(function(){
-                    $('.alert-danger').attr('style','display : none');
-                },3000);
+                alert(response.data);
             });
         };
         getDetail();
@@ -856,7 +858,7 @@ app.controller('ctrlListOrder', function($scope, $http){
                 }).then(function mySuccess(response) {
                     console.log(response);
                     
-                    getList(1);
+                    getDatePer();
                 }, function myError(response) {
                     console.log(response.statusText);
                 });
@@ -874,7 +876,7 @@ app.controller('ctrlListOrder', function($scope, $http){
                 }).then(function mySuccess(response) {
                     console.log(response);
                     
-                    getList(1);
+                    getDatePer();
                 }, function myError(response) {
                     console.log(response.statusText);
                 });
@@ -891,7 +893,7 @@ app.controller('ctrlListOrder', function($scope, $http){
                     }
                 }).then(function mySuccess(response) {
                     console.log(response);
-                    getList(1);
+                    getDatePer();
                 }, function myError(response) {
                     console.log(response.statusText);
                 }); 

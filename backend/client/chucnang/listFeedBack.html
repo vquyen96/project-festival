@@ -22,7 +22,7 @@
 				<td>{{data.title}}</td>
 				<td>{{data.content}}</td>
 				<td><a href="" class="btn btn-primary" ng-click="btnDelFeedBack(data._id, data.username)">Xóa</a></td>
-				<td><a href="" class="btn btn-danger"  ng-click="btnDelUser(data.userID, data.username, data._id)">Xóa</a></td>
+				<td><a href="" ng-show="data.userID != null && data.userID != undefined" class="btn btn-danger"  ng-click="btnDelUser(data.userID, data.username, data._id)">Xóa</a></td>
 			</tr>
 			
 		</table>
