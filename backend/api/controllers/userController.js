@@ -62,13 +62,21 @@ var sha512 = function(password, salt){
 exports.sha512 = sha512;
 
 exports.update = function(req, resp){
-	var obj = new User(req.body);
-	var salt = Math.random().toString(36).substring(7);
-	obj.salt = salt;
-	obj.password = sha512(obj.password, obj.salt);
-	User.findOneAndUpdate({_id: req.params.id}, obj, {new: true}, function(err, result) {
-	    resp.json(result);
+	User.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+		if (result != null && result != undefined) {
+			var obj = new User(req.body);
+			var salt = Math.random().toString(36).substring(7);
+			obj.salt = salt;
+			obj.password = sha512(obj.password, obj.salt);
+			User.findOneAndUpdate({_id: req.params.id}, obj, {new: true}, function(err, result) {
+			    resp.json(result);
+			});
+		}
+		else{
+			return resp.status(400).send('Tài khoản đã bị xóa');
+		}
 	});
+	
 }
 
 exports.delete = function(req, resp){

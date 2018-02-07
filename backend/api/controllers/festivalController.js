@@ -143,7 +143,7 @@ exports.getList = function(req, resp){
 			console.log(err);
 		}
 		resp.send(result);
-	});
+	}).sort({timeStart: 1});
 }
 
 exports.getDetail = function(req, resp){
@@ -174,9 +174,17 @@ exports.add = function(req, resp){
 }
 
 exports.update = function(req, resp){
-	Festival.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
-	    resp.json(result);
+	Festival.findOne({ _id: req.params.id, 'status': 1 },function(err, result){
+		if(result != null && result != undefined){
+			Festival.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, result) {
+			    resp.json(result);
+			});
+		}
+		else{
+			return resp.status(400).send('Lễ hội đã bị xóa');
+		}
 	});
+	
 }
 
 exports.delete = function(req, resp){

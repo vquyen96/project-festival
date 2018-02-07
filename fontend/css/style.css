@@ -259,6 +259,17 @@ nav ul{
 
 
 }
+.contactFB a{
+	display: inline-block;
+}
+.contactFB a img {
+	height: 50px;
+	margin: 10px;
+	transition: all linear 1s;
+}
+.contactFB a img:hover{
+	transform: rotate(-360deg);
+} 
 /*end contact*/
 
 
@@ -569,46 +580,8 @@ footer a{
 	border-radius: 34%;
 	font-weight: bold;
 }
-.btnCart{
-	background: #fff; 
-}
-.btnCart img{
-	z-index: 999;
-}
-.btnCartfb{
-	z-index: 98;
-	position: absolute;
-	transition: bottom .5s;
-	bottom: 0;
-	display: none;
 
-}
-.btnCartYotu{
-	z-index: 97;
-	position: absolute;
-	transition: bottom .5s;
-	bottom: 0;
-	display: none;
-}
-.btnCartInsta{
-	z-index: 96;
-	position: absolute;
-	transition: bottom .5s;
-	bottom: 0;
-	display: none;
-}
-.btnChangeAdminpage:hover .btnCartfb{
-	bottom: 80px;
-	display: block;
-}
-.btnChangeAdminpage:hover .btnCartYotu{
-	bottom: 160px;
-	display: block;
-}
-.btnChangeAdminpage:hover .btnCartInsta{
-	bottom: 240px;
-	display: block;
-}
+
 /*end logoChangeAdminpage*/
 
 
